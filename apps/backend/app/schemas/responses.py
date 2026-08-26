@@ -38,4 +38,5 @@ class RansomwareResponse(BaseModel):
     warnings: list[str]
 
     request_id: str
+    trace_id: str
     runtime_state: str
