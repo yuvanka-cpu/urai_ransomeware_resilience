@@ -19,8 +19,8 @@ written.
 | RW-0003 | RW-000 Task 3 | Define and version the PoC safety policy covering synthetic-only telemetry and prohibition of malware, encryption, detonation, active probing and operational actions. | DN | `docs/ransomware/safety_policy.md`; safety/API tests |
 | RW-0004 | RW-000 Task 4 | Define decision states `normal`, `investigate`, `high_risk`, and `unavailable`; enforce `human_approval_required=true` and `real_action_executed=false`. | DN | `app/schemas/enums.py`; `app/schemas/responses.py`; API/schema tests |
 | RW-0005 | RW-000 Task 5 | Define controlled provenance values: `LIVE_MODEL`, `SYNTHETIC_GROUND_TRUTH`, `STATIC_SCENARIO_METADATA`, `DERIVED_BY_BACKEND`, `FALLBACK`, and `UNAVAILABLE`. | DN | `app/schemas/enums.py`; `app/schemas/responses.py`; provenance tests |
-| RW-0006 | RW-000 Task 6 | Pin runtime/library versions and provide environment verification. | RV | `requirements.txt`; `verify_environment.py`; successful environment verification output |
-| RW-0007 | RW-000 Task 7 | Use task IDs for assignment, branches and tightly related task groups; merge shared contracts before dependent code. | RV | Stage 0 task tracker and repository workflow documentation; final review required |
+| RW-0006 | RW-000 Task 6 | Pin runtime/library versions and provide environment verification. | DN | `requirements.txt`; `verify_environment.py`; successful environment verification output |
+| RW-0007 | RW-000 Task 7 | Use task IDs for assignment, branches and tightly related task groups; merge shared contracts before dependent code. | DN | Stage 0 task tracker and repository workflow documentation; final review completed |
 
 ## Current Evidence
 
@@ -60,4 +60,4 @@ Environment verification: PASS
 No real ransomware, encryption payload, detonation or operational action is implemented.
 Dataset generation and model development remain outside the Stage 0 closure boundary.
 The request/response API contract must be frozen before proceeding to dependent stages.
-Final Stage 0 closure requires completion of the API contract freeze and final passing test report.
+Stage 0 contract freeze and final passing test verification are complete.
