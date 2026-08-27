@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from fastapi.testclient import TestClient
 
 from app.main import app
@@ -68,3 +70,15 @@ def test_fallback_mock():
     assert data["warnings"]
     assert data["human_approval_required"] is True
     assert data["real_action_executed"] is False
+
+def test_safety_policy_version_is_present():
+    policy_path = (
+        Path(__file__).resolve().parents[3]
+        / "docs"
+        / "ransomware"
+        / "safety_policy.md"
+    )
+
+    policy_text = policy_path.read_text(encoding="utf-8")
+
+    assert "**Policy Version:** 0.1.0" in policy_text

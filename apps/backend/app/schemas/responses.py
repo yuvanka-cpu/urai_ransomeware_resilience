@@ -1,6 +1,6 @@
 from typing import Literal
 from pydantic import BaseModel
-from app.schemas.enums import Decision, IncidentStage, Severity
+from app.schemas.enums import Decision, IncidentStage, Severity, DataProvenance
 class RansomwareResponse(BaseModel):
     use_case:str
     industry:str
@@ -34,7 +34,7 @@ class RansomwareResponse(BaseModel):
     real_action_executed: Literal[False]
 
     artifact_provenance: list[str]
-    data_provenance: str
+    data_provenance: DataProvenance
     warnings: list[str]
 
     request_id: str

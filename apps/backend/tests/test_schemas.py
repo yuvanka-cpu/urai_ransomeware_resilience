@@ -60,7 +60,7 @@ def test_valid_response_schema():
         human_approval_required=True,
         real_action_executed=False,
         artifact_provenance=[],
-        data_provenance="synthetic",
+        data_provenance="SYNTHETIC_GROUND_TRUTH",
         warnings=[],
         request_id="REQ-001",
         trace_id="TRACE-001",

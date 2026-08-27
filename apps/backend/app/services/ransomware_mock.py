@@ -1,4 +1,4 @@
-from app.schemas.enums import Decision, IncidentStage, Severity
+from app.schemas.enums import Decision, IncidentStage, Severity, DataProvenance
 from app.schemas.responses import RansomwareResponse
 
 
@@ -30,7 +30,7 @@ def get_normal_response() -> RansomwareResponse:
         human_approval_required=True,
         real_action_executed=False,
         artifact_provenance=[],
-        data_provenance="SYNTHETIC_GROUND_TRUTH",
+        data_provenance=DataProvenance.SYNTHETIC_GROUND_TRUTH,
         warnings=[],
         request_id="stage0-normal-001",
         trace_id="stage0-normal-trace-001",
@@ -66,7 +66,7 @@ def get_investigate_response() -> RansomwareResponse:
         human_approval_required=True,
         real_action_executed=False,
         artifact_provenance=[],
-        data_provenance="SYNTHETIC_GROUND_TRUTH",
+        data_provenance=DataProvenance.SYNTHETIC_GROUND_TRUTH,
         warnings=[],
         request_id="stage0-investigate-001",
         trace_id="stage0-investigate-trace-001",
@@ -102,7 +102,7 @@ def get_high_risk_response() -> RansomwareResponse:
         human_approval_required=True,
         real_action_executed=False,
         artifact_provenance=[],
-        data_provenance="SYNTHETIC_GROUND_TRUTH",
+        data_provenance=DataProvenance.SYNTHETIC_GROUND_TRUTH,
         warnings=[],
         request_id="stage0-high-risk-001",
         trace_id="stage0-high-risk-trace-001",
@@ -138,7 +138,7 @@ def get_unavailable_response() -> RansomwareResponse:
         human_approval_required=True,
         real_action_executed=False,
         artifact_provenance=[],
-        data_provenance="UNAVAILABLE",
+        data_provenance=DataProvenance.UNAVAILABLE,
         warnings=["Synthetic runtime failure: response unavailable."],
         request_id="stage0-unavailable-001",
         trace_id="stage0-unavailable-trace-001",
@@ -174,7 +174,7 @@ def get_fallback_response() -> RansomwareResponse:
         human_approval_required=True,
         real_action_executed=False,
         artifact_provenance=[],
-        data_provenance="FALLBACK",
+        data_provenance=DataProvenance.FALLBACK,
         warnings=["FALLBACK: live-model output is unavailable."],
         request_id="stage0-fallback-001",
         trace_id="stage0-fallback-trace-001",
