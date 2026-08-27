@@ -1,79 +1,140 @@
 # URAI Ransomware Resilience — Repository Map
 
-## Purpose
+**Status:** Stage 0 repository map  
+**Scope:** Energy & Petrochemical Ransomware Resilience Synthetic PoC  
+**Safety classification:** Defensive synthetic PoC; recommendation/review only
 
-This repository contains a synthetic, defensive Proof of Concept for
-Energy & Petrochemical Ransomware Resilience.
+## 1. Purpose
 
-Stage 0 establishes the repository foundation, safety boundaries, API
-contracts, synthetic response states, validation, and test controls.
+This document records the repository directories that currently exist and
+clearly distinguishes planned future directories from the implemented
+Stage 0 foundation.
 
-## Confirmed Current Structure
+Only directories confirmed to exist in the repository are marked as
+implemented.
+
+Future directories are explicitly marked PLANNED and are not required to be
+implemented during Stage 0.
+
+---
+
+## 2. Current Stage 0 Repository Structure
 
 ```text
 urai_ransomeware_resilience/
-├── apps/
-│   └── backend/
-│       ├── app/
-│       │   ├── main.py                    [CURRENT]
-│       │   ├── config.py                  [CURRENT]
-│       │   ├── routes/
-│       │   │   └── ransomware.py           [CURRENT]
-│       │   ├── services/
-│       │   │   └── ransomware_mock.py      [CURRENT]
-│       │   ├── schemas/
-│       │   │   ├── enums.py                [CURRENT]
-│       │   │   ├── requests.py             [CURRENT]
-│       │   │   └── responses.py            [CURRENT]
-│       │   ├── controllers/                [PLANNED]
-│       │   ├── policies/                   [PLANNED]
-│       │   └── audit/                      [PLANNED]
-│       ├── tests/
-│       │   ├── test_api.py                 [CURRENT]
-│       │   ├── test_health.py              [CURRENT]
-│       │   └── test_schemas.py             [CURRENT]
-│       └── pytest.ini                      [CURRENT]
+├── app/
+│   ├── audit/
+│   ├── controllers/
+│   ├── policies/
+│   ├── routes/
+│   ├── schemas/
+│   └── services/
+├── tests/
 ├── docs/
 │   └── ransomware/
-│       ├── repository_map.md               [CURRENT]
-│       └── safety_policy.md                [CURRENT]
-├── .env.example                            [CURRENT]
-├── .gitignore                              [CURRENT]
-├── README.md                               [CURRENT]
-└── requirements.txt                        [CURRENT]
+├── requirements.txt
+├── verify_environment.py
+└── README.md
 
-##Planned Module Boundaries
+The following are generated runtime/cache directories and are not considered
+application architecture:
 
-The following components are planned for later implementation and are not considered implemented during Stage 0.
+.pytest_cache/
+__pycache__/
 
-apps/backend/app/controllers/
-Backend orchestration and request-flow coordination.
-apps/backend/app/policies/
-Safety, recommendation, fallback, and policy enforcement logic.
-apps/backend/app/audit/
-Structured audit events, request correlation, provenance, and review state.
-apps/ml/
-Planned internal ML service boundary for model inference.
-apps/frontend/
-Planned browser-facing dashboard and typed views.
-data/synthetic/
-Planned synthetic telemetry, ground-truth, faulty-data, and scenario fixtures.
-artifacts/
-Planned versioned model, dataset, manifest, checksum, and evaluation artifacts.
 
-These planned components must not be treated as implemented Stage 0 functionality.
+## 3. Implemented Stage 0 Backend
 
-##Stage 0 Implementation Boundary
+Root: app/
 
-Implemented Stage 0 functionality is limited to:
+The following directories currently exist:
 
-FastAPI backend foundation
-request and response API schemas
-decision, incident-stage, and severity enums
-safe synthetic response states
-health checking
-schema/API tests
-safety documentation
-repository documentation
+Directory	Status	Purpose
+app/routes/	IMPLEMENTED	API route boundary
+app/controllers/	IMPLEMENTED	Request/control orchestration layer
+app/services/	IMPLEMENTED	Backend service logic and safe synthetic responses
+app/schemas/	IMPLEMENTED	Request, response, enum and contract schemas
+app/policies/	IMPLEMENTED	Safety and policy enforcement boundary
+app/audit/	IMPLEMENTED	Audit context boundary
 
-ML inference, dataset generation, model development, frontend implementation, operational containment, and recovery execution are outside the Stage 0 implementation boundary.
+## 4. Tests
+
+Root: tests/
+
+Status: IMPLEMENTED
+
+The test suite verifies API behavior, schema validation, decision states,
+provenance values and safety requirements.
+
+## 5. Documentation
+
+Root: docs/ransomware/
+
+Status: IMPLEMENTED
+
+Current documentation includes:
+
+Repository map
+Safety policy
+Planned internal module boundaries
+Stage 0 task tracker
+Frozen API contract
+## 6. Planned Future Directories
+
+The following directories are architectural targets for later stages and are
+not currently implemented unless explicitly stated elsewhere.
+
+Directory	Status	Planned Purpose
+apps/frontend/	PLANNED	Dashboard and frontend presentation
+apps/ml-services/	PLANNED	Internal ML-service boundary and inference components
+data/synthetic/ransomware_poc/	PLANNED	Synthetic scenarios, telemetry and ground truth
+apps/ml-services/config/ransomware/	PLANNED	Governed ML and scenario configuration
+artifacts/	PLANNED	Versioned model, calibration and evaluation artifacts
+
+These planned directories must not be represented as implemented Stage 0
+components.
+
+## 7. Stage 0 Boundary
+
+Stage 0 establishes repository readiness, safety restrictions, API contracts,
+environment reproducibility and test controls.
+
+The following remain outside the Stage 0 implementation boundary:
+
+Dataset generation
+Feature engineering
+Model training
+Model calibration
+ML inference implementation
+Frontend dashboard implementation
+Production telemetry integration
+Operational response integration
+
+No placeholder decision logic is created for these future components.
+
+## 8. Safety Boundary
+
+The repository contains only defensive synthetic PoC functionality.
+
+The project must not:
+
+Execute ransomware
+Execute encryption payloads
+Perform destructive behavior
+Detonate malware
+Perform active probing
+Execute containment actions
+Execute recovery actions
+Execute operational control actions
+
+Recommendations remain non-executing and require human approval.
+
+`real_action_executed` remains `false`.
+
+## 9. Source of Truth
+
+This repository map must reflect the actual repository state.
+
+When a future module is introduced, its directory status should be changed
+from PLANNED to IMPLEMENTED only after the directory and its corresponding
+controlled implementation are actually present.

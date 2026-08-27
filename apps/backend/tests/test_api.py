@@ -82,3 +82,10 @@ def test_safety_policy_version_is_present():
     policy_text = policy_path.read_text(encoding="utf-8")
 
     assert "**Policy Version:** 0.1.0" in policy_text
+    assert "execute ransomware" in policy_text
+    assert "encryption payloads" in policy_text
+    assert "detonate malware" in policy_text
+    assert "destructive file operations" in policy_text
+    assert "real containment actions" in policy_text
+    assert "human_approval_required = true" in policy_text
+    assert "real_action_executed = false" in policy_text

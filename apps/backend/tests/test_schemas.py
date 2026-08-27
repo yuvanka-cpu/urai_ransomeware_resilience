@@ -3,7 +3,7 @@ from pydantic import ValidationError
 
 from app.schemas.requests import RansomwareRequest
 from app.schemas.responses import RansomwareResponse
-from app.schemas.enums import Decision, IncidentStage, Severity
+from app.schemas.enums import Decision, IncidentStage, Severity, DataProvenance
 
 
 def test_valid_request_schema():
@@ -142,3 +142,16 @@ def test_human_approval_required_false_is_rejected():
             request_id="REQ-001",
             runtime_state="mock",
         )
+def test_all_controlled_provenance_values():
+    expected = {
+        "LIVE_MODEL",
+        "SYNTHETIC_GROUND_TRUTH",
+        "STATIC_SCENARIO_METADATA",
+        "DERIVED_BY_BACKEND",
+        "FALLBACK",
+        "UNAVAILABLE",
+    }
+
+    actual = {value.value for value in DataProvenance}
+
+    assert actual == expected
