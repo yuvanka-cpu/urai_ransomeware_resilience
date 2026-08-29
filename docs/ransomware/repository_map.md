@@ -22,14 +22,16 @@ implemented during Stage 0.
 
 ```text
 urai_ransomeware_resilience/
-├── app/
-│   ├── audit/
-│   ├── controllers/
-│   ├── policies/
-│   ├── routes/
-│   ├── schemas/
-│   └── services/
-├── tests/
+├── apps/
+│   └── backend/
+│       ├── app/
+│       │   ├── audit/
+│       │   ├── controllers/
+│       │   ├── policies/
+│       │   ├── routes/
+│       │   ├── schemas/
+│       │   └── services/
+│       └── tests/
 ├── docs/
 │   └── ransomware/
 ├── requirements.txt
@@ -45,21 +47,21 @@ __pycache__/
 
 ## 3. Implemented Stage 0 Backend
 
-Root: app/
+Root: apps/backend/app/
 
 The following directories currently exist:
 
 Directory	Status	Purpose
-app/routes/	IMPLEMENTED	API route boundary
-app/controllers/	IMPLEMENTED	Request/control orchestration layer
-app/services/	IMPLEMENTED	Backend service logic and safe synthetic responses
-app/schemas/	IMPLEMENTED	Request, response, enum and contract schemas
-app/policies/	IMPLEMENTED	Safety and policy enforcement boundary
-app/audit/	IMPLEMENTED	Audit context boundary
+apps/backend/app/routes/	IMPLEMENTED	API route boundary
+apps/backend/app/controllers/	IMPLEMENTED	Request/control orchestration boundary
+apps/backend/app/services/	IMPLEMENTED	Backend service logic and safe synthetic responses
+apps/backend/app/schemas/	IMPLEMENTED	Request, response, enum and contract schemas
+apps/backend/app/policies/	IMPLEMENTED	Safety and policy enforcement boundary
+apps/backend/app/audit/	IMPLEMENTED	Audit context boundary
 
 ## 4. Tests
 
-Root: tests/
+Root: `tests/backend/tests/`
 
 Status: IMPLEMENTED
 

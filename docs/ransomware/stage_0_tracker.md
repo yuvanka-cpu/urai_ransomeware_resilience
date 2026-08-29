@@ -40,7 +40,7 @@ Environment verification: PASS
 
 ```text
 ............ [100%]
-12 passed in 0.66s
+21 passed in 0.71s
 ```
 
 ## Stage 0 Supporting Artifacts

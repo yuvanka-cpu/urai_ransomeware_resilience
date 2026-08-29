@@ -1,5 +1,3 @@
-from pathlib import Path
-
 # URAI Ransomware Resilience — Stage 0 Safety Policy
 
 **Policy Version:** 0.1.0
@@ -46,42 +44,30 @@ All recommendation-oriented responses must require human approval.
 ```text
 human_approval_required = true
 real_action_executed = false
+```
 
-The system must never represent a recommendation as an executed action.
 
-Provenance
+
+## Provenance
 
 Synthetic, fallback, unavailable, and other non-live outputs must be clearly identified through the response provenance fields.
 
 Fallback output must not be presented as live-model success.
 
-Degraded and Unavailable States
+## Degraded and Unavailable States
 
 If required runtime artifacts, contracts, calibration, dependencies, or evidence are unavailable or invalid, the system must expose the degraded or unavailable condition rather than silently presenting a normal result.
 
-Stage 0 Scope
+## Stage 0 Scope
 
 Stage 0 is limited to:
 
-repository and backend foundation
-API contract
-schema validation
-health checking
-safe mocked responses
-basic automated tests
-documentation
+- repository and backend foundation
+- API contract
+- schema validation
+- health checking
+- safe mocked responses
+- basic automated tests
+- documentation
 
 ML integration, model decisions, real containment, recovery execution, and operational actions are outside the Stage 0 scope.
-EOF
-
-def test_safety_policy_version_is_present():
-    policy_path = (
-        Path(__file__).resolve().parents[2]
-        / "docs"
-        / "ransomware"
-        / "safety_policy.md"
-    )
-
-    policy_text = policy_path.read_text(encoding="utf-8")
-
-    assert "**Policy Version:** 0.1.0" in policy_text

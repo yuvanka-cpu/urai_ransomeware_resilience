@@ -1,7 +1,8 @@
 from typing import Literal
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict, Field
 from app.schemas.enums import Decision, IncidentStage, Severity, DataProvenance
 class RansomwareResponse(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     use_case:str
     industry:str
     site_id:str
@@ -10,9 +11,9 @@ class RansomwareResponse(BaseModel):
 
     decision: Decision
     incident_stage: IncidentStage
-    confidence: float
+    confidence: float = Field(ge=0.0, le=1.0)
     severity: Severity
-    resilience_score: float
+    resilience_score: float = Field(ge=0.0, le=100.0)
 
     affected_assets: list[str]
     suspected_assets: list[str]
