@@ -1,63 +1,65 @@
 # URAI Ransomware Resilience — Stage 0 Task Tracker
 
-**Stage:** Stage 0 — Repository Readiness, Boundaries and Execution Controls  
-**Source:** URAI Ransomware Resilience Module Detailed Execution Task Sheet  
+**Stage:** Stage 0 — Repository Readiness, Boundaries and Execution Controls
+**Overall status:** RV — ready for independent review
 **Status convention:** NS = Not Started, IP = In Progress, BL = Blocked, RV = Review, DN = Done
 
-## Stage 0 Objective
+## Objective
 
-Establish the working repository, safe operating boundary, reproducible
-environment and task-control method before any dataset or model code is
-written.
+Establish the working repository, safe operating boundary, reproducible environment and task-control method before scenario, dataset or model implementation.
 
-## Task Tracker
+## Task status
 
-| Tracker ID | Source Task | Requirement | Status | Completion Evidence |
-|---|---|---|---|---|
-| RW-0001 | RW-000 Task 1 | Confirm active frontend, backend and ML-service roots and document existing/planned paths. | DN | `docs/ransomware/repository_map.md` |
-| RW-0002 | RW-000 Task 2 | Create the ransomware module directory skeleton for configuration, synthetic data, tests, artifacts, documentation and application code without placeholder decisions. | DN | Repository structure; `docs/ransomware/repository_map.md`; application foundation |
-| RW-0003 | RW-000 Task 3 | Define and version the PoC safety policy covering synthetic-only telemetry and prohibition of malware, encryption, detonation, active probing and operational actions. | DN | `docs/ransomware/safety_policy.md`; safety/API tests |
-| RW-0004 | RW-000 Task 4 | Define decision states `normal`, `investigate`, `high_risk`, and `unavailable`; enforce `human_approval_required=true` and `real_action_executed=false`. | DN | `app/schemas/enums.py`; `app/schemas/responses.py`; API/schema tests |
-| RW-0005 | RW-000 Task 5 | Define controlled provenance values: `LIVE_MODEL`, `SYNTHETIC_GROUND_TRUTH`, `STATIC_SCENARIO_METADATA`, `DERIVED_BY_BACKEND`, `FALLBACK`, and `UNAVAILABLE`. | DN | `app/schemas/enums.py`; `app/schemas/responses.py`; provenance tests |
-| RW-0006 | RW-000 Task 6 | Pin runtime/library versions and provide environment verification. | DN | `requirements.txt`; `verify_environment.py`; successful environment verification output |
-| RW-0007 | RW-000 Task 7 | Use task IDs for assignment, branches and tightly related task groups; merge shared contracts before dependent code. | DN | Stage 0 task tracker and repository workflow documentation; final review completed |
+| Tracker ID | Requirement | Status | Repository evidence |
+|---|---|---|---|
+| RW-0001 | Confirm backend, frontend and ML-service roots with existing/planned status. | DN | `docs/ransomware/repository_map.md` |
+| RW-0002 | Create the application, configuration, synthetic-data, test, artifact and documentation skeleton without placeholder model decisions. | DN | Retained README skeletons; repository map |
+| RW-0003 | Version the synthetic-only, non-executing safety policy. | DN | `docs/ransomware/safety_policy.md`; safety/API tests |
+| RW-0004 | Freeze decision states and fixed approval/execution fields. | DN | `app/schemas/enums.py`; `app/schemas/responses.py`; exact-cause tests |
+| RW-0005 | Freeze controlled provenance values. | DN | `app/schemas/enums.py`; provenance tests |
+| RW-0006 | Pin runtime/libraries, record a lock checksum and verify the environment. | DN | `.python-version`; `requirements.lock`; checksum; verifier output below |
+| RW-0007 | Use RW task IDs in branches/commits/reviews and provide repository traceability. | RV | Workflow requirement documented; repository URL and remote commit hash must be supplied by the repository owner |
 
-## Current Evidence
-
-### Environment Verification
+## Independent environment evidence
 
 ```text
-=== URAI Ransomware Resilience Environment Verification ===
-Python: 3.14.0
-FastAPI: 0.141.1
-Pydantic: 2.13.4
-httpx: 0.28.1
-pytest: 9.1.1
+Python: 3.12.13
+All 17 locked packages matched exact versions.
+requirements.lock SHA-256: PASS
 Environment verification: PASS
 ```
 
-### Test Verification
+Command from `apps/backend`:
 
-```text
-............ [100%]
-21 passed in 0.71s
+```powershell
+..\..\.venv\Scripts\python.exe verify_environment.py
 ```
 
-## Stage 0 Supporting Artifacts
-`docs/ransomware/repository_map.md`
-`docs/ransomware/safety_policy.md`
-`docs/ransomware/module_boundaries.md`
-`requirements.txt`
-`verify_environment.py`
-`app/schemas/enums.py`
-`app/schemas/responses.py`
-`app/services/ransomware_mock.py`
-`tests/test_api.py`
-`tests/test_schemas.py`
+## Independent test evidence
 
-## Review Notes
+```text
+..................................... [100%]
+37 passed, 1 documented upstream deprecation warning
+```
 
-No real ransomware, encryption payload, detonation or operational action is implemented.
-Dataset generation and model development remain outside the Stage 0 closure boundary.
-The request/response API contract must be frozen before proceeding to dependent stages.
-Stage 0 contract freeze and final passing test verification are complete.
+Command from `apps/backend`:
+
+```powershell
+..\..\.venv\Scripts\python.exe -m pytest -q
+```
+
+The warning is documented in `docs/ransomware/known_warnings.md` and is not suppressed.
+
+## Review boundary
+
+- No malware, encryption payload, detonation, destructive action, active probing or operational action is implemented.
+- Dataset generation and model development remain outside Stage 0.
+- The safety/decision/provenance sub-contract is frozen; Stage 1–3 domain contracts remain governed future work.
+- Stage 0 may be approved after an independent reviewer confirms the package and the repository owner supplies the repository URL and exact remote commit hash for RW-0007.
+
+## Repository-owner evidence still required
+
+```text
+Repository URL: TO BE PROVIDED BY YUVANKA
+Reviewed commit hash: TO BE PROVIDED BY YUVANKA
+```

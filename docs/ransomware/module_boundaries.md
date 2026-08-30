@@ -1,223 +1,63 @@
-# URAI Ransomware Resilience — Planned Internal Module Boundaries
+# URAI Ransomware Resilience — Internal Module Boundaries
 
-**Status:** Stage 0 planning artifact
+**Status:** Stage 0 planning contract
 **Scope:** Energy & Petrochemical Ransomware Resilience Synthetic PoC
-**Safety classification:** Defensive synthetic PoC; recommendation/review only
 
-## 1. Purpose
-
-This document defines the planned internal boundaries between the backend,
-ML service, frontend, synthetic-data, configuration, artifact, and
-documentation components.
-
-These boundaries are architectural planning constraints for later stages.
-Components marked **PLANNED** are intentionally not implemented during Stage 0 unless explicitly required by the stage 0 task sheet.
-
-The browser must not call the ML service directly.
-
----
-
-## 2. Backend
-
-**Planned root:**
+## Runtime flow
 
 ```text
-apps/backend/
-
-Current Stage 0 implementation:
-
-apps/backend/app/
-├── routes/
-├── controllers/
-├── services/
-├── schemas/
-├── policies/
-└── audit/
+Browser → Backend API → Internal ML service
 ```
-Responsibility
-Browser-facing API boundary
-Request validation
-API contract enforcement
-Safety-policy enforcement
-ML-service orchestration in later stages
-Recommendation assembly
-Request and trace correlation
-Audit context
-Safe degraded, fallback, and unavailable handling
-Must not
-Execute containment or recovery actions
-Execute operational control actions
-Replace the ML decision with an independent backend decision
-Present fallback content as live-model inference
 
-Status: IMPLEMENTED FOUNDATION / LATER-STAGE EXTENSION
+The browser never calls the ML service directly. The backend is the orchestration boundary and must preserve decisions, provenance, warnings and safety fields returned by controlled downstream services.
 
-## 3. ML Service
+## Backend
 
-Planned root:
+**Root:** `apps/backend/`
+**Stage 0 status:** Foundation implemented; controller, policy and audit directories are skeletons.
 
-apps/ml-services/
-Planned responsibility
-Feature-contract validation
-Artifact loading and validation
-Model inference
-Deterministic rules
-Tabular, temporal, and graph model components
-Calibration
-Threshold policy
-Internal canonical ransomware result
-Explicit unavailable and degraded states
-Boundary
+Responsibilities include request validation, contract enforcement, later ML-service orchestration, recommendation assembly, request/trace correlation and visible degraded/unavailable behavior. It must not execute containment, recovery or operational-control actions, independently replace an ML decision, or present fallback content as live inference.
 
-The ML service is an internal service boundary. The frontend must never call
-the ML service directly.
+## ML service
 
-The backend acts as the orchestration boundary between the frontend and ML
-service.
+**Root:** `apps/ml-services/`
+**Status:** Planned skeleton; not implemented in Stage 0.
 
-Status: PLANNED — NOT IMPLEMENTED IN STAGE 0
+Later responsibilities include feature-contract validation, deterministic rules, artifact validation, inference, calibration, threshold policy and a canonical internal ransomware result. Missing, stale, corrupt or incompatible artifacts must produce visible degraded or unavailable behavior.
 
-## 4. Frontend
+## Frontend
 
-Planned root:
+**Root:** `apps/frontend/`
+**Status:** Planned skeleton; not implemented in Stage 0.
 
-apps/frontend/
-Planned responsibility
-Dashboard presentation
-Scenario selection and presentation
-Decision and incident-stage display
-Evidence and provenance presentation
-Warning visibility
-Fallback, unavailable, and degraded-state presentation
-Human-approval review interface
-Must not
-Call the ML service directly
-Suppress mandatory warnings
-Convert recommendations into executable actions
-Modify safety or execution-control fields
+The dashboard will present scenario context, decisions, evidence, provenance, warnings, unavailable/fallback states and human-review records. It must not suppress mandatory warnings, duplicate decision rules, call the ML service directly or make recommendations executable.
 
-Status: PLANNED — NOT IMPLEMENTED IN STAGE 0
+## Synthetic data
 
-## 5. Synthetic Data
+**Root:** `data/synthetic/ransomware_poc/`
+**Status:** Planned skeleton; generation begins at Stage 4 after Stages 0–3 pass.
 
-Planned root:
+Observable telemetry, static scenario metadata and synthetic truth must remain physically and contractually separate. Synthetic truth must never be accepted as inference input. Complete scenario IDs and seeds will be grouped across train, validation, calibration, test and untouched holdout splits.
 
-data/synthetic/ransomware_poc/
-Planned responsibility
-Synthetic scenario definitions
-Observable telemetry
-Scenario manifests
-Synthetic ground truth
-Affected-asset truth
-Blast-radius truth
-Incident-stage truth
-Recovery-order truth
-Reproducible seeds
-Train, validation, calibration, test, and holdout split artifacts
-Boundary
+## Configuration
 
-Observable synthetic data and synthetic truth must remain separate.
+**Root:** `apps/ml-services/config/ransomware/`
+**Status:** Planned skeleton; governed contracts begin in Stage 1.
 
-Synthetic truth must never be accepted as an inference feature.
+Configuration will hold sector, use-case, decision, safety, feature, model, artifact and acceptance-gate values. It must not contain executable operational actions.
 
-Status: PLANNED — DO NOT GENERATE DATA DURING CURRENT STAGE 0 CLOSURE
+## Artifacts
 
-## 6. Configuration
+**Root:** `artifacts/`
+**Status:** Planned skeleton; not implemented in Stage 0.
 
-Planned root:
+Later model, calibration and evaluation artifacts must be versioned, checksummed and accompanied by manifests. Required artifact failure must never silently produce a normal decision.
 
-apps/ml-services/config/ransomware/
-Planned responsibility
-Sector configuration
-Energy configuration
-Petrochemical configuration
-Scenario and use-case configuration
-Decision and safety configuration
-Feature-contract configuration
-Model and artifact configuration
-Acceptance-gate configuration
-Boundary
+## Cross-module invariants
 
-Configuration defines governed values and contracts; it must not contain
-executable operational actions.
-
-Status: PLANNED — PARTIAL FOUNDATION ONLY
-
-## 7. Artifacts
-
-Planned root:
-
-artifacts/
-Planned responsibility
-Versioned model artifacts
-Calibration artifacts
-Artifact manifests
-Checksums
-Artifact metadata
-Evaluation reports
-Promotion and rejection records
-Required artifact states
-loaded
-missing
-stale
-corrupt
-incompatible
-timeout
-Boundary
-
-Missing, stale, corrupt, or incompatible artifacts must produce visible
-degraded or unavailable behavior rather than silent substitution.
-
-Status: PLANNED — NOT IMPLEMENTED IN STAGE 0
-
-## 8. Documentation
-
-Root:
-
-docs/ransomware/
-Responsibility
-Safety policy
-Repository map
-Module boundaries
-API contracts
-Task tracking
-Dataset documentation
-Evaluation evidence
-Runtime and governance evidence
-
-Status: ACTIVE
-
-## 9. Cross-Module Rules
-The browser communicates with the backend boundary.
-The backend orchestrates the ML service.
-The browser never calls the ML service directly.
-API schemas are shared controlled contracts.
-Synthetic truth is physically and contractually separated from observable
-inference data.
-Every result must expose appropriate provenance.
-Fallback must be explicitly labelled as FALLBACK.
-UNAVAILABLE must remain visibly distinct from successful inference.
-Human approval is required for recommendations.
-`real_action_executed` remains `false`.
-No module may execute malware, encryption payloads, destructive behavior,
-operational control, containment, or recovery actions.
-## 10. Stage 0 Implementation Boundary
-
-Stage 0 establishes contracts, safety restrictions, repository readiness,
-environment reproducibility, and test controls.
-
-The following remain intentionally unimplemented until their dependent
-stages are reached:
-
-Synthetic scenario generation
-Dataset generation
-Feature engineering
-Model training
-Model calibration
-ML inference implementation
-Frontend dashboard implementation
-Production telemetry integration
-Operational response integration
-
-This document records planned boundaries without creating placeholder
-decision logic or prematurely implementing later-stage components.
+- `human_approval_required` is always `true`.
+- `real_action_executed` is always `false`.
+- Fallback is labelled `FALLBACK` and unavailable is distinct from success.
+- Cyber incident stage remains separate from operational consequence.
+- Protected OT and safety dependencies are context only; no commands are sent.
+- No module executes malware, encryption, destructive behavior, operational containment, recovery, restore, startup or control actions.

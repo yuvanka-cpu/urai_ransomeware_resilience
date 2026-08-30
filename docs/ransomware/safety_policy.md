@@ -15,6 +15,7 @@ The Stage 0 PoC must not:
 - execute ransomware
 - create or execute encryption payloads
 - download or detonate malware
+- perform active probing or scanning against real systems
 - perform destructive file operations
 - disable user accounts
 - isolate hosts or networks
@@ -22,6 +23,7 @@ The Stage 0 PoC must not:
 - terminate sessions
 - modify DCS, SIS, PLC, controller, or other operational systems
 - execute recovery actions
+- execute restore, failover or startup actions
 - perform real containment actions
 - connect recommendations to operational response controls
 

@@ -24,6 +24,35 @@ class Severity(str, Enum):
     HIGH = "high"
     CRITICAL = "critical"
 
+
+class Industry(str, Enum):
+    ENERGY = "energy"
+    PETROCHEMICAL = "petrochemical"
+
+
+class SiteType(str, Enum):
+    CONTROL_CENTRE = "control_centre"
+    SUBSTATION = "substation"
+    REFINERY = "refinery"
+    PETROCHEMICAL_COMPLEX = "petrochemical_complex"
+
+
+class RuntimeState(str, Enum):
+    MOCKED = "mocked"
+    LIVE_MODEL = "live_model"
+    DEGRADED = "degraded"
+    FALLBACK = "fallback"
+    UNAVAILABLE = "unavailable"
+
+
+class ArtifactStatus(str, Enum):
+    LOADED = "loaded"
+    MISSING = "missing"
+    STALE = "stale"
+    CORRUPT = "corrupt"
+    INCOMPATIBLE = "incompatible"
+    TIMEOUT = "timeout"
+
 class DataProvenance(str, Enum):
     LIVE_MODEL = "LIVE_MODEL"
     SYNTHETIC_GROUND_TRUTH = "SYNTHETIC_GROUND_TRUTH"
