@@ -34,6 +34,9 @@ def valid_response_data() -> dict:
         "resilience_score": 90.0,
         "affected_assets": [],
         "suspected_assets": [],
+        "potentially_exposed_assets": [],
+        "protected_assets": [],
+        "unknown_assets": [],
         "critical_services_at_risk": [],
         "affected_zones": [],
         "protected_boundaries": [],
@@ -100,6 +103,18 @@ def test_extra_request_field_is_rejected():
         RansomwareRequest(**data)
 
     assert ("unexpected_field",) in error_locations(exc_info)
+
+
+@pytest.mark.parametrize(
+    ("industry", "site_type"),
+    [("energy", "refinery"), ("petrochemical", "substation")],
+)
+def test_cross_sector_request_site_type_is_rejected(industry, site_type):
+    data = valid_request_data()
+    data.update({"industry": industry, "site_type": site_type})
+
+    with pytest.raises(ValidationError):
+        RansomwareRequest(**data)
 
 
 @pytest.mark.parametrize(
@@ -183,6 +198,14 @@ def test_invalid_nested_backup_field_is_rejected():
     assert ("backup_readiness", "latest_backup_age_hours") in error_locations(
         exc_info
     )
+
+
+def test_cross_sector_response_site_type_is_rejected():
+    data = valid_response_data()
+    data.update({"industry": "energy", "site_type": "petrochemical_complex"})
+
+    with pytest.raises(ValidationError):
+        RansomwareResponse(**data)
 
 
 def test_artifact_provenance_requires_valid_checksum():

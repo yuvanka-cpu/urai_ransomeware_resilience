@@ -1,6 +1,12 @@
 from typing import Annotated, Any, Literal
 
-from pydantic import BaseModel, ConfigDict, StringConstraints, field_validator
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    StringConstraints,
+    field_validator,
+    model_validator,
+)
 
 from app.schemas.enums import Industry, SiteType
 
@@ -55,3 +61,16 @@ class RansomwareRequest(BaseModel):
                 f"reserved synthetic-truth field is not allowed: {truth_path}"
             )
         return value
+
+    @model_validator(mode="after")
+    def enforce_sector_site_type(self):
+        permitted = {
+            Industry.ENERGY: {SiteType.CONTROL_CENTRE, SiteType.SUBSTATION},
+            Industry.PETROCHEMICAL: {
+                SiteType.REFINERY,
+                SiteType.PETROCHEMICAL_COMPLEX,
+            },
+        }
+        if self.site_type not in permitted[self.industry]:
+            raise ValueError("site_type is not permitted for industry")
+        return self

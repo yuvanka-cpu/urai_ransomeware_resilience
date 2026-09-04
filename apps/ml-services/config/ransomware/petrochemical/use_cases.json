@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "industry": "petrochemical",
+  "use_cases": [
+    {
+      "use_case_id": "PC-RW-01",
+      "industry": "petrochemical",
+      "title": "Enterprise-to-industrial-DMZ progression",
+      "objective": "Detect synthetic ransomware progression from enterprise IT into the industrial DMZ and operations-support access paths.",
+      "scenario_family": "enterprise_vendor_access_to_industrial_dmz",
+      "site_types": ["refinery", "petrochemical_complex"],
+      "principal_assets": ["enterprise_identity", "enterprise_endpoint", "vendor_gateway", "industrial_dmz_jump_host", "transfer_proxy_service", "patch_staging", "operations_support_account"],
+      "observable_evidence": ["authentication_novelty", "vendor_schedule", "session_fan_out", "privilege_changes", "file_transfer_bursts", "zone_crossings", "process_chains", "service_health", "account_criticality"],
+      "dashboard_outputs": ["industry_site_context", "incident_stage", "it_ot_path", "vendor_authorization_comparison", "asset_states", "timeline", "warnings", "approval_requirement"],
+      "recommendation_template_id": "PC-REC-01",
+      "protected_boundary_context": ["supervisory_control"],
+      "safety_statement": "No vendor-session termination, account disabling, firewall change, host isolation or DCS action is executed.",
+      "acceptance_metric_ids": ["PC-RW-01-M01", "PC-RW-01-M02", "PC-RW-01-M03", "PC-RW-01-M04", "PC-RW-01-M05"]
+    },
+    {
+      "use_case_id": "PC-RW-02",
+      "industry": "petrochemical",
+      "title": "DCS and engineering-support exposure",
+      "objective": "Identify ransomware-like activity affecting DCS support and engineering assets while separating it from planned engineering and control-system maintenance.",
+      "scenario_family": "dcs_engineering_support_exposure",
+      "site_types": ["refinery", "petrochemical_complex"],
+      "principal_assets": ["dcs_application_server", "hmi_support", "engineering_workstation", "application_server", "project_repository", "jump_host", "protected_controller_dependencies"],
+      "observable_evidence": ["project_file_access", "process_parent_relationships", "signer_metadata", "remote_sessions", "service_state", "configuration_activity", "maintenance_approval", "zone_path", "backup_coverage"],
+      "dashboard_outputs": ["engineering_support_asset_states", "authorization_comparison", "dcs_dependency_path", "evidence_layers", "confidence", "limitations", "recovery_context"],
+      "recommendation_template_id": "PC-REC-02",
+      "protected_boundary_context": ["supervisory_control", "field_control"],
+      "safety_statement": "No controller query or write, project download, HMI or DCS restart, logic change or process action is performed.",
+      "acceptance_metric_ids": ["PC-RW-02-M01", "PC-RW-02-M02", "PC-RW-02-M03"]
+    },
+    {
+      "use_case_id": "PC-RW-03",
+      "industry": "petrochemical",
+      "title": "Historian, batch and quality-system disruption",
+      "objective": "Detect coordinated disruption to production-information services and distinguish ransomware evidence from ordinary data, batch, laboratory or network failures.",
+      "scenario_family": "production_information_cyber_vs_failure",
+      "site_types": ["refinery", "petrochemical_complex"],
+      "principal_assets": ["process_historian", "batch_server", "quality_lims_interface", "production_reporting", "data_gateway", "application_database", "terminal_information_support", "backup_service"],
+      "observable_evidence": ["ingestion_lag", "missing_records", "stale_records", "batch_event_gaps", "unusual_file_operations", "service_stops", "database_health", "communications_health", "campaign_metadata", "cross_source_correlation"],
+      "dashboard_outputs": ["cyber_failure_comparison", "information_service_states", "dependency_context", "timeline", "confidence", "data_gaps", "recovery_prerequisites"],
+      "recommendation_template_id": "PC-REC-03",
+      "protected_boundary_context": ["supervisory_control"],
+      "safety_statement": "No production-quality, batch, release, loading or process-state decision is automated from cyber evidence.",
+      "acceptance_metric_ids": ["PC-RW-03-M01", "PC-RW-03-M02", "PC-RW-03-M03"]
+    },
+    {
+      "use_case_id": "PC-RW-04",
+      "industry": "petrochemical",
+      "title": "SIS, ESD and alarm-support boundary exposure",
+      "objective": "Surface ransomware activity adjacent to safety and alarm-support dependencies while preserving separation between cyber evidence and process-safety determination.",
+      "scenario_family": "sis_esd_alarm_support_adjacency",
+      "site_types": ["refinery", "petrochemical_complex"],
+      "principal_assets": ["alarm_support", "safety_engineering_workstation", "sis_project_repository", "industrial_dmz_jump_host", "dcs_interface", "protected_sis_esd_controllers"],
+      "observable_evidence": ["alarm_support_availability", "engineering_access", "project_file_integrity", "authorization_records", "service_changes", "communications_evidence", "protected_zone_adjacency", "proof_test_schedule"],
+      "dashboard_outputs": ["protected_boundary_adjacency", "alarm_support_status", "evidence_trace", "authorized_work_comparison", "uncertainty", "safety_disclaimer", "review_path"],
+      "recommendation_template_id": "PC-REC-04",
+      "protected_boundary_context": ["protection_safety"],
+      "safety_statement": "No SIS or ESD interrogation, bypass, reset, logic download, alarm change or safe/unsafe declaration is performed.",
+      "acceptance_metric_ids": ["PC-RW-04-M01", "PC-RW-04-M02", "PC-RW-04-M03"]
+    },
+    {
+      "use_case_id": "PC-RW-05",
+      "industry": "petrochemical",
+      "title": "Backup impairment and safe-startup readiness",
+      "objective": "Assess recoverable support data and configurations and identify prerequisites for governed recovery and independent safe-startup review.",
+      "scenario_family": "petrochemical_backup_impairment_and_startup_prerequisites",
+      "site_types": ["refinery", "petrochemical_complex"],
+      "principal_assets": ["backup_service", "immutable_copy_metadata", "dcs_project_repository", "sis_project_repository", "historian", "batch_quality_system", "maintenance_records", "terminal_support", "recovery_documentation"],
+      "observable_evidence": ["backup_age", "backup_failures", "restore_test_results", "configuration_coverage", "repository_integrity", "service_dependencies", "process_unit_criticality", "recovery_tier", "suspicious_admin_activity"],
+      "dashboard_outputs": ["recovery_readiness_score", "prerequisite_chain", "review_order", "protected_safety_dependencies", "missing_evidence", "warnings", "approval_record"],
+      "recommendation_template_id": "PC-REC-05",
+      "protected_boundary_context": ["supervisory_control", "field_control", "protection_safety"],
+      "safety_statement": "No restore, startup, failover, project download, quality release or loading action is performed, and the dashboard never declares the plant ready or safe to start.",
+      "acceptance_metric_ids": ["PC-RW-05-M01", "PC-RW-05-M02", "PC-RW-05-M03"]
+    }
+  ]
+}

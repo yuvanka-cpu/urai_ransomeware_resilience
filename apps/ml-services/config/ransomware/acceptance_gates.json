@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "reporting_rule": "separate_energy_and_petrochemical",
+  "use_cases": {
+    "EN-RW-01": [
+      {"metric_id":"EN-RW-01-M01","metric":"ransomware_progression_recall","operator":"gte","value":0.90,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"EN-RW-01-M02","metric":"ransomware_progression_precision","operator":"gte","value":0.85,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"EN-RW-01-M03","metric":"patch_and_disaster_recovery_false_positive_rate","operator":"lte","value":0.10,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"EN-RW-01-M04","metric":"detection_stage","operator":"before","value":"encryption_impact","unit":"incident_stage","sector_report_required":true},
+      {"metric_id":"EN-RW-01-M05","metric":"provenance_and_safety_field_completeness","operator":"equals","value":100,"unit":"percent","sector_report_required":true}
+    ],
+    "EN-RW-02": [
+      {"metric_id":"EN-RW-02-M01","metric":"affected_asset_localization_recall","operator":"gte","value":0.85,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"EN-RW-02-M02","metric":"weighted_path_overlap","operator":"gte","value":0.80,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"EN-RW-02-M03","metric":"maintenance_false_positive_rate","operator":"lte","value":0.10,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"EN-RW-02-M04","metric":"unseen_asset_reporting","operator":"reported_separately","value":"required","unit":"reporting_requirement","sector_report_required":true}
+    ],
+    "EN-RW-03": [
+      {"metric_id":"EN-RW-03-M01","metric":"cyber_vs_visibility_failure_balanced_accuracy","operator":"gte","value":0.85,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"EN-RW-03-M02","metric":"planned_failover_false_positive_rate","operator":"lte","value":0.10,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"EN-RW-03-M03","metric":"loss_source_warning_completeness","operator":"equals","value":100,"unit":"percent","sector_report_required":true},
+      {"metric_id":"EN-RW-03-M04","metric":"physical_operational_state_claimed","operator":"equals","value":false,"unit":"boolean","sector_report_required":true}
+    ],
+    "EN-RW-04": [
+      {"metric_id":"EN-RW-04-M01","metric":"approved_work_false_positive_rate","operator":"lte","value":0.05,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"EN-RW-04-M02","metric":"protected_boundary_adjacency_recall","operator":"gte","value":0.95,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"EN-RW-04-M03","metric":"protection_disclaimer_completeness","operator":"equals","value":100,"unit":"percent","sector_report_required":true}
+    ],
+    "EN-RW-05": [
+      {"metric_id":"EN-RW-05-M01","metric":"recovery_review_order_agreement","operator":"gte","value":0.85,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"EN-RW-05-M02","metric":"backup_maintenance_false_positive_rate","operator":"lte","value":0.10,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"EN-RW-05-M03","metric":"inputs_missing_evidence_and_limitations_completeness","operator":"equals","value":100,"unit":"percent","sector_report_required":true}
+    ],
+    "PC-RW-01": [
+      {"metric_id":"PC-RW-01-M01","metric":"ransomware_progression_recall","operator":"gte","value":0.90,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"PC-RW-01-M02","metric":"ransomware_progression_precision","operator":"gte","value":0.85,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"PC-RW-01-M03","metric":"authorized_vendor_activity_false_positive_rate","operator":"lte","value":0.10,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"PC-RW-01-M04","metric":"detection_stage","operator":"before","value":"supervisory_support_impact","unit":"incident_stage","sector_report_required":true},
+      {"metric_id":"PC-RW-01-M05","metric":"provenance_and_safety_field_completeness","operator":"equals","value":100,"unit":"percent","sector_report_required":true}
+    ],
+    "PC-RW-02": [
+      {"metric_id":"PC-RW-02-M01","metric":"turnaround_and_deployment_false_positive_rate","operator":"lte","value":0.10,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"PC-RW-02-M02","metric":"support_asset_localization_recall","operator":"gte","value":0.90,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"PC-RW-02-M03","metric":"support_vs_controller_distinction_completeness","operator":"equals","value":100,"unit":"percent","sector_report_required":true}
+    ],
+    "PC-RW-03": [
+      {"metric_id":"PC-RW-03-M01","metric":"cyber_vs_information_failure_balanced_accuracy","operator":"gte","value":0.85,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"PC-RW-03-M02","metric":"campaign_and_laboratory_work_false_positive_rate","operator":"lte","value":0.10,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"PC-RW-03-M03","metric":"missing_source_uncertainty_completeness","operator":"equals","value":100,"unit":"percent","sector_report_required":true}
+    ],
+    "PC-RW-04": [
+      {"metric_id":"PC-RW-04-M01","metric":"protected_boundary_adjacency_recall","operator":"gte","value":0.95,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"PC-RW-04-M02","metric":"authorized_safety_work_false_positive_rate","operator":"lte","value":0.05,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"PC-RW-04-M03","metric":"no_control_and_no_safety_determination_statement_completeness","operator":"equals","value":100,"unit":"percent","sector_report_required":true}
+    ],
+    "PC-RW-05": [
+      {"metric_id":"PC-RW-05-M01","metric":"recovery_review_order_agreement","operator":"gte","value":0.85,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"PC-RW-05-M02","metric":"backup_maintenance_false_positive_rate","operator":"lte","value":0.10,"unit":"ratio","sector_report_required":true},
+      {"metric_id":"PC-RW-05-M03","metric":"independent_startup_authorization_statement_completeness","operator":"equals","value":100,"unit":"percent","sector_report_required":true}
+    ]
+  }
+}

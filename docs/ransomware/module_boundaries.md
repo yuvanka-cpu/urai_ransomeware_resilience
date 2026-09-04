@@ -21,7 +21,7 @@ Responsibilities include request validation, contract enforcement, later ML-serv
 ## ML service
 
 **Root:** `apps/ml-services/`
-**Status:** Planned skeleton; not implemented in Stage 0.
+**Status:** Stage 1 configuration contracts implemented for review; runtime service remains planned.
 
 Later responsibilities include feature-contract validation, deterministic rules, artifact validation, inference, calibration, threshold policy and a canonical internal ransomware result. Missing, stale, corrupt or incompatible artifacts must produce visible degraded or unavailable behavior.
 
@@ -42,7 +42,7 @@ Observable telemetry, static scenario metadata and synthetic truth must remain p
 ## Configuration
 
 **Root:** `apps/ml-services/config/ransomware/`
-**Status:** Planned skeleton; governed contracts begin in Stage 1.
+**Status:** Stage 1 governed scope, vocabulary, recommendation and acceptance contracts implemented for review.
 
 Configuration will hold sector, use-case, decision, safety, feature, model, artifact and acceptance-gate values. It must not contain executable operational actions.
 

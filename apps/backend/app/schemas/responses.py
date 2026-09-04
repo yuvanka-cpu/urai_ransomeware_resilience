@@ -1,6 +1,6 @@
 from typing import Annotated, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, StringConstraints
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
 
 from app.schemas.enums import (
     ArtifactStatus,
@@ -8,6 +8,7 @@ from app.schemas.enums import (
     Decision,
     IncidentStage,
     Industry,
+    OperationalImpactStatus,
     RuntimeState,
     Severity,
     SiteType,
@@ -46,6 +47,17 @@ class ArtifactProvenance(BaseModel):
     status: ArtifactStatus
 
 
+class OperationalDependencyImpact(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    service_id: NonBlankString
+    impact_status: OperationalImpactStatus
+    evidence: list[str] = Field(default_factory=list)
+    limitations: list[str] = Field(default_factory=list)
+    physical_safety_determination: Literal["not_determined"] = "not_determined"
+    operational_state_claimed: Literal[False] = False
+
+
 class RansomwareResponse(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
@@ -63,10 +75,13 @@ class RansomwareResponse(BaseModel):
 
     affected_assets: list[str]
     suspected_assets: list[str]
+    potentially_exposed_assets: list[str]
+    protected_assets: list[str]
+    unknown_assets: list[str]
     critical_services_at_risk: list[str]
     affected_zones: list[str]
     protected_boundaries: list[str]
-    operational_dependency_impact: list[str]
+    operational_dependency_impact: list[OperationalDependencyImpact]
 
     propagation_path: list[str]
     evidence_layers: list[str]
@@ -87,3 +102,16 @@ class RansomwareResponse(BaseModel):
     request_id: NonBlankString
     trace_id: NonBlankString
     runtime_state: RuntimeState
+
+    @model_validator(mode="after")
+    def enforce_sector_site_type(self):
+        permitted = {
+            Industry.ENERGY: {SiteType.CONTROL_CENTRE, SiteType.SUBSTATION},
+            Industry.PETROCHEMICAL: {
+                SiteType.REFINERY,
+                SiteType.PETROCHEMICAL_COMPLEX,
+            },
+        }
+        if self.site_type not in permitted[self.industry]:
+            raise ValueError("site_type is not permitted for industry")
+        return self

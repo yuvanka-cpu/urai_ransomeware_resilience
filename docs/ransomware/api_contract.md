@@ -1,4 +1,4 @@
-# URAI Ransomware Resilience — Stage 0 API Baseline
+# URAI Ransomware Resilience — Stage 0 Baseline with Stage 1 Additions
 
 **Status:** REVIEW — core safety/decision/provenance sub-contract frozen
 **Schema version:** `1.0`
@@ -28,7 +28,9 @@ Unexpected top-level fields are rejected. Reserved `ground_truth`, `ground_truth
 
 Source: `apps/backend/app/schemas/responses.py`
 
-The response contains sector/site/scenario context, decision and incident stage, bounded confidence and resilience score, separate affected and suspected asset collections, dependency/evidence/timeline collections, typed backup readiness, explanations, recommendations, typed artifact provenance, data provenance, warnings, request/trace identifiers and a controlled runtime state.
+The response contains sector/site/scenario context, decision and incident stage, bounded confidence and resilience score, five separate asset-state collections (`affected_assets`, `suspected_assets`, `potentially_exposed_assets`, `protected_assets`, `unknown_assets`), dependency/evidence/timeline collections, typed backup readiness, explanations, recommendations, typed artifact provenance, data provenance, warnings, request/trace identifiers and a controlled runtime state.
+
+`operational_dependency_impact` describes only observable support-service consequence. Each item fixes `physical_safety_determination` to `not_determined` and `operational_state_claimed` to `false`. It cannot be used to convert cyber incident-stage evidence into a grid, process or safety-state claim.
 
 ### Fixed safety fields
 

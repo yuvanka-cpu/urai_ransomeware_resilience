@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "states": [
+    {
+      "state": "confirmed_affected",
+      "meaning": "Observable evidence directly supports impact or compromise for this synthetic asset.",
+      "minimum_evidence": "At least one contract-valid direct evidence item with traceable provenance.",
+      "must_not_claim": "Do not infer physical process state or safe/unsafe operation."
+    },
+    {
+      "state": "suspected",
+      "meaning": "Evidence is concerning but does not establish confirmed impact.",
+      "minimum_evidence": "One or more anomalous or contradictory evidence items requiring review.",
+      "must_not_claim": "Do not present suspicion as confirmed compromise."
+    },
+    {
+      "state": "potentially_exposed",
+      "meaning": "A dependency or permitted path places the asset within a possible exposure boundary.",
+      "minimum_evidence": "A valid ontology or graph path with explicit uncertainty.",
+      "must_not_claim": "Do not claim activity occurred on the asset."
+    },
+    {
+      "state": "protected",
+      "meaning": "The asset is a protected read-only dependency represented for context.",
+      "minimum_evidence": "Protected-boundary classification in the approved sector ontology.",
+      "must_not_claim": "Do not query, write, control or infer the operating state of the protected asset."
+    },
+    {
+      "state": "unknown",
+      "meaning": "Available evidence cannot assign another controlled asset state.",
+      "minimum_evidence": "Missing, late, contradictory or insufficient evidence is recorded.",
+      "must_not_claim": "Do not silently convert unknown to normal or unaffected."
+    }
+  ]
+}

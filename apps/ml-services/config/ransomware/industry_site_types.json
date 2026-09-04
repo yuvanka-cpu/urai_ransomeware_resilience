@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "industries": ["energy", "petrochemical"],
+  "site_types": [
+    "control_centre",
+    "substation",
+    "refinery",
+    "petrochemical_complex"
+  ],
+  "permitted_site_types_by_industry": {
+    "energy": ["control_centre", "substation"],
+    "petrochemical": ["refinery", "petrochemical_complex"]
+  }
+}

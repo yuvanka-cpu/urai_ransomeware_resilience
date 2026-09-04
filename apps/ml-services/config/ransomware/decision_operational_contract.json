@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "decisions": ["normal", "investigate", "high_risk", "unavailable"],
+  "incident_stages": [
+    "none",
+    "precursor",
+    "credential_misuse",
+    "lateral_movement",
+    "staging",
+    "encryption_impact",
+    "recovery"
+  ],
+  "operational_impact_statuses": [
+    "none_observed",
+    "potential_dependency_impact",
+    "observed_support_degradation",
+    "unknown"
+  ],
+  "invariants": {
+    "incident_stage_is_cyber_only": true,
+    "physical_safety_determination": "not_determined",
+    "operational_state_claimed": false,
+    "human_approval_required": true,
+    "real_action_executed": false
+  },
+  "prohibited_inferences": [
+    "Loss of cyber visibility must not be presented as proof of unsafe grid or plant state.",
+    "Support-service degradation must not be presented as controller, relay, SIS or ESD compromise.",
+    "Recovery readiness must not be presented as authorization or proof of safe startup."
+  ]
+}

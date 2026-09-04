@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "templates": [
+    {
+      "template_id": "EN-REC-01",
+      "use_case_id": "EN-RW-01",
+      "industry": "energy",
+      "review_prompts": ["Review identity and remote-access evidence.", "Confirm whether jump-host activity matches approved work.", "Consult the existing incident and continuity procedures."],
+      "warnings": ["This output is synthetic and recommendation-only."],
+      "safety_statements": ["No account, network, SCADA, dispatch or service action is executed."],
+      "human_approval_required": true,
+      "real_action_executed": false
+    },
+    {
+      "template_id": "EN-REC-02",
+      "use_case_id": "EN-RW-02",
+      "industry": "energy",
+      "review_prompts": ["Review remote-session and maintenance authorization evidence.", "Review gateway and engineering-access dependencies.", "Consult approved communications-continuity procedures."],
+      "warnings": ["Potential exposure is not confirmed compromise."],
+      "safety_statements": ["No polling, relay command, RTU or IED write, firewall change or substation action is executed."],
+      "human_approval_required": true,
+      "real_action_executed": false
+    },
+    {
+      "template_id": "EN-REC-03",
+      "use_case_id": "EN-RW-03",
+      "industry": "energy",
+      "review_prompts": ["Review source availability and planned failover context.", "Compare cyber evidence with ordinary host, network and data-feed failures.", "Review trusted monitoring prerequisites."],
+      "warnings": ["Missing cyber telemetry does not establish physical grid state."],
+      "safety_statements": ["No failover, service restart or operational-control action is executed."],
+      "human_approval_required": true,
+      "real_action_executed": false
+    },
+    {
+      "template_id": "EN-REC-04",
+      "use_case_id": "EN-RW-04",
+      "industry": "energy",
+      "review_prompts": ["Request accountable protection-engineering review.", "Review configuration provenance and approved-work evidence.", "Review known-good settings evidence using existing procedures."],
+      "warnings": ["Protected-boundary adjacency does not prove relay compromise or unavailability."],
+      "safety_statements": ["No relay interrogation, settings change, trip, block or firmware action is executed."],
+      "human_approval_required": true,
+      "real_action_executed": false
+    },
+    {
+      "template_id": "EN-REC-05",
+      "use_case_id": "EN-RW-05",
+      "industry": "energy",
+      "review_prompts": ["Review clean-source and recovery-plan evidence.", "Review visibility, identity and communications prerequisites.", "Confirm that accountable continuity personnel approve any later recovery work."],
+      "warnings": ["The readiness score does not certify a clean backup or safe restoration."],
+      "safety_statements": ["No restore, failover, configuration deployment or service activation is executed."],
+      "human_approval_required": true,
+      "real_action_executed": false
+    },
+    {
+      "template_id": "PC-REC-01",
+      "use_case_id": "PC-RW-01",
+      "industry": "petrochemical",
+      "review_prompts": ["Review vendor and remote-access authorization evidence.", "Review industrial-DMZ dependencies and session evidence.", "Consult the approved site incident procedures."],
+      "warnings": ["This output is synthetic and recommendation-only."],
+      "safety_statements": ["No session termination, account change, firewall change, host isolation or DCS action is executed."],
+      "human_approval_required": true,
+      "real_action_executed": false
+    },
+    {
+      "template_id": "PC-REC-02",
+      "use_case_id": "PC-RW-02",
+      "industry": "petrochemical",
+      "review_prompts": ["Request accountable control-engineering review.", "Review project provenance and maintenance authorization.", "Review known-good configuration evidence."],
+      "warnings": ["Support-asset exposure does not prove controller compromise."],
+      "safety_statements": ["No controller query or write, project transfer, HMI or DCS restart, logic change or process action is executed."],
+      "human_approval_required": true,
+      "real_action_executed": false
+    },
+    {
+      "template_id": "PC-REC-03",
+      "use_case_id": "PC-RW-03",
+      "industry": "petrochemical",
+      "review_prompts": ["Review source-system, campaign and maintenance context.", "Compare cyber evidence with data, laboratory and communications failures.", "Review trusted historian, batch and quality prerequisites."],
+      "warnings": ["Cyber evidence does not determine product quality or physical process state."],
+      "safety_statements": ["No batch, release, loading or process decision is executed."],
+      "human_approval_required": true,
+      "real_action_executed": false
+    },
+    {
+      "template_id": "PC-REC-04",
+      "use_case_id": "PC-RW-04",
+      "industry": "petrochemical",
+      "review_prompts": ["Request accountable cyber, operations and process-safety review.", "Review independent safety-status evidence using approved plant procedures.", "Review authorized safety-work and proof-test context."],
+      "warnings": ["The dashboard cannot make a safe or unsafe plant determination."],
+      "safety_statements": ["No SIS or ESD query, bypass, reset, logic transfer, alarm change or safety action is executed."],
+      "human_approval_required": true,
+      "real_action_executed": false
+    },
+    {
+      "template_id": "PC-REC-05",
+      "use_case_id": "PC-RW-05",
+      "industry": "petrochemical",
+      "review_prompts": ["Review clean-source, configuration-provenance and startup-procedure evidence.", "Review recovery prerequisites with accountable cyber, operations, control, quality and process-safety personnel.", "Confirm independent plant authorization before any later startup work."],
+      "warnings": ["The dashboard does not declare the plant ready or safe to start."],
+      "safety_statements": ["No restore, startup, failover, project transfer, quality release or loading action is executed."],
+      "human_approval_required": true,
+      "real_action_executed": false
+    }
+  ]
+}

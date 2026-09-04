@@ -1,6 +1,6 @@
 # URAI Energy & Petrochemical Ransomware Resilience
 
-This repository contains the corrected Stage 0 foundation for a synthetic, defensive ransomware-resilience proof of concept. It is a separate repository; the FDI dashboard is a process and governance reference, not a code dependency.
+This repository contains the verified Stage 0 foundation and a Stage 1 review package for a synthetic, defensive ransomware-resilience proof of concept. It is a separate repository; the FDI dashboard is a process and governance reference, not a code dependency.
 
 ## Safety boundary
 
@@ -24,7 +24,7 @@ real_action_executed = false
 - API, health, safety and negative schema tests
 - Separate planned roots for frontend, ML service, configuration, synthetic data and governed artifacts
 
-Dataset generation, model development, frontend implementation and operational integrations are not included in Stage 0.
+The Stage 1 review package adds ten sector-specific use-case contracts, controlled asset states, safe recommendation templates, cyber/operational separation and measurable acceptance gates. Dataset generation, model development, frontend implementation and operational integrations are not included.
 
 ## Repository structure
 
@@ -59,11 +59,11 @@ cd apps\backend
 ..\..\.venv\Scripts\python.exe -m pytest -q
 ```
 
-Expected corrected Stage 0 result:
+Expected verification result (the exact test count may increase as later-stage contracts are added):
 
 ```text
 Environment verification: PASS
-37 passed
+all tests passed
 ```
 
 One unsuppressed upstream TestClient deprecation warning is documented in `docs/ransomware/known_warnings.md`.
@@ -86,4 +86,4 @@ The `/mock/*` endpoints are Stage 0 contract fixtures only. They are never live-
 
 ## Stage progression
 
-Stage 1 begins only after Stage 0 review approval. Synthetic dataset generation begins at Stage 4 after the Stage 1 use-case contracts, Stage 2 ontology/graphs and Stage 3 canonical schemas pass their exit gates.
+Stage 0 is independently verified and closed at commit `fe9a3f98d78cdf30485445cf93b9fac49789d5fd`. Stage 1 is in review until its ten use-case contracts, safety language and acceptance gates receive contributor/domain approval and a clean-clone verification. Synthetic dataset generation begins at Stage 4 only after Stage 2 ontology/graphs and Stage 3 canonical schemas also pass their exit gates.

@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "industry": "energy",
+  "use_cases": [
+    {
+      "use_case_id": "EN-RW-01",
+      "industry": "energy",
+      "title": "Control-centre ransomware progression",
+      "objective": "Detect synthetic ransomware progression from enterprise identity and endpoints through the industrial DMZ toward control-centre support services early enough for accountable review.",
+      "scenario_family": "enterprise_identity_to_control_centre_support",
+      "site_types": ["control_centre"],
+      "principal_assets": ["identity_service", "enterprise_endpoint", "remote_access_service", "industrial_dmz_jump_host", "historian_support", "scada_application_support", "backup_service"],
+      "observable_evidence": ["authentication_fan_out", "new_source_host", "privilege_transition", "remote_connections", "zone_crossings", "rare_process_chain", "file_write_rate", "backup_health", "service_availability"],
+      "dashboard_outputs": ["incident_stage", "calibrated_confidence", "detection_delay", "it_ot_path", "asset_states", "evidence_trace", "warnings", "review_recommendations"],
+      "recommendation_template_id": "EN-REC-01",
+      "protected_boundary_context": ["supervisory_control"],
+      "safety_statement": "No account disabling, network isolation, SCADA command, dispatch action or service restart is executed.",
+      "acceptance_metric_ids": ["EN-RW-01-M01", "EN-RW-01-M02", "EN-RW-01-M03", "EN-RW-01-M04", "EN-RW-01-M05"]
+    },
+    {
+      "use_case_id": "EN-RW-02",
+      "industry": "energy",
+      "title": "Substation-support propagation analysis",
+      "objective": "Estimate which substation-support assets and communication paths may be exposed when ransomware-like activity crosses approved enterprise or control-centre boundaries.",
+      "scenario_family": "remote_engineering_to_substation_support",
+      "site_types": ["control_centre", "substation"],
+      "principal_assets": ["remote_access_gateway", "jump_host", "engineering_workstation", "data_gateway", "substation_communications_server", "configuration_repository", "protected_rtu_ied_relay_dependencies"],
+      "observable_evidence": ["account_novelty", "host_novelty", "remote_session_fan_out", "zone_transitions", "configuration_file_activity", "service_health", "communications_health", "maintenance_window_metadata"],
+      "dashboard_outputs": ["substation_context", "propagation_path", "asset_states", "protected_boundaries", "evidence_layer_confidence", "localization_uncertainty"],
+      "recommendation_template_id": "EN-REC-02",
+      "protected_boundary_context": ["field_control", "protection_safety"],
+      "safety_statement": "No active polling, relay command, RTU or IED write, firewall change or substation isolation is executed.",
+      "acceptance_metric_ids": ["EN-RW-02-M01", "EN-RW-02-M02", "EN-RW-02-M03", "EN-RW-02-M04"]
+    },
+    {
+      "use_case_id": "EN-RW-03",
+      "industry": "energy",
+      "title": "SCADA and historian availability degradation",
+      "objective": "Distinguish ransomware-related loss-of-visibility evidence from ordinary host, network, data-feed and planned failover faults.",
+      "scenario_family": "cyber_impact_vs_visibility_failure",
+      "site_types": ["control_centre", "substation"],
+      "principal_assets": ["scada_application_server", "historian", "data_gateway", "time_data_service", "communications_link", "operator_display_support", "backup_infrastructure"],
+      "observable_evidence": ["service_state", "log_termination", "ingestion_lag", "stale_point_rate", "communications_health", "file_evidence", "failover_state", "time_synchronization", "cross_source_correlation"],
+      "dashboard_outputs": ["cyber_failure_comparison", "visibility_dependency_status", "affected_services", "timeline", "confidence", "missing_sources", "recovery_prerequisites"],
+      "recommendation_template_id": "EN-REC-03",
+      "protected_boundary_context": ["supervisory_control", "field_control"],
+      "safety_statement": "Missing cyber telemetry is not used to assert physical grid state, and no failover, restart or control action is executed.",
+      "acceptance_metric_ids": ["EN-RW-03-M01", "EN-RW-03-M02", "EN-RW-03-M03", "EN-RW-03-M04"]
+    },
+    {
+      "use_case_id": "EN-RW-04",
+      "industry": "energy",
+      "title": "Protection and relay-management exposure",
+      "objective": "Identify ransomware propagation adjacent to protection-setting and relay-management dependencies without claiming protective devices are compromised or unsafe.",
+      "scenario_family": "relay_management_protected_boundary_adjacency",
+      "site_types": ["control_centre", "substation"],
+      "principal_assets": ["relay_management_server", "engineering_repository", "configuration_store", "jump_host", "protection_engineering_workstation", "protected_relays", "communications_dependencies"],
+      "observable_evidence": ["configuration_package_access", "signer_hash_metadata", "account_changes", "remote_sessions", "unusual_file_operations", "protected_zone_adjacency", "maintenance_approval", "repository_history"],
+      "dashboard_outputs": ["exposure_status", "protected_boundary_adjacency", "configuration_evidence", "authorization_comparison", "asset_path", "warnings", "limitations"],
+      "recommendation_template_id": "EN-REC-04",
+      "protected_boundary_context": ["protection_safety"],
+      "safety_statement": "No relay interrogation, setting upload, trip or block command, firmware action or protection-state determination is performed.",
+      "acceptance_metric_ids": ["EN-RW-04-M01", "EN-RW-04-M02", "EN-RW-04-M03"]
+    },
+    {
+      "use_case_id": "EN-RW-05",
+      "industry": "energy",
+      "title": "Backup impairment and grid-service recovery readiness",
+      "objective": "Assess recovery readiness and rank review priorities for energy operational-support services after synthetic ransomware and backup impairment.",
+      "scenario_family": "energy_backup_impairment_and_recovery_prerequisites",
+      "site_types": ["control_centre", "substation"],
+      "principal_assets": ["backup_controller", "immutable_copy_metadata", "configuration_repository", "historian", "scada_support", "identity_dependency", "communications_support", "recovery_documentation"],
+      "observable_evidence": ["backup_age", "job_failure_streak", "immutability_status", "segmentation_status", "restore_test_age", "configuration_coverage", "dependency_criticality", "recovery_tier", "suspicious_account_activity"],
+      "dashboard_outputs": ["recoverability_score", "calculation_method", "review_order", "missing_prerequisites", "backup_evidence", "uncertainty", "approval_required_recommendations"],
+      "recommendation_template_id": "EN-REC-05",
+      "protected_boundary_context": ["supervisory_control", "field_control", "protection_safety"],
+      "safety_statement": "No restore, failover, configuration deployment or service activation is executed, and readiness does not certify a clean backup or safe restoration.",
+      "acceptance_metric_ids": ["EN-RW-05-M01", "EN-RW-05-M02", "EN-RW-05-M03"]
+    }
+  ]
+}

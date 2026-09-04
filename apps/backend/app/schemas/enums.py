@@ -53,6 +53,22 @@ class ArtifactStatus(str, Enum):
     INCOMPATIBLE = "incompatible"
     TIMEOUT = "timeout"
 
+
+class AssetState(str, Enum):
+    CONFIRMED_AFFECTED = "confirmed_affected"
+    SUSPECTED = "suspected"
+    POTENTIALLY_EXPOSED = "potentially_exposed"
+    PROTECTED = "protected"
+    UNKNOWN = "unknown"
+
+
+class OperationalImpactStatus(str, Enum):
+    NONE_OBSERVED = "none_observed"
+    POTENTIAL_DEPENDENCY_IMPACT = "potential_dependency_impact"
+    OBSERVED_SUPPORT_DEGRADATION = "observed_support_degradation"
+    UNKNOWN = "unknown"
+
+
 class DataProvenance(str, Enum):
     LIVE_MODEL = "LIVE_MODEL"
     SYNTHETIC_GROUND_TRUTH = "SYNTHETIC_GROUND_TRUTH"
