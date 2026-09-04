@@ -1,6 +1,8 @@
 # Stage 1 Handoff
 
-This package starts from the independently verified Stage 0 commit `fe9a3f98d78cdf30485445cf93b9fac49789d5fd`. It contains proposed Stage 1 contracts for RW-0101 through RW-0107. They are ready for Yuvanka's review, not yet marked Done.
+This package starts from the independently verified Stage 0 commit `fe9a3f98d78cdf30485445cf93b9fac49789d5fd`. It contains Stage 1 contracts for RW-0101 through RW-0107.
+
+The Stage 1 package was reviewed against the detailed task sheet and FINAL v3 blueprint. No domain or wording corrections were required. The human-approval and non-execution safety boundaries remain unchanged.
 
 ## Apply safely
 
@@ -38,4 +40,17 @@ git commit -m "RW-0101-RW-0107 define Stage 1 ransomware contracts"
 git push -u origin rw-0101-stage1-contracts
 ```
 
-Send back the repository URL, exact commit hash, test output and any wording Yuvanka changed. Stage 1 can be marked Done only after that commit is independently checked. Dataset generation remains Stage 4.
+Send back the repository URL, exact commit hash, test output and any wording Yuvanka changed.
+
+## Stage 1 completion
+
+Stage 1 was independently verified after the reviewed commit.
+
+Reviewed commit: `2abe435fc85bb9c1516eb9e1125cda04ad9aba58`
+
+Clean-clone verification:
+- requirements.lock SHA-256: PASS
+- Environment verification: PASS
+- Tests: 48 passed, 1 documented upstream deprecation warning
+
+Stage 1 is complete and marked Done. Stage 2 may begin. Dataset generation remains Stage 4.
