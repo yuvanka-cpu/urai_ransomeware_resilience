@@ -1,0 +1,25 @@
+{
+  "type": "record",
+  "name": "RansomwareDLQEvent",
+  "namespace": "urai.ransomware",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "source_system", "type": "string"},
+    {
+      "name": "reason_code",
+      "type": {
+        "type": "enum",
+        "name": "DLQReasonCode",
+        "symbols": [
+          "required_field_missing",
+          "invalid_encoding",
+          "invalid_unit",
+          "incompatible_structure",
+          "normalization_failure"
+        ]
+      }
+    },
+    {"name": "message", "type": "string"},
+    {"name": "raw_payload", "type": "string"}
+  ]
+}

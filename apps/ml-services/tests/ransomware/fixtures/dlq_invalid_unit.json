@@ -1,0 +1,7 @@
+{
+  "event_id": "evt-dlq-001",
+  "source_system": "endpoint",
+  "reason_code": "invalid_unit",
+  "message": "unsupported unit",
+  "raw_payload": "{\"value\":\"abc\",\"unit\":\"invalid\"}"
+}
