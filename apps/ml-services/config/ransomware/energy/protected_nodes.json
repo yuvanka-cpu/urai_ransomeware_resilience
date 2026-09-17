@@ -1,0 +1,61 @@
+{
+  "sector": "energy",
+  "nodes": [
+    {
+      "dependency_id": "energy-blr01-dep-protected-001",
+      "node_id": "energy-blr01-relay-001",
+      "node_type": "relay",
+      "access_mode": "read_only",
+      "protected_boundary": true
+    },
+    {
+      "dependency_id": "energy-blr01-dep-protected-002",
+      "node_id": "energy-blr01-rtu-001",
+      "node_type": "rtu",
+      "access_mode": "read_only",
+      "protected_boundary": true
+    },
+    {
+      "dependency_id": "energy-blr01-dep-protected-003",
+      "node_id": "energy-blr01-ied-001",
+      "node_type": "ied",
+      "access_mode": "read_only",
+      "protected_boundary": true
+    },
+    {
+      "dependency_id": "energy-blr01-dep-protected-004",
+      "node_id": "energy-blr01-plc-001",
+      "node_type": "plc",
+      "access_mode": "read_only",
+      "protected_boundary": true
+    },
+    {
+      "dependency_id": "energy-blr01-dep-protected-005",
+      "node_id": "energy-blr01-sis-001",
+      "node_type": "sis",
+      "access_mode": "read_only",
+      "protected_boundary": true
+    },
+    {
+      "dependency_id": "energy-blr01-dep-protected-006",
+      "node_id": "energy-blr01-esd-001",
+      "node_type": "esd",
+      "access_mode": "read_only",
+      "protected_boundary": true
+    },
+    {
+      "dependency_id": "energy-blr01-dep-protected-007",
+      "node_id": "energy-blr01-interlock-001",
+      "node_type": "interlock",
+      "access_mode": "read_only",
+      "protected_boundary": true
+    },
+    {
+      "dependency_id": "energy-blr01-dep-protected-008",
+      "node_id": "energy-blr01-safety-controller-001",
+      "node_type": "safety_controller",
+      "access_mode": "read_only",
+      "protected_boundary": true
+    }
+  ]
+}
