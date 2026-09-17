@@ -1,0 +1,59 @@
+{
+  "sector": "energy",
+  "edges": [
+    {
+      "dependency_id": "energy-blr01-dep-001",
+      "source_id": "energy-blr01-asset-identity-001",
+      "target_id": "energy-blr01-asset-vpn-001",
+      "edge_type": "identity_trust"
+    },
+    {
+      "dependency_id": "energy-blr01-dep-002",
+      "source_id": "energy-blr01-asset-vpn-001",
+      "target_id": "energy-blr01-asset-industrial-dmz-001",
+      "edge_type": "network_reachability"
+    },
+    {
+      "dependency_id": "energy-blr01-dep-003",
+      "source_id": "energy-blr01-asset-industrial-dmz-001",
+      "target_id": "energy-blr01-asset-jumphost-001",
+      "edge_type": "network_reachability"
+    },
+    {
+      "dependency_id": "energy-blr01-dep-004",
+      "source_id": "energy-blr01-asset-jumphost-001",
+      "target_id": "energy-blr01-asset-scada-support-001",
+      "edge_type": "service_dependency"
+    },
+    {
+      "dependency_id": "energy-blr01-dep-005",
+      "source_id": "energy-blr01-asset-scada-support-001",
+      "target_id": "energy-blr01-asset-historian-001",
+      "edge_type": "data_flow"
+    },
+    {
+      "dependency_id": "energy-blr01-dep-006",
+      "source_id": "energy-blr01-asset-engineering-repo-001",
+      "target_id": "energy-blr01-asset-backup-001",
+      "edge_type": "backup_coverage"
+    },
+    {
+      "dependency_id": "energy-blr01-dep-007",
+      "source_id": "energy-blr01-asset-backup-001",
+      "target_id": "energy-blr01-asset-scada-support-001",
+      "edge_type": "recovery_prerequisite"
+    },
+    {
+      "dependency_id": "energy-blr01-dep-008",
+      "source_id": "energy-blr01-asset-communications-001",
+      "target_id": "energy-blr01-asset-scada-support-001",
+      "edge_type": "service_dependency"
+    },
+    {
+      "dependency_id": "energy-blr01-dep-009",
+      "source_id": "energy-blr01-asset-scada-support-001",
+      "target_id": "energy-blr01-asset-relay-management-001",
+      "edge_type": "service_dependency"
+    }
+  ]
+}

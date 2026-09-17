@@ -1,0 +1,71 @@
+{
+  "sector": "petrochemical",
+  "edges": [
+    {
+      "dependency_id": "petrochemical-mng01-dep-001",
+      "source_id": "petrochemical-mng01-asset-identity-001",
+      "target_id": "petrochemical-mng01-asset-vendor-access-001",
+      "edge_type": "identity_trust"
+    },
+    {
+      "dependency_id": "petrochemical-mng01-dep-002",
+      "source_id": "petrochemical-mng01-asset-vendor-access-001",
+      "target_id": "petrochemical-mng01-asset-industrial-dmz-001",
+      "edge_type": "network_reachability"
+    },
+    {
+      "dependency_id": "petrochemical-mng01-dep-003",
+      "source_id": "petrochemical-mng01-asset-industrial-dmz-001",
+      "target_id": "petrochemical-mng01-asset-engineering-workstation-001",
+      "edge_type": "network_reachability"
+    },
+    {
+      "dependency_id": "petrochemical-mng01-dep-004",
+      "source_id": "petrochemical-mng01-asset-engineering-workstation-001",
+      "target_id": "petrochemical-mng01-asset-dcs-hmi-001",
+      "edge_type": "service_dependency"
+    },
+    {
+      "dependency_id": "petrochemical-mng01-dep-005",
+      "source_id": "petrochemical-mng01-asset-dcs-hmi-001",
+      "target_id": "petrochemical-mng01-asset-historian-001",
+      "edge_type": "data_flow"
+    },
+    {
+      "dependency_id": "petrochemical-mng01-dep-006",
+      "source_id": "petrochemical-mng01-asset-batch-quality-001",
+      "target_id": "petrochemical-mng01-asset-historian-001",
+      "edge_type": "data_flow"
+    },
+    {
+      "dependency_id": "petrochemical-mng01-dep-007",
+      "source_id": "petrochemical-mng01-asset-maintenance-001",
+      "target_id": "petrochemical-mng01-asset-engineering-workstation-001",
+      "edge_type": "service_dependency"
+    },
+    {
+      "dependency_id": "petrochemical-mng01-dep-008",
+      "source_id": "petrochemical-mng01-asset-terminal-loading-001",
+      "target_id": "petrochemical-mng01-asset-dcs-hmi-001",
+      "edge_type": "service_dependency"
+    },
+    {
+      "dependency_id": "petrochemical-mng01-dep-009",
+      "source_id": "petrochemical-mng01-asset-backup-001",
+      "target_id": "petrochemical-mng01-asset-dcs-hmi-001",
+      "edge_type": "recovery_prerequisite"
+    },
+    {
+      "dependency_id": "petrochemical-mng01-dep-010",
+      "source_id": "petrochemical-mng01-asset-engineering-workstation-001",
+      "target_id": "petrochemical-mng01-asset-backup-001",
+      "edge_type": "backup_coverage"
+    },
+    {
+      "dependency_id": "petrochemical-mng01-dep-011",
+      "source_id": "petrochemical-mng01-asset-dcs-hmi-001",
+      "target_id": "petrochemical-mng01-asset-sis-esd-adjacent-001",
+      "edge_type": "service_dependency"
+    }
+  ]
+}
