@@ -1,0 +1,95 @@
+{
+  "sector": "energy",
+  "assets": [
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "site_id": "energy-blr01",
+      "display_name": "Energy Identity Service",
+      "asset_type": "identity",
+      "zone": "enterprise_it",
+      "criticality": "critical",
+      "recovery_tier": 1
+    },
+    {
+      "asset_id": "energy-blr01-asset-vpn-001",
+      "site_id": "energy-blr01",
+      "display_name": "Energy Remote Access VPN",
+      "asset_type": "vpn",
+      "zone": "enterprise_it",
+      "criticality": "high",
+      "recovery_tier": 2
+    },
+    {
+      "asset_id": "energy-blr01-asset-industrial-dmz-001",
+      "site_id": "energy-blr01",
+      "display_name": "Energy Industrial DMZ",
+      "asset_type": "industrial_dmz",
+      "zone": "industrial_dmz",
+      "criticality": "critical",
+      "recovery_tier": 1
+    },
+    {
+      "asset_id": "energy-blr01-asset-jumphost-001",
+      "site_id": "energy-blr01",
+      "display_name": "Energy OT Jump Host",
+      "asset_type": "jump_host",
+      "zone": "operations_support",
+      "criticality": "high",
+      "recovery_tier": 2
+    },
+    {
+      "asset_id": "energy-blr01-asset-historian-001",
+      "site_id": "energy-blr01",
+      "display_name": "Energy Operations Historian",
+      "asset_type": "historian",
+      "zone": "operations_support",
+      "criticality": "high",
+      "recovery_tier": 2
+    },
+    {
+      "asset_id": "energy-blr01-asset-scada-support-001",
+      "site_id": "energy-blr01",
+      "display_name": "Energy SCADA Support Service",
+      "asset_type": "scada_support",
+      "zone": "supervisory_control",
+      "criticality": "critical",
+      "recovery_tier": 1
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-repo-001",
+      "site_id": "energy-blr01",
+      "display_name": "Energy Engineering Repository",
+      "asset_type": "engineering_repository",
+      "zone": "operations_support",
+      "criticality": "high",
+      "recovery_tier": 2
+    },
+    {
+      "asset_id": "energy-blr01-asset-communications-001",
+      "site_id": "energy-blr01",
+      "display_name": "Energy Operations Communications",
+      "asset_type": "communications",
+      "zone": "operations_support",
+      "criticality": "high",
+      "recovery_tier": 2
+    },
+    {
+      "asset_id": "energy-blr01-asset-backup-001",
+      "site_id": "energy-blr01",
+      "display_name": "Energy Backup Infrastructure",
+      "asset_type": "backup",
+      "zone": "enterprise_it",
+      "criticality": "critical",
+      "recovery_tier": 1
+    },
+    {
+      "asset_id": "energy-blr01-asset-relay-management-001",
+      "site_id": "energy-blr01",
+      "display_name": "Energy Relay Management Dependency",
+      "asset_type": "relay_management",
+      "zone": "protection_safety",
+      "criticality": "critical",
+      "recovery_tier": 1
+    }
+  ]
+}
