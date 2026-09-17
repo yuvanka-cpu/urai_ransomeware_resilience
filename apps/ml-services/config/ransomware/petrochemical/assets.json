@@ -1,0 +1,104 @@
+{
+  "sector": "petrochemical",
+  "assets": [
+    {
+      "asset_id": "petrochemical-mng01-asset-identity-001",
+      "site_id": "petrochemical-mng01",
+      "display_name": "Petrochemical Identity Service",
+      "asset_type": "identity",
+      "zone": "enterprise_it",
+      "criticality": "critical",
+      "recovery_tier": 1
+    },
+    {
+      "asset_id": "petrochemical-mng01-asset-vendor-access-001",
+      "site_id": "petrochemical-mng01",
+      "display_name": "Petrochemical Vendor Access Service",
+      "asset_type": "vendor_access",
+      "zone": "enterprise_it",
+      "criticality": "high",
+      "recovery_tier": 2
+    },
+    {
+      "asset_id": "petrochemical-mng01-asset-industrial-dmz-001",
+      "site_id": "petrochemical-mng01",
+      "display_name": "Petrochemical Industrial DMZ",
+      "asset_type": "industrial_dmz",
+      "zone": "industrial_dmz",
+      "criticality": "critical",
+      "recovery_tier": 1
+    },
+    {
+      "asset_id": "petrochemical-mng01-asset-dcs-hmi-001",
+      "site_id": "petrochemical-mng01",
+      "display_name": "Petrochemical DCS HMI Support",
+      "asset_type": "dcs_hmi_support",
+      "zone": "supervisory_control",
+      "criticality": "critical",
+      "recovery_tier": 1
+    },
+    {
+      "asset_id": "petrochemical-mng01-asset-engineering-workstation-001",
+      "site_id": "petrochemical-mng01",
+      "display_name": "Petrochemical Engineering Workstation",
+      "asset_type": "engineering_workstation",
+      "zone": "operations_support",
+      "criticality": "high",
+      "recovery_tier": 2
+    },
+    {
+      "asset_id": "petrochemical-mng01-asset-historian-001",
+      "site_id": "petrochemical-mng01",
+      "display_name": "Petrochemical Operations Historian",
+      "asset_type": "historian",
+      "zone": "operations_support",
+      "criticality": "high",
+      "recovery_tier": 2
+    },
+    {
+      "asset_id": "petrochemical-mng01-asset-batch-quality-001",
+      "site_id": "petrochemical-mng01",
+      "display_name": "Petrochemical Batch and Quality Support",
+      "asset_type": "batch_quality",
+      "zone": "operations_support",
+      "criticality": "high",
+      "recovery_tier": 2
+    },
+    {
+      "asset_id": "petrochemical-mng01-asset-maintenance-001",
+      "site_id": "petrochemical-mng01",
+      "display_name": "Petrochemical Maintenance Support",
+      "asset_type": "maintenance",
+      "zone": "operations_support",
+      "criticality": "medium",
+      "recovery_tier": 3
+    },
+    {
+      "asset_id": "petrochemical-mng01-asset-terminal-loading-001",
+      "site_id": "petrochemical-mng01",
+      "display_name": "Petrochemical Terminal and Loading Support",
+      "asset_type": "terminal_loading",
+      "zone": "operations_support",
+      "criticality": "high",
+      "recovery_tier": 2
+    },
+    {
+      "asset_id": "petrochemical-mng01-asset-backup-001",
+      "site_id": "petrochemical-mng01",
+      "display_name": "Petrochemical Backup Infrastructure",
+      "asset_type": "backup",
+      "zone": "enterprise_it",
+      "criticality": "critical",
+      "recovery_tier": 1
+    },
+    {
+      "asset_id": "petrochemical-mng01-asset-sis-esd-adjacent-001",
+      "site_id": "petrochemical-mng01",
+      "display_name": "Petrochemical SIS ESD Adjacent Dependency",
+      "asset_type": "sis_esd_adjacent",
+      "zone": "protection_safety",
+      "criticality": "critical",
+      "recovery_tier": 1
+    }
+  ]
+}
