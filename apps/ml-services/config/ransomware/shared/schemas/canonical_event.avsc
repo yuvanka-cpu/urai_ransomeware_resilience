@@ -1,0 +1,25 @@
+{
+  "type": "record",
+  "name": "CanonicalRansomwareEvent",
+  "namespace": "urai.ransomware",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "event_time", "type": "string"},
+    {"name": "ingest_time", "type": "string"},
+    {"name": "schema_version", "type": "string"},
+    {"name": "source_system", "type": "string"},
+    {"name": "event_family", "type": "string"},
+    {"name": "event_type", "type": "string"},
+    {"name": "industry", "type": "string"},
+    {"name": "site_id", "type": "string"},
+    {"name": "asset_id", "type": "string"},
+    {"name": "zone", "type": "string"},
+    {"name": "actor_id", "type": ["null", "string"], "default": null},
+    {"name": "severity", "type": "string"},
+    {"name": "attributes", "type": {"type": "map", "values": "string"}},
+    {"name": "metrics", "type": {"type": "map", "values": "double"}},
+    {"name": "quality_flags", "type": {"type": "array", "items": "string"}},
+    {"name": "data_provenance", "type": "string"},
+    {"name": "payload_hash", "type": "string"}
+  ]
+}
