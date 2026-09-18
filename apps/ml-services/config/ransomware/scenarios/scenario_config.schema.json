@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ransomware Scenario Configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "scenario_id",
+    "seed",
+    "industry",
+    "site",
+    "asset_set",
+    "lifecycle_timing",
+    "event_family_parameters",
+    "intended_labels"
+  ],
+  "properties": {
+    "scenario_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "seed": {
+      "type": "integer"
+    },
+    "industry": {
+      "type": "string",
+      "enum": [
+        "energy",
+        "petrochemical"
+      ]
+    },
+    "site": {
+      "type": "string",
+      "minLength": 1
+    },
+    "asset_set": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lifecycle_timing": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "event_family_parameters": {
+      "type": "object"
+    },
+    "intended_labels": {
+      "type": "object"
+    }
+  }
+}
