@@ -1,59 +1,32 @@
-import json
 from pathlib import Path
+import json
+
+import pandas as pd
 
 
-SCHEMA = Path(
-    "config/ransomware/shared/schemas/canonical_event.avsc"
+ROOT = Path(__file__).resolve().parents[2]
+SCHEMA_PATH = ROOT / "config/ransomware/shared/schemas/canonical_event.avsc"
+PARQUET_PATH = (
+    ROOT / "artifacts/ransomware/offline/canonical_event_snapshot.parquet"
 )
 
-CONTRACT = Path(
-    "config/ransomware/shared/schemas/offline_parquet_parity.md"
-)
+
+def test_parquet_snapshot_exists():
+    assert PARQUET_PATH.exists()
 
 
-def test_parquet_parity_contract_exists():
-    assert CONTRACT.exists()
+def test_parquet_columns_match_canonical_schema():
+    schema = json.loads(SCHEMA_PATH.read_text())
+    expected = [field["name"] for field in schema["fields"]]
+
+    frame = pd.read_parquet(PARQUET_PATH)
+
+    assert list(frame.columns) == expected
 
 
-def test_canonical_schema_is_the_parity_source():
-    text = CONTRACT.read_text(encoding="utf-8")
+def test_parquet_contains_one_canonical_event():
+    frame = pd.read_parquet(PARQUET_PATH)
 
-    assert "canonical_event.avsc" in text
-    assert "same canonical field definitions" in text
-
-
-def test_all_canonical_fields_are_documented_for_parquet():
-    schema = json.loads(SCHEMA.read_text(encoding="utf-8"))
-    contract = CONTRACT.read_text(encoding="utf-8")
-
-    for field in schema["fields"]:
-        assert f"- {field['name']}" in contract
-
-
-def test_units_must_remain_aligned():
-    text = CONTRACT.read_text(encoding="utf-8")
-
-    assert "same canonical units as the online path" in text
-    assert "unit change is a schema evolution event" in text
-
-
-def test_source_native_fields_cannot_bypass_normalization():
-    text = CONTRACT.read_text(encoding="utf-8")
-
-    assert "source-native field names" in text
-    assert "bypasses normalization" in text
-
-
-def test_parity_report_and_snapshot_are_required():
-    text = CONTRACT.read_text(encoding="utf-8")
-
-    assert "canonical event Parquet snapshot" in text
-    assert "schema parity report" in text
-
-
-def test_offline_serialization_safety_boundary():
-    text = CONTRACT.read_text(encoding="utf-8")
-
-    assert "reproducible analysis and validation" in text
-    assert "OT writes" in text
-    assert "recovery execution" in text
+    assert len(frame) == 1
+    assert frame.iloc[0]["schema_version"] == "1.0"
+    assert frame.iloc[0]["industry"] == "energy"
