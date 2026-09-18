@@ -1,48 +1,25 @@
-# Ransomware Schema Registry Policy
+# Ransomware Resilience Schema Registry Policy
 
-## Purpose
+## Registration
 
-This policy defines schema registration and compatibility requirements for
-the ransomware resilience event pipeline.
+Key schemas and value schemas are registered separately.
 
-## Key and value schemas
-
-Kafka key schemas and Kafka value schemas MUST be registered separately.
-
-The key schema defines the partition/join identity of a record.
-
-The value schema defines the canonical event or contract payload.
-
-A change to a key schema MUST be reviewed independently from a value schema
-change because key changes can affect partitioning and record association.
+- Key schema defines the Kafka message key.
+- Value schema defines the canonical event payload.
+- Both are versioned contracts.
 
 ## Compatibility
 
-The default compatibility mode is:
+- Default compatibility mode: `BACKWARD`.
+- `FULL` compatibility requires explicit justification and automated tests.
+- Breaking changes require a new schema version or a new major topic version.
 
-`BACKWARD`
+## CI validation
 
-A new schema version MUST remain compatible with the previous version under
-the configured BACKWARD compatibility rules.
+Every schema change must verify:
 
-`FULL` compatibility may be used only when there is a documented
-justification and explicit compatibility tests.
-
-## CI enforcement
-
-Schema changes MUST be checked in CI before acceptance.
-
-CI checks MUST verify:
-
-1. key and value schemas are registered separately;
-2. the declared compatibility mode is valid;
-3. BACKWARD compatibility is preserved by default;
-4. any FULL compatibility requirement has documented justification;
-5. incompatible schema changes fail validation.
-
-## Safety boundary
-
-Schema registry validation protects data-contract integrity.
-
-It does not authorize control actions, OT writes, account disabling,
-isolation, encryption or recovery execution.
+1. Required fields remain compatible.
+2. Existing field meaning is unchanged.
+3. Existing units are unchanged.
+4. Optional fields have explicit defaults.
+5. Breaking changes are versioned instead of silently replacing existing contracts.
