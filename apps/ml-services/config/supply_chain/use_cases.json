@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "domain": "supply_chain",
+  "use_cases": [
+    {
+      "use_case_id": "SC-FW-SW-01",
+      "title": "Firmware and software supply-chain compromise exposure",
+      "objective": "Identify synthetic indicators of potentially compromised, altered, unexpected, or unverifiable vendor firmware and software artifacts while preserving human review and avoiding any deployment or execution action.",
+      "attack_scope": [
+        "firmware artifact",
+        "software package",
+        "vendor update",
+        "third-party dependency"
+      ],
+      "observable_evidence": [
+        "artifact hash or integrity metadata mismatch",
+        "unexpected software or firmware version",
+        "unverified vendor or package provenance",
+        "unexpected dependency or component change",
+        "deployment metadata inconsistent with the approved maintenance window",
+        "asset inventory and supplied artifact metadata mismatch"
+      ],
+      "affected_assets": [
+        "engineering workstation",
+        "industrial application server",
+        "firmware-managed field device"
+      ],
+      "dashboard_outputs": [
+        "decision",
+        "severity",
+        "confidence",
+        "affected assets",
+        "suspected assets",
+        "artifact provenance",
+        "evidence trace",
+        "timeline",
+        "warnings",
+        "review recommendations"
+      ],
+      "safety_boundaries": [
+        "No firmware flashing is executed.",
+        "No software package is installed or deployed.",
+        "No code or supplied artifact is executed.",
+        "No device configuration is changed.",
+        "No account, network, or security control is modified.",
+        "All recommendations remain review-only and require human approval."
+      ],
+      "acceptance_criteria": [
+        "Supply-chain evidence is distinguishable from normal maintenance activity.",
+        "Artifact provenance and integrity evidence are displayed separately from inferred impact.",
+        "Affected and suspected assets remain explicitly separated.",
+        "The dashboard clearly identifies synthetic evidence and review-only recommendations.",
+        "No operational deployment or execution action is performed."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false
+    }
+  ]
+}

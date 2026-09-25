@@ -1,0 +1,14 @@
+{
+  "source": "apps\\ml-services\\artifacts\\ransomware\\offline\\canonical_event_snapshot.parquet",
+  "total_events": 1,
+  "valid_events": 1,
+  "invalid_events": 0,
+  "passed": true,
+  "events": [
+    {
+      "event_id": "evt-offline-001",
+      "valid": true,
+      "errors": []
+    }
+  ]
+}

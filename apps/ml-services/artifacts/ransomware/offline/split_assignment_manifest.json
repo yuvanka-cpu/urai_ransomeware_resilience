@@ -1,0 +1,815 @@
+{
+  "assignments": [
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-attack-05a01671c77c",
+      "scenario_seed": 2785423142390798022,
+      "split": "test",
+      "use_case_id": "energy_generation_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-attack-162affad5649",
+      "scenario_seed": 4489740029431180805,
+      "split": "calibration",
+      "use_case_id": "petrochemical_refinery_it_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-attack-1bf9d5a6ef7a",
+      "scenario_seed": 14795042922766326616,
+      "split": "validation",
+      "use_case_id": "petrochemical_engineering_historian_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-attack-2390fc0d312f",
+      "scenario_seed": 4323375655046142951,
+      "split": "test",
+      "use_case_id": "energy_control_centre_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-attack-285a34c1d1f8",
+      "scenario_seed": 4171697849741866395,
+      "split": "untouched_holdout",
+      "use_case_id": "energy_substation_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-attack-2b17998a10cc",
+      "scenario_seed": 1935834470243026215,
+      "split": "train",
+      "use_case_id": "energy_generation_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-attack-49716928a662",
+      "scenario_seed": 9568683861142966875,
+      "split": "calibration",
+      "use_case_id": "energy_substation_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-attack-498d27beff1d",
+      "scenario_seed": 7647398673555631580,
+      "split": "untouched_holdout",
+      "use_case_id": "energy_engineering_historian_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-attack-5fa87ee818c4",
+      "scenario_seed": 18284877344730839073,
+      "split": "calibration",
+      "use_case_id": "energy_transmission_distribution_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-attack-64d42017958c",
+      "scenario_seed": 2881077008569930130,
+      "split": "calibration",
+      "use_case_id": "petrochemical_terminal_loading_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-attack-6ba40cc47ad5",
+      "scenario_seed": 15110915026856024243,
+      "split": "test",
+      "use_case_id": "petrochemical_refinery_it_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-attack-a86e5d0c098d",
+      "scenario_seed": 15706994641039007657,
+      "split": "untouched_holdout",
+      "use_case_id": "petrochemical_batch_quality_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-attack-ae2344dcd31e",
+      "scenario_seed": 18062747145147411859,
+      "split": "train",
+      "use_case_id": "petrochemical_batch_quality_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-attack-b186ce7fd35e",
+      "scenario_seed": 6345900456421291566,
+      "split": "test",
+      "use_case_id": "energy_transmission_distribution_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-attack-bc4c30a36c54",
+      "scenario_seed": 11203812329019655279,
+      "split": "test",
+      "use_case_id": "petrochemical_engineering_historian_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-attack-bfcf1f5bbe3e",
+      "scenario_seed": 17139534500519178722,
+      "split": "validation",
+      "use_case_id": "petrochemical_terminal_loading_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-attack-c6e94af3df3c",
+      "scenario_seed": 5910742488327495501,
+      "split": "test",
+      "use_case_id": "energy_control_centre_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-attack-e3a62a534daf",
+      "scenario_seed": 1933697002946648656,
+      "split": "test",
+      "use_case_id": "petrochemical_dcs_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-attack-f245bb28e4e8",
+      "scenario_seed": 2622406951372325011,
+      "split": "calibration",
+      "use_case_id": "petrochemical_dcs_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-attack-f2a1ee629d06",
+      "scenario_seed": 2450352977337960789,
+      "split": "validation",
+      "use_case_id": "energy_engineering_historian_support",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-benign-0bdd6210547a",
+      "scenario_seed": 4018592454425279020,
+      "split": "untouched_holdout",
+      "use_case_id": "energy_substation_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-benign-1062623ef826",
+      "scenario_seed": 12220792892141130195,
+      "split": "calibration",
+      "use_case_id": "petrochemical_engineering_historian_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-benign-2c2e1612fbaa",
+      "scenario_seed": 6941736743295665360,
+      "split": "test",
+      "use_case_id": "petrochemical_refinery_it_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-benign-3dc0a126a4a5",
+      "scenario_seed": 2919002413719737839,
+      "split": "validation",
+      "use_case_id": "energy_control_centre_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-benign-3fa1a0c9bfa0",
+      "scenario_seed": 13580270084210501690,
+      "split": "train",
+      "use_case_id": "petrochemical_terminal_loading_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-benign-453ef5d653d8",
+      "scenario_seed": 2193786237669335584,
+      "split": "validation",
+      "use_case_id": "energy_engineering_historian_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-benign-5234aea47fb2",
+      "scenario_seed": 10369833858805568855,
+      "split": "train",
+      "use_case_id": "energy_generation_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-benign-60be2f127229",
+      "scenario_seed": 17398005146851072228,
+      "split": "train",
+      "use_case_id": "energy_transmission_distribution_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-benign-60f56ffe890a",
+      "scenario_seed": 17710263852329709189,
+      "split": "validation",
+      "use_case_id": "petrochemical_engineering_historian_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-benign-6150418eb056",
+      "scenario_seed": 4169726273897436690,
+      "split": "validation",
+      "use_case_id": "petrochemical_refinery_it_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-benign-6166dfb43daa",
+      "scenario_seed": 10241372178475359182,
+      "split": "train",
+      "use_case_id": "petrochemical_batch_quality_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-benign-7d709308c6b1",
+      "scenario_seed": 15153087152096665684,
+      "split": "validation",
+      "use_case_id": "energy_substation_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-benign-a5500a5d916e",
+      "scenario_seed": 15432066598421976486,
+      "split": "test",
+      "use_case_id": "petrochemical_terminal_loading_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-benign-a7d74652907c",
+      "scenario_seed": 10441912443316777233,
+      "split": "calibration",
+      "use_case_id": "energy_control_centre_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-benign-b5a68d4b8a67",
+      "scenario_seed": 14259136281519099783,
+      "split": "test",
+      "use_case_id": "energy_engineering_historian_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-benign-c21f5cb81654",
+      "scenario_seed": 17157028149932999944,
+      "split": "validation",
+      "use_case_id": "petrochemical_dcs_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-benign-ca3d62550e41",
+      "scenario_seed": 9202476366237503565,
+      "split": "calibration",
+      "use_case_id": "petrochemical_batch_quality_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-benign-d9f3fc5ad01e",
+      "scenario_seed": 11220701035226810309,
+      "split": "test",
+      "use_case_id": "energy_transmission_distribution_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-benign-ea3638bc3685",
+      "scenario_seed": 11489852111934824544,
+      "split": "train",
+      "use_case_id": "petrochemical_dcs_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-benign-f4cdbc38d338",
+      "scenario_seed": 2865508769484331358,
+      "split": "validation",
+      "use_case_id": "energy_generation_support",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-fault-01537817ed4c",
+      "scenario_seed": 3107871667005445115,
+      "split": "train",
+      "use_case_id": "energy_transmission_distribution_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-fault-0e260d75b8b6",
+      "scenario_seed": 15480400015426212254,
+      "split": "validation",
+      "use_case_id": "energy_generation_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-fault-1346fb24c105",
+      "scenario_seed": 6489084469840825277,
+      "split": "calibration",
+      "use_case_id": "petrochemical_batch_quality_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-fault-1d3cf67348c1",
+      "scenario_seed": 8280921139655287535,
+      "split": "test",
+      "use_case_id": "energy_transmission_distribution_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-fault-5115dec8a174",
+      "scenario_seed": 14580206556378602261,
+      "split": "untouched_holdout",
+      "use_case_id": "energy_substation_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-fault-5faf571bf2fd",
+      "scenario_seed": 7271827898016621107,
+      "split": "calibration",
+      "use_case_id": "petrochemical_terminal_loading_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-fault-665a3a53ef55",
+      "scenario_seed": 3148454227310516483,
+      "split": "untouched_holdout",
+      "use_case_id": "energy_control_centre_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-fault-6d50272b6c84",
+      "scenario_seed": 17041364642621139263,
+      "split": "test",
+      "use_case_id": "energy_control_centre_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-fault-71ed17852145",
+      "scenario_seed": 9400042780711118153,
+      "split": "untouched_holdout",
+      "use_case_id": "petrochemical_engineering_historian_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-fault-83919b4b7ffa",
+      "scenario_seed": 13706221227462986112,
+      "split": "test",
+      "use_case_id": "petrochemical_batch_quality_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-fault-8e479fdf3deb",
+      "scenario_seed": 2125000767804017876,
+      "split": "untouched_holdout",
+      "use_case_id": "energy_substation_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-fault-933a6d653213",
+      "scenario_seed": 2368415427970794483,
+      "split": "validation",
+      "use_case_id": "petrochemical_engineering_historian_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-fault-98aaaddedc0d",
+      "scenario_seed": 14356440788345280815,
+      "split": "test",
+      "use_case_id": "petrochemical_terminal_loading_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-fault-a5dbac57cd99",
+      "scenario_seed": 10855690974856131784,
+      "split": "test",
+      "use_case_id": "energy_generation_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-fault-c4d7e853b55b",
+      "scenario_seed": 14016356246817362199,
+      "split": "test",
+      "use_case_id": "petrochemical_refinery_it_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-fault-c6a2e9eb79b8",
+      "scenario_seed": 12316800928217546967,
+      "split": "calibration",
+      "use_case_id": "petrochemical_refinery_it_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-fault-d4d6d47e0702",
+      "scenario_seed": 2361928178892109261,
+      "split": "test",
+      "use_case_id": "energy_engineering_historian_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-fault-ec11b7287b90",
+      "scenario_seed": 11884966393236537279,
+      "split": "validation",
+      "use_case_id": "petrochemical_dcs_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-fault-f4619fab3a36",
+      "scenario_seed": 16075359607999847789,
+      "split": "validation",
+      "use_case_id": "energy_engineering_historian_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-fault-f76e70d01d61",
+      "scenario_seed": 5073974917587170939,
+      "split": "validation",
+      "use_case_id": "petrochemical_dcs_support",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-normal-044ea244bafb",
+      "scenario_seed": 8879083571569697218,
+      "split": "calibration",
+      "use_case_id": "petrochemical_refinery_it_support",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-normal-1a21b2f18d9e",
+      "scenario_seed": 3092750178544034020,
+      "split": "validation",
+      "use_case_id": "petrochemical_terminal_loading_support",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-normal-21d55862705e",
+      "scenario_seed": 10244629935096647060,
+      "split": "validation",
+      "use_case_id": "energy_generation_support",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-normal-285321641211",
+      "scenario_seed": 12760807312865578855,
+      "split": "test",
+      "use_case_id": "petrochemical_engineering_historian_support",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-normal-2a39e73f02af",
+      "scenario_seed": 8601871808738070236,
+      "split": "calibration",
+      "use_case_id": "energy_substation_support",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-normal-2f9974b7674f",
+      "scenario_seed": 8311479689632020153,
+      "split": "train",
+      "use_case_id": "energy_control_centre_support",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-normal-584d5f7dbd48",
+      "scenario_seed": 8886653068000722183,
+      "split": "calibration",
+      "use_case_id": "petrochemical_batch_quality_support",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-normal-5d7a8f116afa",
+      "scenario_seed": 3633387144877873610,
+      "split": "train",
+      "use_case_id": "energy_transmission_distribution_support",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-normal-62c4e06c3b9a",
+      "scenario_seed": 3312398228605942457,
+      "split": "train",
+      "use_case_id": "energy_generation_support",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-normal-67c192a4f5fa",
+      "scenario_seed": 17883184660970094999,
+      "split": "validation",
+      "use_case_id": "petrochemical_terminal_loading_support",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-normal-6e8b56890f72",
+      "scenario_seed": 7810862664232270868,
+      "split": "train",
+      "use_case_id": "energy_control_centre_support",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-normal-721d5811115b",
+      "scenario_seed": 6702672555974963696,
+      "split": "calibration",
+      "use_case_id": "petrochemical_dcs_support",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-normal-78bbe9c80834",
+      "scenario_seed": 17879213076278729740,
+      "split": "train",
+      "use_case_id": "energy_engineering_historian_support",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-normal-9f0518dea175",
+      "scenario_seed": 7013958830015048545,
+      "split": "calibration",
+      "use_case_id": "energy_transmission_distribution_support",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-normal-a1785cb178c9",
+      "scenario_seed": 6791223658270359822,
+      "split": "untouched_holdout",
+      "use_case_id": "energy_substation_support",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-normal-a5e3c133f3c5",
+      "scenario_seed": 5276832777977982662,
+      "split": "test",
+      "use_case_id": "petrochemical_engineering_historian_support",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-normal-b886e8a78a88",
+      "scenario_seed": 1554757104400548028,
+      "split": "train",
+      "use_case_id": "petrochemical_batch_quality_support",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-normal-c08619ffde7e",
+      "scenario_seed": 8605685841071707254,
+      "split": "train",
+      "use_case_id": "petrochemical_refinery_it_support",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "protected_boundary": "safety_system",
+      "scenario_id": "rw-normal-e9314a924492",
+      "scenario_seed": 11773760867714798450,
+      "split": "train",
+      "use_case_id": "petrochemical_dcs_support",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "protected_boundary": "protection_safety",
+      "scenario_id": "rw-normal-ea7ed814babf",
+      "scenario_seed": 17361126499741580355,
+      "split": "untouched_holdout",
+      "use_case_id": "energy_engineering_historian_support",
+      "variant": "normal"
+    }
+  ],
+  "base_seed": 20260921,
+  "manifest_type": "split_assignment",
+  "manifest_version": "1.0",
+  "scenario_count": 80,
+  "splits": [
+    "train",
+    "validation",
+    "calibration",
+    "test",
+    "untouched_holdout"
+  ]
+}

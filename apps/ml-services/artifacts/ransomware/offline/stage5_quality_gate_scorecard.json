@@ -1,0 +1,60 @@
+{
+  "source": "apps\\ml-services\\artifacts\\ransomware\\offline\\canonical_event_snapshot.parquet",
+  "total_events": 1,
+  "valid_events": 1,
+  "invalid_events": 0,
+  "passed": true,
+  "quality_gates": {
+    "total_events": 1,
+    "gates": {
+      "schema_validity": {
+        "value": 1.0,
+        "threshold": 1.0,
+        "passed": true
+      },
+      "required_context": {
+        "value": 1.0,
+        "threshold": 1.0,
+        "passed": true
+      },
+      "timestamp_parse_success": {
+        "value": 1.0,
+        "threshold": 0.995,
+        "passed": true
+      },
+      "known_asset_resolution": {
+        "value": 1.0,
+        "threshold": 0.99,
+        "passed": true
+      },
+      "duplicate_event_id": {
+        "value": 0,
+        "threshold": 0.0,
+        "passed": true
+      },
+      "canonical_numeric_values": {
+        "status": "PASS",
+        "passed": true
+      },
+      "canonical_utc": {
+        "status": "PASS",
+        "passed": true
+      },
+      "canonical_units": {
+        "status": "CONTRACT_ONLY",
+        "passed": true,
+        "note": "Canonical units are required by the event contract, but no machine-readable unit registry exists in the current repository."
+      }
+    },
+    "duplicate_event_ids": [],
+    "passed": true,
+    "status": "PASS"
+  },
+  "events": [
+    {
+      "event_id": "evt-offline-001",
+      "valid": true,
+      "errors": []
+    }
+  ]
+}

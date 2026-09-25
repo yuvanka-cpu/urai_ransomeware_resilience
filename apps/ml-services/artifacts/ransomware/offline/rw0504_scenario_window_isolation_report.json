@@ -1,0 +1,669 @@
+{
+  "base_seed": 20260921,
+  "checks": {
+    "complete_scenario_sequences_attached": true,
+    "exact_sequence_overlap_cross_split": true,
+    "scenario_identity_pairs_unique": true,
+    "scenario_ids_single_split": true,
+    "scenario_seeds_single_split": true
+  },
+  "evidence_id": "RW-050-4",
+  "evidence_type": "scenario_window_split_isolation",
+  "manifest": "apps/ml-services/artifacts/ransomware/offline/split_assignment_manifest.json",
+  "metrics": {
+    "cross_split_duplicate_fingerprints": 0,
+    "unique_sequence_fingerprints": 80,
+    "exact_sequence_overlap": "pass"
+  },
+  "not_assessable": {
+    "asset_graph_variant_overlap": "Current repository contains static sector graph files, not scenario-specific graph variants.",
+    "near_duplicate_overlap": "No near-duplicate similarity corpus or detector is currently available; exact sequence fingerprints are checked for cross-split duplication."
+  },
+  "safety": {
+    "real_action_executed": false,
+    "synthetic_only": true
+  },
+  "scenario_count": 80,
+  "sequence_fingerprints": [
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-05a01671c77c",
+      "scenario_seed": 2785423142390798022,
+      "sequence_fingerprint": "59250e92aa6ff937db8079d9287723963f808a627887ca5513ef19f6cce555d0",
+      "split": "test",
+      "variant": "attack"
+    },
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-162affad5649",
+      "scenario_seed": 4489740029431180805,
+      "sequence_fingerprint": "ca596581b666379e1b7aa20cf804a7474c9a072fe242a62d32a3f5f9728eac7b",
+      "split": "calibration",
+      "variant": "attack"
+    },
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-1bf9d5a6ef7a",
+      "scenario_seed": 14795042922766326616,
+      "sequence_fingerprint": "c837266723d306804b8bbf3e16d030132111485113b7a1b22df5e5a343b8ea52",
+      "split": "validation",
+      "variant": "attack"
+    },
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-2390fc0d312f",
+      "scenario_seed": 4323375655046142951,
+      "sequence_fingerprint": "6d7cdfc9af15861cde15c76f83cae24727a293cb1248c8ee5214260b77afdab1",
+      "split": "test",
+      "variant": "attack"
+    },
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-285a34c1d1f8",
+      "scenario_seed": 4171697849741866395,
+      "sequence_fingerprint": "7204e34be24be02b39010c7f98ba85d045ad2fa58177eb32acbffbe782c25df9",
+      "split": "untouched_holdout",
+      "variant": "attack"
+    },
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-2b17998a10cc",
+      "scenario_seed": 1935834470243026215,
+      "sequence_fingerprint": "35138aad4d6bab39dece03607f175743ba2d4dca05e8bdb6f85514688c92afe7",
+      "split": "train",
+      "variant": "attack"
+    },
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-49716928a662",
+      "scenario_seed": 9568683861142966875,
+      "sequence_fingerprint": "09eefbd0e1e9c09a3642cd29f057aa37aaae85a0c4b7c72b74ee334833e06c1a",
+      "split": "calibration",
+      "variant": "attack"
+    },
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-498d27beff1d",
+      "scenario_seed": 7647398673555631580,
+      "sequence_fingerprint": "8d6ad71254041b6692f0412ae355d6a15be2d7b23d85f45a9c750a6745e22ee7",
+      "split": "untouched_holdout",
+      "variant": "attack"
+    },
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-5fa87ee818c4",
+      "scenario_seed": 18284877344730839073,
+      "sequence_fingerprint": "a12b6c4772b2fc82f6382835993b8c5de54c347f07775f2097eb9b5164b4cf93",
+      "split": "calibration",
+      "variant": "attack"
+    },
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-64d42017958c",
+      "scenario_seed": 2881077008569930130,
+      "sequence_fingerprint": "747e97e07ab224e981d0d850694be2a1ac27c98d900642de047b34ba80254fbc",
+      "split": "calibration",
+      "variant": "attack"
+    },
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-6ba40cc47ad5",
+      "scenario_seed": 15110915026856024243,
+      "sequence_fingerprint": "cde0751e63fb8cb605773c9b3388fbbf5a5059d5ec3949bf844b675dcbe37f78",
+      "split": "test",
+      "variant": "attack"
+    },
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-a86e5d0c098d",
+      "scenario_seed": 15706994641039007657,
+      "sequence_fingerprint": "6e46d275ef55028da2acf7cef84c95961d6feb8afd5437b9d73daadaadaa8203",
+      "split": "untouched_holdout",
+      "variant": "attack"
+    },
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-ae2344dcd31e",
+      "scenario_seed": 18062747145147411859,
+      "sequence_fingerprint": "fe5d16d101ff4ed6e96fbd8926889bd26634e2ab16e179ee8ceb63a69c2f947e",
+      "split": "train",
+      "variant": "attack"
+    },
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-b186ce7fd35e",
+      "scenario_seed": 6345900456421291566,
+      "sequence_fingerprint": "c04c1f39237ae7bba0c4e5507b015a8cad9fb853787d8d302ca7d68246912ac6",
+      "split": "test",
+      "variant": "attack"
+    },
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-bc4c30a36c54",
+      "scenario_seed": 11203812329019655279,
+      "sequence_fingerprint": "d9619001621065d0462877a6f204faebd7b1f6e25c5ae39e737dddfea751aca0",
+      "split": "test",
+      "variant": "attack"
+    },
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-bfcf1f5bbe3e",
+      "scenario_seed": 17139534500519178722,
+      "sequence_fingerprint": "92339c498e49e371d07bdc9aa4118f55eee6d85df857a55e31556f40ed5c8783",
+      "split": "validation",
+      "variant": "attack"
+    },
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-c6e94af3df3c",
+      "scenario_seed": 5910742488327495501,
+      "sequence_fingerprint": "41dfca06050b6bb105fcdda5d933d68bba52f6e5ab29284edafdeed39d3b87b6",
+      "split": "test",
+      "variant": "attack"
+    },
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-e3a62a534daf",
+      "scenario_seed": 1933697002946648656,
+      "sequence_fingerprint": "36db9c970a2c13dd782aaecba5e84c1967fb3531248093d274d4ae4fb1b48833",
+      "split": "test",
+      "variant": "attack"
+    },
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-f245bb28e4e8",
+      "scenario_seed": 2622406951372325011,
+      "sequence_fingerprint": "0023fb930e07087c52d448e01bfb31e9356e91f0efe52682e39ec548f2ac9609",
+      "split": "calibration",
+      "variant": "attack"
+    },
+    {
+      "event_count": 15,
+      "scenario_id": "rw-attack-f2a1ee629d06",
+      "scenario_seed": 2450352977337960789,
+      "sequence_fingerprint": "108b3fa84013e6797eb932c7d32baa37e892b398d8c3ee974c3fb12a3cca3867",
+      "split": "validation",
+      "variant": "attack"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-0bdd6210547a",
+      "scenario_seed": 4018592454425279020,
+      "sequence_fingerprint": "d7890a1eb9fc355f4bc4f7b06ba90894f64806420230adb2955407e8f605c44f",
+      "split": "untouched_holdout",
+      "variant": "benign"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-1062623ef826",
+      "scenario_seed": 12220792892141130195,
+      "sequence_fingerprint": "1f9e4afe5b3c9a2c99027a7438dc659704b9f4fa73992127231239b267e5054a",
+      "split": "calibration",
+      "variant": "benign"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-2c2e1612fbaa",
+      "scenario_seed": 6941736743295665360,
+      "sequence_fingerprint": "4d4babdea64067892cc2c95ce51c40e5db2919bf30f3585c2c4780d1a2960e2e",
+      "split": "test",
+      "variant": "benign"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-3dc0a126a4a5",
+      "scenario_seed": 2919002413719737839,
+      "sequence_fingerprint": "f10145f81d3fe3c99f0bb58298dc9dfd14c8a9e50feab9f242c31116bfc4233f",
+      "split": "validation",
+      "variant": "benign"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-3fa1a0c9bfa0",
+      "scenario_seed": 13580270084210501690,
+      "sequence_fingerprint": "865d6f3d22a826e2faa4a8d5d2b0233d291e3196b1d94814870d0dbdbad0eb7d",
+      "split": "train",
+      "variant": "benign"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-453ef5d653d8",
+      "scenario_seed": 2193786237669335584,
+      "sequence_fingerprint": "bd75c76e9b830c5995f27f7eda441ea08c77330d6bb088092612f71ef23cb894",
+      "split": "validation",
+      "variant": "benign"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-5234aea47fb2",
+      "scenario_seed": 10369833858805568855,
+      "sequence_fingerprint": "e9649f40a3b359da1677f1e941a819667eba03a06f53ee027318012afbec65e6",
+      "split": "train",
+      "variant": "benign"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-60be2f127229",
+      "scenario_seed": 17398005146851072228,
+      "sequence_fingerprint": "f9f95ebf17aa452d6589a4ab31ff3ca013c1064811d7e649f3d90aacb940291f",
+      "split": "train",
+      "variant": "benign"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-60f56ffe890a",
+      "scenario_seed": 17710263852329709189,
+      "sequence_fingerprint": "600bdd8a81fdc17ce84700f4f1f8f83be643319546f4dee268b2a8c6e70d7d86",
+      "split": "validation",
+      "variant": "benign"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-6150418eb056",
+      "scenario_seed": 4169726273897436690,
+      "sequence_fingerprint": "45bb2a0da377dc8f92f70d81e65788a5bcbf88f1294bb0e5e3ee0eca36929614",
+      "split": "validation",
+      "variant": "benign"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-6166dfb43daa",
+      "scenario_seed": 10241372178475359182,
+      "sequence_fingerprint": "b6c39e4124071d13dbb4463af7d6d529a95e0c57c570865ee2ff62a5193a968a",
+      "split": "train",
+      "variant": "benign"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-7d709308c6b1",
+      "scenario_seed": 15153087152096665684,
+      "sequence_fingerprint": "f962ca1ca4e0d7350e5434ba1c38ee9c826a6764faaec0d46560932d678e3b73",
+      "split": "validation",
+      "variant": "benign"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-a5500a5d916e",
+      "scenario_seed": 15432066598421976486,
+      "sequence_fingerprint": "3e20ddc25d67ff65cee5e2cf31bf9b9c57d71a7c73c6e1ab30803d1b63436c39",
+      "split": "test",
+      "variant": "benign"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-a7d74652907c",
+      "scenario_seed": 10441912443316777233,
+      "sequence_fingerprint": "98a0d34759bb00ce6d5caa65697cdf5d804f89d765afc22480b7f3e8a7a0eaec",
+      "split": "calibration",
+      "variant": "benign"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-b5a68d4b8a67",
+      "scenario_seed": 14259136281519099783,
+      "sequence_fingerprint": "f0150ed41e6dd9e00493c50639774b5dc532dd3d985fbf426570f379a11770a0",
+      "split": "test",
+      "variant": "benign"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-c21f5cb81654",
+      "scenario_seed": 17157028149932999944,
+      "sequence_fingerprint": "ad1939d1d423ee6b113286987867641330efe70870de4e165d67dff2d005556e",
+      "split": "validation",
+      "variant": "benign"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-ca3d62550e41",
+      "scenario_seed": 9202476366237503565,
+      "sequence_fingerprint": "c6049b5ff355cfd2685fc6be5b7efed5b0d94645e4f2c23608567dcc180b9c45",
+      "split": "calibration",
+      "variant": "benign"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-d9f3fc5ad01e",
+      "scenario_seed": 11220701035226810309,
+      "sequence_fingerprint": "a1ec89028a21792f2cc8c72e9f72ff10769c0ba7fafd818a9bde189260e856a1",
+      "split": "test",
+      "variant": "benign"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-ea3638bc3685",
+      "scenario_seed": 11489852111934824544,
+      "sequence_fingerprint": "a9b550f59c849fc330bd178fd6109ae1dcd93ec9429175b34635e2c50f05f05d",
+      "split": "train",
+      "variant": "benign"
+    },
+    {
+      "event_count": 13,
+      "scenario_id": "rw-benign-f4cdbc38d338",
+      "scenario_seed": 2865508769484331358,
+      "sequence_fingerprint": "e46cb9f25b3a139e9ef0fb861787ac927bdf092e0c89a387c2843feda9566fe1",
+      "split": "validation",
+      "variant": "benign"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-01537817ed4c",
+      "scenario_seed": 3107871667005445115,
+      "sequence_fingerprint": "63c9507efcac815eceff9318ede9d4fcda601b0446108e773c35d10695fa8bb4",
+      "split": "train",
+      "variant": "fault"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-0e260d75b8b6",
+      "scenario_seed": 15480400015426212254,
+      "sequence_fingerprint": "6935f6dfa23bd0029d9f2af4a4c2b3cd5009be1d4dfa6bb06571758dbe0e21c0",
+      "split": "validation",
+      "variant": "fault"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-1346fb24c105",
+      "scenario_seed": 6489084469840825277,
+      "sequence_fingerprint": "6d7adb3cc2cf50667095edb9c079ad5d439c9e66dabe2947e013354a573d8160",
+      "split": "calibration",
+      "variant": "fault"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-1d3cf67348c1",
+      "scenario_seed": 8280921139655287535,
+      "sequence_fingerprint": "8e0819c36390e8f211ae9ba471d7fe09b5e22eb00da33d0abb2f292eabf9826b",
+      "split": "test",
+      "variant": "fault"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-5115dec8a174",
+      "scenario_seed": 14580206556378602261,
+      "sequence_fingerprint": "2aea10895225383bbd621ba273c694dc49c58934e6f2c7bee7e7bda89b58116a",
+      "split": "untouched_holdout",
+      "variant": "fault"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-5faf571bf2fd",
+      "scenario_seed": 7271827898016621107,
+      "sequence_fingerprint": "f4ee4ae4b3f7ba87e9af29c3551525c52b706d147817f14095d3a77890e37dbe",
+      "split": "calibration",
+      "variant": "fault"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-665a3a53ef55",
+      "scenario_seed": 3148454227310516483,
+      "sequence_fingerprint": "19ac76ee8d81ae762deddfa761d70cd1b09b4575568e5c94cf925691e48c35f4",
+      "split": "untouched_holdout",
+      "variant": "fault"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-6d50272b6c84",
+      "scenario_seed": 17041364642621139263,
+      "sequence_fingerprint": "08cf57783e3d2596aedc2badb23de05f1c72526249a4944f3707e2335b82fd3a",
+      "split": "test",
+      "variant": "fault"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-71ed17852145",
+      "scenario_seed": 9400042780711118153,
+      "sequence_fingerprint": "67eaef69f0af63b18f3c12084c45c6d26df25dc3de0e8ba785ddbd51acdde827",
+      "split": "untouched_holdout",
+      "variant": "fault"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-83919b4b7ffa",
+      "scenario_seed": 13706221227462986112,
+      "sequence_fingerprint": "3955599ed3213ff0150ecebde9d08a5a0d092187f6d13eb02c55d656488bb085",
+      "split": "test",
+      "variant": "fault"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-8e479fdf3deb",
+      "scenario_seed": 2125000767804017876,
+      "sequence_fingerprint": "44fd5b1bacf9c0952be06021782bea76e79debfa50e37e58f7b2a3ad5935fdf0",
+      "split": "untouched_holdout",
+      "variant": "fault"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-933a6d653213",
+      "scenario_seed": 2368415427970794483,
+      "sequence_fingerprint": "ef6abc958ec3be9bda4b388caecec012e5e3c72914de0f918ad3f6ea928c1e43",
+      "split": "validation",
+      "variant": "fault"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-98aaaddedc0d",
+      "scenario_seed": 14356440788345280815,
+      "sequence_fingerprint": "e4beafb839e2c1a222b468411faff90e3d24ca72cbcc703417e03caa0edc890a",
+      "split": "test",
+      "variant": "fault"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-a5dbac57cd99",
+      "scenario_seed": 10855690974856131784,
+      "sequence_fingerprint": "d254db72bf87dbd5d557cd4350c1a0d0d835a0817948b28c2260698b0e4f84ed",
+      "split": "test",
+      "variant": "fault"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-c4d7e853b55b",
+      "scenario_seed": 14016356246817362199,
+      "sequence_fingerprint": "df8491c7134ce6985c077bde4b36c371dfe339be54705d6c04284a69ab3874b5",
+      "split": "test",
+      "variant": "fault"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-c6a2e9eb79b8",
+      "scenario_seed": 12316800928217546967,
+      "sequence_fingerprint": "80627e00db5c0a2e95b1154c4beb87633d2ba9ebb5cb880b078d4f126e822268",
+      "split": "calibration",
+      "variant": "fault"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-d4d6d47e0702",
+      "scenario_seed": 2361928178892109261,
+      "sequence_fingerprint": "d68bd0c564216bb2eace9e11777bc797940afbe199e0d452ad774a8dfcd46551",
+      "split": "test",
+      "variant": "fault"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-ec11b7287b90",
+      "scenario_seed": 11884966393236537279,
+      "sequence_fingerprint": "4731834af7ff76326b4c379d7f0daa2085bb72c80a108bffe3feb5e7f6b705d7",
+      "split": "validation",
+      "variant": "fault"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-f4619fab3a36",
+      "scenario_seed": 16075359607999847789,
+      "sequence_fingerprint": "e1105f35e662bca67415f6b93f4624ffbc57242e51ab7833de63497b7140d640",
+      "split": "validation",
+      "variant": "fault"
+    },
+    {
+      "event_count": 7,
+      "scenario_id": "rw-fault-f76e70d01d61",
+      "scenario_seed": 5073974917587170939,
+      "sequence_fingerprint": "b678139e9ab83d4ccb836aa335b422a179955d593217f76419d8a33f5815c297",
+      "split": "validation",
+      "variant": "fault"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-044ea244bafb",
+      "scenario_seed": 8879083571569697218,
+      "sequence_fingerprint": "de45dcfb0dd91520bb17c12d07c3f50ef9566083b06b9fe9867e5a295f45f6a1",
+      "split": "calibration",
+      "variant": "normal"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-1a21b2f18d9e",
+      "scenario_seed": 3092750178544034020,
+      "sequence_fingerprint": "e46701035c8eec0385470f349f533c594590e9b748f2bc7a94af7e92fe39ce5a",
+      "split": "validation",
+      "variant": "normal"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-21d55862705e",
+      "scenario_seed": 10244629935096647060,
+      "sequence_fingerprint": "add4d2a8581cd162b6c1abe5ed372cd6d6debfd2c7f74e161a352d64d53cbe59",
+      "split": "validation",
+      "variant": "normal"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-285321641211",
+      "scenario_seed": 12760807312865578855,
+      "sequence_fingerprint": "109a5b036f0143d91f1c069ea6f1633ad16b3ef61e28840464cb38bf9841f7bf",
+      "split": "test",
+      "variant": "normal"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-2a39e73f02af",
+      "scenario_seed": 8601871808738070236,
+      "sequence_fingerprint": "50336d1d9b79aef85a455466286a04cd9b2da2ddbfb86706efb055e4b5b3393e",
+      "split": "calibration",
+      "variant": "normal"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-2f9974b7674f",
+      "scenario_seed": 8311479689632020153,
+      "sequence_fingerprint": "b8fea1b40622602f1bf97756f3422a50582bcb0e2430f09ec48fd47dfde0def8",
+      "split": "train",
+      "variant": "normal"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-584d5f7dbd48",
+      "scenario_seed": 8886653068000722183,
+      "sequence_fingerprint": "383daf321b5c1ef86c8dc5a03e53a486970f8c6927e2950f9faa55db41935049",
+      "split": "calibration",
+      "variant": "normal"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-5d7a8f116afa",
+      "scenario_seed": 3633387144877873610,
+      "sequence_fingerprint": "d86b14eb55b1aef5348e12c714b9e223bc5a9c035451dbba49a8571b85481ad4",
+      "split": "train",
+      "variant": "normal"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-62c4e06c3b9a",
+      "scenario_seed": 3312398228605942457,
+      "sequence_fingerprint": "a6fe07b86f10e0a4f65ac12c9565e1701f494d70ed6fff76c6a6b1995304eb4c",
+      "split": "train",
+      "variant": "normal"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-67c192a4f5fa",
+      "scenario_seed": 17883184660970094999,
+      "sequence_fingerprint": "8f2ebdcfffb46fdb641ddad0d552ede1e54a5254c88aec039f6a36e38221ab3a",
+      "split": "validation",
+      "variant": "normal"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-6e8b56890f72",
+      "scenario_seed": 7810862664232270868,
+      "sequence_fingerprint": "4f489ae3c7c2d193e1abaa1b4336feba7f4eb3037870bd6aa54f59eb2b5ed8fc",
+      "split": "train",
+      "variant": "normal"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-721d5811115b",
+      "scenario_seed": 6702672555974963696,
+      "sequence_fingerprint": "340099822e9bf84eb5b8f9d5d953f47a123004ed3af66583348464b47a7899f6",
+      "split": "calibration",
+      "variant": "normal"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-78bbe9c80834",
+      "scenario_seed": 17879213076278729740,
+      "sequence_fingerprint": "2e151f62cb15a226c4d76db63141ff8f5a203e66e77d1e0065058eb3b9e351b6",
+      "split": "train",
+      "variant": "normal"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-9f0518dea175",
+      "scenario_seed": 7013958830015048545,
+      "sequence_fingerprint": "5f5a233e352f02975c063626458e99418e367ae551d34c3f521bf0093636203a",
+      "split": "calibration",
+      "variant": "normal"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-a1785cb178c9",
+      "scenario_seed": 6791223658270359822,
+      "sequence_fingerprint": "e8e34a0d9e2ce10cc242e2541e848131c0a7e5b67bb45dbeaf38ed3198570ab1",
+      "split": "untouched_holdout",
+      "variant": "normal"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-a5e3c133f3c5",
+      "scenario_seed": 5276832777977982662,
+      "sequence_fingerprint": "94ed1f9e14380f302e5eda5988ad2c39ca024506952f4f6b4ef58b620b1cde7f",
+      "split": "test",
+      "variant": "normal"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-b886e8a78a88",
+      "scenario_seed": 1554757104400548028,
+      "sequence_fingerprint": "e800dbfe17a8b5db349573b66a09882e32ade6844fddc132763dd7f5f2acbb76",
+      "split": "train",
+      "variant": "normal"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-c08619ffde7e",
+      "scenario_seed": 8605685841071707254,
+      "sequence_fingerprint": "03be4cdd47dccd11546a9a4e4fbaaed4d70649c3c451fd0801c527fea6426fb3",
+      "split": "train",
+      "variant": "normal"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-e9314a924492",
+      "scenario_seed": 11773760867714798450,
+      "sequence_fingerprint": "ea6ad41505426cca8f3e3340e1c439ce70e83b60251fed3a7257b54422eb938f",
+      "split": "train",
+      "variant": "normal"
+    },
+    {
+      "event_count": 6,
+      "scenario_id": "rw-normal-ea7ed814babf",
+      "scenario_seed": 17361126499741580355,
+      "sequence_fingerprint": "538a0ee61390fdfd9bbe374450eee9d160b3ad89235be891777829104932aeb5",
+      "split": "untouched_holdout",
+      "variant": "normal"
+    }
+  ]
+}

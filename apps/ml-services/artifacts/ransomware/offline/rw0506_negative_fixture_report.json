@@ -1,0 +1,40 @@
+{
+  "evidence_id": "RW-050-6",
+  "check": "negative_fixtures",
+  "status": "pass",
+  "test_suite": {
+    "path": "apps/ml-services/tests/ransomware/test_negative_fixtures.py",
+    "passed": 6,
+    "failed": 0
+  },
+  "fixtures": {
+    "truth_leakage": {
+      "status": "pass",
+      "reason": "Forbidden deployed feature fields are rejected."
+    },
+    "orphan_asset": {
+      "status": "pass",
+      "reason": "Unknown asset IDs are rejected by the asset registry validation fixture."
+    },
+    "invalid_units": {
+      "status": "pass",
+      "reason": "Non-numeric metric values are rejected."
+    },
+    "stale_hash": {
+      "status": "pass",
+      "reason": "A stale 64-character payload hash is rejected when it does not match the canonical payload hash."
+    },
+    "duplicate_event_id": {
+      "status": "pass",
+      "reason": "Duplicate event IDs are detected by the negative fixture."
+    },
+    "cross_sector_graph_edge": {
+      "status": "pass",
+      "reason": "A synthetic energy-to-petrochemical graph edge is rejected by the sector graph integrity fixture."
+    }
+  },
+  "safety": {
+    "synthetic_only": true,
+    "real_action_executed": false
+  }
+}

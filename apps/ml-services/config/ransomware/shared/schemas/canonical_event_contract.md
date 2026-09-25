@@ -50,3 +50,45 @@ source-native fields.
 This contract represents observable telemetry and metadata only. It does not
 authorize control actions, account disabling, isolation, encryption, recovery
 execution, or interaction with protected OT/safety systems.
+
+## Payload-hash specification
+
+`payload_hash` is the lowercase hexadecimal SHA-256 digest of the canonical
+event payload.
+
+The hashed payload contains every canonical event field except `payload_hash`
+itself:
+
+- `event_id`
+- `event_time`
+- `ingest_time`
+- `schema_version`
+- `source_system`
+- `event_family`
+- `event_type`
+- `industry`
+- `site_id`
+- `asset_id`
+- `zone`
+- `actor_id`
+- `severity`
+- `attributes`
+- `metrics`
+- `quality_flags`
+- `data_provenance`
+
+The payload is serialized as UTF-8 encoded JSON using these deterministic
+rules:
+
+- Object/map keys are sorted lexicographically.
+- JSON uses compact separators with no insignificant whitespace.
+- Strings use standard JSON escaping.
+- `null` is represented as JSON `null`.
+- `quality_flags` preserves its canonical array order.
+- Numeric values are hashed in their already-normalized canonical form.
+- `payload_hash` is excluded from the hashed payload.
+
+The resulting SHA-256 digest is written as lowercase hexadecimal.
+
+The validator may therefore recompute the digest from the canonical event and
+reject an event when the supplied `payload_hash` does not match.

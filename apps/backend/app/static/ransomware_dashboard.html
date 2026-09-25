@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ransomware Resilience Command Center</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0b1020;
+            color: #eef2ff;
+        }
+        header {
+            padding: 24px 32px;
+            border-bottom: 1px solid #26304a;
+            background: #11182b;
+        }
+        header h1 { margin: 0 0 6px; font-size: 24px; }
+        header p { margin: 0; color: #9ca8c7; }
+
+        .container { padding: 24px 32px; max-width: 1400px; margin: auto; }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        button {
+            border: 1px solid #3a4768;
+            background: #18223a;
+            color: #eef2ff;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover { background: #22304e; }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: #11182b;
+            border: 1px solid #26304a;
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .label {
+            color: #8f9bb8;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        .value {
+            font-size: 25px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        .main {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 20px;
+        }
+
+        .panel {
+            background: #11182b;
+            border: 1px solid #26304a;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .panel h2 {
+            margin-top: 0;
+            font-size: 17px;
+        }
+
+        .decision {
+            font-size: 30px;
+            font-weight: bold;
+            margin: 12px 0;
+            text-transform: uppercase;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 9px 0;
+            border-bottom: 1px solid #202a42;
+        }
+
+        .asset {
+            display: inline-block;
+            background: #1d2944;
+            border-radius: 6px;
+            padding: 6px 9px;
+            margin: 4px;
+            font-size: 13px;
+        }
+
+        .notice {
+            margin-top: 16px;
+            padding: 12px;
+            border: 1px solid #6d5a27;
+            background: #211d12;
+            border-radius: 8px;
+            color: #f4d98b;
+        }
+
+        @media (max-width: 900px) {
+            .cards, .main { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Ransomware Resilience Command Center</h1>
+    <p>Energy & Petrochemical synthetic attack-use-case dashboard</p>
+</header>
+
+<div class="container">
+    <div class="controls">
+        <button onclick="loadScenario('normal')">Normal</button>
+        <button onclick="loadScenario('investigate')">Investigate</button>
+        <button onclick="loadScenario('high-risk')">High Risk</button>
+        <button onclick="loadScenario('unavailable')">Unavailable</button>
+        <button onclick="loadScenario('fallback')">Fallback</button>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <div class="label">Decision</div>
+            <div class="value" id="decision">—</div>
+        </div>
+        <div class="card">
+            <div class="label">Severity</div>
+            <div class="value" id="severity">—</div>
+        </div>
+        <div class="card">
+            <div class="label">Confidence</div>
+            <div class="value" id="confidence">—</div>
+        </div>
+        <div class="card">
+            <div class="label">Resilience Score</div>
+            <div class="value" id="resilience">—</div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="panel">
+            <h2>Attack / Incident Overview</h2>
+            <div class="row"><span>Industry</span><strong id="industry">—</strong></div>
+            <div class="row"><span>Site</span><strong id="site">—</strong></div>
+            <div class="row"><span>Site Type</span><strong id="siteType">—</strong></div>
+            <div class="row"><span>Scenario</span><strong id="scenario">—</strong></div>
+            <div class="row"><span>Incident Stage</span><strong id="stage">—</strong></div>
+
+            <h2 style="margin-top:22px;">Assets</h2>
+            <div><b>Affected:</b> <span id="affected">None</span></div>
+            <div><b>Suspected:</b> <span id="suspected">None</span></div>
+            <div><b>Protected:</b> <span id="protected">None</span></div>
+        </div>
+
+        <div class="panel">
+            <h2>Evidence & Recommendation</h2>
+            <p id="explanation">—</p>
+
+            <h2>Recommended Action</h2>
+            <p id="recommendation">—</p>
+
+            <div class="notice">
+                <strong>Safety boundary</strong><br>
+                Human approval required:
+                <span id="approval">—</span><br>
+                Real action executed:
+                <span id="executed">—</span><br>
+                Provenance:
+                <span id="provenance">—</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+async function loadScenario(name) {
+    const response = await fetch(`/mock/${name}`);
+    const data = await response.json();
+
+    document.getElementById("decision").textContent = data.decision;
+    document.getElementById("severity").textContent = data.severity;
+    document.getElementById("confidence").textContent =
+        `${Math.round(data.confidence * 100)}%`;
+    document.getElementById("resilience").textContent =
+        data.resilience_score;
+
+    document.getElementById("industry").textContent = data.industry;
+    document.getElementById("site").textContent = data.site_id;
+    document.getElementById("siteType").textContent = data.site_type;
+    document.getElementById("scenario").textContent = data.scenario_id;
+    document.getElementById("stage").textContent = data.incident_stage;
+
+    document.getElementById("affected").innerHTML =
+        renderAssets(data.affected_assets);
+    document.getElementById("suspected").innerHTML =
+        renderAssets(data.suspected_assets);
+    document.getElementById("protected").innerHTML =
+        renderAssets(data.protected_assets);
+
+    document.getElementById("explanation").textContent =
+        (data.explanations || []).join(" ");
+    document.getElementById("recommendation").textContent =
+        (data.recommended_actions || []).join(" ");
+
+    document.getElementById("approval").textContent =
+        data.human_approval_required;
+    document.getElementById("executed").textContent =
+        data.real_action_executed;
+    document.getElementById("provenance").textContent =
+        data.data_provenance;
+}
+
+function renderAssets(items) {
+    if (!items || items.length === 0) return "None";
+    return items.map(item => `<span class="asset">${item}</span>`).join("");
+}
+
+loadScenario("high-risk");
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "evidence_id": "RW-050-7",
+  "check": "untouched_holdout_guard",
+  "status": "pass",
+  "manifest": "apps\\ml-services\\artifacts\\ransomware\\offline\\split_assignment_manifest.json",
+  "holdout_scenario_count": 10,
+  "holdout_seed_count": 10,
+  "checks": {
+    "holdout_ids_present": true,
+    "holdout_ids_single_split": true,
+    "holdout_seeds_single_split": true,
+    "manifest_declares_holdout": true
+  },
+  "safety": {
+    "synthetic_only": true,
+    "real_action_executed": false
+  }
+}
