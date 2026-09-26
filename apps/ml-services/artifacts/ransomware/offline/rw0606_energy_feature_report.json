@@ -1,0 +1,29 @@
+{
+  "task_id": "RW-060-6",
+  "title": "Energy-sector feature extensions",
+  "status": "pass",
+  "synthetic_only": true,
+  "real_action_executed": false,
+  "supported_windows_minutes": [
+    1,
+    5,
+    15
+  ],
+  "window_semantics": "[T-W, T]",
+  "boundary_inclusive": true,
+  "features": [
+    "scada_visibility_ratio",
+    "substation_support_exposure_count",
+    "relay_management_adjacency_count",
+    "communications_health_ratio"
+  ],
+  "focused_tests": {
+    "passed": 18,
+    "failed": 0
+  },
+  "full_ransomware_suite": {
+    "passed": 237,
+    "failed": 0
+  },
+  "leakage_guard": "pass"
+}

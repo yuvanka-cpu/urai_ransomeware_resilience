@@ -881,3 +881,107 @@ def test_rw0605_graph_context_quality_features_exclude_event_outside_window() ->
     assert features["recovery_tier"] == 3
     assert features["protected_boundary_hops"] == 2
     assert features["critical_service_exposure_count"] == 0
+
+def test_rw0606_energy_sector_extensions():
+    events = [
+        _event(
+            0,
+            "service",
+            "service_state",
+            attributes={
+                "evidence_name": "service_state",
+                "observable_available": True,
+            },
+        ),
+        _event(
+            0,
+            "quality",
+            "ingestion_lag",
+            attributes={
+                "evidence_name": "ingestion_lag",
+                "observable_available": True,
+            },
+        ),
+        _event(
+            0,
+            "network",
+            "remote_sessions",
+            attributes={
+                "evidence_name": "remote_sessions",
+            },
+        ),
+        _event(
+            0,
+            "network",
+            "protected_zone_adjacency",
+            attributes={
+                "evidence_name": "protected_zone_adjacency",
+            },
+        ),
+        _event(
+            0,
+            "file",
+            "configuration_package_access",
+            attributes={
+                "evidence_name": "configuration_package_access",
+            },
+        ),
+        _event(
+            1,
+            "network",
+            "communications_health",
+            attributes={
+                "evidence_name": "communications_health",
+                "communications_available": True,
+            },
+        ),
+    ]
+
+    features = extract_window_features(
+        events,
+        datetime(
+            2026,
+            1,
+            1,
+            6,
+            1,
+            tzinfo=timezone.utc,
+        ),
+        1,
+    )
+
+    assert features["scada_visibility_ratio"] == 1.0
+    assert features["substation_support_exposure_count"] == 3
+    assert features["relay_management_adjacency_count"] == 2
+    assert features["communications_health_ratio"] == 1.0
+
+
+def test_rw0606_missing_energy_evidence_is_explicit():
+    events = [
+        _event(
+            0,
+            "identity",
+            "authentication_fan_out",
+            attributes={
+                "evidence_name": "authentication_fan_out",
+            },
+        )
+    ]
+
+    features = extract_window_features(
+        events,
+        datetime(
+            2026,
+            1,
+            1,
+            6,
+            1,
+            tzinfo=timezone.utc,
+        ),
+        1,
+    )
+
+    assert features["scada_visibility_ratio"] == 0.0
+    assert features["substation_support_exposure_count"] == 0
+    assert features["relay_management_adjacency_count"] == 0
+    assert features["communications_health_ratio"] == 0.0

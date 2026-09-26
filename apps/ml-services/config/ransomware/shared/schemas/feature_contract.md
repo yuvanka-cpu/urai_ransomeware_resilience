@@ -317,3 +317,35 @@ Focused RW-060-5 tests: 16 passed.
 Synthetic-only evidence: yes.
 
 Real action executed: false.
+
+## RW-060-6 — Energy-sector feature extensions
+
+Status: frozen
+
+Supported windows: 1, 5 and 15 minutes.
+
+Window semantics: `[T-W, T]`, inclusive of both boundaries.
+
+Energy features:
+- `scada_visibility_ratio`
+- `substation_support_exposure_count`
+- `relay_management_adjacency_count`
+- `communications_health_ratio`
+
+Definitions:
+- `scada_visibility_ratio` measures the proportion of applicable SCADA visibility evidence events carrying explicit observable availability evidence.
+- `substation_support_exposure_count` counts observable remote-session, zone-transition, protected-boundary and communications evidence associated with substation-support exposure.
+- `relay_management_adjacency_count` counts observable configuration, repository, maintenance and protected-boundary evidence associated with relay-management adjacency.
+- `communications_health_ratio` measures the proportion of applicable communications evidence events carrying explicit observable communications availability evidence.
+
+All features use observable event attributes and event-time windows only.
+
+Missing applicable evidence produces an explicit zero value and does not establish physical grid state.
+
+No relay interrogation, RTU/IED write, SCADA command, dispatch action, firewall change, isolation or other operational action is executed.
+
+No scenario truth, labels, future events or deployment-forbidden fields are used.
+
+Synthetic-only evidence: yes.
+
+Real action executed: false.

@@ -329,6 +329,43 @@ def _numeric_attribute_max(
 
     return _maximum(values)
 
+def _evidence_count(
+    events: Iterable[ObservableScenarioEvent],
+    evidence_names: frozenset[str],
+) -> int:
+    return sum(
+        1
+        for event in events
+        if _evidence_name(event) in evidence_names
+    )
+
+
+def _evidence_ratio(
+    events: Iterable[ObservableScenarioEvent],
+    evidence_names: frozenset[str],
+) -> float:
+    matching_events = [
+        event
+        for event in events
+        if _evidence_name(event) in evidence_names
+    ]
+
+    if not matching_events:
+        return 0.0
+
+    positive_count = sum(
+        1
+        for event in matching_events
+        if event.attributes.get("observable_available") is True
+        or event.attributes.get("communications_available") is True
+        or event.attributes.get("service_available") is True
+    )
+
+    return _ratio(
+        positive_count,
+        len(matching_events),
+    )
+
 
 def _ratio(
     numerator: float,
@@ -537,6 +574,66 @@ def extract_window_features(
         "stage_transition_score",
     )
 
+    # RW-060-6 energy-sector features.
+    scada_visibility_evidence = frozenset(
+        {
+            "service_state",
+            "service_health",
+            "ingestion_lag",
+            "stale_point_rate",
+            "log_termination",
+            "cross_source_correlation",
+        }
+    )
+
+    substation_support_evidence = frozenset(
+        {
+            "remote_session_fan_out",
+            "remote_sessions",
+            "zone_transitions",
+            "zone_path",
+            "protected_zone_adjacency",
+            "communications_health",
+            "communications_evidence",
+        }
+    )
+
+    relay_management_evidence = frozenset(
+        {
+            "configuration_package_access",
+            "configuration_file_activity",
+            "repository_history",
+            "protected_zone_adjacency",
+            "maintenance_approval",
+        }
+    )
+
+    communications_evidence = frozenset(
+        {
+            "communications_health",
+            "communications_evidence",
+        }
+    )
+
+    scada_visibility_ratio = _evidence_ratio(
+        window,
+        scada_visibility_evidence,
+    )
+
+    substation_support_exposure_count = _evidence_count(
+        window,
+        substation_support_evidence,
+    )
+
+    relay_management_adjacency_count = _evidence_count(
+        window,
+        relay_management_evidence,
+    )
+
+    communications_health_ratio = _evidence_ratio(
+        window,
+        communications_evidence,
+    )
     features: dict[str, float | int] = {
         "window_duration_minutes": duration_minutes,
         "event_count": len(window),
@@ -655,6 +752,16 @@ def extract_window_features(
             len(window),
         ),
         "stage_transition_score": stage_transition_score,
+        
+        # RW-060-6 energy-sector extensions.
+        "scada_visibility_ratio": scada_visibility_ratio,
+        "substation_support_exposure_count": (
+            substation_support_exposure_count
+        ),
+        "relay_management_adjacency_count": (
+            relay_management_adjacency_count
+        ),
+        "communications_health_ratio": communications_health_ratio,
 
         # Generic observable values.
         "observable_value_mean": _mean(values),
