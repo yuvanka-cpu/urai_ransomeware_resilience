@@ -1,0 +1,36 @@
+{
+  "task_id": "RW-070-1",
+  "title": "Deterministic high-signal evidence rules",
+  "status": "pass",
+  "ruleset_version": "1.0",
+  "rule_count": 6,
+  "rule_ids": [
+    "RW-070-R01",
+    "RW-070-R02",
+    "RW-070-R03",
+    "RW-070-R04",
+    "RW-070-R05",
+    "RW-070-R06"
+  ],
+  "rules": [
+    "unusual_privileged_access",
+    "cross_zone_movement",
+    "recovery_impairment",
+    "protected_boundary_adjacency",
+    "service_loss",
+    "maintenance_authorization_contradiction"
+  ],
+  "focused_tests": {
+    "passed": 11,
+    "failed": 0
+  },
+  "full_ransomware_suite": {
+    "passed": 263,
+    "failed": 0
+  },
+  "decision_separation": true,
+  "evidence_counters": true,
+  "explanations": true,
+  "synthetic_only": true,
+  "real_action_executed": false
+}

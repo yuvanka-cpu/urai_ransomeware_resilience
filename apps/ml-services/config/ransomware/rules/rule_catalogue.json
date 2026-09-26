@@ -1,0 +1,75 @@
+{
+  "ruleset_version": "1.0",
+  "status": "frozen",
+  "decision_separation": true,
+  "synthetic_only": true,
+  "real_action_executed": false,
+  "rules": [
+    {
+      "rule_id": "RW-070-R01",
+      "name": "unusual_privileged_access",
+      "description": "Privilege changes accompanied by unusual authentication or source-relationship evidence.",
+      "inputs": [
+        "privilege_change_count",
+        "auth_failure_count",
+        "new_source_relationship_count",
+        "distinct_source_host_count"
+      ]
+    },
+    {
+      "rule_id": "RW-070-R02",
+      "name": "cross_zone_movement",
+      "description": "Zone crossings accompanied by remote-administration or new-peer evidence.",
+      "inputs": [
+        "zone_crossing_count",
+        "remote_admin_peer_count",
+        "new_peer_ratio"
+      ]
+    },
+    {
+      "rule_id": "RW-070-R03",
+      "name": "recovery_impairment",
+      "description": "Observable backup/recovery conditions based on failure streak, backup age or restore-test age.",
+      "inputs": [
+        "backup_evidence_count",
+        "backup_failure_streak",
+        "backup_age_minutes",
+        "restore_test_age_days"
+      ]
+    },
+    {
+      "rule_id": "RW-070-R04",
+      "name": "protected_boundary_adjacency",
+      "description": "Observable protected-boundary hops or critical-service exposure.",
+      "inputs": [
+        "protected_boundary_hops",
+        "critical_service_exposure_count"
+      ]
+    },
+    {
+      "rule_id": "RW-070-R05",
+      "name": "service_loss",
+      "description": "Observable service evidence with incomplete service availability.",
+      "inputs": [
+        "service_evidence_count",
+        "service_availability_ratio"
+      ]
+    },
+    {
+      "rule_id": "RW-070-R06",
+      "name": "maintenance_authorization_contradiction",
+      "description": "Approved-maintenance evidence co-occurring with unusual privilege, relationship, zone or boundary evidence.",
+      "inputs": [
+        "maintenance_approval_ratio",
+        "privilege_change_count",
+        "zone_crossing_count",
+        "protected_boundary_hops",
+        "new_source_relationship_count"
+      ]
+    }
+  ],
+  "safety_boundary": [
+    "Rules emit evidence only and do not produce the final decision.",
+    "No containment, account disabling, network change, OT write or recovery action is executed."
+  ]
+}
