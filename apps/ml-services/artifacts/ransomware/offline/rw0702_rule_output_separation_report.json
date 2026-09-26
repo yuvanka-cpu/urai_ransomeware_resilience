@@ -1,0 +1,36 @@
+{
+  "task_id": "RW-070-2",
+  "title": "Deterministic rule output contract and decision separation",
+  "status": "pass",
+  "ruleset_version": "1.0",
+  "rule_count": 6,
+  "focused_tests": {
+    "passed": 16,
+    "failed": 0
+  },
+  "full_ransomware_suite": {
+    "passed": 268,
+    "failed": 0
+  },
+  "output_fields": [
+    "rule_id",
+    "version",
+    "triggered",
+    "evidence_count",
+    "explanation",
+    "inputs"
+  ],
+  "forbidden_decision_fields": [
+    "decision",
+    "severity",
+    "confidence",
+    "action",
+    "recommended_action",
+    "containment",
+    "recovery_action"
+  ],
+  "decision_separation": true,
+  "policy_fusion_separate": true,
+  "synthetic_only": true,
+  "real_action_executed": false
+}

@@ -151,3 +151,89 @@ def test_rw0701_unknown_rule_is_rejected():
         match="unknown rule_id",
     ):
         evaluate_rule("RW-070-R99", _base_features())
+
+
+def test_rw0702_rule_output_has_exact_evidence_contract():
+    features = _base_features()
+    result = evaluate_rule("RW-070-R01", features)
+
+    assert set(result.__dataclass_fields__) == {
+        "rule_id",
+        "version",
+        "triggered",
+        "evidence_count",
+        "explanation",
+        "inputs",
+    }
+
+    assert isinstance(result.evidence_count, int)
+    assert isinstance(result.explanation, str)
+    assert isinstance(result.inputs, tuple)
+
+
+def test_rw0702_rule_output_contains_no_decision_fields():
+    features = _base_features()
+
+    results = evaluate_rules(features)
+
+    forbidden = {
+        "decision",
+        "severity",
+        "confidence",
+        "action",
+        "recommended_action",
+        "containment",
+        "recovery_action",
+    }
+
+    for result in results:
+        assert not forbidden.intersection(result.__dataclass_fields__)
+
+
+def test_rw0702_triggered_rule_is_evidence_only():
+    features = _base_features()
+    features.update(
+        {
+            "privilege_change_count": 1,
+            "auth_failure_count": 2,
+        }
+    )
+
+    result = evaluate_rule("RW-070-R01", features)
+
+    assert result.triggered is True
+    assert result.evidence_count >= 1
+    assert result.explanation
+    assert not hasattr(result, "decision")
+    assert not hasattr(result, "severity")
+    assert not hasattr(result, "confidence")
+
+
+def test_rw0702_rule_contract_file_matches_output_separation():
+    from pathlib import Path
+
+    contract = Path(
+        "apps/ml-services/config/ransomware/rules/"
+        "rule_output_contract.md"
+    )
+    text = contract.read_text(encoding="utf-8")
+
+    assert "Rule output MUST NOT emit or assign:" in text
+    assert "`decision`" in text
+    assert "`severity`" in text
+    assert "`confidence`" in text
+    assert "Final policy, fusion, calibration and decision selection remain separate layers." in text
+
+
+def test_rw0702_ruleset_has_no_decision_api():
+    from config.ransomware.rules import deterministic_rules
+
+    public_names = {
+        name
+        for name in dir(deterministic_rules)
+        if not name.startswith("_")
+    }
+
+    assert "make_decision" not in public_names
+    assert "calculate_decision" not in public_names
+    assert "assign_decision" not in public_names
