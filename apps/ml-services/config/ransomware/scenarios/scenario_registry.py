@@ -74,7 +74,8 @@ def build_frozen_scenarios(
         scenario_id = _scenario_id(scenario, seed)
 
         split_material = (
-            f"{scenario_id}|{seed}|split"
+            f"{scenario.industry}|{scenario.use_case_id}|"
+            f"{scenario.variant}|split"
         )
         split_digest = hashlib.sha256(
             split_material.encode("utf-8")

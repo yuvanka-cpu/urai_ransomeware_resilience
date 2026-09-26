@@ -35,7 +35,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "calibration",
+      "split": "untouched_holdout",
       "use_case_id": "EN-RW-03",
       "variant": "attack"
     },
@@ -72,7 +72,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "train",
+      "split": "validation",
       "use_case_id": "EN-RW-04",
       "variant": "attack"
     },
@@ -149,7 +149,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "calibration",
+      "split": "train",
       "use_case_id": "EN-RW-02",
       "variant": "attack"
     },
@@ -187,7 +187,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "calibration",
+      "split": "train",
       "use_case_id": "EN-RW-02",
       "variant": "attack"
     },
@@ -259,7 +259,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "train",
+      "split": "validation",
       "use_case_id": "PC-RW-04",
       "variant": "attack"
     },
@@ -297,7 +297,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "train",
+      "split": "test",
       "use_case_id": "PC-RW-01",
       "variant": "attack"
     },
@@ -334,7 +334,7 @@
       "site_types": [
         "control_centre"
       ],
-      "split": "validation",
+      "split": "test",
       "use_case_id": "EN-RW-01",
       "variant": "attack"
     },
@@ -375,7 +375,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "validation",
+      "split": "calibration",
       "use_case_id": "EN-RW-05",
       "variant": "attack"
     },
@@ -414,7 +414,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "calibration",
+      "split": "untouched_holdout",
       "use_case_id": "EN-RW-03",
       "variant": "attack"
     },
@@ -454,7 +454,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "train",
+      "split": "validation",
       "use_case_id": "PC-RW-03",
       "variant": "attack"
     },
@@ -495,7 +495,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "validation",
+      "split": "calibration",
       "use_case_id": "EN-RW-05",
       "variant": "attack"
     },
@@ -534,7 +534,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "calibration",
+      "split": "test",
       "use_case_id": "PC-RW-02",
       "variant": "attack"
     },
@@ -576,7 +576,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "test",
+      "split": "validation",
       "use_case_id": "PC-RW-05",
       "variant": "attack"
     },
@@ -618,7 +618,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "untouched_holdout",
+      "split": "validation",
       "use_case_id": "PC-RW-05",
       "variant": "attack"
     },
@@ -655,7 +655,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "untouched_holdout",
+      "split": "validation",
       "use_case_id": "EN-RW-04",
       "variant": "attack"
     },
@@ -695,7 +695,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "untouched_holdout",
+      "split": "validation",
       "use_case_id": "PC-RW-03",
       "variant": "attack"
     },
@@ -733,7 +733,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "validation",
+      "split": "test",
       "use_case_id": "PC-RW-01",
       "variant": "attack"
     },
@@ -770,7 +770,7 @@
       "site_types": [
         "control_centre"
       ],
-      "split": "validation",
+      "split": "test",
       "use_case_id": "EN-RW-01",
       "variant": "attack"
     },
@@ -807,7 +807,7 @@
       "site_types": [
         "control_centre"
       ],
-      "split": "validation",
+      "split": "calibration",
       "use_case_id": "EN-RW-01",
       "variant": "benign"
     },
@@ -884,7 +884,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "train",
+      "split": "test",
       "use_case_id": "EN-RW-03",
       "variant": "benign"
     },
@@ -925,7 +925,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "test",
+      "split": "train",
       "use_case_id": "EN-RW-05",
       "variant": "benign"
     },
@@ -962,7 +962,7 @@
       "site_types": [
         "control_centre"
       ],
-      "split": "validation",
+      "split": "calibration",
       "use_case_id": "EN-RW-01",
       "variant": "benign"
     },
@@ -998,7 +998,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "test",
+      "split": "train",
       "use_case_id": "PC-RW-04",
       "variant": "benign"
     },
@@ -1036,7 +1036,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "validation",
+      "split": "untouched_holdout",
       "use_case_id": "PC-RW-01",
       "variant": "benign"
     },
@@ -1075,7 +1075,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "test",
+      "split": "train",
       "use_case_id": "PC-RW-02",
       "variant": "benign"
     },
@@ -1155,7 +1155,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "calibration",
+      "split": "untouched_holdout",
       "use_case_id": "EN-RW-02",
       "variant": "benign"
     },
@@ -1193,7 +1193,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "calibration",
+      "split": "untouched_holdout",
       "use_case_id": "EN-RW-02",
       "variant": "benign"
     },
@@ -1233,7 +1233,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "untouched_holdout",
+      "split": "test",
       "use_case_id": "PC-RW-03",
       "variant": "benign"
     },
@@ -1269,7 +1269,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "test",
+      "split": "train",
       "use_case_id": "PC-RW-04",
       "variant": "benign"
     },
@@ -1347,7 +1347,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "calibration",
+      "split": "train",
       "use_case_id": "EN-RW-04",
       "variant": "benign"
     },
@@ -1389,7 +1389,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "validation",
+      "split": "train",
       "use_case_id": "PC-RW-05",
       "variant": "benign"
     },
@@ -1426,7 +1426,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "untouched_holdout",
+      "split": "train",
       "use_case_id": "EN-RW-04",
       "variant": "benign"
     },
@@ -1466,7 +1466,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "untouched_holdout",
+      "split": "test",
       "use_case_id": "PC-RW-03",
       "variant": "benign"
     },
@@ -1505,7 +1505,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "calibration",
+      "split": "test",
       "use_case_id": "EN-RW-03",
       "variant": "benign"
     },
@@ -1544,7 +1544,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "test",
+      "split": "train",
       "use_case_id": "PC-RW-02",
       "variant": "benign"
     },
@@ -1585,7 +1585,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "test",
+      "split": "untouched_holdout",
       "use_case_id": "EN-RW-05",
       "variant": "fault"
     },
@@ -1627,7 +1627,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "validation",
+      "split": "untouched_holdout",
       "use_case_id": "PC-RW-05",
       "variant": "fault"
     },
@@ -1663,7 +1663,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "calibration",
+      "split": "validation",
       "use_case_id": "PC-RW-04",
       "variant": "fault"
     },
@@ -1700,7 +1700,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "untouched_holdout",
+      "split": "calibration",
       "use_case_id": "EN-RW-04",
       "variant": "fault"
     },
@@ -1738,7 +1738,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "test",
+      "split": "validation",
       "use_case_id": "PC-RW-01",
       "variant": "fault"
     },
@@ -1813,7 +1813,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "train",
+      "split": "test",
       "use_case_id": "EN-RW-02",
       "variant": "fault"
     },
@@ -1852,7 +1852,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "calibration",
+      "split": "validation",
       "use_case_id": "PC-RW-02",
       "variant": "fault"
     },
@@ -1891,7 +1891,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "calibration",
+      "split": "untouched_holdout",
       "use_case_id": "EN-RW-03",
       "variant": "fault"
     },
@@ -1929,7 +1929,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "train",
+      "split": "test",
       "use_case_id": "EN-RW-02",
       "variant": "fault"
     },
@@ -1965,7 +1965,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "train",
+      "split": "validation",
       "use_case_id": "PC-RW-04",
       "variant": "fault"
     },
@@ -2002,7 +2002,7 @@
       "site_types": [
         "control_centre"
       ],
-      "split": "validation",
+      "split": "train",
       "use_case_id": "EN-RW-01",
       "variant": "fault"
     },
@@ -2041,7 +2041,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "train",
+      "split": "validation",
       "use_case_id": "PC-RW-02",
       "variant": "fault"
     },
@@ -2081,7 +2081,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "calibration",
+      "split": "validation",
       "use_case_id": "PC-RW-03",
       "variant": "fault"
     },
@@ -2160,7 +2160,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "calibration",
+      "split": "untouched_holdout",
       "use_case_id": "EN-RW-05",
       "variant": "fault"
     },
@@ -2202,7 +2202,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "validation",
+      "split": "untouched_holdout",
       "use_case_id": "PC-RW-05",
       "variant": "fault"
     },
@@ -2279,7 +2279,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "calibration",
+      "split": "validation",
       "use_case_id": "PC-RW-03",
       "variant": "fault"
     },
@@ -2355,7 +2355,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "validation",
+      "split": "train",
       "use_case_id": "EN-RW-04",
       "variant": "normal"
     },
@@ -2395,7 +2395,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "train",
+      "split": "calibration",
       "use_case_id": "PC-RW-03",
       "variant": "normal"
     },
@@ -2436,7 +2436,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "calibration",
+      "split": "test",
       "use_case_id": "EN-RW-05",
       "variant": "normal"
     },
@@ -2474,7 +2474,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "train",
+      "split": "untouched_holdout",
       "use_case_id": "PC-RW-01",
       "variant": "normal"
     },
@@ -2513,7 +2513,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "validation",
+      "split": "untouched_holdout",
       "use_case_id": "PC-RW-02",
       "variant": "normal"
     },
@@ -2552,7 +2552,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "calibration",
+      "split": "untouched_holdout",
       "use_case_id": "PC-RW-02",
       "variant": "normal"
     },
@@ -2628,7 +2628,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "test",
+      "split": "calibration",
       "use_case_id": "PC-RW-03",
       "variant": "normal"
     },
@@ -2664,7 +2664,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "test",
+      "split": "validation",
       "use_case_id": "PC-RW-04",
       "variant": "normal"
     },
@@ -2743,7 +2743,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "calibration",
+      "split": "train",
       "use_case_id": "PC-RW-05",
       "variant": "normal"
     },
@@ -2784,7 +2784,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "untouched_holdout",
+      "split": "test",
       "use_case_id": "EN-RW-05",
       "variant": "normal"
     },
@@ -2823,7 +2823,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "train",
+      "split": "untouched_holdout",
       "use_case_id": "EN-RW-03",
       "variant": "normal"
     },
@@ -2862,7 +2862,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "calibration",
+      "split": "untouched_holdout",
       "use_case_id": "EN-RW-03",
       "variant": "normal"
     },
@@ -2904,7 +2904,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "test",
+      "split": "train",
       "use_case_id": "PC-RW-05",
       "variant": "normal"
     },
@@ -2942,7 +2942,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "validation",
+      "split": "calibration",
       "use_case_id": "EN-RW-02",
       "variant": "normal"
     },
@@ -2979,7 +2979,7 @@
         "control_centre",
         "substation"
       ],
-      "split": "untouched_holdout",
+      "split": "train",
       "use_case_id": "EN-RW-04",
       "variant": "normal"
     },
@@ -3054,7 +3054,7 @@
       "site_types": [
         "control_centre"
       ],
-      "split": "calibration",
+      "split": "untouched_holdout",
       "use_case_id": "EN-RW-01",
       "variant": "normal"
     },
@@ -3092,7 +3092,7 @@
         "refinery",
         "petrochemical_complex"
       ],
-      "split": "calibration",
+      "split": "untouched_holdout",
       "use_case_id": "PC-RW-01",
       "variant": "normal"
     }

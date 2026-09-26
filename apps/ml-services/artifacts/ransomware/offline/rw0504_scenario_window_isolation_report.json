@@ -5,7 +5,12 @@
     "exact_sequence_overlap_cross_split": true,
     "scenario_identity_pairs_unique": true,
     "scenario_ids_single_split": true,
-    "scenario_seeds_single_split": true
+    "scenario_seeds_single_split": true,
+    "near_duplicate_overlap": {
+      "status": "pass",
+      "threshold": 0.95,
+      "cross_split_pairs": 0
+    }
   },
   "evidence_id": "RW-050-4",
   "evidence_type": "scenario_window_split_isolation",
@@ -13,11 +18,13 @@
   "metrics": {
     "cross_split_duplicate_fingerprints": 0,
     "unique_sequence_fingerprints": 80,
-    "exact_sequence_overlap": "pass"
+    "exact_sequence_overlap": "pass",
+    "near_duplicate_cross_split_pairs": 0,
+    "near_duplicate_similarity_threshold": 0.95,
+    "near_duplicate_overlap": "pass"
   },
   "not_assessable": {
-    "asset_graph_variant_overlap": "Current repository contains static sector graph files, not scenario-specific graph variants.",
-    "near_duplicate_overlap": "No near-duplicate similarity corpus or detector is currently available; exact sequence fingerprints are checked for cross-split duplication."
+    "asset_graph_variant_overlap": "Not applicable to the current scenario corpus: repository graph definitions are static sector graphs and no scenario-specific asset-graph variants are generated."
   },
   "safety": {
     "real_action_executed": false,
