@@ -380,3 +380,38 @@ No scenario truth, labels, future events or deployment-forbidden fields are used
 Synthetic-only evidence: yes.
 
 Real action executed: false.
+
+## RW-060-9 — Offline/online feature parity
+
+Status: frozen
+
+Offline and online feature paths MUST use the same observable feature
+definitions and the same event-time window semantics.
+
+Canonical events are replayed through both paths using identical event
+content.
+
+The offline path applies deterministic event-time ordering.
+
+The online path applies partition-aware event-time ordering, bounded
+lateness and replay deduplication before invoking the shared feature
+extractor.
+
+Every produced feature field MUST be compared between the offline and online
+paths.
+
+Declared comparison tolerance: `1e-9`.
+
+A parity run passes only when:
+
+- 100% of feature fields are compared;
+- no unexplained mismatch remains;
+- identical canonical-event replays do not change feature values;
+- conflicting replays are rejected;
+- missing feature fields are treated as parity failures.
+
+No separate training/runtime feature formula is permitted.
+
+Synthetic-only evidence: yes.
+
+Real action executed: false.
