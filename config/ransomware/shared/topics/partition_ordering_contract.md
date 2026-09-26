@@ -35,3 +35,40 @@ The same ordering and chronology rules MUST be preserved across both online and 
 The contract is limited to synthetic defensive analysis.
 
 Protected OT dependencies remain read-only. No operational writes, account disabling, recovery execution, containment action, or other real-world action is authorized by this contract.
+
+## Bounded lateness
+
+Each partition MUST use an explicit non-negative allowed-lateness interval.
+
+For a partition, the watermark is:
+
+`max(event_time observed in partition) - allowed_lateness`
+
+An event is considered late when:
+
+`event_time < watermark`
+
+Late events MUST remain explicitly identifiable as telemetry-quality conditions. They must not be silently treated as current-time events.
+
+## Per-asset ordering
+
+The partition key is `site_id + asset_id`.
+
+Events within each partition MUST be deterministically ordered by:
+
+1. `event_time`
+2. `event_id`
+3. `ingest_time`
+
+This ordering is applied after replay deduplication.
+
+## Replay handling
+
+A repeated `event_id` with an identical canonical event payload MUST be deduplicated.
+
+A repeated `event_id` with a different canonical event payload MUST be rejected as a conflicting replay.
+
+Replay handling MUST occur before final per-partition event ordering.
+
+These rules apply consistently to online and offline processing.
+

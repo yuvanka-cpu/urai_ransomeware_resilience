@@ -1,0 +1,26 @@
+{
+  "task_id": "RW-060-8",
+  "title": "Event-time windows, watermarks, bounded lateness, partition ordering and replay handling",
+  "status": "pass",
+  "synthetic_only": true,
+  "real_action_executed": false,
+  "partition_key": "site_id + asset_id",
+  "ordering": [
+    "event_time",
+    "event_id",
+    "ingest_time"
+  ],
+  "watermark_definition": "max(event_time observed in partition) - allowed_lateness",
+  "late_event_rule": "event_time < watermark",
+  "replay_handling": {
+    "identical_event_id_and_payload": "deduplicate",
+    "same_event_id_with_different_payload": "reject as conflicting replay"
+  },
+  "focused_event_time_tests": 6,
+  "partition_contract_tests": 9,
+  "full_ransomware_suite": {
+    "passed": 248,
+    "failed": 0
+  },
+  "online_offline_semantics": "aligned"
+}

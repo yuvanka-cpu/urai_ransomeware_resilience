@@ -40,3 +40,28 @@ def test_online_and_offline_semantics_are_aligned():
     text = CONTRACT.read_text(encoding="utf-8")
 
     assert "both online and offline processing semantics" in text
+
+
+def test_bounded_lateness_is_defined():
+    text = CONTRACT.read_text(encoding="utf-8")
+
+    assert "allowed-lateness interval" in text
+    assert "max(event_time observed in partition) - allowed_lateness" in text
+    assert "`event_time < watermark`" in text
+
+
+def test_per_asset_ordering_is_deterministic():
+    text = CONTRACT.read_text(encoding="utf-8")
+
+    assert "site_id + asset_id" in text
+    assert "`event_time`" in text
+    assert "`event_id`" in text
+    assert "`ingest_time`" in text
+
+
+def test_replay_handling_is_defined():
+    text = CONTRACT.read_text(encoding="utf-8")
+
+    assert "identical canonical event payload" in text
+    assert "conflicting replay" in text
+    assert "before final per-partition event ordering" in text
