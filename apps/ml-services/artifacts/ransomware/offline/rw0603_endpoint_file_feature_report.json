@@ -1,0 +1,30 @@
+{
+  "task_id": "RW-060-3",
+  "title": "Endpoint and file window features",
+  "status": "pass",
+  "synthetic_only": true,
+  "real_action_executed": false,
+  "supported_windows_minutes": [1, 5, 15],
+  "endpoint_features": [
+    "rare_process_chain_score",
+    "unsigned_burst_count",
+    "task_service_creation_count"
+  ],
+  "file_features": [
+    "write_rate",
+    "rename_rate",
+    "extension_change_ratio",
+    "entropy_proxy"
+  ],
+  "window_semantics": "[T-W, T]",
+  "boundary_inclusive": true,
+  "focused_tests": {
+    "passed": 11,
+    "failed": 0
+  },
+  "full_ransomware_suite": {
+    "passed": 230,
+    "failed": 0
+  },
+  "leakage_guard": "pass"
+}

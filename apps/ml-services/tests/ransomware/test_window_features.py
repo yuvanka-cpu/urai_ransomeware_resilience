@@ -394,3 +394,173 @@ def test_rw0602_identity_features_exclude_event_outside_window() -> None:
     assert features["distinct_source_host_count"] == 1
     assert features["new_source_relationship_count"] == 1
     assert features["privilege_change_count"] == 0
+
+def test_rw0603_endpoint_file_features_manual_window() -> None:
+    events = [
+        _event(
+            0,
+            "endpoint",
+            "rare_process_chain",
+            attributes={
+                "rare_process_chain": True,
+                "unsigned_process": True,
+                "task_service_created": True,
+            },
+        ),
+        _event(
+            0,
+            "file",
+            "file_activity",
+            attributes={
+                "write_count": 100,
+                "rename_count": 20,
+                "extension_change_count": 5,
+                "file_event_count": 10,
+                "entropy_proxy": 0.82,
+            },
+        ),
+        _event(
+            0,
+            "endpoint",
+            "process_activity",
+            attributes={
+                "rare_process_chain": True,
+                "unsigned_process": True,
+            },
+        ),
+    ]
+
+    end_time = datetime(
+        2026,
+        1,
+        1,
+        6,
+        0,
+        tzinfo=timezone.utc,
+    )
+
+    features = extract_window_features(
+        events,
+        end_time,
+        1,
+    )
+
+    assert features["rare_process_chain_score"] == 0.666667
+    assert features["unsigned_burst_count"] == 2
+    assert features["task_service_creation_count"] == 1
+    assert features["write_rate"] == 100
+    assert features["rename_rate"] == 20
+    assert features["extension_change_ratio"] == 0.5
+    assert features["entropy_proxy"] == 0.82
+
+
+def test_rw0603_endpoint_file_rates_respect_five_minute_window() -> None:
+    events = [
+        _event(
+            0,
+            "file",
+            "file_activity",
+            attributes={
+                "write_count": 50,
+                "rename_count": 10,
+                "extension_change_count": 2,
+                "file_event_count": 4,
+                "entropy_proxy": 0.70,
+            },
+        ),
+        _event(
+            1,
+            "file",
+            "file_activity",
+            attributes={
+                "write_count": 25,
+                "rename_count": 5,
+                "extension_change_count": 1,
+                "file_event_count": 2,
+                "entropy_proxy": 0.80,
+            },
+        ),
+        _event(
+            5,
+            "file",
+            "file_activity",
+            attributes={
+                "write_count": 25,
+                "rename_count": 5,
+                "extension_change_count": 1,
+                "file_event_count": 2,
+                "entropy_proxy": 0.90,
+            },
+        ),
+    ]
+
+    end_time = datetime(
+        2026,
+        1,
+        1,
+        6,
+        5,
+        tzinfo=timezone.utc,
+    )
+
+    features = extract_window_features(
+        events,
+        end_time,
+        5,
+    )
+
+    # [06:00, 06:05] includes all three events.
+    assert features["write_rate"] == 20
+    assert features["rename_rate"] == 4
+    assert features["extension_change_ratio"] == 4 / 8
+    assert features["entropy_proxy"] == 0.8
+
+
+def test_rw0603_endpoint_file_features_exclude_event_outside_window() -> None:
+    events = [
+        _event(
+            0,
+            "file",
+            "file_activity",
+            attributes={
+                "write_count": 100,
+                "rename_count": 40,
+                "extension_change_count": 10,
+                "file_event_count": 20,
+                "entropy_proxy": 0.50,
+            },
+        ),
+        _event(
+            5,
+            "file",
+            "file_activity",
+            attributes={
+                "write_count": 20,
+                "rename_count": 5,
+                "extension_change_count": 1,
+                "file_event_count": 2,
+                "entropy_proxy": 0.90,
+            },
+        ),
+    ]
+
+    end_time = datetime(
+        2026,
+        1,
+        1,
+        6,
+        5,
+        tzinfo=timezone.utc,
+    )
+
+    features = extract_window_features(
+        events,
+        end_time,
+        1,
+    )
+
+    # Only the event at 06:05 belongs to [06:04, 06:05].
+    assert features["write_rate"] == 20
+    assert features["rename_rate"] == 5
+    assert features["extension_change_ratio"] == 0.5
+    assert features["entropy_proxy"] == 0.90

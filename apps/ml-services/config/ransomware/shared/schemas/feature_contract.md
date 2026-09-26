@@ -182,3 +182,53 @@ The features therefore remain suitable for leakage-safe offline/online feature c
 - Full ransomware test suite: 227 passed.
 - Synthetic-only processing: true.
 - Real operational action executed: false.
+
+## RW-060-3 — Endpoint and file feature extensions
+
+Status: frozen after implementation and test validation.
+
+Endpoint features:
+
+- `rare_process_chain_score`
+- `unsigned_burst_count`
+- `task_service_creation_count`
+
+File features:
+
+- `write_rate`
+- `rename_rate`
+- `extension_change_ratio`
+- `entropy_proxy`
+
+### Window semantics
+
+- Supported windows: 1, 5 and 15 minutes.
+- Window interval: `[T-W, T]`.
+- Both start and end boundaries are inclusive.
+- Write and rename rates are calculated over the selected window duration.
+- Extension-change ratio is calculated as extension-change events divided by file events.
+- Entropy proxy is calculated from observable entropy-proxy values.
+- Rare process-chain score is the proportion of window events explicitly marked as rare process-chain activity.
+- Unsigned burst and task/service creation are counted from observable boolean attributes.
+
+### Leakage boundary
+
+These features use only observable event attributes and do not use:
+
+- scenario identifiers
+- scenario seeds
+- ransomware ground truth
+- incident-stage truth
+- affected-asset truth
+- blast-radius truth
+- analyst disposition
+
+### RW-060-3 acceptance evidence
+
+- Manual endpoint/file feature test: passed.
+- Five-minute window boundary test: passed.
+- Outside-window exclusion test: passed.
+- Focused feature tests: 11 passed.
+- Full ransomware test suite: 230 passed.
+- Synthetic-only processing: true.
+- Real operational action executed: false.

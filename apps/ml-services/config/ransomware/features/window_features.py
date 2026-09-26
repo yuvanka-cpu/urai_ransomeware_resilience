@@ -265,8 +265,6 @@ def _count_true_attribute(
     events: Iterable[ObservableScenarioEvent],
     attribute_name: str,
 ) -> int:
-    """Count observable events where an explicit boolean attribute is True."""
-
     return sum(
         1
         for event in events
@@ -278,8 +276,6 @@ def _distinct_attribute_values(
     events: Iterable[ObservableScenarioEvent],
     attribute_name: str,
 ) -> int:
-    """Count distinct non-null observable attribute values."""
-
     values = {
         value
         for event in events
@@ -287,6 +283,55 @@ def _distinct_attribute_values(
     }
 
     return len(values)
+
+
+def _numeric_attribute_sum(
+    events: Iterable[ObservableScenarioEvent],
+    attribute_name: str,
+) -> float:
+    total = 0.0
+
+    for event in events:
+        value = event.attributes.get(attribute_name)
+
+        if isinstance(value, bool):
+            continue
+
+        if isinstance(value, (int, float)):
+            total += float(value)
+
+    return round(total, 6)
+
+
+def _numeric_attribute_mean(
+    events: Iterable[ObservableScenarioEvent],
+    attribute_name: str,
+) -> float:
+    values: list[float] = []
+
+    for event in events:
+        value = event.attributes.get(attribute_name)
+
+        if isinstance(value, bool):
+            continue
+
+        if isinstance(value, (int, float)):
+            values.append(float(value))
+
+    return _mean(values)
+
+
+def _ratio(
+    numerator: float,
+    denominator: float,
+) -> float:
+    if denominator <= 0:
+        return 0.0
+
+    return round(
+        numerator / denominator,
+        6,
+    )
 
 
 def extract_window_features(
@@ -309,6 +354,68 @@ def extract_window_features(
 
     values = _observable_values(window)
 
+    # RW-060-2 identity features.
+    auth_failure_count = _count_true_attribute(
+        window,
+        "auth_failure",
+    )
+
+    distinct_source_host_count = _distinct_attribute_values(
+        window,
+        "source_host",
+    )
+
+    new_source_relationship_count = _count_true_attribute(
+        window,
+        "new_source_relationship",
+    )
+
+    privilege_change_count = _count_true_attribute(
+        window,
+        "privilege_change",
+    )
+
+    # RW-060-3 endpoint/file features.
+    rare_process_chain_count = _count_true_attribute(
+        window,
+        "rare_process_chain",
+    )
+
+    unsigned_process_count = _count_true_attribute(
+        window,
+        "unsigned_process",
+    )
+
+    task_service_creation_count = _count_true_attribute(
+        window,
+        "task_service_created",
+    )
+
+    write_count = _numeric_attribute_sum(
+        window,
+        "write_count",
+    )
+
+    rename_count = _numeric_attribute_sum(
+        window,
+        "rename_count",
+    )
+
+    extension_change_count = _numeric_attribute_sum(
+        window,
+        "extension_change_count",
+    )
+
+    file_event_count = _numeric_attribute_sum(
+        window,
+        "file_event_count",
+    )
+
+    entropy_proxy = _numeric_attribute_mean(
+        window,
+        "entropy_proxy",
+    )
+
     features: dict[str, float | int] = {
         "window_duration_minutes": duration_minutes,
         "event_count": len(window),
@@ -319,25 +426,10 @@ def extract_window_features(
             window,
             "identity",
         ),
-
-        # RW-060-2 identity features.
-        # These use only observable event attributes and never scenario truth.
-        "auth_failure_count": _count_true_attribute(
-            window,
-            "auth_failure",
-        ),
-        "distinct_source_host_count": _distinct_attribute_values(
-            window,
-            "source_host",
-        ),
-        "new_source_relationship_count": _count_true_attribute(
-            window,
-            "new_source_relationship",
-        ),
-        "privilege_change_count": _count_true_attribute(
-            window,
-            "privilege_change",
-        ),
+        "auth_failure_count": auth_failure_count,
+        "distinct_source_host_count": distinct_source_host_count,
+        "new_source_relationship_count": new_source_relationship_count,
+        "privilege_change_count": privilege_change_count,
 
         "endpoint_evidence_count": _domain_count(
             window,
@@ -347,6 +439,27 @@ def extract_window_features(
             window,
             "file",
         ),
+
+        "rare_process_chain_score": _ratio(
+            rare_process_chain_count,
+            len(window),
+        ),
+        "unsigned_burst_count": unsigned_process_count,
+        "task_service_creation_count": task_service_creation_count,
+        "write_rate": round(
+            write_count / duration_minutes,
+            6,
+        ),
+        "rename_rate": round(
+            rename_count / duration_minutes,
+            6,
+        ),
+        "extension_change_ratio": _ratio(
+            extension_change_count,
+            file_event_count,
+        ),
+        "entropy_proxy": entropy_proxy,
+
         "network_evidence_count": _domain_count(
             window,
             "network",
