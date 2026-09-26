@@ -230,3 +230,167 @@ def test_rw0601_does_not_emit_ground_truth_features() -> None:
     }
 
     assert not forbidden.intersection(features)
+def test_rw0602_identity_features_manual_one_minute_window() -> None:
+    events = [
+        _event(
+            0,
+            "identity",
+            "authentication_failure",
+            attributes={
+                "auth_failure": True,
+                "source_host": "host-a",
+            },
+        ),
+        _event(
+            0,
+            "identity",
+            "authentication_failure",
+            attributes={
+                "auth_failure": True,
+                "source_host": "host-b",
+            },
+        ),
+        _event(
+            0,
+            "identity",
+            "new_source_relationship",
+            attributes={
+                "new_source_relationship": True,
+                "source_host": "host-c",
+            },
+        ),
+        _event(
+            0,
+            "identity",
+            "privilege_change",
+            attributes={
+                "privilege_change": True,
+                "source_host": "host-a",
+            },
+        ),
+    ]
+
+    end_time = datetime(
+        2026,
+        1,
+        1,
+        6,
+        0,
+        tzinfo=timezone.utc,
+    )
+
+    features = extract_window_features(
+        events,
+        end_time,
+        1,
+    )
+
+    assert features["auth_failure_count"] == 2
+    assert features["distinct_source_host_count"] == 3
+    assert features["new_source_relationship_count"] == 1
+    assert features["privilege_change_count"] == 1
+
+
+def test_rw0602_identity_features_respect_five_minute_boundary() -> None:
+    events = [
+        _event(
+            0,
+            "identity",
+            "authentication_failure",
+            attributes={
+                "auth_failure": True,
+                "source_host": "host-a",
+            },
+        ),
+        _event(
+            1,
+            "identity",
+            "authentication_failure",
+            attributes={
+                "auth_failure": True,
+                "source_host": "host-b",
+            },
+        ),
+        _event(
+            5,
+            "identity",
+            "privilege_change",
+            attributes={
+                "privilege_change": True,
+                "source_host": "host-c",
+            },
+        ),
+    ]
+
+    end_time = datetime(
+        2026,
+        1,
+        1,
+        6,
+        5,
+        tzinfo=timezone.utc,
+    )
+
+    features = extract_window_features(
+        events,
+        end_time,
+        5,
+    )
+
+    # [06:00, 06:05] is inclusive.
+    assert features["auth_failure_count"] == 2
+    assert features["distinct_source_host_count"] == 3
+    assert features["privilege_change_count"] == 1
+
+
+def test_rw0602_identity_features_exclude_event_outside_window() -> None:
+    events = [
+        _event(
+            0,
+            "identity",
+            "authentication_failure",
+            attributes={
+                "auth_failure": True,
+                "source_host": "host-a",
+            },
+        ),
+        _event(
+            1,
+            "identity",
+            "privilege_change",
+            attributes={
+                "privilege_change": True,
+                "source_host": "host-b",
+            },
+        ),
+        _event(
+            5,
+            "identity",
+            "new_source_relationship",
+            attributes={
+                "new_source_relationship": True,
+                "source_host": "host-c",
+            },
+        ),
+    ]
+
+    end_time = datetime(
+        2026,
+        1,
+        1,
+        6,
+        5,
+        tzinfo=timezone.utc,
+    )
+
+    features = extract_window_features(
+        events,
+        end_time,
+        1,
+    )
+
+    # Only event at 06:05 belongs to [06:04, 06:05].
+    assert features["auth_failure_count"] == 0
+    assert features["distinct_source_host_count"] == 1
+    assert features["new_source_relationship_count"] == 1
+    assert features["privilege_change_count"] == 0

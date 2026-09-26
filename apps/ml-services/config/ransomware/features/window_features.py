@@ -14,10 +14,6 @@ from config.ransomware.shared.validation.feature_leakage_guard import (
 WINDOW_MINUTES = (1, 5, 15)
 
 
-# Observable evidence taxonomy for RW-060-1.
-#
-# Classification is based on documented observable evidence names/event types.
-# No scenario truth, scenario identifiers, seeds, or post-event labels are used.
 EVIDENCE_DOMAINS: dict[str, frozenset[str]] = {
     "identity": frozenset(
         {
@@ -131,7 +127,6 @@ EVIDENCE_DOMAINS: dict[str, frozenset[str]] = {
             "proof_test_schedule",
             "recovery_tier",
             "time_synchronization",
-            "recovery_tier",
         }
     ),
     "quality": frozenset(
@@ -203,14 +198,22 @@ def _domain_count(
 def _unique_assets(
     events: Iterable[ObservableScenarioEvent],
 ) -> int:
-    return len({event.asset_id for event in events})
+    return len(
+        {
+            event.asset_id
+            for event in events
+        }
+    )
 
 
 def _unique_event_types(
     events: Iterable[ObservableScenarioEvent],
 ) -> int:
     return len(
-        {_evidence_name(event) for event in events}
+        {
+            _evidence_name(event)
+            for event in events
+        }
     )
 
 
@@ -242,14 +245,48 @@ def _mean(values: list[float]) -> float:
     if not values:
         return 0.0
 
-    return round(sum(values) / len(values), 6)
+    return round(
+        sum(values) / len(values),
+        6,
+    )
 
 
 def _maximum(values: list[float]) -> float:
     if not values:
         return 0.0
 
-    return round(max(values), 6)
+    return round(
+        max(values),
+        6,
+    )
+
+
+def _count_true_attribute(
+    events: Iterable[ObservableScenarioEvent],
+    attribute_name: str,
+) -> int:
+    """Count observable events where an explicit boolean attribute is True."""
+
+    return sum(
+        1
+        for event in events
+        if event.attributes.get(attribute_name) is True
+    )
+
+
+def _distinct_attribute_values(
+    events: Iterable[ObservableScenarioEvent],
+    attribute_name: str,
+) -> int:
+    """Count distinct non-null observable attribute values."""
+
+    values = {
+        value
+        for event in events
+        if (value := event.attributes.get(attribute_name)) is not None
+    }
+
+    return len(values)
 
 
 def extract_window_features(
@@ -279,41 +316,73 @@ def extract_window_features(
         "unique_evidence_type_count": _unique_event_types(window),
 
         "identity_evidence_count": _domain_count(
-            window, "identity"
+            window,
+            "identity",
         ),
+
+        # RW-060-2 identity features.
+        # These use only observable event attributes and never scenario truth.
+        "auth_failure_count": _count_true_attribute(
+            window,
+            "auth_failure",
+        ),
+        "distinct_source_host_count": _distinct_attribute_values(
+            window,
+            "source_host",
+        ),
+        "new_source_relationship_count": _count_true_attribute(
+            window,
+            "new_source_relationship",
+        ),
+        "privilege_change_count": _count_true_attribute(
+            window,
+            "privilege_change",
+        ),
+
         "endpoint_evidence_count": _domain_count(
-            window, "endpoint"
+            window,
+            "endpoint",
         ),
         "file_evidence_count": _domain_count(
-            window, "file"
+            window,
+            "file",
         ),
         "network_evidence_count": _domain_count(
-            window, "network"
+            window,
+            "network",
         ),
         "backup_evidence_count": _domain_count(
-            window, "backup"
+            window,
+            "backup",
         ),
         "service_evidence_count": _domain_count(
-            window, "service"
+            window,
+            "service",
         ),
         "asset_evidence_count": _domain_count(
-            window, "asset"
+            window,
+            "asset",
         ),
         "graph_evidence_count": _domain_count(
-            window, "graph"
+            window,
+            "graph",
         ),
         "context_evidence_count": _domain_count(
-            window, "context"
+            window,
+            "context",
         ),
         "quality_evidence_count": _domain_count(
-            window, "quality"
+            window,
+            "quality",
         ),
 
         "observable_value_mean": _mean(values),
         "observable_value_max": _maximum(values),
     }
 
-    validate_deployed_features(list(features))
+    validate_deployed_features(
+        list(features)
+    )
 
     return features
 

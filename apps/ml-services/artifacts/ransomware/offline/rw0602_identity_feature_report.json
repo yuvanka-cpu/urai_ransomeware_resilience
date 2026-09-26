@@ -1,0 +1,26 @@
+{
+  "task_id": "RW-060-2",
+  "title": "Identity window features",
+  "status": "pass",
+  "synthetic_only": true,
+  "real_action_executed": false,
+  "supported_windows_minutes": [1, 5, 15],
+  "features": [
+    "auth_failure_count",
+    "distinct_source_host_count",
+    "new_source_relationship_count",
+    "privilege_change_count"
+  ],
+  "window_semantics": "[T-W, T]",
+  "boundary_inclusive": true,
+  "manual_window_tests": {
+    "one_minute_identity_window": "pass",
+    "five_minute_boundary": "pass",
+    "outside_window_exclusion": "pass"
+  },
+  "full_ransomware_suite": {
+    "passed": 227,
+    "failed": 0
+  },
+  "leakage_guard": "pass"
+}

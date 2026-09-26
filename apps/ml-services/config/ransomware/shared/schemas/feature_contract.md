@@ -135,3 +135,50 @@ RW-060-1 passes when:
 7. Ground-truth fields are absent from deployed feature output.
 8. Focused RW-060-1 tests pass.
 9. The feature contract remains synchronized with the implementation.
+
+## RW-060-2 — Identity feature extensions
+
+Status: frozen after implementation and test validation.
+
+Identity features added to the observable window contract:
+
+- `auth_failure_count`
+- `distinct_source_host_count`
+- `new_source_relationship_count`
+- `privilege_change_count`
+
+All four features are computed exclusively from observable event attributes inside the event-time window.
+
+### Window semantics
+
+- Supported windows: 1, 5 and 15 minutes.
+- Window interval: `[T-W, T]`.
+- Both start and end boundaries are inclusive.
+- Events outside the selected event-time window are excluded.
+- Distinct source hosts are counted from the observable `source_host` attribute.
+- Authentication failures are counted from observable `auth_failure=true`.
+- New source relationships are counted from observable `new_source_relationship=true`.
+- Privilege changes are counted from observable `privilege_change=true`.
+
+### Leakage boundary
+
+These identity features do not use:
+
+- scenario identifiers
+- scenario seeds
+- ransomware ground truth
+- incident-stage truth
+- affected-asset truth
+- blast-radius truth
+- analyst disposition
+
+The features therefore remain suitable for leakage-safe offline/online feature computation.
+
+### RW-060-2 acceptance evidence
+
+- Manual 1-minute identity window test: passed.
+- Manual 5-minute boundary test: passed.
+- Event-outside-window test: passed.
+- Full ransomware test suite: 227 passed.
+- Synthetic-only processing: true.
+- Real operational action executed: false.
