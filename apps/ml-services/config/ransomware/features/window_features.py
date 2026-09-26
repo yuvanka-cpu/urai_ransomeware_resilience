@@ -10,9 +10,7 @@ from config.ransomware.shared.validation.feature_leakage_guard import (
     validate_deployed_features,
 )
 
-
 WINDOW_MINUTES = (1, 5, 15)
-
 
 EVIDENCE_DOMAINS: dict[str, frozenset[str]] = {
     "identity": frozenset(
@@ -154,7 +152,6 @@ def _window_events(
     duration_minutes: int,
 ) -> list[ObservableScenarioEvent]:
     start_time = end_time - timedelta(minutes=duration_minutes)
-
     return [
         event
         for event in events
@@ -164,10 +161,8 @@ def _window_events(
 
 def _evidence_name(event: ObservableScenarioEvent) -> str:
     explicit_name = event.attributes.get("evidence_name")
-
     if isinstance(explicit_name, str) and explicit_name:
         return explicit_name
-
     return event.event_type
 
 
@@ -187,7 +182,6 @@ def _domain_count(
     domain: str,
 ) -> int:
     evidence_names = EVIDENCE_DOMAINS[domain]
-
     return sum(
         1
         for event in events
@@ -198,23 +192,13 @@ def _domain_count(
 def _unique_assets(
     events: Iterable[ObservableScenarioEvent],
 ) -> int:
-    return len(
-        {
-            event.asset_id
-            for event in events
-        }
-    )
+    return len({event.asset_id for event in events})
 
 
 def _unique_event_types(
     events: Iterable[ObservableScenarioEvent],
 ) -> int:
-    return len(
-        {
-            _evidence_name(event)
-            for event in events
-        }
-    )
+    return len({_evidence_name(event) for event in events})
 
 
 def _observable_values(
@@ -300,7 +284,10 @@ def _numeric_attribute_sum(
         if isinstance(value, (int, float)):
             total += float(value)
 
-    return round(total, 6)
+    return round(
+        total,
+        6,
+    )
 
 
 def _numeric_attribute_mean(
@@ -319,6 +306,24 @@ def _numeric_attribute_mean(
             values.append(float(value))
 
     return _mean(values)
+
+
+def _numeric_attribute_max(
+    events: Iterable[ObservableScenarioEvent],
+    attribute_name: str,
+) -> float:
+    values: list[float] = []
+
+    for event in events:
+        value = event.attributes.get(attribute_name)
+
+        if isinstance(value, bool):
+            continue
+
+        if isinstance(value, (int, float)):
+            values.append(float(value))
+
+    return _maximum(values)
 
 
 def _ratio(
@@ -416,12 +421,84 @@ def extract_window_features(
         "entropy_proxy",
     )
 
+    # RW-060-4 network features.
+    remote_admin_peer_count = _numeric_attribute_sum(
+        window,
+        "remote_admin_peer_count",
+    )
+
+    new_peer_count = _numeric_attribute_sum(
+        window,
+        "new_peer_count",
+    )
+
+    zone_crossing_count = _count_true_attribute(
+        window,
+        "zone_crossing",
+    )
+
+    outbound_bytes = _numeric_attribute_sum(
+        window,
+        "outbound_bytes",
+    )
+
+    # RW-060-4 backup features.
+    backup_age_minutes = _numeric_attribute_max(
+        window,
+        "backup_age_minutes",
+    )
+
+    backup_failure_streak = _numeric_attribute_max(
+        window,
+        "backup_failure_streak",
+    )
+
+    immutable_copy_present_count = _count_true_attribute(
+        window,
+        "immutable_copy",
+    )
+
+    restore_test_age_days = _numeric_attribute_max(
+        window,
+        "restore_test_age_days",
+    )
+
+    # RW-060-4 service features.
+    service_events = [
+        event
+        for event in window
+        if event.attributes.get("service_available") is not None
+    ]
+
+    service_available_count = _count_true_attribute(
+        service_events,
+        "service_available",
+    )
+
+    # RW-060-4 quality/staleness features.
+    quality_events = [
+        event
+        for event in window
+        if event.attributes.get("stale_data") is not None
+    ]
+
+    stale_data_count = _count_true_attribute(
+        quality_events,
+        "stale_data",
+    )
+
+    ingestion_lag_seconds = _numeric_attribute_max(
+        window,
+        "ingestion_lag_seconds",
+    )
+
     features: dict[str, float | int] = {
         "window_duration_minutes": duration_minutes,
         "event_count": len(window),
         "unique_asset_count": _unique_assets(window),
         "unique_evidence_type_count": _unique_event_types(window),
 
+        # Identity.
         "identity_evidence_count": _domain_count(
             window,
             "identity",
@@ -431,6 +508,7 @@ def extract_window_features(
         "new_source_relationship_count": new_source_relationship_count,
         "privilege_change_count": privilege_change_count,
 
+        # Endpoint/file.
         "endpoint_evidence_count": _domain_count(
             window,
             "endpoint",
@@ -439,7 +517,6 @@ def extract_window_features(
             window,
             "file",
         ),
-
         "rare_process_chain_score": _ratio(
             rare_process_chain_count,
             len(window),
@@ -460,18 +537,43 @@ def extract_window_features(
         ),
         "entropy_proxy": entropy_proxy,
 
+        # Network.
         "network_evidence_count": _domain_count(
             window,
             "network",
         ),
+        "remote_admin_peer_count": int(
+            remote_admin_peer_count
+        ),
+        "new_peer_ratio": _ratio(
+            new_peer_count,
+            remote_admin_peer_count,
+        ),
+        "zone_crossing_count": zone_crossing_count,
+        "outbound_bytes": outbound_bytes,
+
+        # Backup.
         "backup_evidence_count": _domain_count(
             window,
             "backup",
         ),
+        "backup_age_minutes": backup_age_minutes,
+        "backup_failure_streak": backup_failure_streak,
+        "immutable_copy_present_count": immutable_copy_present_count,
+        "restore_test_age_days": restore_test_age_days,
+
+        # Service.
         "service_evidence_count": _domain_count(
             window,
             "service",
         ),
+        "service_availability_ratio": _ratio(
+            service_available_count,
+            len(service_events),
+        ),
+        "ingestion_lag_seconds": ingestion_lag_seconds,
+
+        # Quality.
         "asset_evidence_count": _domain_count(
             window,
             "asset",
@@ -488,7 +590,12 @@ def extract_window_features(
             window,
             "quality",
         ),
+        "stale_data_ratio": _ratio(
+            stale_data_count,
+            len(quality_events),
+        ),
 
+        # Generic observable values.
         "observable_value_mean": _mean(values),
         "observable_value_max": _maximum(values),
     }

@@ -1,0 +1,40 @@
+{
+  "task_id": "RW-060-4",
+  "title": "Network, backup, service and quality window features",
+  "status": "pass",
+  "synthetic_only": true,
+  "real_action_executed": false,
+  "supported_windows_minutes": [1, 5, 15],
+  "features": {
+    "network": [
+      "remote_admin_peer_count",
+      "new_peer_ratio",
+      "zone_crossing_count",
+      "outbound_bytes"
+    ],
+    "backup": [
+      "backup_age_minutes",
+      "backup_failure_streak",
+      "immutable_copy_present_count",
+      "restore_test_age_days"
+    ],
+    "service": [
+      "service_availability_ratio"
+    ],
+    "quality": [
+      "ingestion_lag_seconds",
+      "stale_data_ratio"
+    ]
+  },
+  "window_semantics": "[T-W, T]",
+  "boundary_inclusive": true,
+  "focused_tests": {
+    "passed": 14,
+    "failed": 0
+  },
+  "full_ransomware_suite": {
+    "passed": 233,
+    "failed": 0
+  },
+  "leakage_guard": "pass"
+}

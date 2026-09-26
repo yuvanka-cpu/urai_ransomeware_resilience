@@ -564,3 +564,185 @@ def test_rw0603_endpoint_file_features_exclude_event_outside_window() -> None:
     assert features["rename_rate"] == 5
     assert features["extension_change_ratio"] == 0.5
     assert features["entropy_proxy"] == 0.90
+
+def test_rw0604_network_backup_service_features_manual_window() -> None:
+    events = [
+        _event(
+            0,
+            "network",
+            "network_activity",
+            attributes={
+                "remote_admin_peer_count": 4,
+                "new_peer_count": 2,
+                "zone_crossing": True,
+                "outbound_bytes": 5000,
+            },
+        ),
+        _event(
+            0,
+            "backup",
+            "backup_health",
+            attributes={
+                "backup_age_minutes": 120,
+                "backup_failure_streak": 2,
+                "immutable_copy": True,
+                "restore_test_age_days": 10,
+            },
+        ),
+        _event(
+            0,
+            "service",
+            "service_state",
+            attributes={
+                "service_available": True,
+                "ingestion_lag_seconds": 30,
+                "stale_data": False,
+            },
+        ),
+        _event(
+            0,
+            "service",
+            "service_state",
+            attributes={
+                "service_available": False,
+                "ingestion_lag_seconds": 60,
+                "stale_data": True,
+            },
+        ),
+    ]
+
+    end_time = datetime(
+        2026,
+        1,
+        1,
+        6,
+        0,
+        tzinfo=timezone.utc,
+    )
+
+    features = extract_window_features(
+        events,
+        end_time,
+        1,
+    )
+
+    assert features["remote_admin_peer_count"] == 4
+    assert features["new_peer_ratio"] == 0.5
+    assert features["zone_crossing_count"] == 1
+    assert features["outbound_bytes"] == 5000
+
+    assert features["backup_age_minutes"] == 120
+    assert features["backup_failure_streak"] == 2
+    assert features["immutable_copy_present_count"] == 1
+    assert features["restore_test_age_days"] == 10
+
+    assert features["service_availability_ratio"] == 0.5
+    assert features["ingestion_lag_seconds"] == 60
+    assert features["stale_data_ratio"] == 0.5
+
+
+def test_rw0604_network_backup_service_features_respect_five_minute_window() -> None:
+    events = [
+        _event(
+            0,
+            "network",
+            "network_activity",
+            attributes={
+                "remote_admin_peer_count": 2,
+                "new_peer_count": 1,
+                "zone_crossing": True,
+                "outbound_bytes": 1000,
+            },
+        ),
+        _event(
+            1,
+            "network",
+            "network_activity",
+            attributes={
+                "remote_admin_peer_count": 4,
+                "new_peer_count": 2,
+                "zone_crossing": False,
+                "outbound_bytes": 2000,
+            },
+        ),
+        _event(
+            5,
+            "network",
+            "network_activity",
+            attributes={
+                "remote_admin_peer_count": 4,
+                "new_peer_count": 1,
+                "zone_crossing": True,
+                "outbound_bytes": 3000,
+            },
+        ),
+    ]
+
+    end_time = datetime(
+        2026,
+        1,
+        1,
+        6,
+        5,
+        tzinfo=timezone.utc,
+    )
+
+    features = extract_window_features(
+        events,
+        end_time,
+        5,
+    )
+
+    # [06:00, 06:05] includes all three events.
+    assert features["remote_admin_peer_count"] == 10
+    assert features["new_peer_ratio"] == 0.4
+    assert features["zone_crossing_count"] == 2
+    assert features["outbound_bytes"] == 6000
+
+
+def test_rw0604_network_backup_service_features_exclude_event_outside_window() -> None:
+    events = [
+        _event(
+            0,
+            "network",
+            "network_activity",
+            attributes={
+                "remote_admin_peer_count": 10,
+                "new_peer_count": 10,
+                "zone_crossing": True,
+                "outbound_bytes": 10000,
+            },
+        ),
+        _event(
+            5,
+            "network",
+            "network_activity",
+            attributes={
+                "remote_admin_peer_count": 2,
+                "new_peer_count": 1,
+                "zone_crossing": True,
+                "outbound_bytes": 500,
+            },
+        ),
+    ]
+
+    end_time = datetime(
+        2026,
+        1,
+        1,
+        6,
+        5,
+        tzinfo=timezone.utc,
+    )
+
+    features = extract_window_features(
+        events,
+        end_time,
+        1,
+    )
+
+    # Only the event at 06:05 belongs to [06:04, 06:05].
+    assert features["remote_admin_peer_count"] == 2
+    assert features["new_peer_ratio"] == 0.5
+    assert features["zone_crossing_count"] == 1
+    assert features["outbound_bytes"] == 500

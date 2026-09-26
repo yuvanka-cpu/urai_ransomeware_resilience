@@ -232,3 +232,44 @@ These features use only observable event attributes and do not use:
 - Full ransomware test suite: 230 passed.
 - Synthetic-only processing: true.
 - Real operational action executed: false.
+
+## RW-060-4 — Network, backup, service and quality window features
+
+Status: frozen
+
+Supported windows: 1, 5 and 15 minutes.
+
+Window semantics: `[T-W, T]`, inclusive of both boundaries.
+
+Network features:
+- `remote_admin_peer_count`
+- `new_peer_ratio`
+- `zone_crossing_count`
+- `outbound_bytes`
+
+Backup features:
+- `backup_age_minutes`
+- `backup_failure_streak`
+- `immutable_copy_present_count`
+- `restore_test_age_days`
+
+Service features:
+- `service_availability_ratio`
+
+Quality features:
+- `ingestion_lag_seconds`
+- `stale_data_ratio`
+
+All features are derived only from observable event attributes inside the selected event-time window.
+
+Service availability ratio uses only events containing `service_available` evidence.
+
+Stale-data ratio uses only events containing `stale_data` evidence.
+
+No scenario truth, labels, future events, or deployment-forbidden fields are used.
+
+Focused RW-060-4 tests: 14 passed.
+
+Synthetic-only evidence: yes.
+
+Real action executed: false.
