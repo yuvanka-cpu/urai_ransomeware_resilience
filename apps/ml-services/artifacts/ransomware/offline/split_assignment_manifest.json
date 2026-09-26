@@ -1,803 +1,3099 @@
 {
   "assignments": [
     {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-attack-05a01671c77c",
-      "scenario_seed": 2785423142390798022,
-      "split": "test",
-      "use_case_id": "energy_generation_support",
-      "variant": "attack"
-    },
-    {
       "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-attack-162affad5649",
-      "scenario_seed": 4489740029431180805,
+      "industry": "energy",
+      "observable_evidence": [
+        "service_state",
+        "log_termination",
+        "ingestion_lag",
+        "stale_point_rate",
+        "communications_health",
+        "file_evidence",
+        "failover_state",
+        "time_synchronization",
+        "cross_source_correlation"
+      ],
+      "principal_assets": [
+        "scada_application_server",
+        "historian",
+        "data_gateway",
+        "time_data_service",
+        "communications_link",
+        "operator_display_support",
+        "backup_infrastructure"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control"
+      ],
+      "scenario_family": "cyber_impact_vs_visibility_failure",
+      "scenario_id": "rw-attack-070891bdbaec",
+      "scenario_seed": 414719865673726175,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
       "split": "calibration",
-      "use_case_id": "petrochemical_refinery_it_support",
-      "variant": "attack"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-attack-1bf9d5a6ef7a",
-      "scenario_seed": 14795042922766326616,
-      "split": "validation",
-      "use_case_id": "petrochemical_engineering_historian_support",
-      "variant": "attack"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-attack-2390fc0d312f",
-      "scenario_seed": 4323375655046142951,
-      "split": "test",
-      "use_case_id": "energy_control_centre_support",
+      "use_case_id": "EN-RW-03",
       "variant": "attack"
     },
     {
       "asset_id": "energy-blr01-asset-engineering-001",
       "industry": "energy",
+      "observable_evidence": [
+        "configuration_package_access",
+        "signer_hash_metadata",
+        "account_changes",
+        "remote_sessions",
+        "unusual_file_operations",
+        "protected_zone_adjacency",
+        "maintenance_approval",
+        "repository_history"
+      ],
+      "principal_assets": [
+        "relay_management_server",
+        "engineering_repository",
+        "configuration_store",
+        "jump_host",
+        "protection_engineering_workstation",
+        "protected_relays",
+        "communications_dependencies"
+      ],
       "protected_boundary": "protection_safety",
-      "scenario_id": "rw-attack-285a34c1d1f8",
-      "scenario_seed": 4171697849741866395,
+      "protected_boundary_context": [
+        "protection_safety"
+      ],
+      "scenario_family": "relay_management_protected_boundary_adjacency",
+      "scenario_id": "rw-attack-0c9fd799e68d",
+      "scenario_seed": 15325366470023492746,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "train",
+      "use_case_id": "EN-RW-04",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "project_file_access",
+        "process_parent_relationships",
+        "signer_metadata",
+        "remote_sessions",
+        "service_state",
+        "configuration_activity",
+        "maintenance_approval",
+        "zone_path",
+        "backup_coverage"
+      ],
+      "principal_assets": [
+        "dcs_application_server",
+        "hmi_support",
+        "engineering_workstation",
+        "application_server",
+        "project_repository",
+        "jump_host",
+        "protected_controller_dependencies"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control"
+      ],
+      "scenario_family": "dcs_engineering_support_exposure",
+      "scenario_id": "rw-attack-1864c4aed9b3",
+      "scenario_seed": 14989097462552346516,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "test",
+      "use_case_id": "PC-RW-02",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "account_novelty",
+        "host_novelty",
+        "remote_session_fan_out",
+        "zone_transitions",
+        "configuration_file_activity",
+        "service_health",
+        "communications_health",
+        "maintenance_window_metadata"
+      ],
+      "principal_assets": [
+        "remote_access_gateway",
+        "jump_host",
+        "engineering_workstation",
+        "data_gateway",
+        "substation_communications_server",
+        "configuration_repository",
+        "protected_rtu_ied_relay_dependencies"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "remote_engineering_to_substation_support",
+      "scenario_id": "rw-attack-2cfbb8e9188d",
+      "scenario_seed": 3600851856198513022,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "calibration",
+      "use_case_id": "EN-RW-02",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "account_novelty",
+        "host_novelty",
+        "remote_session_fan_out",
+        "zone_transitions",
+        "configuration_file_activity",
+        "service_health",
+        "communications_health",
+        "maintenance_window_metadata"
+      ],
+      "principal_assets": [
+        "remote_access_gateway",
+        "jump_host",
+        "engineering_workstation",
+        "data_gateway",
+        "substation_communications_server",
+        "configuration_repository",
+        "protected_rtu_ied_relay_dependencies"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "remote_engineering_to_substation_support",
+      "scenario_id": "rw-attack-3d535c5fd6a4",
+      "scenario_seed": 2272149542909164534,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "calibration",
+      "use_case_id": "EN-RW-02",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "alarm_support_availability",
+        "engineering_access",
+        "project_file_integrity",
+        "authorization_records",
+        "service_changes",
+        "communications_evidence",
+        "protected_zone_adjacency",
+        "proof_test_schedule"
+      ],
+      "principal_assets": [
+        "alarm_support",
+        "safety_engineering_workstation",
+        "sis_project_repository",
+        "industrial_dmz_jump_host",
+        "dcs_interface",
+        "protected_sis_esd_controllers"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "protection_safety"
+      ],
+      "scenario_family": "sis_esd_alarm_support_adjacency",
+      "scenario_id": "rw-attack-42677f55525b",
+      "scenario_seed": 8652742424065643500,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "validation",
+      "use_case_id": "PC-RW-04",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "alarm_support_availability",
+        "engineering_access",
+        "project_file_integrity",
+        "authorization_records",
+        "service_changes",
+        "communications_evidence",
+        "protected_zone_adjacency",
+        "proof_test_schedule"
+      ],
+      "principal_assets": [
+        "alarm_support",
+        "safety_engineering_workstation",
+        "sis_project_repository",
+        "industrial_dmz_jump_host",
+        "dcs_interface",
+        "protected_sis_esd_controllers"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "protection_safety"
+      ],
+      "scenario_family": "sis_esd_alarm_support_adjacency",
+      "scenario_id": "rw-attack-4e3d94dcdd00",
+      "scenario_seed": 3106633638036568134,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "train",
+      "use_case_id": "PC-RW-04",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "authentication_novelty",
+        "vendor_schedule",
+        "session_fan_out",
+        "privilege_changes",
+        "file_transfer_bursts",
+        "zone_crossings",
+        "process_chains",
+        "service_health",
+        "account_criticality"
+      ],
+      "principal_assets": [
+        "enterprise_identity",
+        "enterprise_endpoint",
+        "vendor_gateway",
+        "industrial_dmz_jump_host",
+        "transfer_proxy_service",
+        "patch_staging",
+        "operations_support_account"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "enterprise_vendor_access_to_industrial_dmz",
+      "scenario_id": "rw-attack-69adc08473b6",
+      "scenario_seed": 17724269176385782519,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "train",
+      "use_case_id": "PC-RW-01",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "authentication_fan_out",
+        "new_source_host",
+        "privilege_transition",
+        "remote_connections",
+        "zone_crossings",
+        "rare_process_chain",
+        "file_write_rate",
+        "backup_health",
+        "service_availability"
+      ],
+      "principal_assets": [
+        "identity_service",
+        "enterprise_endpoint",
+        "remote_access_service",
+        "industrial_dmz_jump_host",
+        "historian_support",
+        "scada_application_support",
+        "backup_service"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "enterprise_identity_to_control_centre_support",
+      "scenario_id": "rw-attack-6ecce30389a5",
+      "scenario_seed": 8294254694461772525,
+      "site_types": [
+        "control_centre"
+      ],
+      "split": "validation",
+      "use_case_id": "EN-RW-01",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "backup_age",
+        "job_failure_streak",
+        "immutability_status",
+        "segmentation_status",
+        "restore_test_age",
+        "configuration_coverage",
+        "dependency_criticality",
+        "recovery_tier",
+        "suspicious_account_activity"
+      ],
+      "principal_assets": [
+        "backup_controller",
+        "immutable_copy_metadata",
+        "configuration_repository",
+        "historian",
+        "scada_support",
+        "identity_dependency",
+        "communications_support",
+        "recovery_documentation"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "energy_backup_impairment_and_recovery_prerequisites",
+      "scenario_id": "rw-attack-84543a4cae29",
+      "scenario_seed": 4077440509385933143,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "validation",
+      "use_case_id": "EN-RW-05",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "service_state",
+        "log_termination",
+        "ingestion_lag",
+        "stale_point_rate",
+        "communications_health",
+        "file_evidence",
+        "failover_state",
+        "time_synchronization",
+        "cross_source_correlation"
+      ],
+      "principal_assets": [
+        "scada_application_server",
+        "historian",
+        "data_gateway",
+        "time_data_service",
+        "communications_link",
+        "operator_display_support",
+        "backup_infrastructure"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control"
+      ],
+      "scenario_family": "cyber_impact_vs_visibility_failure",
+      "scenario_id": "rw-attack-879da6396666",
+      "scenario_seed": 14680750128249832494,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "calibration",
+      "use_case_id": "EN-RW-03",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "ingestion_lag",
+        "missing_records",
+        "stale_records",
+        "batch_event_gaps",
+        "unusual_file_operations",
+        "service_stops",
+        "database_health",
+        "communications_health",
+        "campaign_metadata",
+        "cross_source_correlation"
+      ],
+      "principal_assets": [
+        "process_historian",
+        "batch_server",
+        "quality_lims_interface",
+        "production_reporting",
+        "data_gateway",
+        "application_database",
+        "terminal_information_support",
+        "backup_service"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "production_information_cyber_vs_failure",
+      "scenario_id": "rw-attack-9058e13e7f5d",
+      "scenario_seed": 13806022997878467382,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "train",
+      "use_case_id": "PC-RW-03",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "backup_age",
+        "job_failure_streak",
+        "immutability_status",
+        "segmentation_status",
+        "restore_test_age",
+        "configuration_coverage",
+        "dependency_criticality",
+        "recovery_tier",
+        "suspicious_account_activity"
+      ],
+      "principal_assets": [
+        "backup_controller",
+        "immutable_copy_metadata",
+        "configuration_repository",
+        "historian",
+        "scada_support",
+        "identity_dependency",
+        "communications_support",
+        "recovery_documentation"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "energy_backup_impairment_and_recovery_prerequisites",
+      "scenario_id": "rw-attack-a3dba39e05da",
+      "scenario_seed": 12466105541877215714,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "validation",
+      "use_case_id": "EN-RW-05",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "project_file_access",
+        "process_parent_relationships",
+        "signer_metadata",
+        "remote_sessions",
+        "service_state",
+        "configuration_activity",
+        "maintenance_approval",
+        "zone_path",
+        "backup_coverage"
+      ],
+      "principal_assets": [
+        "dcs_application_server",
+        "hmi_support",
+        "engineering_workstation",
+        "application_server",
+        "project_repository",
+        "jump_host",
+        "protected_controller_dependencies"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control"
+      ],
+      "scenario_family": "dcs_engineering_support_exposure",
+      "scenario_id": "rw-attack-b476af29d593",
+      "scenario_seed": 16206484992765825447,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "calibration",
+      "use_case_id": "PC-RW-02",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "backup_age",
+        "backup_failures",
+        "restore_test_results",
+        "configuration_coverage",
+        "repository_integrity",
+        "service_dependencies",
+        "process_unit_criticality",
+        "recovery_tier",
+        "suspicious_admin_activity"
+      ],
+      "principal_assets": [
+        "backup_service",
+        "immutable_copy_metadata",
+        "dcs_project_repository",
+        "sis_project_repository",
+        "historian",
+        "batch_quality_system",
+        "maintenance_records",
+        "terminal_support",
+        "recovery_documentation"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "petrochemical_backup_impairment_and_startup_prerequisites",
+      "scenario_id": "rw-attack-bb3c02c1ec92",
+      "scenario_seed": 7650866176085368058,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "test",
+      "use_case_id": "PC-RW-05",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "backup_age",
+        "backup_failures",
+        "restore_test_results",
+        "configuration_coverage",
+        "repository_integrity",
+        "service_dependencies",
+        "process_unit_criticality",
+        "recovery_tier",
+        "suspicious_admin_activity"
+      ],
+      "principal_assets": [
+        "backup_service",
+        "immutable_copy_metadata",
+        "dcs_project_repository",
+        "sis_project_repository",
+        "historian",
+        "batch_quality_system",
+        "maintenance_records",
+        "terminal_support",
+        "recovery_documentation"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "petrochemical_backup_impairment_and_startup_prerequisites",
+      "scenario_id": "rw-attack-bdda848dfe26",
+      "scenario_seed": 11762835068544005951,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
       "split": "untouched_holdout",
-      "use_case_id": "energy_substation_support",
+      "use_case_id": "PC-RW-05",
       "variant": "attack"
     },
     {
       "asset_id": "energy-blr01-asset-identity-001",
       "industry": "energy",
+      "observable_evidence": [
+        "configuration_package_access",
+        "signer_hash_metadata",
+        "account_changes",
+        "remote_sessions",
+        "unusual_file_operations",
+        "protected_zone_adjacency",
+        "maintenance_approval",
+        "repository_history"
+      ],
+      "principal_assets": [
+        "relay_management_server",
+        "engineering_repository",
+        "configuration_store",
+        "jump_host",
+        "protection_engineering_workstation",
+        "protected_relays",
+        "communications_dependencies"
+      ],
       "protected_boundary": "protection_safety",
-      "scenario_id": "rw-attack-2b17998a10cc",
-      "scenario_seed": 1935834470243026215,
-      "split": "train",
-      "use_case_id": "energy_generation_support",
-      "variant": "attack"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-attack-49716928a662",
-      "scenario_seed": 9568683861142966875,
-      "split": "calibration",
-      "use_case_id": "energy_substation_support",
-      "variant": "attack"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-attack-498d27beff1d",
-      "scenario_seed": 7647398673555631580,
+      "protected_boundary_context": [
+        "protection_safety"
+      ],
+      "scenario_family": "relay_management_protected_boundary_adjacency",
+      "scenario_id": "rw-attack-c7ca854f341c",
+      "scenario_seed": 9926193102688604329,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
       "split": "untouched_holdout",
-      "use_case_id": "energy_engineering_historian_support",
-      "variant": "attack"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-attack-5fa87ee818c4",
-      "scenario_seed": 18284877344730839073,
-      "split": "calibration",
-      "use_case_id": "energy_transmission_distribution_support",
+      "use_case_id": "EN-RW-04",
       "variant": "attack"
     },
     {
       "asset_id": "energy-blr01-asset-identity-001",
       "industry": "petrochemical",
+      "observable_evidence": [
+        "ingestion_lag",
+        "missing_records",
+        "stale_records",
+        "batch_event_gaps",
+        "unusual_file_operations",
+        "service_stops",
+        "database_health",
+        "communications_health",
+        "campaign_metadata",
+        "cross_source_correlation"
+      ],
+      "principal_assets": [
+        "process_historian",
+        "batch_server",
+        "quality_lims_interface",
+        "production_reporting",
+        "data_gateway",
+        "application_database",
+        "terminal_information_support",
+        "backup_service"
+      ],
       "protected_boundary": "safety_system",
-      "scenario_id": "rw-attack-64d42017958c",
-      "scenario_seed": 2881077008569930130,
-      "split": "calibration",
-      "use_case_id": "petrochemical_terminal_loading_support",
-      "variant": "attack"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-attack-6ba40cc47ad5",
-      "scenario_seed": 15110915026856024243,
-      "split": "test",
-      "use_case_id": "petrochemical_refinery_it_support",
-      "variant": "attack"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-attack-a86e5d0c098d",
-      "scenario_seed": 15706994641039007657,
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "production_information_cyber_vs_failure",
+      "scenario_id": "rw-attack-d78b39e51f60",
+      "scenario_seed": 8031482863176840599,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
       "split": "untouched_holdout",
-      "use_case_id": "petrochemical_batch_quality_support",
-      "variant": "attack"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-attack-ae2344dcd31e",
-      "scenario_seed": 18062747145147411859,
-      "split": "train",
-      "use_case_id": "petrochemical_batch_quality_support",
-      "variant": "attack"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-attack-b186ce7fd35e",
-      "scenario_seed": 6345900456421291566,
-      "split": "test",
-      "use_case_id": "energy_transmission_distribution_support",
-      "variant": "attack"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-attack-bc4c30a36c54",
-      "scenario_seed": 11203812329019655279,
-      "split": "test",
-      "use_case_id": "petrochemical_engineering_historian_support",
-      "variant": "attack"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-attack-bfcf1f5bbe3e",
-      "scenario_seed": 17139534500519178722,
-      "split": "validation",
-      "use_case_id": "petrochemical_terminal_loading_support",
-      "variant": "attack"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-attack-c6e94af3df3c",
-      "scenario_seed": 5910742488327495501,
-      "split": "test",
-      "use_case_id": "energy_control_centre_support",
+      "use_case_id": "PC-RW-03",
       "variant": "attack"
     },
     {
       "asset_id": "energy-blr01-asset-identity-001",
       "industry": "petrochemical",
+      "observable_evidence": [
+        "authentication_novelty",
+        "vendor_schedule",
+        "session_fan_out",
+        "privilege_changes",
+        "file_transfer_bursts",
+        "zone_crossings",
+        "process_chains",
+        "service_health",
+        "account_criticality"
+      ],
+      "principal_assets": [
+        "enterprise_identity",
+        "enterprise_endpoint",
+        "vendor_gateway",
+        "industrial_dmz_jump_host",
+        "transfer_proxy_service",
+        "patch_staging",
+        "operations_support_account"
+      ],
       "protected_boundary": "safety_system",
-      "scenario_id": "rw-attack-e3a62a534daf",
-      "scenario_seed": 1933697002946648656,
-      "split": "test",
-      "use_case_id": "petrochemical_dcs_support",
-      "variant": "attack"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-attack-f245bb28e4e8",
-      "scenario_seed": 2622406951372325011,
-      "split": "calibration",
-      "use_case_id": "petrochemical_dcs_support",
-      "variant": "attack"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-attack-f2a1ee629d06",
-      "scenario_seed": 2450352977337960789,
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "enterprise_vendor_access_to_industrial_dmz",
+      "scenario_id": "rw-attack-d9a9c8020dce",
+      "scenario_seed": 10697580681027899480,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
       "split": "validation",
-      "use_case_id": "energy_engineering_historian_support",
+      "use_case_id": "PC-RW-01",
       "variant": "attack"
     },
     {
-      "asset_id": "energy-blr01-asset-engineering-001",
+      "asset_id": "energy-blr01-asset-identity-001",
       "industry": "energy",
+      "observable_evidence": [
+        "authentication_fan_out",
+        "new_source_host",
+        "privilege_transition",
+        "remote_connections",
+        "zone_crossings",
+        "rare_process_chain",
+        "file_write_rate",
+        "backup_health",
+        "service_availability"
+      ],
+      "principal_assets": [
+        "identity_service",
+        "enterprise_endpoint",
+        "remote_access_service",
+        "industrial_dmz_jump_host",
+        "historian_support",
+        "scada_application_support",
+        "backup_service"
+      ],
       "protected_boundary": "protection_safety",
-      "scenario_id": "rw-benign-0bdd6210547a",
-      "scenario_seed": 4018592454425279020,
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "enterprise_identity_to_control_centre_support",
+      "scenario_id": "rw-attack-efa24dad3d94",
+      "scenario_seed": 10437268908092168682,
+      "site_types": [
+        "control_centre"
+      ],
+      "split": "validation",
+      "use_case_id": "EN-RW-01",
+      "variant": "attack"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "authentication_fan_out",
+        "new_source_host",
+        "privilege_transition",
+        "remote_connections",
+        "zone_crossings",
+        "rare_process_chain",
+        "file_write_rate",
+        "backup_health",
+        "service_availability"
+      ],
+      "principal_assets": [
+        "identity_service",
+        "enterprise_endpoint",
+        "remote_access_service",
+        "industrial_dmz_jump_host",
+        "historian_support",
+        "scada_application_support",
+        "backup_service"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "enterprise_identity_to_control_centre_support",
+      "scenario_id": "rw-benign-14cea5e491d3",
+      "scenario_seed": 9766495821788512210,
+      "site_types": [
+        "control_centre"
+      ],
+      "split": "validation",
+      "use_case_id": "EN-RW-01",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "authentication_novelty",
+        "vendor_schedule",
+        "session_fan_out",
+        "privilege_changes",
+        "file_transfer_bursts",
+        "zone_crossings",
+        "process_chains",
+        "service_health",
+        "account_criticality"
+      ],
+      "principal_assets": [
+        "enterprise_identity",
+        "enterprise_endpoint",
+        "vendor_gateway",
+        "industrial_dmz_jump_host",
+        "transfer_proxy_service",
+        "patch_staging",
+        "operations_support_account"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "enterprise_vendor_access_to_industrial_dmz",
+      "scenario_id": "rw-benign-19461c5197da",
+      "scenario_seed": 15904201285558275922,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
       "split": "untouched_holdout",
-      "use_case_id": "energy_substation_support",
+      "use_case_id": "PC-RW-01",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "service_state",
+        "log_termination",
+        "ingestion_lag",
+        "stale_point_rate",
+        "communications_health",
+        "file_evidence",
+        "failover_state",
+        "time_synchronization",
+        "cross_source_correlation"
+      ],
+      "principal_assets": [
+        "scada_application_server",
+        "historian",
+        "data_gateway",
+        "time_data_service",
+        "communications_link",
+        "operator_display_support",
+        "backup_infrastructure"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control"
+      ],
+      "scenario_family": "cyber_impact_vs_visibility_failure",
+      "scenario_id": "rw-benign-235fef9960ab",
+      "scenario_seed": 853262934777353840,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "train",
+      "use_case_id": "EN-RW-03",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "backup_age",
+        "job_failure_streak",
+        "immutability_status",
+        "segmentation_status",
+        "restore_test_age",
+        "configuration_coverage",
+        "dependency_criticality",
+        "recovery_tier",
+        "suspicious_account_activity"
+      ],
+      "principal_assets": [
+        "backup_controller",
+        "immutable_copy_metadata",
+        "configuration_repository",
+        "historian",
+        "scada_support",
+        "identity_dependency",
+        "communications_support",
+        "recovery_documentation"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "energy_backup_impairment_and_recovery_prerequisites",
+      "scenario_id": "rw-benign-3621ede6712b",
+      "scenario_seed": 1705993589308973291,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "test",
+      "use_case_id": "EN-RW-05",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "authentication_fan_out",
+        "new_source_host",
+        "privilege_transition",
+        "remote_connections",
+        "zone_crossings",
+        "rare_process_chain",
+        "file_write_rate",
+        "backup_health",
+        "service_availability"
+      ],
+      "principal_assets": [
+        "identity_service",
+        "enterprise_endpoint",
+        "remote_access_service",
+        "industrial_dmz_jump_host",
+        "historian_support",
+        "scada_application_support",
+        "backup_service"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "enterprise_identity_to_control_centre_support",
+      "scenario_id": "rw-benign-380a5134c295",
+      "scenario_seed": 14999941912911786428,
+      "site_types": [
+        "control_centre"
+      ],
+      "split": "validation",
+      "use_case_id": "EN-RW-01",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "alarm_support_availability",
+        "engineering_access",
+        "project_file_integrity",
+        "authorization_records",
+        "service_changes",
+        "communications_evidence",
+        "protected_zone_adjacency",
+        "proof_test_schedule"
+      ],
+      "principal_assets": [
+        "alarm_support",
+        "safety_engineering_workstation",
+        "sis_project_repository",
+        "industrial_dmz_jump_host",
+        "dcs_interface",
+        "protected_sis_esd_controllers"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "protection_safety"
+      ],
+      "scenario_family": "sis_esd_alarm_support_adjacency",
+      "scenario_id": "rw-benign-3bb069ca75d2",
+      "scenario_seed": 5473983475017013145,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "test",
+      "use_case_id": "PC-RW-04",
       "variant": "benign"
     },
     {
       "asset_id": "energy-blr01-asset-engineering-001",
       "industry": "petrochemical",
+      "observable_evidence": [
+        "authentication_novelty",
+        "vendor_schedule",
+        "session_fan_out",
+        "privilege_changes",
+        "file_transfer_bursts",
+        "zone_crossings",
+        "process_chains",
+        "service_health",
+        "account_criticality"
+      ],
+      "principal_assets": [
+        "enterprise_identity",
+        "enterprise_endpoint",
+        "vendor_gateway",
+        "industrial_dmz_jump_host",
+        "transfer_proxy_service",
+        "patch_staging",
+        "operations_support_account"
+      ],
       "protected_boundary": "safety_system",
-      "scenario_id": "rw-benign-1062623ef826",
-      "scenario_seed": 12220792892141130195,
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "enterprise_vendor_access_to_industrial_dmz",
+      "scenario_id": "rw-benign-46ec6219189c",
+      "scenario_seed": 18073838788405312874,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "validation",
+      "use_case_id": "PC-RW-01",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "project_file_access",
+        "process_parent_relationships",
+        "signer_metadata",
+        "remote_sessions",
+        "service_state",
+        "configuration_activity",
+        "maintenance_approval",
+        "zone_path",
+        "backup_coverage"
+      ],
+      "principal_assets": [
+        "dcs_application_server",
+        "hmi_support",
+        "engineering_workstation",
+        "application_server",
+        "project_repository",
+        "jump_host",
+        "protected_controller_dependencies"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control"
+      ],
+      "scenario_family": "dcs_engineering_support_exposure",
+      "scenario_id": "rw-benign-5bed287e5adc",
+      "scenario_seed": 7658422190259516189,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "test",
+      "use_case_id": "PC-RW-02",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "backup_age",
+        "backup_failures",
+        "restore_test_results",
+        "configuration_coverage",
+        "repository_integrity",
+        "service_dependencies",
+        "process_unit_criticality",
+        "recovery_tier",
+        "suspicious_admin_activity"
+      ],
+      "principal_assets": [
+        "backup_service",
+        "immutable_copy_metadata",
+        "dcs_project_repository",
+        "sis_project_repository",
+        "historian",
+        "batch_quality_system",
+        "maintenance_records",
+        "terminal_support",
+        "recovery_documentation"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "petrochemical_backup_impairment_and_startup_prerequisites",
+      "scenario_id": "rw-benign-8b1729406449",
+      "scenario_seed": 11211237871681811876,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "train",
+      "use_case_id": "PC-RW-05",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "account_novelty",
+        "host_novelty",
+        "remote_session_fan_out",
+        "zone_transitions",
+        "configuration_file_activity",
+        "service_health",
+        "communications_health",
+        "maintenance_window_metadata"
+      ],
+      "principal_assets": [
+        "remote_access_gateway",
+        "jump_host",
+        "engineering_workstation",
+        "data_gateway",
+        "substation_communications_server",
+        "configuration_repository",
+        "protected_rtu_ied_relay_dependencies"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "remote_engineering_to_substation_support",
+      "scenario_id": "rw-benign-8f6de09cb7a0",
+      "scenario_seed": 9426767129576768004,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
       "split": "calibration",
-      "use_case_id": "petrochemical_engineering_historian_support",
-      "variant": "benign"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-benign-2c2e1612fbaa",
-      "scenario_seed": 6941736743295665360,
-      "split": "test",
-      "use_case_id": "petrochemical_refinery_it_support",
+      "use_case_id": "EN-RW-02",
       "variant": "benign"
     },
     {
       "asset_id": "energy-blr01-asset-engineering-001",
       "industry": "energy",
+      "observable_evidence": [
+        "account_novelty",
+        "host_novelty",
+        "remote_session_fan_out",
+        "zone_transitions",
+        "configuration_file_activity",
+        "service_health",
+        "communications_health",
+        "maintenance_window_metadata"
+      ],
+      "principal_assets": [
+        "remote_access_gateway",
+        "jump_host",
+        "engineering_workstation",
+        "data_gateway",
+        "substation_communications_server",
+        "configuration_repository",
+        "protected_rtu_ied_relay_dependencies"
+      ],
       "protected_boundary": "protection_safety",
-      "scenario_id": "rw-benign-3dc0a126a4a5",
-      "scenario_seed": 2919002413719737839,
-      "split": "validation",
-      "use_case_id": "energy_control_centre_support",
-      "variant": "benign"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-benign-3fa1a0c9bfa0",
-      "scenario_seed": 13580270084210501690,
-      "split": "train",
-      "use_case_id": "petrochemical_terminal_loading_support",
-      "variant": "benign"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-benign-453ef5d653d8",
-      "scenario_seed": 2193786237669335584,
-      "split": "validation",
-      "use_case_id": "energy_engineering_historian_support",
-      "variant": "benign"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-benign-5234aea47fb2",
-      "scenario_seed": 10369833858805568855,
-      "split": "train",
-      "use_case_id": "energy_generation_support",
-      "variant": "benign"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-benign-60be2f127229",
-      "scenario_seed": 17398005146851072228,
-      "split": "train",
-      "use_case_id": "energy_transmission_distribution_support",
-      "variant": "benign"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-benign-60f56ffe890a",
-      "scenario_seed": 17710263852329709189,
-      "split": "validation",
-      "use_case_id": "petrochemical_engineering_historian_support",
-      "variant": "benign"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-benign-6150418eb056",
-      "scenario_seed": 4169726273897436690,
-      "split": "validation",
-      "use_case_id": "petrochemical_refinery_it_support",
-      "variant": "benign"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-benign-6166dfb43daa",
-      "scenario_seed": 10241372178475359182,
-      "split": "train",
-      "use_case_id": "petrochemical_batch_quality_support",
-      "variant": "benign"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-benign-7d709308c6b1",
-      "scenario_seed": 15153087152096665684,
-      "split": "validation",
-      "use_case_id": "energy_substation_support",
-      "variant": "benign"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-benign-a5500a5d916e",
-      "scenario_seed": 15432066598421976486,
-      "split": "test",
-      "use_case_id": "petrochemical_terminal_loading_support",
-      "variant": "benign"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-benign-a7d74652907c",
-      "scenario_seed": 10441912443316777233,
+      "protected_boundary_context": [
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "remote_engineering_to_substation_support",
+      "scenario_id": "rw-benign-9ab4a3d8e8f5",
+      "scenario_seed": 16027380041232940082,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
       "split": "calibration",
-      "use_case_id": "energy_control_centre_support",
-      "variant": "benign"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-benign-b5a68d4b8a67",
-      "scenario_seed": 14259136281519099783,
-      "split": "test",
-      "use_case_id": "energy_engineering_historian_support",
-      "variant": "benign"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-benign-c21f5cb81654",
-      "scenario_seed": 17157028149932999944,
-      "split": "validation",
-      "use_case_id": "petrochemical_dcs_support",
-      "variant": "benign"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-benign-ca3d62550e41",
-      "scenario_seed": 9202476366237503565,
-      "split": "calibration",
-      "use_case_id": "petrochemical_batch_quality_support",
-      "variant": "benign"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-benign-d9f3fc5ad01e",
-      "scenario_seed": 11220701035226810309,
-      "split": "test",
-      "use_case_id": "energy_transmission_distribution_support",
+      "use_case_id": "EN-RW-02",
       "variant": "benign"
     },
     {
       "asset_id": "energy-blr01-asset-identity-001",
       "industry": "petrochemical",
+      "observable_evidence": [
+        "ingestion_lag",
+        "missing_records",
+        "stale_records",
+        "batch_event_gaps",
+        "unusual_file_operations",
+        "service_stops",
+        "database_health",
+        "communications_health",
+        "campaign_metadata",
+        "cross_source_correlation"
+      ],
+      "principal_assets": [
+        "process_historian",
+        "batch_server",
+        "quality_lims_interface",
+        "production_reporting",
+        "data_gateway",
+        "application_database",
+        "terminal_information_support",
+        "backup_service"
+      ],
       "protected_boundary": "safety_system",
-      "scenario_id": "rw-benign-ea3638bc3685",
-      "scenario_seed": 11489852111934824544,
-      "split": "train",
-      "use_case_id": "petrochemical_dcs_support",
-      "variant": "benign"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-benign-f4cdbc38d338",
-      "scenario_seed": 2865508769484331358,
-      "split": "validation",
-      "use_case_id": "energy_generation_support",
-      "variant": "benign"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-fault-01537817ed4c",
-      "scenario_seed": 3107871667005445115,
-      "split": "train",
-      "use_case_id": "energy_transmission_distribution_support",
-      "variant": "fault"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-fault-0e260d75b8b6",
-      "scenario_seed": 15480400015426212254,
-      "split": "validation",
-      "use_case_id": "energy_generation_support",
-      "variant": "fault"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-fault-1346fb24c105",
-      "scenario_seed": 6489084469840825277,
-      "split": "calibration",
-      "use_case_id": "petrochemical_batch_quality_support",
-      "variant": "fault"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-fault-1d3cf67348c1",
-      "scenario_seed": 8280921139655287535,
-      "split": "test",
-      "use_case_id": "energy_transmission_distribution_support",
-      "variant": "fault"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-fault-5115dec8a174",
-      "scenario_seed": 14580206556378602261,
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "production_information_cyber_vs_failure",
+      "scenario_id": "rw-benign-9c4af983d47c",
+      "scenario_seed": 11348059417173047423,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
       "split": "untouched_holdout",
-      "use_case_id": "energy_substation_support",
-      "variant": "fault"
+      "use_case_id": "PC-RW-03",
+      "variant": "benign"
     },
     {
       "asset_id": "energy-blr01-asset-engineering-001",
       "industry": "petrochemical",
+      "observable_evidence": [
+        "alarm_support_availability",
+        "engineering_access",
+        "project_file_integrity",
+        "authorization_records",
+        "service_changes",
+        "communications_evidence",
+        "protected_zone_adjacency",
+        "proof_test_schedule"
+      ],
+      "principal_assets": [
+        "alarm_support",
+        "safety_engineering_workstation",
+        "sis_project_repository",
+        "industrial_dmz_jump_host",
+        "dcs_interface",
+        "protected_sis_esd_controllers"
+      ],
       "protected_boundary": "safety_system",
-      "scenario_id": "rw-fault-5faf571bf2fd",
-      "scenario_seed": 7271827898016621107,
-      "split": "calibration",
-      "use_case_id": "petrochemical_terminal_loading_support",
-      "variant": "fault"
+      "protected_boundary_context": [
+        "protection_safety"
+      ],
+      "scenario_family": "sis_esd_alarm_support_adjacency",
+      "scenario_id": "rw-benign-a3d8cf183e7d",
+      "scenario_seed": 10791991162795615351,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "test",
+      "use_case_id": "PC-RW-04",
+      "variant": "benign"
     },
     {
       "asset_id": "energy-blr01-asset-engineering-001",
       "industry": "energy",
+      "observable_evidence": [
+        "backup_age",
+        "job_failure_streak",
+        "immutability_status",
+        "segmentation_status",
+        "restore_test_age",
+        "configuration_coverage",
+        "dependency_criticality",
+        "recovery_tier",
+        "suspicious_account_activity"
+      ],
+      "principal_assets": [
+        "backup_controller",
+        "immutable_copy_metadata",
+        "configuration_repository",
+        "historian",
+        "scada_support",
+        "identity_dependency",
+        "communications_support",
+        "recovery_documentation"
+      ],
       "protected_boundary": "protection_safety",
-      "scenario_id": "rw-fault-665a3a53ef55",
-      "scenario_seed": 3148454227310516483,
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "energy_backup_impairment_and_recovery_prerequisites",
+      "scenario_id": "rw-benign-b7640fc832ca",
+      "scenario_seed": 6979995637009437155,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "train",
+      "use_case_id": "EN-RW-05",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "configuration_package_access",
+        "signer_hash_metadata",
+        "account_changes",
+        "remote_sessions",
+        "unusual_file_operations",
+        "protected_zone_adjacency",
+        "maintenance_approval",
+        "repository_history"
+      ],
+      "principal_assets": [
+        "relay_management_server",
+        "engineering_repository",
+        "configuration_store",
+        "jump_host",
+        "protection_engineering_workstation",
+        "protected_relays",
+        "communications_dependencies"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "protection_safety"
+      ],
+      "scenario_family": "relay_management_protected_boundary_adjacency",
+      "scenario_id": "rw-benign-c5b5db4953f0",
+      "scenario_seed": 10950500093754485553,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "calibration",
+      "use_case_id": "EN-RW-04",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "backup_age",
+        "backup_failures",
+        "restore_test_results",
+        "configuration_coverage",
+        "repository_integrity",
+        "service_dependencies",
+        "process_unit_criticality",
+        "recovery_tier",
+        "suspicious_admin_activity"
+      ],
+      "principal_assets": [
+        "backup_service",
+        "immutable_copy_metadata",
+        "dcs_project_repository",
+        "sis_project_repository",
+        "historian",
+        "batch_quality_system",
+        "maintenance_records",
+        "terminal_support",
+        "recovery_documentation"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "petrochemical_backup_impairment_and_startup_prerequisites",
+      "scenario_id": "rw-benign-daa39e0b0ddc",
+      "scenario_seed": 5559509516610610471,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "validation",
+      "use_case_id": "PC-RW-05",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "configuration_package_access",
+        "signer_hash_metadata",
+        "account_changes",
+        "remote_sessions",
+        "unusual_file_operations",
+        "protected_zone_adjacency",
+        "maintenance_approval",
+        "repository_history"
+      ],
+      "principal_assets": [
+        "relay_management_server",
+        "engineering_repository",
+        "configuration_store",
+        "jump_host",
+        "protection_engineering_workstation",
+        "protected_relays",
+        "communications_dependencies"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "protection_safety"
+      ],
+      "scenario_family": "relay_management_protected_boundary_adjacency",
+      "scenario_id": "rw-benign-ddc48dcc2d83",
+      "scenario_seed": 1520355859329479808,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
       "split": "untouched_holdout",
-      "use_case_id": "energy_control_centre_support",
-      "variant": "fault"
+      "use_case_id": "EN-RW-04",
+      "variant": "benign"
     },
     {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-fault-6d50272b6c84",
-      "scenario_seed": 17041364642621139263,
-      "split": "test",
-      "use_case_id": "energy_control_centre_support",
-      "variant": "fault"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
+      "asset_id": "energy-blr01-asset-engineering-001",
       "industry": "petrochemical",
+      "observable_evidence": [
+        "ingestion_lag",
+        "missing_records",
+        "stale_records",
+        "batch_event_gaps",
+        "unusual_file_operations",
+        "service_stops",
+        "database_health",
+        "communications_health",
+        "campaign_metadata",
+        "cross_source_correlation"
+      ],
+      "principal_assets": [
+        "process_historian",
+        "batch_server",
+        "quality_lims_interface",
+        "production_reporting",
+        "data_gateway",
+        "application_database",
+        "terminal_information_support",
+        "backup_service"
+      ],
       "protected_boundary": "safety_system",
-      "scenario_id": "rw-fault-71ed17852145",
-      "scenario_seed": 9400042780711118153,
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "production_information_cyber_vs_failure",
+      "scenario_id": "rw-benign-ecea2a6b2b9d",
+      "scenario_seed": 4580093411088017635,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
       "split": "untouched_holdout",
-      "use_case_id": "petrochemical_engineering_historian_support",
+      "use_case_id": "PC-RW-03",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "service_state",
+        "log_termination",
+        "ingestion_lag",
+        "stale_point_rate",
+        "communications_health",
+        "file_evidence",
+        "failover_state",
+        "time_synchronization",
+        "cross_source_correlation"
+      ],
+      "principal_assets": [
+        "scada_application_server",
+        "historian",
+        "data_gateway",
+        "time_data_service",
+        "communications_link",
+        "operator_display_support",
+        "backup_infrastructure"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control"
+      ],
+      "scenario_family": "cyber_impact_vs_visibility_failure",
+      "scenario_id": "rw-benign-f3adbe265aef",
+      "scenario_seed": 7451598703371315773,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "calibration",
+      "use_case_id": "EN-RW-03",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "project_file_access",
+        "process_parent_relationships",
+        "signer_metadata",
+        "remote_sessions",
+        "service_state",
+        "configuration_activity",
+        "maintenance_approval",
+        "zone_path",
+        "backup_coverage"
+      ],
+      "principal_assets": [
+        "dcs_application_server",
+        "hmi_support",
+        "engineering_workstation",
+        "application_server",
+        "project_repository",
+        "jump_host",
+        "protected_controller_dependencies"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control"
+      ],
+      "scenario_family": "dcs_engineering_support_exposure",
+      "scenario_id": "rw-benign-fdeb5a3badc4",
+      "scenario_seed": 15939637524686557989,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "test",
+      "use_case_id": "PC-RW-02",
+      "variant": "benign"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "backup_age",
+        "job_failure_streak",
+        "immutability_status",
+        "segmentation_status",
+        "restore_test_age",
+        "configuration_coverage",
+        "dependency_criticality",
+        "recovery_tier",
+        "suspicious_account_activity"
+      ],
+      "principal_assets": [
+        "backup_controller",
+        "immutable_copy_metadata",
+        "configuration_repository",
+        "historian",
+        "scada_support",
+        "identity_dependency",
+        "communications_support",
+        "recovery_documentation"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "energy_backup_impairment_and_recovery_prerequisites",
+      "scenario_id": "rw-fault-0457f4b1c9ea",
+      "scenario_seed": 3120425703276293805,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "test",
+      "use_case_id": "EN-RW-05",
       "variant": "fault"
     },
     {
       "asset_id": "energy-blr01-asset-engineering-001",
       "industry": "petrochemical",
+      "observable_evidence": [
+        "backup_age",
+        "backup_failures",
+        "restore_test_results",
+        "configuration_coverage",
+        "repository_integrity",
+        "service_dependencies",
+        "process_unit_criticality",
+        "recovery_tier",
+        "suspicious_admin_activity"
+      ],
+      "principal_assets": [
+        "backup_service",
+        "immutable_copy_metadata",
+        "dcs_project_repository",
+        "sis_project_repository",
+        "historian",
+        "batch_quality_system",
+        "maintenance_records",
+        "terminal_support",
+        "recovery_documentation"
+      ],
       "protected_boundary": "safety_system",
-      "scenario_id": "rw-fault-83919b4b7ffa",
-      "scenario_seed": 13706221227462986112,
-      "split": "test",
-      "use_case_id": "petrochemical_batch_quality_support",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "petrochemical_backup_impairment_and_startup_prerequisites",
+      "scenario_id": "rw-fault-1ac971614ea8",
+      "scenario_seed": 13210609196246972120,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "validation",
+      "use_case_id": "PC-RW-05",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "alarm_support_availability",
+        "engineering_access",
+        "project_file_integrity",
+        "authorization_records",
+        "service_changes",
+        "communications_evidence",
+        "protected_zone_adjacency",
+        "proof_test_schedule"
+      ],
+      "principal_assets": [
+        "alarm_support",
+        "safety_engineering_workstation",
+        "sis_project_repository",
+        "industrial_dmz_jump_host",
+        "dcs_interface",
+        "protected_sis_esd_controllers"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "protection_safety"
+      ],
+      "scenario_family": "sis_esd_alarm_support_adjacency",
+      "scenario_id": "rw-fault-2524646b7fad",
+      "scenario_seed": 17238436136700077011,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "calibration",
+      "use_case_id": "PC-RW-04",
       "variant": "fault"
     },
     {
       "asset_id": "energy-blr01-asset-identity-001",
       "industry": "energy",
+      "observable_evidence": [
+        "configuration_package_access",
+        "signer_hash_metadata",
+        "account_changes",
+        "remote_sessions",
+        "unusual_file_operations",
+        "protected_zone_adjacency",
+        "maintenance_approval",
+        "repository_history"
+      ],
+      "principal_assets": [
+        "relay_management_server",
+        "engineering_repository",
+        "configuration_store",
+        "jump_host",
+        "protection_engineering_workstation",
+        "protected_relays",
+        "communications_dependencies"
+      ],
       "protected_boundary": "protection_safety",
-      "scenario_id": "rw-fault-8e479fdf3deb",
-      "scenario_seed": 2125000767804017876,
+      "protected_boundary_context": [
+        "protection_safety"
+      ],
+      "scenario_family": "relay_management_protected_boundary_adjacency",
+      "scenario_id": "rw-fault-254012787f32",
+      "scenario_seed": 2576402237435331787,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
       "split": "untouched_holdout",
-      "use_case_id": "energy_substation_support",
+      "use_case_id": "EN-RW-04",
       "variant": "fault"
     },
     {
       "asset_id": "energy-blr01-asset-engineering-001",
       "industry": "petrochemical",
+      "observable_evidence": [
+        "authentication_novelty",
+        "vendor_schedule",
+        "session_fan_out",
+        "privilege_changes",
+        "file_transfer_bursts",
+        "zone_crossings",
+        "process_chains",
+        "service_health",
+        "account_criticality"
+      ],
+      "principal_assets": [
+        "enterprise_identity",
+        "enterprise_endpoint",
+        "vendor_gateway",
+        "industrial_dmz_jump_host",
+        "transfer_proxy_service",
+        "patch_staging",
+        "operations_support_account"
+      ],
       "protected_boundary": "safety_system",
-      "scenario_id": "rw-fault-933a6d653213",
-      "scenario_seed": 2368415427970794483,
-      "split": "validation",
-      "use_case_id": "petrochemical_engineering_historian_support",
-      "variant": "fault"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-fault-98aaaddedc0d",
-      "scenario_seed": 14356440788345280815,
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "enterprise_vendor_access_to_industrial_dmz",
+      "scenario_id": "rw-fault-442bb87886fd",
+      "scenario_seed": 1765004279682324804,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
       "split": "test",
-      "use_case_id": "petrochemical_terminal_loading_support",
+      "use_case_id": "PC-RW-01",
       "variant": "fault"
     },
     {
       "asset_id": "energy-blr01-asset-engineering-001",
       "industry": "energy",
+      "observable_evidence": [
+        "configuration_package_access",
+        "signer_hash_metadata",
+        "account_changes",
+        "remote_sessions",
+        "unusual_file_operations",
+        "protected_zone_adjacency",
+        "maintenance_approval",
+        "repository_history"
+      ],
+      "principal_assets": [
+        "relay_management_server",
+        "engineering_repository",
+        "configuration_store",
+        "jump_host",
+        "protection_engineering_workstation",
+        "protected_relays",
+        "communications_dependencies"
+      ],
       "protected_boundary": "protection_safety",
-      "scenario_id": "rw-fault-a5dbac57cd99",
-      "scenario_seed": 10855690974856131784,
-      "split": "test",
-      "use_case_id": "energy_generation_support",
-      "variant": "fault"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-fault-c4d7e853b55b",
-      "scenario_seed": 14016356246817362199,
-      "split": "test",
-      "use_case_id": "petrochemical_refinery_it_support",
-      "variant": "fault"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-fault-c6a2e9eb79b8",
-      "scenario_seed": 12316800928217546967,
+      "protected_boundary_context": [
+        "protection_safety"
+      ],
+      "scenario_family": "relay_management_protected_boundary_adjacency",
+      "scenario_id": "rw-fault-4c2a467d6693",
+      "scenario_seed": 9018987647110912059,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
       "split": "calibration",
-      "use_case_id": "petrochemical_refinery_it_support",
+      "use_case_id": "EN-RW-04",
       "variant": "fault"
     },
     {
       "asset_id": "energy-blr01-asset-engineering-001",
       "industry": "energy",
+      "observable_evidence": [
+        "account_novelty",
+        "host_novelty",
+        "remote_session_fan_out",
+        "zone_transitions",
+        "configuration_file_activity",
+        "service_health",
+        "communications_health",
+        "maintenance_window_metadata"
+      ],
+      "principal_assets": [
+        "remote_access_gateway",
+        "jump_host",
+        "engineering_workstation",
+        "data_gateway",
+        "substation_communications_server",
+        "configuration_repository",
+        "protected_rtu_ied_relay_dependencies"
+      ],
       "protected_boundary": "protection_safety",
-      "scenario_id": "rw-fault-d4d6d47e0702",
-      "scenario_seed": 2361928178892109261,
-      "split": "test",
-      "use_case_id": "energy_engineering_historian_support",
-      "variant": "fault"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-fault-ec11b7287b90",
-      "scenario_seed": 11884966393236537279,
-      "split": "validation",
-      "use_case_id": "petrochemical_dcs_support",
-      "variant": "fault"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-fault-f4619fab3a36",
-      "scenario_seed": 16075359607999847789,
-      "split": "validation",
-      "use_case_id": "energy_engineering_historian_support",
-      "variant": "fault"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-fault-f76e70d01d61",
-      "scenario_seed": 5073974917587170939,
-      "split": "validation",
-      "use_case_id": "petrochemical_dcs_support",
-      "variant": "fault"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-normal-044ea244bafb",
-      "scenario_seed": 8879083571569697218,
-      "split": "calibration",
-      "use_case_id": "petrochemical_refinery_it_support",
-      "variant": "normal"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-normal-1a21b2f18d9e",
-      "scenario_seed": 3092750178544034020,
-      "split": "validation",
-      "use_case_id": "petrochemical_terminal_loading_support",
-      "variant": "normal"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-normal-21d55862705e",
-      "scenario_seed": 10244629935096647060,
-      "split": "validation",
-      "use_case_id": "energy_generation_support",
-      "variant": "normal"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-normal-285321641211",
-      "scenario_seed": 12760807312865578855,
-      "split": "test",
-      "use_case_id": "petrochemical_engineering_historian_support",
-      "variant": "normal"
-    },
-    {
-      "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-normal-2a39e73f02af",
-      "scenario_seed": 8601871808738070236,
-      "split": "calibration",
-      "use_case_id": "energy_substation_support",
-      "variant": "normal"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-normal-2f9974b7674f",
-      "scenario_seed": 8311479689632020153,
+      "protected_boundary_context": [
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "remote_engineering_to_substation_support",
+      "scenario_id": "rw-fault-4d7db2fa4272",
+      "scenario_seed": 16632011056591355325,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
       "split": "train",
-      "use_case_id": "energy_control_centre_support",
-      "variant": "normal"
+      "use_case_id": "EN-RW-02",
+      "variant": "fault"
     },
     {
-      "asset_id": "energy-blr01-asset-identity-001",
+      "asset_id": "energy-blr01-asset-engineering-001",
       "industry": "petrochemical",
+      "observable_evidence": [
+        "project_file_access",
+        "process_parent_relationships",
+        "signer_metadata",
+        "remote_sessions",
+        "service_state",
+        "configuration_activity",
+        "maintenance_approval",
+        "zone_path",
+        "backup_coverage"
+      ],
+      "principal_assets": [
+        "dcs_application_server",
+        "hmi_support",
+        "engineering_workstation",
+        "application_server",
+        "project_repository",
+        "jump_host",
+        "protected_controller_dependencies"
+      ],
       "protected_boundary": "safety_system",
-      "scenario_id": "rw-normal-584d5f7dbd48",
-      "scenario_seed": 8886653068000722183,
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control"
+      ],
+      "scenario_family": "dcs_engineering_support_exposure",
+      "scenario_id": "rw-fault-77df187037f7",
+      "scenario_seed": 2964139157655870308,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
       "split": "calibration",
-      "use_case_id": "petrochemical_batch_quality_support",
-      "variant": "normal"
+      "use_case_id": "PC-RW-02",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "service_state",
+        "log_termination",
+        "ingestion_lag",
+        "stale_point_rate",
+        "communications_health",
+        "file_evidence",
+        "failover_state",
+        "time_synchronization",
+        "cross_source_correlation"
+      ],
+      "principal_assets": [
+        "scada_application_server",
+        "historian",
+        "data_gateway",
+        "time_data_service",
+        "communications_link",
+        "operator_display_support",
+        "backup_infrastructure"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control"
+      ],
+      "scenario_family": "cyber_impact_vs_visibility_failure",
+      "scenario_id": "rw-fault-8a9f266b7b54",
+      "scenario_seed": 12243501171173616736,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "calibration",
+      "use_case_id": "EN-RW-03",
+      "variant": "fault"
     },
     {
       "asset_id": "energy-blr01-asset-identity-001",
       "industry": "energy",
+      "observable_evidence": [
+        "account_novelty",
+        "host_novelty",
+        "remote_session_fan_out",
+        "zone_transitions",
+        "configuration_file_activity",
+        "service_health",
+        "communications_health",
+        "maintenance_window_metadata"
+      ],
+      "principal_assets": [
+        "remote_access_gateway",
+        "jump_host",
+        "engineering_workstation",
+        "data_gateway",
+        "substation_communications_server",
+        "configuration_repository",
+        "protected_rtu_ied_relay_dependencies"
+      ],
       "protected_boundary": "protection_safety",
-      "scenario_id": "rw-normal-5d7a8f116afa",
-      "scenario_seed": 3633387144877873610,
+      "protected_boundary_context": [
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "remote_engineering_to_substation_support",
+      "scenario_id": "rw-fault-8c88fa035ecb",
+      "scenario_seed": 18393211067073093995,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
       "split": "train",
-      "use_case_id": "energy_transmission_distribution_support",
-      "variant": "normal"
+      "use_case_id": "EN-RW-02",
+      "variant": "fault"
     },
     {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-normal-62c4e06c3b9a",
-      "scenario_seed": 3312398228605942457,
-      "split": "train",
-      "use_case_id": "energy_generation_support",
-      "variant": "normal"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
+      "asset_id": "energy-blr01-asset-identity-001",
       "industry": "petrochemical",
+      "observable_evidence": [
+        "alarm_support_availability",
+        "engineering_access",
+        "project_file_integrity",
+        "authorization_records",
+        "service_changes",
+        "communications_evidence",
+        "protected_zone_adjacency",
+        "proof_test_schedule"
+      ],
+      "principal_assets": [
+        "alarm_support",
+        "safety_engineering_workstation",
+        "sis_project_repository",
+        "industrial_dmz_jump_host",
+        "dcs_interface",
+        "protected_sis_esd_controllers"
+      ],
       "protected_boundary": "safety_system",
-      "scenario_id": "rw-normal-67c192a4f5fa",
-      "scenario_seed": 17883184660970094999,
+      "protected_boundary_context": [
+        "protection_safety"
+      ],
+      "scenario_family": "sis_esd_alarm_support_adjacency",
+      "scenario_id": "rw-fault-9f7799ba20e5",
+      "scenario_seed": 6888428066686564255,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "train",
+      "use_case_id": "PC-RW-04",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "authentication_fan_out",
+        "new_source_host",
+        "privilege_transition",
+        "remote_connections",
+        "zone_crossings",
+        "rare_process_chain",
+        "file_write_rate",
+        "backup_health",
+        "service_availability"
+      ],
+      "principal_assets": [
+        "identity_service",
+        "enterprise_endpoint",
+        "remote_access_service",
+        "industrial_dmz_jump_host",
+        "historian_support",
+        "scada_application_support",
+        "backup_service"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "enterprise_identity_to_control_centre_support",
+      "scenario_id": "rw-fault-a6d3d6adfef5",
+      "scenario_seed": 6443739351267438774,
+      "site_types": [
+        "control_centre"
+      ],
       "split": "validation",
-      "use_case_id": "petrochemical_terminal_loading_support",
-      "variant": "normal"
+      "use_case_id": "EN-RW-01",
+      "variant": "fault"
     },
     {
       "asset_id": "energy-blr01-asset-identity-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-normal-6e8b56890f72",
-      "scenario_seed": 7810862664232270868,
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "project_file_access",
+        "process_parent_relationships",
+        "signer_metadata",
+        "remote_sessions",
+        "service_state",
+        "configuration_activity",
+        "maintenance_approval",
+        "zone_path",
+        "backup_coverage"
+      ],
+      "principal_assets": [
+        "dcs_application_server",
+        "hmi_support",
+        "engineering_workstation",
+        "application_server",
+        "project_repository",
+        "jump_host",
+        "protected_controller_dependencies"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control"
+      ],
+      "scenario_family": "dcs_engineering_support_exposure",
+      "scenario_id": "rw-fault-a7f17e9b618d",
+      "scenario_seed": 9506750477362971814,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
       "split": "train",
-      "use_case_id": "energy_control_centre_support",
-      "variant": "normal"
+      "use_case_id": "PC-RW-02",
+      "variant": "fault"
     },
     {
       "asset_id": "energy-blr01-asset-engineering-001",
       "industry": "petrochemical",
+      "observable_evidence": [
+        "ingestion_lag",
+        "missing_records",
+        "stale_records",
+        "batch_event_gaps",
+        "unusual_file_operations",
+        "service_stops",
+        "database_health",
+        "communications_health",
+        "campaign_metadata",
+        "cross_source_correlation"
+      ],
+      "principal_assets": [
+        "process_historian",
+        "batch_server",
+        "quality_lims_interface",
+        "production_reporting",
+        "data_gateway",
+        "application_database",
+        "terminal_information_support",
+        "backup_service"
+      ],
       "protected_boundary": "safety_system",
-      "scenario_id": "rw-normal-721d5811115b",
-      "scenario_seed": 6702672555974963696,
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "production_information_cyber_vs_failure",
+      "scenario_id": "rw-fault-b098ba8c790e",
+      "scenario_seed": 2314078840043880225,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
       "split": "calibration",
-      "use_case_id": "petrochemical_dcs_support",
-      "variant": "normal"
+      "use_case_id": "PC-RW-03",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "authentication_novelty",
+        "vendor_schedule",
+        "session_fan_out",
+        "privilege_changes",
+        "file_transfer_bursts",
+        "zone_crossings",
+        "process_chains",
+        "service_health",
+        "account_criticality"
+      ],
+      "principal_assets": [
+        "enterprise_identity",
+        "enterprise_endpoint",
+        "vendor_gateway",
+        "industrial_dmz_jump_host",
+        "transfer_proxy_service",
+        "patch_staging",
+        "operations_support_account"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "enterprise_vendor_access_to_industrial_dmz",
+      "scenario_id": "rw-fault-b5059620d84e",
+      "scenario_seed": 6230460015260391843,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "validation",
+      "use_case_id": "PC-RW-01",
+      "variant": "fault"
     },
     {
       "asset_id": "energy-blr01-asset-engineering-001",
       "industry": "energy",
+      "observable_evidence": [
+        "backup_age",
+        "job_failure_streak",
+        "immutability_status",
+        "segmentation_status",
+        "restore_test_age",
+        "configuration_coverage",
+        "dependency_criticality",
+        "recovery_tier",
+        "suspicious_account_activity"
+      ],
+      "principal_assets": [
+        "backup_controller",
+        "immutable_copy_metadata",
+        "configuration_repository",
+        "historian",
+        "scada_support",
+        "identity_dependency",
+        "communications_support",
+        "recovery_documentation"
+      ],
       "protected_boundary": "protection_safety",
-      "scenario_id": "rw-normal-78bbe9c80834",
-      "scenario_seed": 17879213076278729740,
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "energy_backup_impairment_and_recovery_prerequisites",
+      "scenario_id": "rw-fault-b71d98444fa9",
+      "scenario_seed": 1559444856024395679,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "calibration",
+      "use_case_id": "EN-RW-05",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "backup_age",
+        "backup_failures",
+        "restore_test_results",
+        "configuration_coverage",
+        "repository_integrity",
+        "service_dependencies",
+        "process_unit_criticality",
+        "recovery_tier",
+        "suspicious_admin_activity"
+      ],
+      "principal_assets": [
+        "backup_service",
+        "immutable_copy_metadata",
+        "dcs_project_repository",
+        "sis_project_repository",
+        "historian",
+        "batch_quality_system",
+        "maintenance_records",
+        "terminal_support",
+        "recovery_documentation"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "petrochemical_backup_impairment_and_startup_prerequisites",
+      "scenario_id": "rw-fault-bb79ea396b61",
+      "scenario_seed": 5733061933064663048,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "validation",
+      "use_case_id": "PC-RW-05",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "authentication_fan_out",
+        "new_source_host",
+        "privilege_transition",
+        "remote_connections",
+        "zone_crossings",
+        "rare_process_chain",
+        "file_write_rate",
+        "backup_health",
+        "service_availability"
+      ],
+      "principal_assets": [
+        "identity_service",
+        "enterprise_endpoint",
+        "remote_access_service",
+        "industrial_dmz_jump_host",
+        "historian_support",
+        "scada_application_support",
+        "backup_service"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "enterprise_identity_to_control_centre_support",
+      "scenario_id": "rw-fault-dcc0d567a410",
+      "scenario_seed": 5379362854935122069,
+      "site_types": [
+        "control_centre"
+      ],
       "split": "train",
-      "use_case_id": "energy_engineering_historian_support",
-      "variant": "normal"
+      "use_case_id": "EN-RW-01",
+      "variant": "fault"
     },
     {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "energy",
-      "protected_boundary": "protection_safety",
-      "scenario_id": "rw-normal-9f0518dea175",
-      "scenario_seed": 7013958830015048545,
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "ingestion_lag",
+        "missing_records",
+        "stale_records",
+        "batch_event_gaps",
+        "unusual_file_operations",
+        "service_stops",
+        "database_health",
+        "communications_health",
+        "campaign_metadata",
+        "cross_source_correlation"
+      ],
+      "principal_assets": [
+        "process_historian",
+        "batch_server",
+        "quality_lims_interface",
+        "production_reporting",
+        "data_gateway",
+        "application_database",
+        "terminal_information_support",
+        "backup_service"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "production_information_cyber_vs_failure",
+      "scenario_id": "rw-fault-dce570fd95a3",
+      "scenario_seed": 7378364269677805113,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
       "split": "calibration",
-      "use_case_id": "energy_transmission_distribution_support",
-      "variant": "normal"
+      "use_case_id": "PC-RW-03",
+      "variant": "fault"
     },
     {
-      "asset_id": "energy-blr01-asset-engineering-001",
+      "asset_id": "energy-blr01-asset-identity-001",
       "industry": "energy",
+      "observable_evidence": [
+        "service_state",
+        "log_termination",
+        "ingestion_lag",
+        "stale_point_rate",
+        "communications_health",
+        "file_evidence",
+        "failover_state",
+        "time_synchronization",
+        "cross_source_correlation"
+      ],
+      "principal_assets": [
+        "scada_application_server",
+        "historian",
+        "data_gateway",
+        "time_data_service",
+        "communications_link",
+        "operator_display_support",
+        "backup_infrastructure"
+      ],
       "protected_boundary": "protection_safety",
-      "scenario_id": "rw-normal-a1785cb178c9",
-      "scenario_seed": 6791223658270359822,
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control"
+      ],
+      "scenario_family": "cyber_impact_vs_visibility_failure",
+      "scenario_id": "rw-fault-dfd54192c2cd",
+      "scenario_seed": 10199548286202092477,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
       "split": "untouched_holdout",
-      "use_case_id": "energy_substation_support",
+      "use_case_id": "EN-RW-03",
+      "variant": "fault"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "configuration_package_access",
+        "signer_hash_metadata",
+        "account_changes",
+        "remote_sessions",
+        "unusual_file_operations",
+        "protected_zone_adjacency",
+        "maintenance_approval",
+        "repository_history"
+      ],
+      "principal_assets": [
+        "relay_management_server",
+        "engineering_repository",
+        "configuration_store",
+        "jump_host",
+        "protection_engineering_workstation",
+        "protected_relays",
+        "communications_dependencies"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "protection_safety"
+      ],
+      "scenario_family": "relay_management_protected_boundary_adjacency",
+      "scenario_id": "rw-normal-096e14e368c2",
+      "scenario_seed": 8992193146045765141,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "validation",
+      "use_case_id": "EN-RW-04",
       "variant": "normal"
     },
     {
       "asset_id": "energy-blr01-asset-identity-001",
       "industry": "petrochemical",
+      "observable_evidence": [
+        "ingestion_lag",
+        "missing_records",
+        "stale_records",
+        "batch_event_gaps",
+        "unusual_file_operations",
+        "service_stops",
+        "database_health",
+        "communications_health",
+        "campaign_metadata",
+        "cross_source_correlation"
+      ],
+      "principal_assets": [
+        "process_historian",
+        "batch_server",
+        "quality_lims_interface",
+        "production_reporting",
+        "data_gateway",
+        "application_database",
+        "terminal_information_support",
+        "backup_service"
+      ],
       "protected_boundary": "safety_system",
-      "scenario_id": "rw-normal-a5e3c133f3c5",
-      "scenario_seed": 5276832777977982662,
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "production_information_cyber_vs_failure",
+      "scenario_id": "rw-normal-0db06b54fc8a",
+      "scenario_seed": 5364890558068908966,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "train",
+      "use_case_id": "PC-RW-03",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "backup_age",
+        "job_failure_streak",
+        "immutability_status",
+        "segmentation_status",
+        "restore_test_age",
+        "configuration_coverage",
+        "dependency_criticality",
+        "recovery_tier",
+        "suspicious_account_activity"
+      ],
+      "principal_assets": [
+        "backup_controller",
+        "immutable_copy_metadata",
+        "configuration_repository",
+        "historian",
+        "scada_support",
+        "identity_dependency",
+        "communications_support",
+        "recovery_documentation"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "energy_backup_impairment_and_recovery_prerequisites",
+      "scenario_id": "rw-normal-0e4809c06c6c",
+      "scenario_seed": 15619219499598043263,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "calibration",
+      "use_case_id": "EN-RW-05",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "authentication_novelty",
+        "vendor_schedule",
+        "session_fan_out",
+        "privilege_changes",
+        "file_transfer_bursts",
+        "zone_crossings",
+        "process_chains",
+        "service_health",
+        "account_criticality"
+      ],
+      "principal_assets": [
+        "enterprise_identity",
+        "enterprise_endpoint",
+        "vendor_gateway",
+        "industrial_dmz_jump_host",
+        "transfer_proxy_service",
+        "patch_staging",
+        "operations_support_account"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "enterprise_vendor_access_to_industrial_dmz",
+      "scenario_id": "rw-normal-377b42109c44",
+      "scenario_seed": 7540612431060949262,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "train",
+      "use_case_id": "PC-RW-01",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "project_file_access",
+        "process_parent_relationships",
+        "signer_metadata",
+        "remote_sessions",
+        "service_state",
+        "configuration_activity",
+        "maintenance_approval",
+        "zone_path",
+        "backup_coverage"
+      ],
+      "principal_assets": [
+        "dcs_application_server",
+        "hmi_support",
+        "engineering_workstation",
+        "application_server",
+        "project_repository",
+        "jump_host",
+        "protected_controller_dependencies"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control"
+      ],
+      "scenario_family": "dcs_engineering_support_exposure",
+      "scenario_id": "rw-normal-3a3e3c9d818a",
+      "scenario_seed": 6667385971886038464,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "validation",
+      "use_case_id": "PC-RW-02",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "project_file_access",
+        "process_parent_relationships",
+        "signer_metadata",
+        "remote_sessions",
+        "service_state",
+        "configuration_activity",
+        "maintenance_approval",
+        "zone_path",
+        "backup_coverage"
+      ],
+      "principal_assets": [
+        "dcs_application_server",
+        "hmi_support",
+        "engineering_workstation",
+        "application_server",
+        "project_repository",
+        "jump_host",
+        "protected_controller_dependencies"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control"
+      ],
+      "scenario_family": "dcs_engineering_support_exposure",
+      "scenario_id": "rw-normal-481299de330a",
+      "scenario_seed": 9361976759537378470,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "calibration",
+      "use_case_id": "PC-RW-02",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "alarm_support_availability",
+        "engineering_access",
+        "project_file_integrity",
+        "authorization_records",
+        "service_changes",
+        "communications_evidence",
+        "protected_zone_adjacency",
+        "proof_test_schedule"
+      ],
+      "principal_assets": [
+        "alarm_support",
+        "safety_engineering_workstation",
+        "sis_project_repository",
+        "industrial_dmz_jump_host",
+        "dcs_interface",
+        "protected_sis_esd_controllers"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "protection_safety"
+      ],
+      "scenario_family": "sis_esd_alarm_support_adjacency",
+      "scenario_id": "rw-normal-4f3df0b12cac",
+      "scenario_seed": 7476344277292929404,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "validation",
+      "use_case_id": "PC-RW-04",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "ingestion_lag",
+        "missing_records",
+        "stale_records",
+        "batch_event_gaps",
+        "unusual_file_operations",
+        "service_stops",
+        "database_health",
+        "communications_health",
+        "campaign_metadata",
+        "cross_source_correlation"
+      ],
+      "principal_assets": [
+        "process_historian",
+        "batch_server",
+        "quality_lims_interface",
+        "production_reporting",
+        "data_gateway",
+        "application_database",
+        "terminal_information_support",
+        "backup_service"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "production_information_cyber_vs_failure",
+      "scenario_id": "rw-normal-67d0ee3a7849",
+      "scenario_seed": 4266084833190310841,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
       "split": "test",
-      "use_case_id": "petrochemical_engineering_historian_support",
-      "variant": "normal"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-normal-b886e8a78a88",
-      "scenario_seed": 1554757104400548028,
-      "split": "train",
-      "use_case_id": "petrochemical_batch_quality_support",
-      "variant": "normal"
-    },
-    {
-      "asset_id": "energy-blr01-asset-engineering-001",
-      "industry": "petrochemical",
-      "protected_boundary": "safety_system",
-      "scenario_id": "rw-normal-c08619ffde7e",
-      "scenario_seed": 8605685841071707254,
-      "split": "train",
-      "use_case_id": "petrochemical_refinery_it_support",
+      "use_case_id": "PC-RW-03",
       "variant": "normal"
     },
     {
       "asset_id": "energy-blr01-asset-identity-001",
       "industry": "petrochemical",
+      "observable_evidence": [
+        "alarm_support_availability",
+        "engineering_access",
+        "project_file_integrity",
+        "authorization_records",
+        "service_changes",
+        "communications_evidence",
+        "protected_zone_adjacency",
+        "proof_test_schedule"
+      ],
+      "principal_assets": [
+        "alarm_support",
+        "safety_engineering_workstation",
+        "sis_project_repository",
+        "industrial_dmz_jump_host",
+        "dcs_interface",
+        "protected_sis_esd_controllers"
+      ],
       "protected_boundary": "safety_system",
-      "scenario_id": "rw-normal-e9314a924492",
-      "scenario_seed": 11773760867714798450,
-      "split": "train",
-      "use_case_id": "petrochemical_dcs_support",
+      "protected_boundary_context": [
+        "protection_safety"
+      ],
+      "scenario_family": "sis_esd_alarm_support_adjacency",
+      "scenario_id": "rw-normal-6b71efef3857",
+      "scenario_seed": 924553583307699718,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "test",
+      "use_case_id": "PC-RW-04",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "authentication_fan_out",
+        "new_source_host",
+        "privilege_transition",
+        "remote_connections",
+        "zone_crossings",
+        "rare_process_chain",
+        "file_write_rate",
+        "backup_health",
+        "service_availability"
+      ],
+      "principal_assets": [
+        "identity_service",
+        "enterprise_endpoint",
+        "remote_access_service",
+        "industrial_dmz_jump_host",
+        "historian_support",
+        "scada_application_support",
+        "backup_service"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "enterprise_identity_to_control_centre_support",
+      "scenario_id": "rw-normal-7be84a05e946",
+      "scenario_seed": 15438476590520683935,
+      "site_types": [
+        "control_centre"
+      ],
+      "split": "untouched_holdout",
+      "use_case_id": "EN-RW-01",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "backup_age",
+        "backup_failures",
+        "restore_test_results",
+        "configuration_coverage",
+        "repository_integrity",
+        "service_dependencies",
+        "process_unit_criticality",
+        "recovery_tier",
+        "suspicious_admin_activity"
+      ],
+      "principal_assets": [
+        "backup_service",
+        "immutable_copy_metadata",
+        "dcs_project_repository",
+        "sis_project_repository",
+        "historian",
+        "batch_quality_system",
+        "maintenance_records",
+        "terminal_support",
+        "recovery_documentation"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "petrochemical_backup_impairment_and_startup_prerequisites",
+      "scenario_id": "rw-normal-85854df616c0",
+      "scenario_seed": 8013238702512850904,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "calibration",
+      "use_case_id": "PC-RW-05",
       "variant": "normal"
     },
     {
       "asset_id": "energy-blr01-asset-identity-001",
       "industry": "energy",
+      "observable_evidence": [
+        "backup_age",
+        "job_failure_streak",
+        "immutability_status",
+        "segmentation_status",
+        "restore_test_age",
+        "configuration_coverage",
+        "dependency_criticality",
+        "recovery_tier",
+        "suspicious_account_activity"
+      ],
+      "principal_assets": [
+        "backup_controller",
+        "immutable_copy_metadata",
+        "configuration_repository",
+        "historian",
+        "scada_support",
+        "identity_dependency",
+        "communications_support",
+        "recovery_documentation"
+      ],
       "protected_boundary": "protection_safety",
-      "scenario_id": "rw-normal-ea7ed814babf",
-      "scenario_seed": 17361126499741580355,
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "energy_backup_impairment_and_recovery_prerequisites",
+      "scenario_id": "rw-normal-9794187082bf",
+      "scenario_seed": 17814451480129598759,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
       "split": "untouched_holdout",
-      "use_case_id": "energy_engineering_historian_support",
+      "use_case_id": "EN-RW-05",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "service_state",
+        "log_termination",
+        "ingestion_lag",
+        "stale_point_rate",
+        "communications_health",
+        "file_evidence",
+        "failover_state",
+        "time_synchronization",
+        "cross_source_correlation"
+      ],
+      "principal_assets": [
+        "scada_application_server",
+        "historian",
+        "data_gateway",
+        "time_data_service",
+        "communications_link",
+        "operator_display_support",
+        "backup_infrastructure"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control"
+      ],
+      "scenario_family": "cyber_impact_vs_visibility_failure",
+      "scenario_id": "rw-normal-9990eb0fe89c",
+      "scenario_seed": 11829484962948618383,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "train",
+      "use_case_id": "EN-RW-03",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "service_state",
+        "log_termination",
+        "ingestion_lag",
+        "stale_point_rate",
+        "communications_health",
+        "file_evidence",
+        "failover_state",
+        "time_synchronization",
+        "cross_source_correlation"
+      ],
+      "principal_assets": [
+        "scada_application_server",
+        "historian",
+        "data_gateway",
+        "time_data_service",
+        "communications_link",
+        "operator_display_support",
+        "backup_infrastructure"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control"
+      ],
+      "scenario_family": "cyber_impact_vs_visibility_failure",
+      "scenario_id": "rw-normal-b79e1b84be12",
+      "scenario_seed": 11180428924044369959,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "calibration",
+      "use_case_id": "EN-RW-03",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "backup_age",
+        "backup_failures",
+        "restore_test_results",
+        "configuration_coverage",
+        "repository_integrity",
+        "service_dependencies",
+        "process_unit_criticality",
+        "recovery_tier",
+        "suspicious_admin_activity"
+      ],
+      "principal_assets": [
+        "backup_service",
+        "immutable_copy_metadata",
+        "dcs_project_repository",
+        "sis_project_repository",
+        "historian",
+        "batch_quality_system",
+        "maintenance_records",
+        "terminal_support",
+        "recovery_documentation"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control",
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "petrochemical_backup_impairment_and_startup_prerequisites",
+      "scenario_id": "rw-normal-c8b5c2caf05a",
+      "scenario_seed": 8002934301559065873,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "test",
+      "use_case_id": "PC-RW-05",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-engineering-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "account_novelty",
+        "host_novelty",
+        "remote_session_fan_out",
+        "zone_transitions",
+        "configuration_file_activity",
+        "service_health",
+        "communications_health",
+        "maintenance_window_metadata"
+      ],
+      "principal_assets": [
+        "remote_access_gateway",
+        "jump_host",
+        "engineering_workstation",
+        "data_gateway",
+        "substation_communications_server",
+        "configuration_repository",
+        "protected_rtu_ied_relay_dependencies"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "remote_engineering_to_substation_support",
+      "scenario_id": "rw-normal-daeec3f483cd",
+      "scenario_seed": 10290771813423436321,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "validation",
+      "use_case_id": "EN-RW-02",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "configuration_package_access",
+        "signer_hash_metadata",
+        "account_changes",
+        "remote_sessions",
+        "unusual_file_operations",
+        "protected_zone_adjacency",
+        "maintenance_approval",
+        "repository_history"
+      ],
+      "principal_assets": [
+        "relay_management_server",
+        "engineering_repository",
+        "configuration_store",
+        "jump_host",
+        "protection_engineering_workstation",
+        "protected_relays",
+        "communications_dependencies"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "protection_safety"
+      ],
+      "scenario_family": "relay_management_protected_boundary_adjacency",
+      "scenario_id": "rw-normal-f2092d3730b4",
+      "scenario_seed": 10511935208749799448,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "untouched_holdout",
+      "use_case_id": "EN-RW-04",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "account_novelty",
+        "host_novelty",
+        "remote_session_fan_out",
+        "zone_transitions",
+        "configuration_file_activity",
+        "service_health",
+        "communications_health",
+        "maintenance_window_metadata"
+      ],
+      "principal_assets": [
+        "remote_access_gateway",
+        "jump_host",
+        "engineering_workstation",
+        "data_gateway",
+        "substation_communications_server",
+        "configuration_repository",
+        "protected_rtu_ied_relay_dependencies"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "field_control",
+        "protection_safety"
+      ],
+      "scenario_family": "remote_engineering_to_substation_support",
+      "scenario_id": "rw-normal-f35749fc2148",
+      "scenario_seed": 8648258201566631383,
+      "site_types": [
+        "control_centre",
+        "substation"
+      ],
+      "split": "calibration",
+      "use_case_id": "EN-RW-02",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "energy",
+      "observable_evidence": [
+        "authentication_fan_out",
+        "new_source_host",
+        "privilege_transition",
+        "remote_connections",
+        "zone_crossings",
+        "rare_process_chain",
+        "file_write_rate",
+        "backup_health",
+        "service_availability"
+      ],
+      "principal_assets": [
+        "identity_service",
+        "enterprise_endpoint",
+        "remote_access_service",
+        "industrial_dmz_jump_host",
+        "historian_support",
+        "scada_application_support",
+        "backup_service"
+      ],
+      "protected_boundary": "protection_safety",
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "enterprise_identity_to_control_centre_support",
+      "scenario_id": "rw-normal-f96ffedf17c7",
+      "scenario_seed": 6088711203094758985,
+      "site_types": [
+        "control_centre"
+      ],
+      "split": "calibration",
+      "use_case_id": "EN-RW-01",
+      "variant": "normal"
+    },
+    {
+      "asset_id": "energy-blr01-asset-identity-001",
+      "industry": "petrochemical",
+      "observable_evidence": [
+        "authentication_novelty",
+        "vendor_schedule",
+        "session_fan_out",
+        "privilege_changes",
+        "file_transfer_bursts",
+        "zone_crossings",
+        "process_chains",
+        "service_health",
+        "account_criticality"
+      ],
+      "principal_assets": [
+        "enterprise_identity",
+        "enterprise_endpoint",
+        "vendor_gateway",
+        "industrial_dmz_jump_host",
+        "transfer_proxy_service",
+        "patch_staging",
+        "operations_support_account"
+      ],
+      "protected_boundary": "safety_system",
+      "protected_boundary_context": [
+        "supervisory_control"
+      ],
+      "scenario_family": "enterprise_vendor_access_to_industrial_dmz",
+      "scenario_id": "rw-normal-fedc31afc85b",
+      "scenario_seed": 15146018285022239897,
+      "site_types": [
+        "refinery",
+        "petrochemical_complex"
+      ],
+      "split": "calibration",
+      "use_case_id": "PC-RW-01",
       "variant": "normal"
     }
   ],

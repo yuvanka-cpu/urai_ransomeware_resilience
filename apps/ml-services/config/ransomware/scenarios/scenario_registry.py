@@ -27,6 +27,11 @@ class FrozenScenario:
     scenario_seed: int
     use_case_id: str
     industry: str
+    scenario_family: str
+    site_types: tuple[str, ...]
+    principal_assets: tuple[str, ...]
+    observable_evidence: tuple[str, ...]
+    protected_boundary_context: tuple[str, ...]
     variant: str
     asset_id: str
     protected_boundary: str
@@ -68,8 +73,6 @@ def build_frozen_scenarios(
         seed = _scenario_seed(scenario, base_seed)
         scenario_id = _scenario_id(scenario, seed)
 
-        # Deterministically assign each scenario to one of the five
-        # required evaluation splits.
         split_material = (
             f"{scenario_id}|{seed}|split"
         )
@@ -86,6 +89,11 @@ def build_frozen_scenarios(
                 scenario_seed=seed,
                 use_case_id=scenario.use_case_id,
                 industry=scenario.industry,
+                scenario_family=scenario.scenario_family,
+                site_types=scenario.site_types,
+                principal_assets=scenario.principal_assets,
+                observable_evidence=scenario.observable_evidence,
+                protected_boundary_context=scenario.protected_boundary_context,
                 variant=scenario.variant,
                 asset_id=scenario.asset_id,
                 protected_boundary=scenario.protected_boundary,

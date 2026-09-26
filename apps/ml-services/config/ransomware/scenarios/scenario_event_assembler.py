@@ -49,14 +49,49 @@ def _event(
     )
 
 
-def assemble_scenario_events(scenario: FrozenScenario) -> list[ObservableScenarioEvent]:
+def _use_case_evidence(
+    scenario: FrozenScenario,
+    rng: random.Random,
+) -> list[tuple[str, str, dict[str, object]]]:
+    """Create deterministic observable evidence from the documented use-case contract."""
+
+    evidence = []
+
+    for index, evidence_name in enumerate(scenario.observable_evidence):
+        event_family = evidence_name.split("_", 1)[0]
+
+        value = round(rng.uniform(0.1, 0.9), 3)
+
+        evidence.append(
+            (
+                event_family,
+                evidence_name,
+                {
+                    "evidence_name": evidence_name,
+                    "observable_value": value,
+                    "scenario_family": scenario.scenario_family,
+                    "site_types": list(scenario.site_types),
+                    "protected_boundary_context": list(
+                        scenario.protected_boundary_context
+                    ),
+                    "evidence_index": index,
+                },
+            )
+        )
+
+    return evidence
+
+
+def assemble_scenario_events(
+    scenario: FrozenScenario,
+) -> list[ObservableScenarioEvent]:
     """Build a deterministic observable event sequence for one frozen scenario."""
 
     start = datetime(2026, 1, 1, 6, 0, tzinfo=timezone.utc)
     events: list[ObservableScenarioEvent] = []
     sequence_index = 0
     rng = random.Random(scenario.scenario_seed)
-    
+
     def append(
         event_family: str,
         event_type: str,
@@ -81,7 +116,10 @@ def assemble_scenario_events(scenario: FrozenScenario) -> list[ObservableScenari
     variant = scenario.variant
 
     if variant == "normal":
-        for item in generate_baseline([scenario.asset_id], seed=scenario.scenario_seed):
+        for item in generate_baseline(
+            [scenario.asset_id],
+            seed=scenario.scenario_seed,
+        ):
             append(
                 item.event_family,
                 item.event_type,
@@ -89,18 +127,37 @@ def assemble_scenario_events(scenario: FrozenScenario) -> list[ObservableScenari
                 item.asset_id,
             )
 
+        for event_family, event_type, attributes in _use_case_evidence(
+            scenario,
+            rng,
+        ):
+            append(
+                event_family,
+                event_type,
+                attributes,
+            )
+
     elif variant == "attack":
         for item in generate_lifecycle(scenario.asset_id):
             append(
                 item.event_family,
                 item.event_type,
-                {"stage": item.stage, "observable_only": item.observable_only},
+                {
+                    "stage": item.stage,
+                    "observable_only": item.observable_only,
+                },
                 item.asset_id,
             )
 
         for item in generate_encryption_impact(scenario.asset_id):
             observable_value = round(
-                max(0.0, min(1.0, item.value + rng.uniform(-0.05, 0.05))),
+                max(
+                    0.0,
+                    min(
+                        1.0,
+                        item.value + rng.uniform(-0.05, 0.05),
+                    ),
+                ),
                 3,
             )
 
@@ -108,49 +165,95 @@ def assemble_scenario_events(scenario: FrozenScenario) -> list[ObservableScenari
                 "file",
                 item.event_type,
                 {
-                     "value": observable_value,
-                     "operational_action_executed": item.operational_action_executed,
-                 },
-                 item.asset_id,
-             )
+                    "value": observable_value,
+                    "operational_action_executed": (
+                        item.operational_action_executed
+                    ),
+                },
+                item.asset_id,
+            )
+
+        for event_family, event_type, attributes in _use_case_evidence(
+            scenario,
+            rng,
+        ):
+            append(
+                event_family,
+                event_type,
+                attributes,
+            )
 
     elif variant == "benign":
         for item in generate_benign_events(scenario.asset_id):
-            observable_intensity = round(rng.uniform(0.1, 0.9), 3)
+            observable_intensity = round(
+                rng.uniform(0.1, 0.9),
+                3,
+            )
 
             append(
                 "benign_activity",
-                 item.scenario_family,
-                 {
-                     "authorized": item.authorized,
-                     "maintenance_context": item.maintenance_context,
-                      "activity_intensity": observable_intensity,
-                 },
-                 item.asset_id,
+                item.scenario_family,
+                {
+                    "authorized": item.authorized,
+                    "maintenance_context": item.maintenance_context,
+                    "activity_intensity": observable_intensity,
+                },
+                item.asset_id,
+            )
+
+        for event_family, event_type, attributes in _use_case_evidence(
+            scenario,
+            rng,
+        ):
+            append(
+                event_family,
+                event_type,
+                attributes,
             )
 
     elif variant == "fault":
         for item in generate_fault_events(scenario.asset_id):
-            observable_severity = round(rng.uniform(0.1, 0.9), 3)
+            observable_severity = round(
+                rng.uniform(0.1, 0.9),
+                3,
+            )
 
             append(
                 "telemetry_quality",
-                 item.scenario_family,
-                 {
-                     "telemetry_quality_issue": item.telemetry_quality_issue,
-                     "operational_action_executed": item.operational_action_executed,
-                     "degradation_severity": observable_severity,
-                 },
-                 item.asset_id,
+                item.scenario_family,
+                {
+                    "telemetry_quality_issue": (
+                        item.telemetry_quality_issue
+                    ),
+                    "operational_action_executed": (
+                        item.operational_action_executed
+                    ),
+                    "degradation_severity": observable_severity,
+                },
+                item.asset_id,
+            )
+
+        for event_family, event_type, attributes in _use_case_evidence(
+            scenario,
+            rng,
+        ):
+            append(
+                event_family,
+                event_type,
+                attributes,
             )
 
     else:
-        raise ValueError(f"Unsupported scenario variant: {variant}")
+        raise ValueError(
+            f"Unsupported scenario variant: {variant}"
+        )
 
     return events
 
 
-def sequence_fingerprint(events: list[ObservableScenarioEvent]) -> str:
+def sequence_fingerprint(
+    events: list[ObservableScenarioEvent],
+) -> str:
     material = [
         {
             "sequence_index": event.sequence_index,
@@ -161,13 +264,21 @@ def sequence_fingerprint(events: list[ObservableScenarioEvent]) -> str:
         }
         for event in events
     ]
-    canonical = json.dumps(material, sort_keys=True, separators=(",", ":"))
-    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+    canonical = json.dumps(
+        material,
+        sort_keys=True,
+        separators=(",", ":"),
+    )
+    return hashlib.sha256(
+        canonical.encode("utf-8")
+    ).hexdigest()
 
 
-def events_to_json(events: list[ObservableScenarioEvent]) -> str:
+def events_to_json(
+    events: list[ObservableScenarioEvent],
+) -> str:
     return json.dumps(
         [asdict(event) for event in events],
         indent=2,
         sort_keys=True,
-      )
+    )

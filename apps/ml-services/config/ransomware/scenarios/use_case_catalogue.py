@@ -1,70 +1,46 @@
 from dataclasses import dataclass
+import json
+from pathlib import Path
 
 
 @dataclass(frozen=True)
 class UseCaseFamily:
     use_case_id: str
     industry: str
-    description: str
+    scenario_family: str
+    site_types: tuple[str, ...]
+    principal_assets: tuple[str, ...]
+    observable_evidence: tuple[str, ...]
+    protected_boundary_context: tuple[str, ...]
 
 
-ENERGY_USE_CASES = (
-    UseCaseFamily(
-        "energy_generation_support",
-        "energy",
-        "Generation support systems",
-    ),
-    UseCaseFamily(
-        "energy_substation_support",
-        "energy",
-        "Substation support",
-    ),
-    UseCaseFamily(
-        "energy_transmission_distribution_support",
-        "energy",
-        "Transmission and distribution support",
-    ),
-    UseCaseFamily(
-        "energy_control_centre_support",
-        "energy",
-        "Control centre support",
-    ),
-    UseCaseFamily(
-        "energy_engineering_historian_support",
-        "energy",
-        "Engineering workstation and historian support",
-    ),
-)
+def _load_use_cases(industry: str) -> tuple[UseCaseFamily, ...]:
+    path = (
+        Path(__file__).resolve().parent.parent
+        / industry
+        / "use_cases.json"
+    )
+
+    payload = json.loads(path.read_text(encoding="utf-8"))
+
+    return tuple(
+        UseCaseFamily(
+            use_case_id=item["use_case_id"],
+            industry=item["industry"],
+            scenario_family=item["scenario_family"],
+            site_types=tuple(item["site_types"]),
+            principal_assets=tuple(item["principal_assets"]),
+            observable_evidence=tuple(item["observable_evidence"]),
+            protected_boundary_context=tuple(
+                item["protected_boundary_context"]
+            ),
+        )
+        for item in payload["use_cases"]
+    )
 
 
-PETROCHEMICAL_USE_CASES = (
-    UseCaseFamily(
-        "petrochemical_refinery_it_support",
-        "petrochemical",
-        "Refinery enterprise IT support",
-    ),
-    UseCaseFamily(
-        "petrochemical_dcs_support",
-        "petrochemical",
-        "DCS and SCADA support",
-    ),
-    UseCaseFamily(
-        "petrochemical_engineering_historian_support",
-        "petrochemical",
-        "Engineering workstation and historian support",
-    ),
-    UseCaseFamily(
-        "petrochemical_batch_quality_support",
-        "petrochemical",
-        "Batch and quality support",
-    ),
-    UseCaseFamily(
-        "petrochemical_terminal_loading_support",
-        "petrochemical",
-        "Terminal and loading support",
-    ),
-)
-
+ENERGY_USE_CASES = _load_use_cases("energy")
+PETROCHEMICAL_USE_CASES = _load_use_cases("petrochemical")
 
 ALL_USE_CASES = ENERGY_USE_CASES + PETROCHEMICAL_USE_CASES
 
