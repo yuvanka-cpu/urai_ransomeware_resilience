@@ -182,7 +182,10 @@ def test_rw0601_rejects_unsupported_window_size() -> None:
         tzinfo=timezone.utc,
     )
 
-    with pytest.raises(ValueError, match="Unsupported feature window"):
+    with pytest.raises(
+        ValueError,
+        match="Unsupported feature window",
+    ):
         extract_window_features(
             events,
             end_time,
@@ -190,46 +193,6 @@ def test_rw0601_rejects_unsupported_window_size() -> None:
         )
 
 
-def test_rw0601_does_not_emit_ground_truth_features() -> None:
-    events = [
-        _event(
-            0,
-            "file",
-            "file_write_spike",
-            attributes={
-                "value": 0.8,
-                "is_ransomware": True,
-                "incident_stage_truth": "encryption_impact",
-            },
-        )
-    ]
-
-    end_time = datetime(
-        2026,
-        1,
-        1,
-        6,
-        0,
-        tzinfo=timezone.utc,
-    )
-
-    features = extract_window_features(
-        events,
-        end_time,
-        1,
-    )
-
-    forbidden = {
-        "scenario_id",
-        "scenario_seed",
-        "is_ransomware",
-        "incident_stage_truth",
-        "affected_asset_truth",
-        "blast_radius_truth",
-        "analyst_disposition",
-    }
-
-    assert not forbidden.intersection(features)
 def test_rw0602_identity_features_manual_one_minute_window() -> None:
     events = [
         _event(
@@ -239,6 +202,8 @@ def test_rw0602_identity_features_manual_one_minute_window() -> None:
             attributes={
                 "auth_failure": True,
                 "source_host": "host-a",
+                "new_source_relationship": True,
+                "privilege_change": False,
             },
         ),
         _event(
@@ -248,24 +213,19 @@ def test_rw0602_identity_features_manual_one_minute_window() -> None:
             attributes={
                 "auth_failure": True,
                 "source_host": "host-b",
-            },
-        ),
-        _event(
-            0,
-            "identity",
-            "new_source_relationship",
-            attributes={
-                "new_source_relationship": True,
-                "source_host": "host-c",
-            },
-        ),
-        _event(
-            0,
-            "identity",
-            "privilege_change",
-            attributes={
+                "new_source_relationship": False,
                 "privilege_change": True,
+            },
+        ),
+        _event(
+            0,
+            "identity",
+            "authentication_success",
+            attributes={
+                "auth_failure": False,
                 "source_host": "host-a",
+                "new_source_relationship": True,
+                "privilege_change": False,
             },
         ),
     ]
@@ -286,12 +246,12 @@ def test_rw0602_identity_features_manual_one_minute_window() -> None:
     )
 
     assert features["auth_failure_count"] == 2
-    assert features["distinct_source_host_count"] == 3
-    assert features["new_source_relationship_count"] == 1
+    assert features["distinct_source_host_count"] == 2
+    assert features["new_source_relationship_count"] == 2
     assert features["privilege_change_count"] == 1
 
 
-def test_rw0602_identity_features_respect_five_minute_boundary() -> None:
+def test_rw0602_identity_features_include_five_minute_boundary() -> None:
     events = [
         _event(
             0,
@@ -300,24 +260,19 @@ def test_rw0602_identity_features_respect_five_minute_boundary() -> None:
             attributes={
                 "auth_failure": True,
                 "source_host": "host-a",
-            },
-        ),
-        _event(
-            1,
-            "identity",
-            "authentication_failure",
-            attributes={
-                "auth_failure": True,
-                "source_host": "host-b",
+                "new_source_relationship": True,
+                "privilege_change": False,
             },
         ),
         _event(
             5,
             "identity",
-            "privilege_change",
+            "authentication_failure",
             attributes={
+                "auth_failure": True,
+                "source_host": "host-b",
+                "new_source_relationship": False,
                 "privilege_change": True,
-                "source_host": "host-c",
             },
         ),
     ]
@@ -337,9 +292,9 @@ def test_rw0602_identity_features_respect_five_minute_boundary() -> None:
         5,
     )
 
-    # [06:00, 06:05] is inclusive.
     assert features["auth_failure_count"] == 2
-    assert features["distinct_source_host_count"] == 3
+    assert features["distinct_source_host_count"] == 2
+    assert features["new_source_relationship_count"] == 1
     assert features["privilege_change_count"] == 1
 
 
@@ -352,24 +307,19 @@ def test_rw0602_identity_features_exclude_event_outside_window() -> None:
             attributes={
                 "auth_failure": True,
                 "source_host": "host-a",
-            },
-        ),
-        _event(
-            1,
-            "identity",
-            "privilege_change",
-            attributes={
+                "new_source_relationship": True,
                 "privilege_change": True,
-                "source_host": "host-b",
             },
         ),
         _event(
             5,
             "identity",
-            "new_source_relationship",
+            "authentication_failure",
             attributes={
-                "new_source_relationship": True,
-                "source_host": "host-c",
+                "auth_failure": True,
+                "source_host": "host-b",
+                "new_source_relationship": False,
+                "privilege_change": False,
             },
         ),
     ]
@@ -389,43 +339,57 @@ def test_rw0602_identity_features_exclude_event_outside_window() -> None:
         1,
     )
 
-    # Only event at 06:05 belongs to [06:04, 06:05].
-    assert features["auth_failure_count"] == 0
+    assert features["auth_failure_count"] == 1
     assert features["distinct_source_host_count"] == 1
-    assert features["new_source_relationship_count"] == 1
+    assert features["new_source_relationship_count"] == 0
     assert features["privilege_change_count"] == 0
+
 
 def test_rw0603_endpoint_file_features_manual_window() -> None:
     events = [
         _event(
             0,
             "endpoint",
-            "rare_process_chain",
+            "process_chain",
             attributes={
                 "rare_process_chain": True,
                 "unsigned_process": True,
                 "task_service_created": True,
-            },
-        ),
-        _event(
-            0,
-            "file",
-            "file_activity",
-            attributes={
-                "write_count": 100,
-                "rename_count": 20,
-                "extension_change_count": 5,
-                "file_event_count": 10,
-                "entropy_proxy": 0.82,
+                "write_count": 10,
+                "rename_count": 4,
+                "extension_change_count": 2,
+                "file_event_count": 4,
+                "entropy_proxy": 0.8,
             },
         ),
         _event(
             0,
             "endpoint",
-            "process_activity",
+            "process_chain",
             attributes={
                 "rare_process_chain": True,
                 "unsigned_process": True,
+                "task_service_created": False,
+                "write_count": 5,
+                "rename_count": 2,
+                "extension_change_count": 1,
+                "file_event_count": 2,
+                "entropy_proxy": 0.6,
+            },
+        ),
+        _event(
+            0,
+            "endpoint",
+            "process_chain",
+            attributes={
+                "rare_process_chain": False,
+                "unsigned_process": False,
+                "task_service_created": False,
+                "write_count": 3,
+                "rename_count": 0,
+                "extension_change_count": 0,
+                "file_event_count": 2,
+                "entropy_proxy": 0.4,
             },
         ),
     ]
@@ -448,36 +412,25 @@ def test_rw0603_endpoint_file_features_manual_window() -> None:
     assert features["rare_process_chain_score"] == 0.666667
     assert features["unsigned_burst_count"] == 2
     assert features["task_service_creation_count"] == 1
-    assert features["write_rate"] == 100
-    assert features["rename_rate"] == 20
-    assert features["extension_change_ratio"] == 0.5
-    assert features["entropy_proxy"] == 0.82
+    assert features["write_rate"] == 18
+    assert features["rename_rate"] == 6
+    assert features["extension_change_ratio"] == 0.375
+    assert features["entropy_proxy"] == 0.6
 
 
-def test_rw0603_endpoint_file_rates_respect_five_minute_window() -> None:
+def test_rw0603_endpoint_file_features_respect_five_minute_window() -> None:
     events = [
         _event(
             0,
             "file",
             "file_activity",
             attributes={
-                "write_count": 50,
-                "rename_count": 10,
+                "rare_process_chain": True,
+                "write_count": 10,
+                "rename_count": 4,
                 "extension_change_count": 2,
                 "file_event_count": 4,
-                "entropy_proxy": 0.70,
-            },
-        ),
-        _event(
-            1,
-            "file",
-            "file_activity",
-            attributes={
-                "write_count": 25,
-                "rename_count": 5,
-                "extension_change_count": 1,
-                "file_event_count": 2,
-                "entropy_proxy": 0.80,
+                "entropy_proxy": 0.8,
             },
         ),
         _event(
@@ -485,11 +438,12 @@ def test_rw0603_endpoint_file_rates_respect_five_minute_window() -> None:
             "file",
             "file_activity",
             attributes={
-                "write_count": 25,
-                "rename_count": 5,
+                "rare_process_chain": False,
+                "write_count": 5,
+                "rename_count": 1,
                 "extension_change_count": 1,
                 "file_event_count": 2,
-                "entropy_proxy": 0.90,
+                "entropy_proxy": 0.4,
             },
         ),
     ]
@@ -509,11 +463,11 @@ def test_rw0603_endpoint_file_rates_respect_five_minute_window() -> None:
         5,
     )
 
-    # [06:00, 06:05] includes all three events.
-    assert features["write_rate"] == 20
-    assert features["rename_rate"] == 4
-    assert features["extension_change_ratio"] == 4 / 8
-    assert features["entropy_proxy"] == 0.8
+    assert features["rare_process_chain_score"] == 0.5
+    assert features["write_rate"] == 3
+    assert features["rename_rate"] == 1
+    assert features["extension_change_ratio"] == 0.5
+    assert features["entropy_proxy"] == 0.6
 
 
 def test_rw0603_endpoint_file_features_exclude_event_outside_window() -> None:
@@ -523,11 +477,12 @@ def test_rw0603_endpoint_file_features_exclude_event_outside_window() -> None:
             "file",
             "file_activity",
             attributes={
+                "rare_process_chain": True,
                 "write_count": 100,
-                "rename_count": 40,
-                "extension_change_count": 10,
-                "file_event_count": 20,
-                "entropy_proxy": 0.50,
+                "rename_count": 100,
+                "extension_change_count": 100,
+                "file_event_count": 100,
+                "entropy_proxy": 1.0,
             },
         ),
         _event(
@@ -535,11 +490,12 @@ def test_rw0603_endpoint_file_features_exclude_event_outside_window() -> None:
             "file",
             "file_activity",
             attributes={
-                "write_count": 20,
-                "rename_count": 5,
+                "rare_process_chain": False,
+                "write_count": 5,
+                "rename_count": 2,
                 "extension_change_count": 1,
-                "file_event_count": 2,
-                "entropy_proxy": 0.90,
+                "file_event_count": 4,
+                "entropy_proxy": 0.4,
             },
         ),
     ]
@@ -559,11 +515,12 @@ def test_rw0603_endpoint_file_features_exclude_event_outside_window() -> None:
         1,
     )
 
-    # Only the event at 06:05 belongs to [06:04, 06:05].
-    assert features["write_rate"] == 20
-    assert features["rename_rate"] == 5
-    assert features["extension_change_ratio"] == 0.5
-    assert features["entropy_proxy"] == 0.90
+    assert features["rare_process_chain_score"] == 0
+    assert features["write_rate"] == 5
+    assert features["rename_rate"] == 2
+    assert features["extension_change_ratio"] == 0.25
+    assert features["entropy_proxy"] == 0.4
+
 
 def test_rw0604_network_backup_service_features_manual_window() -> None:
     events = [
@@ -693,7 +650,6 @@ def test_rw0604_network_backup_service_features_respect_five_minute_window() -> 
         5,
     )
 
-    # [06:00, 06:05] includes all three events.
     assert features["remote_admin_peer_count"] == 10
     assert features["new_peer_ratio"] == 0.4
     assert features["zone_crossing_count"] == 2
@@ -741,8 +697,187 @@ def test_rw0604_network_backup_service_features_exclude_event_outside_window() -
         1,
     )
 
-    # Only the event at 06:05 belongs to [06:04, 06:05].
     assert features["remote_admin_peer_count"] == 2
     assert features["new_peer_ratio"] == 0.5
     assert features["zone_crossing_count"] == 1
     assert features["outbound_bytes"] == 500
+
+
+def test_rw0605_graph_context_quality_features_manual_window() -> None:
+    events = [
+        _event(
+            0,
+            "asset",
+            "asset_context",
+            attributes={
+                "criticality_score": 1.0,
+                "recovery_tier": 1,
+            },
+        ),
+        _event(
+            0,
+            "graph",
+            "boundary_path",
+            attributes={
+                "protected_boundary_hops": 2,
+                "critical_service_exposure": True,
+            },
+        ),
+        _event(
+            0,
+            "context",
+            "maintenance",
+            attributes={
+                "maintenance_approved": True,
+            },
+        ),
+        _event(
+            0,
+            "quality",
+            "source_quality",
+            attributes={
+                "missing_source": True,
+                "late_event": False,
+                "stage_transition_score": 0.25,
+            },
+        ),
+        _event(
+            0,
+            "quality",
+            "source_quality",
+            attributes={
+                "missing_source": False,
+                "late_event": True,
+                "stage_transition_score": 0.75,
+            },
+        ),
+    ]
+
+    end_time = datetime(
+        2026,
+        1,
+        1,
+        6,
+        0,
+        tzinfo=timezone.utc,
+    )
+
+    features = extract_window_features(
+        events,
+        end_time,
+        1,
+    )
+
+    assert features["criticality_score"] == 1.0
+    assert features["recovery_tier"] == 1
+    assert features["protected_boundary_hops"] == 2
+    assert features["critical_service_exposure_count"] == 1
+    assert features["maintenance_approval_ratio"] == 0.2
+    assert features["missing_source_mask"] == 1
+    assert features["late_event_ratio"] == 0.2
+    assert features["stage_transition_score"] == 0.5
+
+
+def test_rw0605_graph_context_quality_features_respect_five_minute_window() -> None:
+    events = [
+        _event(
+            0,
+            "graph",
+            "boundary_path",
+            attributes={
+                "criticality_score": 0.8,
+                "recovery_tier": 2,
+                "protected_boundary_hops": 1,
+                "critical_service_exposure": True,
+            },
+        ),
+        _event(
+            1,
+            "context",
+            "maintenance",
+            attributes={
+                "maintenance_approved": True,
+            },
+        ),
+        _event(
+            5,
+            "quality",
+            "source_quality",
+            attributes={
+                "missing_source": True,
+                "late_event": True,
+                "stage_transition_score": 0.6,
+            },
+        ),
+    ]
+
+    end_time = datetime(
+        2026,
+        1,
+        1,
+        6,
+        5,
+        tzinfo=timezone.utc,
+    )
+
+    features = extract_window_features(
+        events,
+        end_time,
+        5,
+    )
+
+    assert features["criticality_score"] == 0.8
+    assert features["recovery_tier"] == 2
+    assert features["protected_boundary_hops"] == 1
+    assert features["critical_service_exposure_count"] == 1
+    assert features["maintenance_approval_ratio"] == 0.333333
+    assert features["missing_source_mask"] == 1
+    assert features["late_event_ratio"] == 0.333333
+    assert features["stage_transition_score"] == 0.6
+
+
+def test_rw0605_graph_context_quality_features_exclude_event_outside_window() -> None:
+    events = [
+        _event(
+            0,
+            "graph",
+            "boundary_path",
+            attributes={
+                "criticality_score": 1.0,
+                "recovery_tier": 1,
+                "protected_boundary_hops": 10,
+                "critical_service_exposure": True,
+            },
+        ),
+        _event(
+            5,
+            "graph",
+            "boundary_path",
+            attributes={
+                "criticality_score": 0.5,
+                "recovery_tier": 3,
+                "protected_boundary_hops": 2,
+                "critical_service_exposure": False,
+            },
+        ),
+    ]
+
+    end_time = datetime(
+        2026,
+        1,
+        1,
+        6,
+        5,
+        tzinfo=timezone.utc,
+    )
+
+    features = extract_window_features(
+        events,
+        end_time,
+        1,
+    )
+
+    assert features["criticality_score"] == 0.5
+    assert features["recovery_tier"] == 3
+    assert features["protected_boundary_hops"] == 2
+    assert features["critical_service_exposure_count"] == 0

@@ -273,3 +273,47 @@ Focused RW-060-4 tests: 14 passed.
 Synthetic-only evidence: yes.
 
 Real action executed: false.
+
+## RW-060-5 — Graph, context and quality window features
+
+Status: frozen
+
+Supported windows: 1, 5 and 15 minutes.
+
+Window semantics: `[T-W, T]`, inclusive of both boundaries.
+
+Graph and asset features:
+- `criticality_score`
+- `recovery_tier`
+- `protected_boundary_hops`
+- `critical_service_exposure_count`
+
+Context features:
+- `maintenance_approval_ratio`
+
+Quality features:
+- `missing_source_mask`
+- `late_event_ratio`
+- `stage_transition_score`
+
+Definitions:
+- `criticality_score` is the maximum observable criticality score inside the selected window.
+- `recovery_tier` is the maximum observable recovery tier inside the selected window.
+- `protected_boundary_hops` is the sum of observable protected-boundary hops inside the selected window.
+- `critical_service_exposure_count` counts observable events marked as critical-service exposure.
+- `maintenance_approval_ratio` is the proportion of window events explicitly marked as maintenance approved.
+- `missing_source_mask` counts observable events explicitly marked as missing-source evidence.
+- `late_event_ratio` is the proportion of window events explicitly marked as late events.
+- `stage_transition_score` is the mean observable stage-transition score inside the selected window.
+
+All features are derived only from observable event attributes inside the selected event-time window.
+
+Protected-boundary metadata itself is not used directly as a deployed feature; only explicit observable boundary-hop evidence is used.
+
+No scenario truth, labels, future events, or deployment-forbidden fields are used.
+
+Focused RW-060-5 tests: 16 passed.
+
+Synthetic-only evidence: yes.
+
+Real action executed: false.

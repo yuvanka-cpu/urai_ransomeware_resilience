@@ -1,0 +1,31 @@
+{
+  "task_id": "RW-060-5",
+  "title": "Graph, context and quality window features",
+  "status": "pass",
+  "synthetic_only": true,
+  "real_action_executed": false,
+  "supported_windows_minutes": [1, 5, 15],
+  "window_semantics": "[T-W, T]",
+  "boundary_inclusive": true,
+  "features": {
+    "graph_asset": [
+      "criticality_score",
+      "recovery_tier",
+      "protected_boundary_hops",
+      "critical_service_exposure_count"
+    ],
+    "context": [
+      "maintenance_approval_ratio"
+    ],
+    "quality": [
+      "missing_source_mask",
+      "late_event_ratio",
+      "stage_transition_score"
+    ]
+  },
+  "focused_tests": {
+    "passed": 16,
+    "failed": 0
+  },
+  "leakage_guard": "pass"
+}

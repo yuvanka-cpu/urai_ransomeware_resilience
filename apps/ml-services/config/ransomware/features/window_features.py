@@ -152,6 +152,7 @@ def _window_events(
     duration_minutes: int,
 ) -> list[ObservableScenarioEvent]:
     start_time = end_time - timedelta(minutes=duration_minutes)
+
     return [
         event
         for event in events
@@ -161,8 +162,10 @@ def _window_events(
 
 def _evidence_name(event: ObservableScenarioEvent) -> str:
     explicit_name = event.attributes.get("evidence_name")
+
     if isinstance(explicit_name, str) and explicit_name:
         return explicit_name
+
     return event.event_type
 
 
@@ -182,6 +185,7 @@ def _domain_count(
     domain: str,
 ) -> int:
     evidence_names = EVIDENCE_DOMAINS[domain]
+
     return sum(
         1
         for event in events
@@ -492,6 +496,47 @@ def extract_window_features(
         "ingestion_lag_seconds",
     )
 
+    # RW-060-5 graph/context/quality features.
+    criticality_score = _numeric_attribute_max(
+        window,
+        "criticality_score",
+    )
+
+    recovery_tier = _numeric_attribute_max(
+        window,
+        "recovery_tier",
+    )
+
+    protected_boundary_hops = _numeric_attribute_sum(
+        window,
+        "protected_boundary_hops",
+    )
+
+    critical_service_exposure_count = _count_true_attribute(
+        window,
+        "critical_service_exposure",
+    )
+
+    maintenance_approved_count = _count_true_attribute(
+        window,
+        "maintenance_approved",
+    )
+
+    missing_source_count = _count_true_attribute(
+        window,
+        "missing_source",
+    )
+
+    late_event_count = _count_true_attribute(
+        window,
+        "late_event",
+    )
+
+    stage_transition_score = _numeric_attribute_mean(
+        window,
+        "stage_transition_score",
+    )
+
     features: dict[str, float | int] = {
         "window_duration_minutes": duration_minutes,
         "event_count": len(window),
@@ -573,7 +618,7 @@ def extract_window_features(
         ),
         "ingestion_lag_seconds": ingestion_lag_seconds,
 
-        # Quality.
+        # Asset / graph / context / quality.
         "asset_evidence_count": _domain_count(
             window,
             "asset",
@@ -594,6 +639,22 @@ def extract_window_features(
             stale_data_count,
             len(quality_events),
         ),
+
+        # RW-060-5 graph/context/quality.
+        "criticality_score": criticality_score,
+        "recovery_tier": recovery_tier,
+        "protected_boundary_hops": protected_boundary_hops,
+        "critical_service_exposure_count": critical_service_exposure_count,
+        "maintenance_approval_ratio": _ratio(
+            maintenance_approved_count,
+            len(window),
+        ),
+        "missing_source_mask": missing_source_count,
+        "late_event_ratio": _ratio(
+            late_event_count,
+            len(window),
+        ),
+        "stage_transition_score": stage_transition_score,
 
         # Generic observable values.
         "observable_value_mean": _mean(values),
