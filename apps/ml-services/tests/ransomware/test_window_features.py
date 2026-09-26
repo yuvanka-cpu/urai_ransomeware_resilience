@@ -985,3 +985,201 @@ def test_rw0606_missing_energy_evidence_is_explicit():
     assert features["substation_support_exposure_count"] == 0
     assert features["relay_management_adjacency_count"] == 0
     assert features["communications_health_ratio"] == 0.0
+
+
+def test_rw0607_petrochemical_sector_extensions():
+    events = [
+        _event(
+            0,
+            "file",
+            "project_file_access",
+            attributes={"evidence_name": "project_file_access"},
+        ),
+        _event(
+            0,
+            "endpoint",
+            "configuration_activity",
+            attributes={"evidence_name": "configuration_activity"},
+        ),
+        _event(
+            0,
+            "service",
+            "alarm_support_availability",
+            attributes={
+                "evidence_name": "alarm_support_availability",
+                "service_available": True,
+            },
+        ),
+        _event(
+            0,
+            "network",
+            "engineering_access",
+            attributes={"evidence_name": "engineering_access"},
+        ),
+        _event(
+            0,
+            "network",
+            "protected_zone_adjacency",
+            attributes={"evidence_name": "protected_zone_adjacency"},
+        ),
+        _event(
+            0,
+            "quality",
+            "batch_event_gaps",
+            attributes={"evidence_name": "batch_event_gaps"},
+        ),
+        _event(
+            0,
+            "service",
+            "database_health",
+            attributes={"evidence_name": "database_health"},
+        ),
+    ]
+
+    features = extract_window_features(
+        events,
+        datetime(
+            2026,
+            1,
+            1,
+            6,
+            0,
+            tzinfo=timezone.utc,
+        ),
+        1,
+    )
+
+    assert features["dcs_support_exposure_count"] == 2
+    assert features["alarm_support_health_ratio"] == 1.0
+    assert features["sis_esd_adjacency_count"] == 2
+    assert features["batch_quality_dependency_exposure_count"] == 2
+
+
+def test_rw0607_missing_petrochemical_evidence_is_explicit():
+    events = [
+        _event(
+            0,
+            "identity",
+            "authentication_fan_out",
+            attributes={
+                "evidence_name": "authentication_fan_out",
+            },
+        )
+    ]
+
+    features = extract_window_features(
+        events,
+        datetime(
+            2026,
+            1,
+            1,
+            6,
+            0,
+            tzinfo=timezone.utc,
+        ),
+        1,
+    )
+
+    assert features["dcs_support_exposure_count"] == 0
+    assert features["alarm_support_health_ratio"] == 0.0
+    assert features["sis_esd_adjacency_count"] == 0
+    assert features["batch_quality_dependency_exposure_count"] == 0
+
+
+def test_rw0607_petrochemical_sector_extensions():
+    events = [
+        _event(
+            0,
+            "file",
+            "project_file_access",
+            attributes={"evidence_name": "project_file_access"},
+        ),
+        _event(
+            0,
+            "endpoint",
+            "configuration_activity",
+            attributes={"evidence_name": "configuration_activity"},
+        ),
+        _event(
+            0,
+            "service",
+            "alarm_support_availability",
+            attributes={
+                "evidence_name": "alarm_support_availability",
+                "service_available": True,
+            },
+        ),
+        _event(
+            0,
+            "network",
+            "engineering_access",
+            attributes={"evidence_name": "engineering_access"},
+        ),
+        _event(
+            0,
+            "network",
+            "protected_zone_adjacency",
+            attributes={"evidence_name": "protected_zone_adjacency"},
+        ),
+        _event(
+            0,
+            "quality",
+            "batch_event_gaps",
+            attributes={"evidence_name": "batch_event_gaps"},
+        ),
+        _event(
+            0,
+            "service",
+            "database_health",
+            attributes={"evidence_name": "database_health"},
+        ),
+    ]
+
+    features = extract_window_features(
+        events,
+        datetime(
+            2026,
+            1,
+            1,
+            6,
+            0,
+            tzinfo=timezone.utc,
+        ),
+        1,
+    )
+
+    assert features["dcs_support_exposure_count"] == 2
+    assert features["alarm_support_health_ratio"] == 1.0
+    assert features["sis_esd_adjacency_count"] == 2
+    assert features["batch_quality_dependency_exposure_count"] == 2
+
+
+def test_rw0607_missing_petrochemical_evidence_is_explicit():
+    events = [
+        _event(
+            0,
+            "identity",
+            "authentication_fan_out",
+            attributes={
+                "evidence_name": "authentication_fan_out",
+            },
+        )
+    ]
+
+    features = extract_window_features(
+        events,
+        datetime(
+            2026,
+            1,
+            1,
+            6,
+            0,
+            tzinfo=timezone.utc,
+        ),
+        1,
+    )
+
+    assert features["dcs_support_exposure_count"] == 0
+    assert features["alarm_support_health_ratio"] == 0.0
+    assert features["sis_esd_adjacency_count"] == 0
+    assert features["batch_quality_dependency_exposure_count"] == 0

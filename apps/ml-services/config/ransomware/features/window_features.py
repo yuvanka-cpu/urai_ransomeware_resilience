@@ -634,6 +634,75 @@ def extract_window_features(
         window,
         communications_evidence,
     )
+
+    # RW-060-7 petrochemical-sector features.
+    dcs_support_evidence = frozenset(
+        {
+            "project_file_access",
+            "process_parent_relationships",
+            "signer_metadata",
+            "remote_sessions",
+            "service_state",
+            "configuration_activity",
+            "maintenance_approval",
+            "zone_path",
+            "backup_coverage",
+        }
+    )
+
+    alarm_support_evidence = frozenset(
+        {
+            "alarm_support_availability",
+        }
+    )
+
+    sis_esd_adjacency_evidence = frozenset(
+        {
+            "engineering_access",
+            "project_file_integrity",
+            "authorization_records",
+            "service_changes",
+            "communications_evidence",
+            "protected_zone_adjacency",
+            "proof_test_schedule",
+        }
+    )
+
+    batch_quality_dependency_evidence = frozenset(
+        {
+            "ingestion_lag",
+            "missing_records",
+            "stale_records",
+            "batch_event_gaps",
+            "unusual_file_operations",
+            "service_stops",
+            "database_health",
+            "communications_health",
+            "campaign_metadata",
+            "cross_source_correlation",
+        }
+    )
+
+    dcs_support_exposure_count = _evidence_count(
+        window,
+        dcs_support_evidence,
+    )
+
+    alarm_support_health_ratio = _evidence_ratio(
+        window,
+        alarm_support_evidence,
+    )
+
+    sis_esd_adjacency_count = _evidence_count(
+        window,
+        sis_esd_adjacency_evidence,
+    )
+
+    batch_quality_dependency_exposure_count = _evidence_count(
+        window,
+        batch_quality_dependency_evidence,
+    )
+
     features: dict[str, float | int] = {
         "window_duration_minutes": duration_minutes,
         "event_count": len(window),
@@ -762,6 +831,14 @@ def extract_window_features(
             relay_management_adjacency_count
         ),
         "communications_health_ratio": communications_health_ratio,
+
+        # RW-060-7 petrochemical-sector extensions.
+        "dcs_support_exposure_count": dcs_support_exposure_count,
+        "alarm_support_health_ratio": alarm_support_health_ratio,
+        "sis_esd_adjacency_count": sis_esd_adjacency_count,
+        "batch_quality_dependency_exposure_count": (
+            batch_quality_dependency_exposure_count
+        ),
 
         # Generic observable values.
         "observable_value_mean": _mean(values),

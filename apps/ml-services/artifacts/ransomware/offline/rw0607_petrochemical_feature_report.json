@@ -1,0 +1,25 @@
+{
+  "task_id": "RW-060-7",
+  "title": "Petrochemical-sector feature extensions",
+  "status": "pass",
+  "synthetic_only": true,
+  "real_action_executed": false,
+  "supported_windows_minutes": [
+    1,
+    5,
+    15
+  ],
+  "window_semantics": "[T-W, T]",
+  "boundary_inclusive": true,
+  "features": [
+    "dcs_support_exposure_count",
+    "alarm_support_health_ratio",
+    "sis_esd_adjacency_count",
+    "batch_quality_dependency_exposure_count"
+  ],
+  "focused_tests": {
+    "passed": 20,
+    "failed": 0
+  },
+  "leakage_guard": "pass"
+}

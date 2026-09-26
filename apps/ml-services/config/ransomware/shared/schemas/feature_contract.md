@@ -349,3 +349,34 @@ No scenario truth, labels, future events or deployment-forbidden fields are used
 Synthetic-only evidence: yes.
 
 Real action executed: false.
+## RW-060-7 — Petrochemical-sector feature extensions
+
+Status: frozen
+
+Supported windows: 1, 5 and 15 minutes.
+
+Window semantics: `[T-W, T]`, inclusive of both boundaries.
+
+Petrochemical features:
+- `dcs_support_exposure_count`
+- `alarm_support_health_ratio`
+- `sis_esd_adjacency_count`
+- `batch_quality_dependency_exposure_count`
+
+Definitions:
+- `dcs_support_exposure_count` counts observable DCS and engineering-support evidence inside the selected event-time window, including project-file, process, signer, remote-session, service, configuration, maintenance, zone-path and backup-coverage evidence.
+- `alarm_support_health_ratio` measures the proportion of applicable alarm-support availability evidence carrying explicit observable service availability.
+- `sis_esd_adjacency_count` counts observable engineering, authorization, service, communications, protected-zone and proof-test evidence associated with SIS/ESD boundary adjacency.
+- `batch_quality_dependency_exposure_count` counts observable ingestion, records, batch-event, file, service, database, communications and campaign/correlation evidence associated with batch and quality-system dependencies.
+
+All features use observable event attributes and event-time windows only.
+
+Missing applicable evidence produces an explicit zero value and does not establish physical process state, product quality, SIS/ESD state or plant safety.
+
+No controller query or write, DCS/HMI restart, logic change, process action, SIS/ESD interrogation, bypass, reset, logic download, alarm change, batch decision, quality release or loading action is executed.
+
+No scenario truth, labels, future events or deployment-forbidden fields are used.
+
+Synthetic-only evidence: yes.
+
+Real action executed: false.
