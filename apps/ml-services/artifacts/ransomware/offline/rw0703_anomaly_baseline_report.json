@@ -1,0 +1,23 @@
+{
+  "task_id": "RW-070-3",
+  "title": "Robust threshold and Isolation Forest anomaly baseline",
+  "status": "pass",
+  "baseline_version": "1.0",
+  "methods": [
+    "robust_univariate_thresholds",
+    "robust_multivariate_threshold",
+    "Isolation Forest"
+  ],
+  "default_univariate_threshold": 3.5,
+  "isolation_forest_estimators": 100,
+  "isolation_forest_contamination": "auto",
+  "random_state": 42,
+  "focused_tests": {
+    "passed": 11,
+    "failed": 0
+  },
+  "decision_separation": true,
+  "anomaly_alone_cannot_produce_high_risk": true,
+  "synthetic_only": true,
+  "real_action_executed": false
+}
