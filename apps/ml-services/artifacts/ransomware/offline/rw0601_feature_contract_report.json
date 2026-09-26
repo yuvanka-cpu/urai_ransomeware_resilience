@@ -1,0 +1,35 @@
+{
+  "task_id": "RW-060-1",
+  "status": "pass",
+  "synthetic_only": true,
+  "real_action_executed": false,
+  "window_minutes": [
+    1,
+    5,
+    15
+  ],
+  "evidence_domains": [
+    "identity",
+    "endpoint",
+    "file",
+    "network",
+    "backup",
+    "service",
+    "asset",
+    "graph",
+    "context",
+    "quality"
+  ],
+  "feature_contract": "apps/ml-services/config/ransomware/shared/schemas/feature_contract.md",
+  "feature_module": "apps/ml-services/config/ransomware/features/window_features.py",
+  "focused_tests": "apps/ml-services/tests/ransomware/test_window_features.py",
+  "acceptance_checks": {
+    "1_minute_window": true,
+    "5_minute_window": true,
+    "15_minute_window": true,
+    "ten_required_evidence_domains": true,
+    "leakage_guard": true,
+    "unsupported_window_rejected": true,
+    "ground_truth_features_absent": true
+  }
+}
