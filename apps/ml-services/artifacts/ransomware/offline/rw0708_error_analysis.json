@@ -1,0 +1,700 @@
+{
+  "artifact_type": "benign_failure_error_analysis",
+  "attack_false_negative_analysis": {
+    "attack_scenarios": 6,
+    "example_traces": [
+      {
+        "anchor_event": {
+          "asset_id": "energy-blr01-asset-engineering-001",
+          "attributes": {
+            "evidence_index": 8,
+            "evidence_name": "backup_coverage",
+            "observable_value": 0.572,
+            "protected_boundary_context": [
+              "supervisory_control",
+              "field_control"
+            ],
+            "scenario_family": "dcs_engineering_support_exposure",
+            "site_types": [
+              "refinery",
+              "petrochemical_complex"
+            ]
+          },
+          "event_family": "backup",
+          "event_time": "2026-01-01T06:23:00+00:00",
+          "event_type": "backup_coverage"
+        },
+        "asset_id": "energy-blr01-asset-engineering-001",
+        "events_in_window": [
+          {
+            "asset_id": "energy-blr01-asset-engineering-001",
+            "attributes": {
+              "evidence_index": 7,
+              "evidence_name": "zone_path",
+              "observable_value": 0.519,
+              "protected_boundary_context": [
+                "supervisory_control",
+                "field_control"
+              ],
+              "scenario_family": "dcs_engineering_support_exposure",
+              "site_types": [
+                "refinery",
+                "petrochemical_complex"
+              ]
+            },
+            "event_family": "zone",
+            "event_time": "2026-01-01T06:22:00+00:00",
+            "event_type": "zone_path"
+          },
+          {
+            "asset_id": "energy-blr01-asset-engineering-001",
+            "attributes": {
+              "evidence_index": 8,
+              "evidence_name": "backup_coverage",
+              "observable_value": 0.572,
+              "protected_boundary_context": [
+                "supervisory_control",
+                "field_control"
+              ],
+              "scenario_family": "dcs_engineering_support_exposure",
+              "site_types": [
+                "refinery",
+                "petrochemical_complex"
+              ]
+            },
+            "event_family": "backup",
+            "event_time": "2026-01-01T06:23:00+00:00",
+            "event_type": "backup_coverage"
+          }
+        ],
+        "industry": "petrochemical",
+        "predicted_attack": 0,
+        "probability": 0.4578583201075531,
+        "scenario_id": "rw-attack-1864c4aed9b3",
+        "site_types": [
+          "petrochemical_complex",
+          "refinery"
+        ],
+        "threshold": 0.5,
+        "window_minutes": 1
+      },
+      {
+        "anchor_event": {
+          "asset_id": "energy-blr01-asset-engineering-001",
+          "attributes": {
+            "evidence_index": 8,
+            "evidence_name": "backup_coverage",
+            "observable_value": 0.572,
+            "protected_boundary_context": [
+              "supervisory_control",
+              "field_control"
+            ],
+            "scenario_family": "dcs_engineering_support_exposure",
+            "site_types": [
+              "refinery",
+              "petrochemical_complex"
+            ]
+          },
+          "event_family": "backup",
+          "event_time": "2026-01-01T06:23:00+00:00",
+          "event_type": "backup_coverage"
+        },
+        "asset_id": "energy-blr01-asset-engineering-001",
+        "events_in_window": [
+          {
+            "asset_id": "energy-blr01-asset-engineering-001",
+            "attributes": {
+              "evidence_index": 3,
+              "evidence_name": "remote_sessions",
+              "observable_value": 0.199,
+              "protected_boundary_context": [
+                "supervisory_control",
+                "field_control"
+              ],
+              "scenario_family": "dcs_engineering_support_exposure",
+              "site_types": [
+                "refinery",
+                "petrochemical_complex"
+              ]
+            },
+            "event_family": "remote",
+            "event_time": "2026-01-01T06:18:00+00:00",
+            "event_type": "remote_sessions"
+          },
+          {
+            "asset_id": "energy-blr01-asset-engineering-001",
+            "attributes": {
+              "evidence_index": 4,
+              "evidence_name": "service_state",
+              "observable_value": 0.193,
+              "protected_boundary_context": [
+                "supervisory_control",
+                "field_control"
+              ],
+              "scenario_family": "dcs_engineering_support_exposure",
+              "site_types": [
+                "refinery",
+                "petrochemical_complex"
+              ]
+            },
+            "event_family": "service",
+            "event_time": "2026-01-01T06:19:00+00:00",
+            "event_type": "service_state"
+          },
+          {
+            "asset_id": "energy-blr01-asset-engineering-001",
+            "attributes": {
+              "evidence_index": 5,
+              "evidence_name": "configuration_activity",
+              "observable_value": 0.517,
+              "protected_boundary_context": [
+                "supervisory_control",
+                "field_control"
+              ],
+              "scenario_family": "dcs_engineering_support_exposure",
+              "site_types": [
+                "refinery",
+                "petrochemical_complex"
+              ]
+            },
+            "event_family": "configuration",
+            "event_time": "2026-01-01T06:20:00+00:00",
+            "event_type": "configuration_activity"
+          },
+          {
+            "asset_id": "energy-blr01-asset-engineering-001",
+            "attributes": {
+              "evidence_index": 6,
+              "evidence_name": "maintenance_approval",
+              "observable_value": 0.702,
+              "protected_boundary_context": [
+                "supervisory_control",
+                "field_control"
+              ],
+              "scenario_family": "dcs_engineering_support_exposure",
+              "site_types": [
+                "refinery",
+                "petrochemical_complex"
+              ]
+            },
+            "event_family": "maintenance",
+            "event_time": "2026-01-01T06:21:00+00:00",
+            "event_type": "maintenance_approval"
+          },
+          {
+            "asset_id": "energy-blr01-asset-engineering-001",
+            "attributes": {
+              "evidence_index": 7,
+              "evidence_name": "zone_path",
+              "observable_value": 0.519,
+              "protected_boundary_context": [
+                "supervisory_control",
+                "field_control"
+              ],
+              "scenario_family": "dcs_engineering_support_exposure",
+              "site_types": [
+                "refinery",
+                "petrochemical_complex"
+              ]
+            },
+            "event_family": "zone",
+            "event_time": "2026-01-01T06:22:00+00:00",
+            "event_type": "zone_path"
+          },
+          {
+            "asset_id": "energy-blr01-asset-engineering-001",
+            "attributes": {
+              "evidence_index": 8,
+              "evidence_name": "backup_coverage",
+              "observable_value": 0.572,
+              "protected_boundary_context": [
+                "supervisory_control",
+                "field_control"
+              ],
+              "scenario_family": "dcs_engineering_support_exposure",
+              "site_types": [
+                "refinery",
+                "petrochemical_complex"
+              ]
+            },
+            "event_family": "backup",
+            "event_time": "2026-01-01T06:23:00+00:00",
+            "event_type": "backup_coverage"
+          }
+        ],
+        "industry": "petrochemical",
+        "predicted_attack": 0,
+        "probability": 0.4578583201075531,
+        "scenario_id": "rw-attack-1864c4aed9b3",
+        "site_types": [
+          "petrochemical_complex",
+          "refinery"
+        ],
+        "threshold": 0.5,
+        "window_minutes": 5
+      },
+      {
+        "anchor_event": {
+          "asset_id": "energy-blr01-asset-engineering-001",
+          "attributes": {
+            "evidence_index": 8,
+            "evidence_name": "account_criticality",
+            "observable_value": 0.637,
+            "protected_boundary_context": [
+              "supervisory_control"
+            ],
+            "scenario_family": "enterprise_vendor_access_to_industrial_dmz",
+            "site_types": [
+              "refinery",
+              "petrochemical_complex"
+            ]
+          },
+          "event_family": "account",
+          "event_time": "2026-01-01T06:23:00+00:00",
+          "event_type": "account_criticality"
+        },
+        "asset_id": "energy-blr01-asset-engineering-001",
+        "events_in_window": [
+          {
+            "asset_id": "energy-blr01-asset-engineering-001",
+            "attributes": {
+              "evidence_index": 3,
+              "evidence_name": "privilege_changes",
+              "observable_value": 0.624,
+              "protected_boundary_context": [
+                "supervisory_control"
+              ],
+              "scenario_family": "enterprise_vendor_access_to_industrial_dmz",
+              "site_types": [
+                "refinery",
+                "petrochemical_complex"
+              ]
+            },
+            "event_family": "privilege",
+            "event_time": "2026-01-01T06:18:00+00:00",
+            "event_type": "privilege_changes"
+          },
+          {
+            "asset_id": "energy-blr01-asset-engineering-001",
+            "attributes": {
+              "evidence_index": 4,
+              "evidence_name": "file_transfer_bursts",
+              "observable_value": 0.896,
+              "protected_boundary_context": [
+                "supervisory_control"
+              ],
+              "scenario_family": "enterprise_vendor_access_to_industrial_dmz",
+              "site_types": [
+                "refinery",
+                "petrochemical_complex"
+              ]
+            },
+            "event_family": "file",
+            "event_time": "2026-01-01T06:19:00+00:00",
+            "event_type": "file_transfer_bursts"
+          },
+          {
+            "asset_id": "energy-blr01-asset-engineering-001",
+            "attributes": {
+              "evidence_index": 5,
+              "evidence_name": "zone_crossings",
+              "observable_value": 0.331,
+              "protected_boundary_context": [
+                "supervisory_control"
+              ],
+              "scenario_family": "enterprise_vendor_access_to_industrial_dmz",
+              "site_types": [
+                "refinery",
+                "petrochemical_complex"
+              ]
+            },
+            "event_family": "zone",
+            "event_time": "2026-01-01T06:20:00+00:00",
+            "event_type": "zone_crossings"
+          },
+          {
+            "asset_id": "energy-blr01-asset-engineering-001",
+            "attributes": {
+              "evidence_index": 6,
+              "evidence_name": "process_chains",
+              "observable_value": 0.9,
+              "protected_boundary_context": [
+                "supervisory_control"
+              ],
+              "scenario_family": "enterprise_vendor_access_to_industrial_dmz",
+              "site_types": [
+                "refinery",
+                "petrochemical_complex"
+              ]
+            },
+            "event_family": "process",
+            "event_time": "2026-01-01T06:21:00+00:00",
+            "event_type": "process_chains"
+          },
+          {
+            "asset_id": "energy-blr01-asset-engineering-001",
+            "attributes": {
+              "evidence_index": 7,
+              "evidence_name": "service_health",
+              "observable_value": 0.859,
+              "protected_boundary_context": [
+                "supervisory_control"
+              ],
+              "scenario_family": "enterprise_vendor_access_to_industrial_dmz",
+              "site_types": [
+                "refinery",
+                "petrochemical_complex"
+              ]
+            },
+            "event_family": "service",
+            "event_time": "2026-01-01T06:22:00+00:00",
+            "event_type": "service_health"
+          },
+          {
+            "asset_id": "energy-blr01-asset-engineering-001",
+            "attributes": {
+              "evidence_index": 8,
+              "evidence_name": "account_criticality",
+              "observable_value": 0.637,
+              "protected_boundary_context": [
+                "supervisory_control"
+              ],
+              "scenario_family": "enterprise_vendor_access_to_industrial_dmz",
+              "site_types": [
+                "refinery",
+                "petrochemical_complex"
+              ]
+            },
+            "event_family": "account",
+            "event_time": "2026-01-01T06:23:00+00:00",
+            "event_type": "account_criticality"
+          }
+        ],
+        "industry": "petrochemical",
+        "predicted_attack": 0,
+        "probability": 0.4578583201075531,
+        "scenario_id": "rw-attack-69adc08473b6",
+        "site_types": [
+          "petrochemical_complex",
+          "refinery"
+        ],
+        "threshold": 0.5,
+        "window_minutes": 5
+      }
+    ],
+    "false_negative_count": 12,
+    "false_negative_rate": 0.6666666666666666,
+    "threshold": 0.5,
+    "total_windows": 18
+  },
+  "base_seed": 20260921,
+  "benign_family_analysis": {
+    "approved_administration": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.4772454101615647,
+      "mean_probability": 0.4731050141324407,
+      "scenarios": 4,
+      "threshold": 0.5,
+      "total_windows": 12,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "benign",
+      "windows_per_scenario": 3
+    },
+    "backup": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.4772454101615647,
+      "mean_probability": 0.4731050141324407,
+      "scenarios": 4,
+      "threshold": 0.5,
+      "total_windows": 12,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "benign",
+      "windows_per_scenario": 3
+    },
+    "bulk_copy": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.4772454101615647,
+      "mean_probability": 0.4731050141324407,
+      "scenarios": 4,
+      "threshold": 0.5,
+      "total_windows": 12,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "benign",
+      "windows_per_scenario": 3
+    },
+    "campaign_changes": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.4772454101615647,
+      "mean_probability": 0.4731050141324407,
+      "scenarios": 4,
+      "threshold": 0.5,
+      "total_windows": 12,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "benign",
+      "windows_per_scenario": 3
+    },
+    "compression": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.4772454101615647,
+      "mean_probability": 0.4731050141324407,
+      "scenarios": 4,
+      "threshold": 0.5,
+      "total_windows": 12,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "benign",
+      "windows_per_scenario": 3
+    },
+    "deployment": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.4772454101615647,
+      "mean_probability": 0.4731050141324407,
+      "scenarios": 4,
+      "threshold": 0.5,
+      "total_windows": 12,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "benign",
+      "windows_per_scenario": 3
+    },
+    "failover": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.4772454101615647,
+      "mean_probability": 0.4731050141324407,
+      "scenarios": 4,
+      "threshold": 0.5,
+      "total_windows": 12,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "benign",
+      "windows_per_scenario": 3
+    },
+    "historian_replay": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.4772454101615647,
+      "mean_probability": 0.4731050141324407,
+      "scenarios": 4,
+      "threshold": 0.5,
+      "total_windows": 12,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "benign",
+      "windows_per_scenario": 3
+    },
+    "patching": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.4772454101615647,
+      "mean_probability": 0.4731050141324407,
+      "scenarios": 4,
+      "threshold": 0.5,
+      "total_windows": 12,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "benign",
+      "windows_per_scenario": 3
+    },
+    "relay_configuration_work": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.4772454101615647,
+      "mean_probability": 0.4731050141324407,
+      "scenarios": 4,
+      "threshold": 0.5,
+      "total_windows": 12,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "benign",
+      "windows_per_scenario": 3
+    },
+    "restore_test": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.4772454101615647,
+      "mean_probability": 0.4731050141324407,
+      "scenarios": 4,
+      "threshold": 0.5,
+      "total_windows": 12,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "benign",
+      "windows_per_scenario": 3
+    },
+    "turnaround_work": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.4772454101615647,
+      "mean_probability": 0.4731050141324407,
+      "scenarios": 4,
+      "threshold": 0.5,
+      "total_windows": 12,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "benign",
+      "windows_per_scenario": 3
+    },
+    "vendor_support": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.4772454101615647,
+      "mean_probability": 0.4731050141324407,
+      "scenarios": 4,
+      "threshold": 0.5,
+      "total_windows": 12,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "benign",
+      "windows_per_scenario": 3
+    }
+  },
+  "evaluated_split": "test",
+  "evidence_id": "RW-070-8",
+  "failure_family_analysis": {
+    "backup_failure": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.46896461810331674,
+      "mean_probability": 0.46896461810331674,
+      "scenarios": 2,
+      "threshold": 0.5,
+      "total_windows": 6,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "fault",
+      "windows_per_scenario": 3
+    },
+    "disk_pressure": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.46896461810331674,
+      "mean_probability": 0.46896461810331674,
+      "scenarios": 2,
+      "threshold": 0.5,
+      "total_windows": 6,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "fault",
+      "windows_per_scenario": 3
+    },
+    "host_outage": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.46896461810331674,
+      "mean_probability": 0.46896461810331674,
+      "scenarios": 2,
+      "threshold": 0.5,
+      "total_windows": 6,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "fault",
+      "windows_per_scenario": 3
+    },
+    "network_interruption": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.46896461810331674,
+      "mean_probability": 0.46896461810331674,
+      "scenarios": 2,
+      "threshold": 0.5,
+      "total_windows": 6,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "fault",
+      "windows_per_scenario": 3
+    },
+    "partial_evidence": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.46896461810331674,
+      "mean_probability": 0.46896461810331674,
+      "scenarios": 2,
+      "threshold": 0.5,
+      "total_windows": 6,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "fault",
+      "windows_per_scenario": 3
+    },
+    "reordered_late_events": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.46896461810331674,
+      "mean_probability": 0.46896461810331674,
+      "scenarios": 2,
+      "threshold": 0.5,
+      "total_windows": 6,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "fault",
+      "windows_per_scenario": 3
+    },
+    "source_loss": {
+      "example_traces": [],
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "max_probability": 0.46896461810331674,
+      "mean_probability": 0.46896461810331674,
+      "scenarios": 2,
+      "threshold": 0.5,
+      "total_windows": 6,
+      "trace_semantics": "The family event is the window anchor. A 5-minute or 15-minute window may also contain nearby observable events from the same synthetic scenario.",
+      "variant": "fault",
+      "windows_per_scenario": 3
+    }
+  },
+  "interpretation": {
+    "benign_family_definition": "False positive measured on windows anchored to the named benign-family observable event.",
+    "failure_family_definition": "False positive measured on windows anchored to the named telemetry/failure observable event.",
+    "holdout_boundary": "No untouched-holdout scenario is loaded for scoring or example selection.",
+    "observable_trace_boundary": "Example traces contain only assembled observable event family, event type, asset identifier, timestamp and event attributes.",
+    "truth_boundary": "Scenario variant and hidden truth are used only to select evaluation populations and label the error-analysis report; they are not supplied as model features."
+  },
+  "model": {
+    "categorical_context_features": [
+      "industry",
+      "site_types"
+    ],
+    "observable_feature_count": 54,
+    "path": "artifacts\\ransomware\\models\\rw0704_catboost_model.cbm",
+    "sha256": "5ab4efa512e4099a7d4afc717d797ff6310976b9719a50d2b3e8860a2c3c7bd8",
+    "threshold": 0.5
+  },
+  "population": {
+    "attack_scenarios": 6,
+    "benign_scenarios": 4,
+    "fault_scenarios": 2,
+    "test_scenarios": 14,
+    "windows_minutes": [
+      1,
+      5,
+      15
+    ]
+  },
+  "report_version": "1.0",
+  "requested_error_classes": [
+    "patching",
+    "deployment",
+    "backup",
+    "compression",
+    "approved_administration",
+    "restore_test",
+    "vendor_support",
+    "failures"
+  ],
+  "sealed_split": {
+    "name": "untouched_holdout",
+    "status": "sealed_not_evaluated"
+  }
+}
