@@ -19,3 +19,4 @@ pydantic-settings==2.15.0
 scikit-learn==1.9.1
 
 catboost==1.2.10
+pyarrow==25.0.1
