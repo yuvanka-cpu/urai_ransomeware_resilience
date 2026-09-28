@@ -1,0 +1,731 @@
+{
+  "artifact_type": "evaluation_scorecard",
+  "asset_resolution": {
+    "resolution_rule": "zone/site/asset_type slices use only exact asset_id matches from the canonical energy and petrochemical inventories; unresolved IDs are not assigned an invented zone",
+    "resolved_test_asset_ids": [
+      "energy-blr01-asset-identity-001"
+    ],
+    "unresolved_asset_rows_excluded_from_zone_site_asset_slices": 21,
+    "unresolved_test_asset_ids": [
+      "energy-blr01-asset-engineering-001"
+    ]
+  },
+  "asset_type_slices": {
+    "identity": {
+      "accuracy": 0.2857142857142857,
+      "balanced_accuracy": 0.29166666666666663,
+      "confusion_matrix": {
+        "fn": 6,
+        "fp": 9,
+        "tn": 3,
+        "tp": 3
+      },
+      "f1": 0.2857142857142857,
+      "fpr": 0.75,
+      "negative_rows": 12,
+      "positive_rows": 9,
+      "pr_auc": 0.33445258445258447,
+      "precision": 0.25,
+      "recall": 0.3333333333333333,
+      "roc_auc": 0.19444444444444445,
+      "rows": 21,
+      "threshold": 0.5
+    }
+  },
+  "base_seed": 20260921,
+  "benign_family_fpr": {
+    "approved_administration": {
+      "anchor_event_types": [
+        "approved_administration"
+      ],
+      "benign_scenarios": 4,
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "interpretation": "FPR for windows ending on/containing the named benign-family event; these are not isolated-operation windows because the feature window may include nearby observable events.",
+      "rows": 12,
+      "threshold": 0.5,
+      "windows_per_family_event": 3
+    },
+    "backup": {
+      "anchor_event_types": [
+        "backup"
+      ],
+      "benign_scenarios": 4,
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "interpretation": "FPR for windows ending on/containing the named benign-family event; these are not isolated-operation windows because the feature window may include nearby observable events.",
+      "rows": 12,
+      "threshold": 0.5,
+      "windows_per_family_event": 3
+    },
+    "bulk_copy": {
+      "anchor_event_types": [
+        "bulk_copy"
+      ],
+      "benign_scenarios": 4,
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "interpretation": "FPR for windows ending on/containing the named benign-family event; these are not isolated-operation windows because the feature window may include nearby observable events.",
+      "rows": 12,
+      "threshold": 0.5,
+      "windows_per_family_event": 3
+    },
+    "campaign_changes": {
+      "anchor_event_types": [
+        "campaign_changes"
+      ],
+      "benign_scenarios": 4,
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "interpretation": "FPR for windows ending on/containing the named benign-family event; these are not isolated-operation windows because the feature window may include nearby observable events.",
+      "rows": 12,
+      "threshold": 0.5,
+      "windows_per_family_event": 3
+    },
+    "compression": {
+      "anchor_event_types": [
+        "compression"
+      ],
+      "benign_scenarios": 4,
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "interpretation": "FPR for windows ending on/containing the named benign-family event; these are not isolated-operation windows because the feature window may include nearby observable events.",
+      "rows": 12,
+      "threshold": 0.5,
+      "windows_per_family_event": 3
+    },
+    "deployment": {
+      "anchor_event_types": [
+        "deployment"
+      ],
+      "benign_scenarios": 4,
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "interpretation": "FPR for windows ending on/containing the named benign-family event; these are not isolated-operation windows because the feature window may include nearby observable events.",
+      "rows": 12,
+      "threshold": 0.5,
+      "windows_per_family_event": 3
+    },
+    "failover": {
+      "anchor_event_types": [
+        "failover"
+      ],
+      "benign_scenarios": 4,
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "interpretation": "FPR for windows ending on/containing the named benign-family event; these are not isolated-operation windows because the feature window may include nearby observable events.",
+      "rows": 12,
+      "threshold": 0.5,
+      "windows_per_family_event": 3
+    },
+    "historian_replay": {
+      "anchor_event_types": [
+        "historian_replay"
+      ],
+      "benign_scenarios": 4,
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "interpretation": "FPR for windows ending on/containing the named benign-family event; these are not isolated-operation windows because the feature window may include nearby observable events.",
+      "rows": 12,
+      "threshold": 0.5,
+      "windows_per_family_event": 3
+    },
+    "patching": {
+      "anchor_event_types": [
+        "patching"
+      ],
+      "benign_scenarios": 4,
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "interpretation": "FPR for windows ending on/containing the named benign-family event; these are not isolated-operation windows because the feature window may include nearby observable events.",
+      "rows": 12,
+      "threshold": 0.5,
+      "windows_per_family_event": 3
+    },
+    "relay_configuration_work": {
+      "anchor_event_types": [
+        "relay_configuration_work"
+      ],
+      "benign_scenarios": 4,
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "interpretation": "FPR for windows ending on/containing the named benign-family event; these are not isolated-operation windows because the feature window may include nearby observable events.",
+      "rows": 12,
+      "threshold": 0.5,
+      "windows_per_family_event": 3
+    },
+    "restore_test": {
+      "anchor_event_types": [
+        "restore_test"
+      ],
+      "benign_scenarios": 4,
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "interpretation": "FPR for windows ending on/containing the named benign-family event; these are not isolated-operation windows because the feature window may include nearby observable events.",
+      "rows": 12,
+      "threshold": 0.5,
+      "windows_per_family_event": 3
+    },
+    "turnaround_work": {
+      "anchor_event_types": [
+        "turnaround_work"
+      ],
+      "benign_scenarios": 4,
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "interpretation": "FPR for windows ending on/containing the named benign-family event; these are not isolated-operation windows because the feature window may include nearby observable events.",
+      "rows": 12,
+      "threshold": 0.5,
+      "windows_per_family_event": 3
+    },
+    "vendor_support": {
+      "anchor_event_types": [
+        "vendor_support"
+      ],
+      "benign_scenarios": 4,
+      "false_positive_count": 0,
+      "false_positive_rate": 0.0,
+      "interpretation": "FPR for windows ending on/containing the named benign-family event; these are not isolated-operation windows because the feature window may include nearby observable events.",
+      "rows": 12,
+      "threshold": 0.5,
+      "windows_per_family_event": 3
+    }
+  },
+  "categorical_context_features": [
+    "industry",
+    "site_types"
+  ],
+  "evaluated_split": "test",
+  "evidence_id": "RW-070-6",
+  "model_input_feature_count": 56,
+  "model_path": "artifacts\\ransomware\\models\\rw0704_catboost_model.cbm",
+  "model_sha256": "5ab4efa512e4099a7d4afc717d797ff6310976b9719a50d2b3e8860a2c3c7bd8",
+  "notes": [
+    "Truth is used only for evaluation labels and slicing, never as a model input.",
+    "Stage recall uses attack lifecycle stage timestamps as evaluation anchors; features remain limited to observable events at or before each anchor time.",
+    "Benign-family FPR uses windows ending on/containing each benign-family event and is not an isolated-operation FPR.",
+    "The 0.5 threshold is the uncalibrated RW-070-4 baseline threshold; no calibration or untouched-holdout tuning is performed in RW-070-6."
+  ],
+  "observable_feature_count": 54,
+  "observable_feature_names": [
+    "alarm_support_health_ratio",
+    "asset_evidence_count",
+    "auth_failure_count",
+    "backup_age_minutes",
+    "backup_evidence_count",
+    "backup_failure_streak",
+    "batch_quality_dependency_exposure_count",
+    "communications_health_ratio",
+    "context_evidence_count",
+    "critical_service_exposure_count",
+    "criticality_score",
+    "dcs_support_exposure_count",
+    "distinct_source_host_count",
+    "endpoint_evidence_count",
+    "entropy_proxy",
+    "event_count",
+    "extension_change_ratio",
+    "file_evidence_count",
+    "graph_evidence_count",
+    "identity_evidence_count",
+    "immutable_copy_present_count",
+    "ingestion_lag_seconds",
+    "late_event_ratio",
+    "maintenance_approval_ratio",
+    "missing_source_mask",
+    "network_evidence_count",
+    "new_peer_ratio",
+    "new_source_relationship_count",
+    "observable_value_max",
+    "observable_value_mean",
+    "outbound_bytes",
+    "privilege_change_count",
+    "protected_boundary_hops",
+    "quality_evidence_count",
+    "rare_process_chain_score",
+    "recovery_tier",
+    "relay_management_adjacency_count",
+    "remote_admin_peer_count",
+    "rename_rate",
+    "restore_test_age_days",
+    "scada_visibility_ratio",
+    "service_availability_ratio",
+    "service_evidence_count",
+    "sis_esd_adjacency_count",
+    "stage_transition_score",
+    "stale_data_ratio",
+    "substation_support_exposure_count",
+    "task_service_creation_count",
+    "unique_asset_count",
+    "unique_evidence_type_count",
+    "unsigned_burst_count",
+    "window_duration_minutes",
+    "write_rate",
+    "zone_crossing_count"
+  ],
+  "overall": {
+    "accuracy": 0.2857142857142857,
+    "balanced_accuracy": 0.29166666666666663,
+    "confusion_matrix": {
+      "fn": 12,
+      "fp": 18,
+      "tn": 6,
+      "tp": 6
+    },
+    "f1": 0.2857142857142857,
+    "fpr": 0.75,
+    "negative_rows": 24,
+    "positive_rows": 18,
+    "pr_auc": 0.33445258445258447,
+    "precision": 0.25,
+    "recall": 0.3333333333333333,
+    "roc_auc": 0.19444444444444445,
+    "rows": 42,
+    "threshold": 0.5
+  },
+  "population": {
+    "attack_scenarios": 6,
+    "benign_scenarios": 4,
+    "fault_scenarios": 2,
+    "metric_granularity": "row-level; each frozen test scenario contributes one row for each 1, 5 and 15 minute window",
+    "normal_scenarios": 2,
+    "rows_per_scenario": 3,
+    "test_rows": 42,
+    "test_scenarios": 14
+  },
+  "report_version": "1.0",
+  "sealed_split": {
+    "name": "untouched_holdout",
+    "status": "sealed_not_evaluated"
+  },
+  "sector_slices": {
+    "energy": {
+      "accuracy": 0.3333333333333333,
+      "balanced_accuracy": 0.3333333333333333,
+      "confusion_matrix": {
+        "fn": 4,
+        "fp": 12,
+        "tn": 6,
+        "tp": 2
+      },
+      "f1": 0.2,
+      "fpr": 0.6666666666666666,
+      "negative_rows": 18,
+      "positive_rows": 6,
+      "pr_auc": 0.2142857142857143,
+      "precision": 0.14285714285714285,
+      "recall": 0.3333333333333333,
+      "roc_auc": 0.24074074074074076,
+      "rows": 24,
+      "threshold": 0.5
+    },
+    "petrochemical": {
+      "accuracy": 0.2222222222222222,
+      "balanced_accuracy": 0.16666666666666666,
+      "confusion_matrix": {
+        "fn": 8,
+        "fp": 6,
+        "tn": 0,
+        "tp": 4
+      },
+      "f1": 0.36363636363636365,
+      "fpr": 1.0,
+      "negative_rows": 6,
+      "positive_rows": 12,
+      "pr_auc": 0.5499999999999999,
+      "precision": 0.4,
+      "recall": 0.3333333333333333,
+      "roc_auc": 0.16666666666666666,
+      "rows": 18,
+      "threshold": 0.5
+    }
+  },
+  "site_slices": {
+    "energy-blr01": {
+      "accuracy": 0.2857142857142857,
+      "balanced_accuracy": 0.29166666666666663,
+      "confusion_matrix": {
+        "fn": 6,
+        "fp": 9,
+        "tn": 3,
+        "tp": 3
+      },
+      "f1": 0.2857142857142857,
+      "fpr": 0.75,
+      "negative_rows": 12,
+      "positive_rows": 9,
+      "pr_auc": 0.33445258445258447,
+      "precision": 0.25,
+      "recall": 0.3333333333333333,
+      "roc_auc": 0.19444444444444445,
+      "rows": 21,
+      "threshold": 0.5
+    }
+  },
+  "site_type_slices": {
+    "control_centre": {
+      "accuracy": 0.3333333333333333,
+      "balanced_accuracy": null,
+      "confusion_matrix": {
+        "fn": 4,
+        "fp": 0,
+        "tn": 0,
+        "tp": 2
+      },
+      "f1": 0.5,
+      "fpr": null,
+      "negative_rows": 0,
+      "positive_rows": 6,
+      "pr_auc": null,
+      "precision": 1.0,
+      "recall": 0.3333333333333333,
+      "roc_auc": null,
+      "rows": 6,
+      "threshold": 0.5
+    },
+    "control_centre|substation": {
+      "accuracy": 0.3333333333333333,
+      "balanced_accuracy": null,
+      "confusion_matrix": {
+        "fn": 0,
+        "fp": 12,
+        "tn": 6,
+        "tp": 0
+      },
+      "f1": 0.0,
+      "fpr": 0.6666666666666666,
+      "negative_rows": 18,
+      "positive_rows": 0,
+      "pr_auc": null,
+      "precision": 0.0,
+      "recall": 0.0,
+      "roc_auc": null,
+      "rows": 18,
+      "threshold": 0.5
+    },
+    "petrochemical_complex|refinery": {
+      "accuracy": 0.2222222222222222,
+      "balanced_accuracy": 0.16666666666666666,
+      "confusion_matrix": {
+        "fn": 8,
+        "fp": 6,
+        "tn": 0,
+        "tp": 4
+      },
+      "f1": 0.36363636363636365,
+      "fpr": 1.0,
+      "negative_rows": 6,
+      "positive_rows": 12,
+      "pr_auc": 0.5499999999999999,
+      "precision": 0.4,
+      "recall": 0.3333333333333333,
+      "roc_auc": 0.16666666666666666,
+      "rows": 18,
+      "threshold": 0.5
+    }
+  },
+  "source_split_manifest": "artifacts\\ransomware\\offline\\split_assignment_manifest.json",
+  "source_split_manifest_sha256": "ebde535b343c99df371e564a404de7035e260c1c95686e073d4ead478562c082",
+  "stage_recall": {
+    "discovery": {
+      "accuracy": 0.0,
+      "anchor_event_types": [
+        "discovery_observable"
+      ],
+      "attack_scenarios": 6,
+      "balanced_accuracy": null,
+      "confusion_matrix": {
+        "fn": 18,
+        "fp": 0,
+        "tn": 0,
+        "tp": 0
+      },
+      "f1": 0.0,
+      "fpr": null,
+      "negative_rows": 0,
+      "positive_rows": 18,
+      "pr_auc": null,
+      "precision": 0.0,
+      "recall": 0.0,
+      "roc_auc": null,
+      "rows": 18,
+      "stage_index": 3,
+      "stage_name": "discovery",
+      "threshold": 0.5,
+      "windows_per_scenario": 3
+    },
+    "encryption_impact": {
+      "accuracy": 0.0,
+      "anchor_event_types": [
+        "encryption_impact_observable"
+      ],
+      "attack_scenarios": 6,
+      "balanced_accuracy": null,
+      "confusion_matrix": {
+        "fn": 18,
+        "fp": 0,
+        "tn": 0,
+        "tp": 0
+      },
+      "f1": 0.0,
+      "fpr": null,
+      "negative_rows": 0,
+      "positive_rows": 18,
+      "pr_auc": null,
+      "precision": 0.0,
+      "recall": 0.0,
+      "roc_auc": null,
+      "rows": 18,
+      "stage_index": 7,
+      "stage_name": "encryption_impact",
+      "threshold": 0.5,
+      "windows_per_scenario": 3
+    },
+    "execution_persistence": {
+      "accuracy": 0.0,
+      "anchor_event_types": [
+        "execution_persistence_observable"
+      ],
+      "attack_scenarios": 6,
+      "balanced_accuracy": null,
+      "confusion_matrix": {
+        "fn": 18,
+        "fp": 0,
+        "tn": 0,
+        "tp": 0
+      },
+      "f1": 0.0,
+      "fpr": null,
+      "negative_rows": 0,
+      "positive_rows": 18,
+      "pr_auc": null,
+      "precision": 0.0,
+      "recall": 0.0,
+      "roc_auc": null,
+      "rows": 18,
+      "stage_index": 1,
+      "stage_name": "execution_persistence",
+      "threshold": 0.5,
+      "windows_per_scenario": 3
+    },
+    "extortion_marker": {
+      "accuracy": 0.0,
+      "anchor_event_types": [
+        "extortion_marker_observable"
+      ],
+      "attack_scenarios": 6,
+      "balanced_accuracy": null,
+      "confusion_matrix": {
+        "fn": 18,
+        "fp": 0,
+        "tn": 0,
+        "tp": 0
+      },
+      "f1": 0.0,
+      "fpr": null,
+      "negative_rows": 0,
+      "positive_rows": 18,
+      "pr_auc": null,
+      "precision": 0.0,
+      "recall": 0.0,
+      "roc_auc": null,
+      "rows": 18,
+      "stage_index": 8,
+      "stage_name": "extortion_marker",
+      "threshold": 0.5,
+      "windows_per_scenario": 3
+    },
+    "initial_access": {
+      "accuracy": 0.0,
+      "anchor_event_types": [
+        "initial_access_observable"
+      ],
+      "attack_scenarios": 6,
+      "balanced_accuracy": null,
+      "confusion_matrix": {
+        "fn": 18,
+        "fp": 0,
+        "tn": 0,
+        "tp": 0
+      },
+      "f1": 0.0,
+      "fpr": null,
+      "negative_rows": 0,
+      "positive_rows": 18,
+      "pr_auc": null,
+      "precision": 0.0,
+      "recall": 0.0,
+      "roc_auc": null,
+      "rows": 18,
+      "stage_index": 0,
+      "stage_name": "initial_access",
+      "threshold": 0.5,
+      "windows_per_scenario": 3
+    },
+    "lateral_movement": {
+      "accuracy": 0.0,
+      "anchor_event_types": [
+        "lateral_movement_observable"
+      ],
+      "attack_scenarios": 6,
+      "balanced_accuracy": null,
+      "confusion_matrix": {
+        "fn": 18,
+        "fp": 0,
+        "tn": 0,
+        "tp": 0
+      },
+      "f1": 0.0,
+      "fpr": null,
+      "negative_rows": 0,
+      "positive_rows": 18,
+      "pr_auc": null,
+      "precision": 0.0,
+      "recall": 0.0,
+      "roc_auc": null,
+      "rows": 18,
+      "stage_index": 4,
+      "stage_name": "lateral_movement",
+      "threshold": 0.5,
+      "windows_per_scenario": 3
+    },
+    "privilege_escalation": {
+      "accuracy": 0.0,
+      "anchor_event_types": [
+        "privilege_escalation_observable"
+      ],
+      "attack_scenarios": 6,
+      "balanced_accuracy": null,
+      "confusion_matrix": {
+        "fn": 18,
+        "fp": 0,
+        "tn": 0,
+        "tp": 0
+      },
+      "f1": 0.0,
+      "fpr": null,
+      "negative_rows": 0,
+      "positive_rows": 18,
+      "pr_auc": null,
+      "precision": 0.0,
+      "recall": 0.0,
+      "roc_auc": null,
+      "rows": 18,
+      "stage_index": 2,
+      "stage_name": "privilege_escalation",
+      "threshold": 0.5,
+      "windows_per_scenario": 3
+    },
+    "recovery": {
+      "accuracy": 0.0,
+      "anchor_event_types": [
+        "recovery_observable"
+      ],
+      "attack_scenarios": 6,
+      "balanced_accuracy": null,
+      "confusion_matrix": {
+        "fn": 18,
+        "fp": 0,
+        "tn": 0,
+        "tp": 0
+      },
+      "f1": 0.0,
+      "fpr": null,
+      "negative_rows": 0,
+      "positive_rows": 18,
+      "pr_auc": null,
+      "precision": 0.0,
+      "recall": 0.0,
+      "roc_auc": null,
+      "rows": 18,
+      "stage_index": 9,
+      "stage_name": "recovery",
+      "threshold": 0.5,
+      "windows_per_scenario": 3
+    },
+    "recovery_impairment": {
+      "accuracy": 0.0,
+      "anchor_event_types": [
+        "recovery_impairment_observable"
+      ],
+      "attack_scenarios": 6,
+      "balanced_accuracy": null,
+      "confusion_matrix": {
+        "fn": 18,
+        "fp": 0,
+        "tn": 0,
+        "tp": 0
+      },
+      "f1": 0.0,
+      "fpr": null,
+      "negative_rows": 0,
+      "positive_rows": 18,
+      "pr_auc": null,
+      "precision": 0.0,
+      "recall": 0.0,
+      "roc_auc": null,
+      "rows": 18,
+      "stage_index": 6,
+      "stage_name": "recovery_impairment",
+      "threshold": 0.5,
+      "windows_per_scenario": 3
+    },
+    "staging": {
+      "accuracy": 0.0,
+      "anchor_event_types": [
+        "staging_observable"
+      ],
+      "attack_scenarios": 6,
+      "balanced_accuracy": null,
+      "confusion_matrix": {
+        "fn": 18,
+        "fp": 0,
+        "tn": 0,
+        "tp": 0
+      },
+      "f1": 0.0,
+      "fpr": null,
+      "negative_rows": 0,
+      "positive_rows": 18,
+      "pr_auc": null,
+      "precision": 0.0,
+      "recall": 0.0,
+      "roc_auc": null,
+      "rows": 18,
+      "stage_index": 5,
+      "stage_name": "staging",
+      "threshold": 0.5,
+      "windows_per_scenario": 3
+    }
+  },
+  "threshold": 0.5,
+  "training_manifest": "artifacts\\ransomware\\models\\rw0704_catboost_training_manifest.json",
+  "training_manifest_sha256": "34463e6d719f1c80315f98af96b2eb912d80755b6dacab3e1cc5ab19aec8c8ba",
+  "windows_minutes": [
+    1,
+    5,
+    15
+  ],
+  "zone_slices": {
+    "enterprise_it": {
+      "accuracy": 0.2857142857142857,
+      "balanced_accuracy": 0.29166666666666663,
+      "confusion_matrix": {
+        "fn": 6,
+        "fp": 9,
+        "tn": 3,
+        "tp": 3
+      },
+      "f1": 0.2857142857142857,
+      "fpr": 0.75,
+      "negative_rows": 12,
+      "positive_rows": 9,
+      "pr_auc": 0.33445258445258447,
+      "precision": 0.25,
+      "recall": 0.3333333333333333,
+      "roc_auc": 0.19444444444444445,
+      "rows": 21,
+      "threshold": 0.5
+    }
+  }
+}
