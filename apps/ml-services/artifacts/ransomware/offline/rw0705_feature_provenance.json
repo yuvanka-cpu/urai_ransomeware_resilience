@@ -1,0 +1,960 @@
+{
+  "evidence_id": "RW-070-5",
+  "features": {
+    "alarm_support_health_ratio": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> alarm_support_health_ratio",
+      "display_allowed": true,
+      "feature_name": "alarm_support_health_ratio",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "asset_evidence_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> asset_evidence_count",
+      "display_allowed": true,
+      "feature_name": "asset_evidence_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "auth_failure_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> auth_failure_count",
+      "display_allowed": true,
+      "feature_name": "auth_failure_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "backup_age_minutes": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> backup_age_minutes",
+      "display_allowed": true,
+      "feature_name": "backup_age_minutes",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "backup_evidence_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> backup_evidence_count",
+      "display_allowed": true,
+      "feature_name": "backup_evidence_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "backup_failure_streak": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> backup_failure_streak",
+      "display_allowed": true,
+      "feature_name": "backup_failure_streak",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "batch_quality_dependency_exposure_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> batch_quality_dependency_exposure_count",
+      "display_allowed": true,
+      "feature_name": "batch_quality_dependency_exposure_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "communications_health_ratio": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> communications_health_ratio",
+      "display_allowed": true,
+      "feature_name": "communications_health_ratio",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "context_evidence_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> context_evidence_count",
+      "display_allowed": true,
+      "feature_name": "context_evidence_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "critical_service_exposure_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> critical_service_exposure_count",
+      "display_allowed": true,
+      "feature_name": "critical_service_exposure_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "criticality_score": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> criticality_score",
+      "display_allowed": true,
+      "feature_name": "criticality_score",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "dcs_support_exposure_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> dcs_support_exposure_count",
+      "display_allowed": true,
+      "feature_name": "dcs_support_exposure_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "distinct_source_host_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> distinct_source_host_count",
+      "display_allowed": true,
+      "feature_name": "distinct_source_host_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "endpoint_evidence_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> endpoint_evidence_count",
+      "display_allowed": true,
+      "feature_name": "endpoint_evidence_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "entropy_proxy": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> entropy_proxy",
+      "display_allowed": true,
+      "feature_name": "entropy_proxy",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "event_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> event_count",
+      "display_allowed": true,
+      "feature_name": "event_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "extension_change_ratio": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> extension_change_ratio",
+      "display_allowed": true,
+      "feature_name": "extension_change_ratio",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "file_evidence_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> file_evidence_count",
+      "display_allowed": true,
+      "feature_name": "file_evidence_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "graph_evidence_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> graph_evidence_count",
+      "display_allowed": true,
+      "feature_name": "graph_evidence_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "identity_evidence_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> identity_evidence_count",
+      "display_allowed": true,
+      "feature_name": "identity_evidence_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "immutable_copy_present_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> immutable_copy_present_count",
+      "display_allowed": true,
+      "feature_name": "immutable_copy_present_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "industry": {
+      "derivation": "CatBoost model-context field",
+      "display_allowed": false,
+      "feature_name": "industry",
+      "reason_not_displayed": "RW-070-5 displayed explanations are restricted to the frozen observable feature contract.",
+      "source_kind": "static_scenario_metadata",
+      "source_object": "FrozenScenario",
+      "source_paths": [
+        "industry"
+      ],
+      "truth_or_future_field": false
+    },
+    "ingestion_lag_seconds": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> ingestion_lag_seconds",
+      "display_allowed": true,
+      "feature_name": "ingestion_lag_seconds",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "late_event_ratio": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> late_event_ratio",
+      "display_allowed": true,
+      "feature_name": "late_event_ratio",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "maintenance_approval_ratio": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> maintenance_approval_ratio",
+      "display_allowed": true,
+      "feature_name": "maintenance_approval_ratio",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "missing_source_mask": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> missing_source_mask",
+      "display_allowed": true,
+      "feature_name": "missing_source_mask",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "network_evidence_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> network_evidence_count",
+      "display_allowed": true,
+      "feature_name": "network_evidence_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "new_peer_ratio": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> new_peer_ratio",
+      "display_allowed": true,
+      "feature_name": "new_peer_ratio",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "new_source_relationship_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> new_source_relationship_count",
+      "display_allowed": true,
+      "feature_name": "new_source_relationship_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "observable_value_max": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> observable_value_max",
+      "display_allowed": true,
+      "feature_name": "observable_value_max",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "observable_value_mean": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> observable_value_mean",
+      "display_allowed": true,
+      "feature_name": "observable_value_mean",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "outbound_bytes": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> outbound_bytes",
+      "display_allowed": true,
+      "feature_name": "outbound_bytes",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "privilege_change_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> privilege_change_count",
+      "display_allowed": true,
+      "feature_name": "privilege_change_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "protected_boundary_hops": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> protected_boundary_hops",
+      "display_allowed": true,
+      "feature_name": "protected_boundary_hops",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "quality_evidence_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> quality_evidence_count",
+      "display_allowed": true,
+      "feature_name": "quality_evidence_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "rare_process_chain_score": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> rare_process_chain_score",
+      "display_allowed": true,
+      "feature_name": "rare_process_chain_score",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "recovery_tier": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> recovery_tier",
+      "display_allowed": true,
+      "feature_name": "recovery_tier",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "relay_management_adjacency_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> relay_management_adjacency_count",
+      "display_allowed": true,
+      "feature_name": "relay_management_adjacency_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "remote_admin_peer_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> remote_admin_peer_count",
+      "display_allowed": true,
+      "feature_name": "remote_admin_peer_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "rename_rate": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> rename_rate",
+      "display_allowed": true,
+      "feature_name": "rename_rate",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "restore_test_age_days": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> restore_test_age_days",
+      "display_allowed": true,
+      "feature_name": "restore_test_age_days",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "scada_visibility_ratio": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> scada_visibility_ratio",
+      "display_allowed": true,
+      "feature_name": "scada_visibility_ratio",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "service_availability_ratio": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> service_availability_ratio",
+      "display_allowed": true,
+      "feature_name": "service_availability_ratio",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "service_evidence_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> service_evidence_count",
+      "display_allowed": true,
+      "feature_name": "service_evidence_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "sis_esd_adjacency_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> sis_esd_adjacency_count",
+      "display_allowed": true,
+      "feature_name": "sis_esd_adjacency_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "site_types": {
+      "derivation": "CatBoost model-context field",
+      "display_allowed": false,
+      "feature_name": "site_types",
+      "reason_not_displayed": "RW-070-5 displayed explanations are restricted to the frozen observable feature contract.",
+      "source_kind": "static_scenario_metadata",
+      "source_object": "FrozenScenario",
+      "source_paths": [
+        "site_types"
+      ],
+      "truth_or_future_field": false
+    },
+    "stage_transition_score": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> stage_transition_score",
+      "display_allowed": true,
+      "feature_name": "stage_transition_score",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "stale_data_ratio": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> stale_data_ratio",
+      "display_allowed": true,
+      "feature_name": "stale_data_ratio",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "substation_support_exposure_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> substation_support_exposure_count",
+      "display_allowed": true,
+      "feature_name": "substation_support_exposure_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "task_service_creation_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> task_service_creation_count",
+      "display_allowed": true,
+      "feature_name": "task_service_creation_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "unique_asset_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> unique_asset_count",
+      "display_allowed": true,
+      "feature_name": "unique_asset_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "unique_evidence_type_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> unique_evidence_type_count",
+      "display_allowed": true,
+      "feature_name": "unique_evidence_type_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "unsigned_burst_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> unsigned_burst_count",
+      "display_allowed": true,
+      "feature_name": "unsigned_burst_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "window_duration_minutes": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> window_duration_minutes",
+      "display_allowed": true,
+      "feature_name": "window_duration_minutes",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "write_rate": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> write_rate",
+      "display_allowed": true,
+      "feature_name": "write_rate",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    },
+    "zone_crossing_count": {
+      "contract": "config/ransomware/shared/schemas/feature_contract.md",
+      "derivation": "extract_window_features -> zone_crossing_count",
+      "display_allowed": true,
+      "feature_name": "zone_crossing_count",
+      "source_kind": "observable_event",
+      "source_object": "ObservableScenarioEvent",
+      "source_paths": [
+        "event_family",
+        "event_type",
+        "attributes"
+      ],
+      "time_basis": "event_time",
+      "truth_or_future_field": false,
+      "window_semantics": "[T-W, T] inclusive"
+    }
+  },
+  "model_artifact": "artifacts\\ransomware\\models\\rw0704_catboost_model.cbm",
+  "model_context_display_allowed": false,
+  "model_context_features": [
+    "industry",
+    "site_types"
+  ],
+  "model_sha256": "5ab4efa512e4099a7d4afc717d797ff6310976b9719a50d2b3e8860a2c3c7bd8",
+  "observable_feature_count": 54,
+  "observable_feature_names": [
+    "alarm_support_health_ratio",
+    "asset_evidence_count",
+    "auth_failure_count",
+    "backup_age_minutes",
+    "backup_evidence_count",
+    "backup_failure_streak",
+    "batch_quality_dependency_exposure_count",
+    "communications_health_ratio",
+    "context_evidence_count",
+    "critical_service_exposure_count",
+    "criticality_score",
+    "dcs_support_exposure_count",
+    "distinct_source_host_count",
+    "endpoint_evidence_count",
+    "entropy_proxy",
+    "event_count",
+    "extension_change_ratio",
+    "file_evidence_count",
+    "graph_evidence_count",
+    "identity_evidence_count",
+    "immutable_copy_present_count",
+    "ingestion_lag_seconds",
+    "late_event_ratio",
+    "maintenance_approval_ratio",
+    "missing_source_mask",
+    "network_evidence_count",
+    "new_peer_ratio",
+    "new_source_relationship_count",
+    "observable_value_max",
+    "observable_value_mean",
+    "outbound_bytes",
+    "privilege_change_count",
+    "protected_boundary_hops",
+    "quality_evidence_count",
+    "rare_process_chain_score",
+    "recovery_tier",
+    "relay_management_adjacency_count",
+    "remote_admin_peer_count",
+    "rename_rate",
+    "restore_test_age_days",
+    "scada_visibility_ratio",
+    "service_availability_ratio",
+    "service_evidence_count",
+    "sis_esd_adjacency_count",
+    "stage_transition_score",
+    "stale_data_ratio",
+    "substation_support_exposure_count",
+    "task_service_creation_count",
+    "unique_asset_count",
+    "unique_evidence_type_count",
+    "unsigned_burst_count",
+    "window_duration_minutes",
+    "write_rate",
+    "zone_crossing_count"
+  ],
+  "provenance_version": "1.0",
+  "real_action_executed": false,
+  "synthetic_only": true
+}

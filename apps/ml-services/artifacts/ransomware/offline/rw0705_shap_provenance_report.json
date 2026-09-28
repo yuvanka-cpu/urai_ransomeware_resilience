@@ -1,0 +1,339 @@
+{
+  "context_features_excluded_from_display": [
+    "industry",
+    "site_types"
+  ],
+  "created_at_utc": "2026-09-28T11:50:18.389575+00:00",
+  "displayed_feature_count": 8,
+  "displayed_feature_names": [
+    "alarm_support_health_ratio",
+    "asset_evidence_count",
+    "auth_failure_count",
+    "backup_age_minutes",
+    "batch_quality_dependency_exposure_count",
+    "file_evidence_count",
+    "graph_evidence_count",
+    "network_evidence_count"
+  ],
+  "evidence_id": "RW-070-5",
+  "feature_provenance_artifact": "artifacts\\ransomware\\offline\\rw0705_feature_provenance.json",
+  "model_artifact": "artifacts\\ransomware\\models\\rw0704_catboost_model.cbm",
+  "model_input_feature_count": 56,
+  "model_sha256": "5ab4efa512e4099a7d4afc717d797ff6310976b9719a50d2b3e8860a2c3c7bd8",
+  "observable_feature_count": 54,
+  "provenance_entries": 56,
+  "provenance_test": true,
+  "real_action_executed": false,
+  "repeated_shap_deterministic": true,
+  "sample_explanations": [
+    {
+      "displayed_observable_features": [
+        {
+          "absolute_shap_value": 0.03655479915289273,
+          "feature": "batch_quality_dependency_exposure_count",
+          "shap_value": -0.03655479915289273
+        },
+        {
+          "absolute_shap_value": 0.0067080219036659275,
+          "feature": "network_evidence_count",
+          "shap_value": -0.0067080219036659275
+        },
+        {
+          "absolute_shap_value": 0.0033899494269113385,
+          "feature": "file_evidence_count",
+          "shap_value": -0.0033899494269113385
+        },
+        {
+          "absolute_shap_value": 0.002681395735808418,
+          "feature": "graph_evidence_count",
+          "shap_value": 0.002681395735808418
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "alarm_support_health_ratio",
+          "shap_value": 0.0
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "asset_evidence_count",
+          "shap_value": 0.0
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "auth_failure_count",
+          "shap_value": 0.0
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "backup_age_minutes",
+          "shap_value": 0.0
+        }
+      ],
+      "expected_value": -0.08535846307486654,
+      "model_probability": 0.46896461810331674,
+      "scenario_id": "rw-attack-0c9fd799e68d",
+      "split": "validation",
+      "variant": "attack",
+      "window_minutes": 1
+    },
+    {
+      "displayed_observable_features": [
+        {
+          "absolute_shap_value": 0.15167980369885448,
+          "feature": "batch_quality_dependency_exposure_count",
+          "shap_value": 0.15167980369885448
+        },
+        {
+          "absolute_shap_value": 0.007126182488455141,
+          "feature": "network_evidence_count",
+          "shap_value": -0.007126182488455141
+        },
+        {
+          "absolute_shap_value": 0.0034022192698314685,
+          "feature": "file_evidence_count",
+          "shap_value": 0.0034022192698314685
+        },
+        {
+          "absolute_shap_value": 0.002562273714242411,
+          "feature": "graph_evidence_count",
+          "shap_value": -0.002562273714242411
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "alarm_support_health_ratio",
+          "shap_value": 0.0
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "asset_evidence_count",
+          "shap_value": 0.0
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "auth_failure_count",
+          "shap_value": 0.0
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "backup_age_minutes",
+          "shap_value": 0.0
+        }
+      ],
+      "expected_value": -0.08535846307486654,
+      "model_probability": 0.5171878488482596,
+      "scenario_id": "rw-attack-0c9fd799e68d",
+      "split": "validation",
+      "variant": "attack",
+      "window_minutes": 5
+    },
+    {
+      "displayed_observable_features": [
+        {
+          "absolute_shap_value": 0.07487490868125085,
+          "feature": "batch_quality_dependency_exposure_count",
+          "shap_value": 0.07487490868125085
+        },
+        {
+          "absolute_shap_value": 0.07484882393629229,
+          "feature": "file_evidence_count",
+          "shap_value": -0.07484882393629229
+        },
+        {
+          "absolute_shap_value": 0.009354427101794132,
+          "feature": "network_evidence_count",
+          "shap_value": -0.009354427101794132
+        },
+        {
+          "absolute_shap_value": 0.0018958893936638558,
+          "feature": "graph_evidence_count",
+          "shap_value": -0.0018958893936638558
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "alarm_support_health_ratio",
+          "shap_value": 0.0
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "asset_evidence_count",
+          "shap_value": 0.0
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "auth_failure_count",
+          "shap_value": 0.0
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "backup_age_minutes",
+          "shap_value": 0.0
+        }
+      ],
+      "expected_value": -0.08535846307486654,
+      "model_probability": 0.4772454101615647,
+      "scenario_id": "rw-attack-0c9fd799e68d",
+      "split": "validation",
+      "variant": "attack",
+      "window_minutes": 15
+    },
+    {
+      "displayed_observable_features": [
+        {
+          "absolute_shap_value": 0.0420767109416382,
+          "feature": "batch_quality_dependency_exposure_count",
+          "shap_value": -0.0420767109416382
+        },
+        {
+          "absolute_shap_value": 0.014042858184153692,
+          "feature": "graph_evidence_count",
+          "shap_value": -0.014042858184153692
+        },
+        {
+          "absolute_shap_value": 0.007653869035695659,
+          "feature": "network_evidence_count",
+          "shap_value": -0.007653869035695659
+        },
+        {
+          "absolute_shap_value": 0.004377532042159465,
+          "feature": "file_evidence_count",
+          "shap_value": -0.004377532042159465
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "alarm_support_health_ratio",
+          "shap_value": 0.0
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "asset_evidence_count",
+          "shap_value": 0.0
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "auth_failure_count",
+          "shap_value": 0.0
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "backup_age_minutes",
+          "shap_value": 0.0
+        }
+      ],
+      "expected_value": -0.08535846307486654,
+      "model_probability": 0.4578583201075531,
+      "scenario_id": "rw-attack-42677f55525b",
+      "split": "validation",
+      "variant": "attack",
+      "window_minutes": 1
+    },
+    {
+      "displayed_observable_features": [
+        {
+          "absolute_shap_value": 0.0420767109416382,
+          "feature": "batch_quality_dependency_exposure_count",
+          "shap_value": -0.0420767109416382
+        },
+        {
+          "absolute_shap_value": 0.014042858184153692,
+          "feature": "graph_evidence_count",
+          "shap_value": -0.014042858184153692
+        },
+        {
+          "absolute_shap_value": 0.007653869035695659,
+          "feature": "network_evidence_count",
+          "shap_value": -0.007653869035695659
+        },
+        {
+          "absolute_shap_value": 0.004377532042159465,
+          "feature": "file_evidence_count",
+          "shap_value": -0.004377532042159465
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "alarm_support_health_ratio",
+          "shap_value": 0.0
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "asset_evidence_count",
+          "shap_value": 0.0
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "auth_failure_count",
+          "shap_value": 0.0
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "backup_age_minutes",
+          "shap_value": 0.0
+        }
+      ],
+      "expected_value": -0.08535846307486654,
+      "model_probability": 0.4578583201075531,
+      "scenario_id": "rw-attack-42677f55525b",
+      "split": "validation",
+      "variant": "attack",
+      "window_minutes": 5
+    },
+    {
+      "displayed_observable_features": [
+        {
+          "absolute_shap_value": 0.09630570492750834,
+          "feature": "file_evidence_count",
+          "shap_value": 0.09630570492750834
+        },
+        {
+          "absolute_shap_value": 0.006836031700174542,
+          "feature": "batch_quality_dependency_exposure_count",
+          "shap_value": -0.006836031700174542
+        },
+        {
+          "absolute_shap_value": 0.0057334667825426405,
+          "feature": "graph_evidence_count",
+          "shap_value": -0.0057334667825426405
+        },
+        {
+          "absolute_shap_value": 0.0049556063323238095,
+          "feature": "network_evidence_count",
+          "shap_value": -0.0049556063323238095
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "alarm_support_health_ratio",
+          "shap_value": 0.0
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "asset_evidence_count",
+          "shap_value": 0.0
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "auth_failure_count",
+          "shap_value": 0.0
+        },
+        {
+          "absolute_shap_value": 0.0,
+          "feature": "backup_age_minutes",
+          "shap_value": 0.0
+        }
+      ],
+      "expected_value": -0.08535846307486654,
+      "model_probability": 0.5,
+      "scenario_id": "rw-attack-42677f55525b",
+      "split": "validation",
+      "variant": "attack",
+      "window_minutes": 15
+    }
+  ],
+  "samples_generated": 6,
+  "shap_matrix_shape": [
+    6,
+    57
+  ],
+  "status": "pass",
+  "synthetic_only": true,
+  "top_features_per_sample": 8,
+  "training_manifest": "artifacts\\ransomware\\models\\rw0704_catboost_training_manifest.json"
+}
