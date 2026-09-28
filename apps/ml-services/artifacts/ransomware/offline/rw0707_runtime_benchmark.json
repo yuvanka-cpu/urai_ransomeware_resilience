@@ -1,0 +1,85 @@
+{
+  "artifact_type": "runtime_benchmark",
+  "base_seed": 20260921,
+  "benchmark_population": {
+    "evaluated_split": "test",
+    "inference_batch_size": 42,
+    "test_rows": 42,
+    "windows_minutes": [
+      1,
+      5,
+      15
+    ]
+  },
+  "cold_load": {
+    "latency_ms": {
+      "max": 3.2508,
+      "mean": 2.3866,
+      "min": 2.0935,
+      "p50": 2.1872,
+      "p95": 3.05206
+    },
+    "runs": 5,
+    "working_set_mb": {
+      "max": 140.16796875,
+      "mean": 140.009375
+    }
+  },
+  "evidence_id": "RW-070-7",
+  "holdout_policy": {
+    "untouched_holdout_evaluated": false,
+    "untouched_holdout_loaded": false
+  },
+  "memory": {
+    "measurement": "Windows GetProcessMemoryInfo WorkingSetSize",
+    "peak_working_set_mb": 142.87109375
+  },
+  "model": {
+    "categorical_context_features": [
+      "industry",
+      "site_types"
+    ],
+    "model_input_feature_count": 56,
+    "observable_feature_count": 54,
+    "path": "artifacts\\ransomware\\models\\rw0704_catboost_model.cbm",
+    "sha256": "5ab4efa512e4099a7d4afc717d797ff6310976b9719a50d2b3e8860a2c3c7bd8"
+  },
+  "notes": [
+    "Cold-load measurements run in fresh child Python processes.",
+    "Warm-load measurements repeat artifact loading in the same parent process after the cold benchmark.",
+    "Warm inference measures predict_proba over the full frozen test batch after warm-up.",
+    "Benchmark measures the committed CatBoost artifact only; it does not represent the later end-to-end API runtime gate."
+  ],
+  "report_version": "1.0",
+  "runtime": {
+    "catboost_version": "1.2.10",
+    "platform": "win32",
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
+  },
+  "warm_inference": {
+    "batch_size": 42,
+    "latency_ms": {
+      "max": 2.5187,
+      "mean": 2.09204,
+      "min": 1.8987,
+      "p50": 2.0633999999999997,
+      "p95": 2.3301049999999996
+    },
+    "timed_runs": 50,
+    "warmup_runs": 10
+  },
+  "warm_load": {
+    "latency_ms": {
+      "max": 2.4651,
+      "mean": 1.85389,
+      "min": 1.2895,
+      "p50": 1.76695,
+      "p95": 2.441745
+    },
+    "runs": 10,
+    "working_set_mb": {
+      "max": 140.89453125,
+      "mean": 140.88828125
+    }
+  }
+}
