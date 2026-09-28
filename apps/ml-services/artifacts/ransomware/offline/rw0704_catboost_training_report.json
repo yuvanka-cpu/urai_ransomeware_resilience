@@ -1,0 +1,49 @@
+{
+  "categorical_context_features": [
+    "industry",
+    "site_types"
+  ],
+  "class_weighting": true,
+  "cv_folds": [
+    {
+      "accuracy": 0.9259259259259259,
+      "fit_scenarios": 9,
+      "fold": 1,
+      "log_loss": 0.17587520777808302,
+      "precision": 0.6,
+      "recall": 1.0,
+      "validation_rows": 27,
+      "validation_scenarios": 9
+    },
+    {
+      "accuracy": 1.0,
+      "fit_scenarios": 9,
+      "fold": 2,
+      "log_loss": 0.050192727496488475,
+      "precision": 1.0,
+      "recall": 1.0,
+      "validation_rows": 27,
+      "validation_scenarios": 9
+    }
+  ],
+  "evidence_id": "RW-070-4",
+  "frozen_validation": {
+    "accuracy": 0.6666666666666666,
+    "log_loss": 0.6728866674937356,
+    "precision": 0.6666666666666666,
+    "recall": 0.5,
+    "validation_rows": 54,
+    "validation_scenarios": 18
+  },
+  "group_field": "scenario_id",
+  "model_artifact": "artifacts\\ransomware\\models\\rw0704_catboost_model.cbm",
+  "model_sha256": "5ab4efa512e4099a7d4afc717d797ff6310976b9719a50d2b3e8860a2c3c7bd8",
+  "observable_feature_count": 54,
+  "real_action_executed": false,
+  "row_count": 240,
+  "scenario_count": 80,
+  "scenario_grouped_validation": true,
+  "status": "pass",
+  "synthetic_only": true,
+  "training_manifest": "artifacts\\ransomware\\models\\rw0704_catboost_training_manifest.json"
+}
