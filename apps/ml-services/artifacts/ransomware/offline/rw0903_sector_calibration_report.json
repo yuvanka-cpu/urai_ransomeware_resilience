@@ -1,0 +1,67 @@
+{
+  "calibration_rows": 30,
+  "calibration_scenarios": 10,
+  "contract": {
+    "calibration_split_only": true,
+    "final_holdout_used": false,
+    "global_fallback_is_explicit": true,
+    "insufficient_sector_data_is_explicit": true,
+    "raw_component_scores_preserved": true,
+    "sector_specific_when_class_diversity_allows": true,
+    "temporal_rejected_challenger_not_fabricated": true,
+    "test_split_used": false
+  },
+  "global_label_counts": {
+    "0": 24,
+    "1": 6
+  },
+  "global_post_calibration": {
+    "brier": 0.16160306213039685,
+    "ece_5_bin": 0.03838439000485622,
+    "log_loss": 0.5049766963801035
+  },
+  "global_pre_calibration": {
+    "brier": 0.25499058839766625,
+    "ece_5_bin": 0.23937524088367185,
+    "log_loss": 0.705627338740154
+  },
+  "sector_metrics": {
+    "energy": {
+      "label_counts": {
+        "0": 18,
+        "1": 6
+      },
+      "post_calibration": {
+        "brier": 0.18914456629612444,
+        "ece_5_bin": 0.03697861787244339,
+        "log_loss": 0.5664133239181065
+      },
+      "pre_calibration": {
+        "brier": 0.2746363637908061,
+        "ece_5_bin": 0.255573716534175,
+        "log_loss": 0.7490878283421406
+      },
+      "row_count": 24,
+      "scenario_count": 8,
+      "status": "sector_specific"
+    },
+    "petrochemical": {
+      "label_counts": {
+        "0": 6
+      },
+      "row_count": 6,
+      "scenario_count": 2,
+      "status": "insufficient_class_diversity"
+    }
+  },
+  "sector_row_counts": {
+    "energy": 24,
+    "petrochemical": 6
+  },
+  "sector_scenario_counts": {
+    "energy": 8,
+    "petrochemical": 2
+  },
+  "synthetic_only": true,
+  "task": "RW-090-3"
+}
