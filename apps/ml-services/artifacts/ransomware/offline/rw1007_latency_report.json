@@ -1,0 +1,17 @@
+{
+  "task_id": "RW-100-7",
+  "benchmark": "exact_runtime_warm",
+  "endpoint": "/internal/ransomware/infer",
+  "result": {
+    "runs": 50,
+    "warmup_runs": 10,
+    "p50_ms": 40.95184998004697,
+    "p95_ms": 47.3226000322029,
+    "max_ms": 84.52530001522973,
+    "p95_under_one_second": true
+  },
+  "gate": {
+    "requirement": "warm p95 below one second",
+    "passed": true
+  }
+}
