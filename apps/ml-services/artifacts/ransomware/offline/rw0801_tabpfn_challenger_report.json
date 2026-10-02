@@ -1,0 +1,38 @@
+{
+  "categorical_context_features": [
+    "industry",
+    "site_types"
+  ],
+  "categorical_feature_indices": [
+    54,
+    55
+  ],
+  "evidence_id": "RW-080-1",
+  "generated_row_count": 240,
+  "group_field": "scenario_id",
+  "label_leakage_excluded": true,
+  "metrics": {
+    "accuracy": 0.5555555555555556,
+    "balanced_accuracy": 0.5166666666666667,
+    "f1": 0.25,
+    "precision": 0.5,
+    "recall": 0.16666666666666666,
+    "roc_auc": 0.5652777777777779
+  },
+  "model": "TabPFNClassifier",
+  "model_input_feature_count": 56,
+  "observable_feature_count": 54,
+  "real_action_executed": false,
+  "scenario_count": 80,
+  "scenario_group_leakage_excluded": true,
+  "status": "pass",
+  "synthetic_only": true,
+  "tabpfn_version": "9.0.0",
+  "train_row_count": 54,
+  "validation_row_count": 54,
+  "windows_minutes": [
+    1,
+    5,
+    15
+  ]
+}
