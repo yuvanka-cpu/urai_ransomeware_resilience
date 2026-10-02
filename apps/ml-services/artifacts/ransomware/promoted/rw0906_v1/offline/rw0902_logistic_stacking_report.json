@@ -1,0 +1,61 @@
+{
+  "components": [
+    "rules",
+    "anomaly",
+    "catboost",
+    "temporal",
+    "graph"
+  ],
+  "contract": {
+    "direct_score_averaging": false,
+    "holdout_leakage": false,
+    "missing_component_indicators_preserved": true,
+    "named_evidence_layers_preserved": true,
+    "regularized_logistic_stacking": true,
+    "temporal_rejected_challenger_not_fabricated": true
+  },
+  "feature_count": 10,
+  "feature_names": [
+    "rule_score",
+    "anomaly_score",
+    "catboost_score",
+    "temporal_score",
+    "graph_score",
+    "rules_missing",
+    "anomaly_missing",
+    "catboost_missing",
+    "temporal_missing",
+    "graph_missing"
+  ],
+  "label_counts": {
+    "0": 78,
+    "1": 30
+  },
+  "matrix_shape": [
+    108,
+    10
+  ],
+  "missing_component_counts": {
+    "anomaly": 0,
+    "catboost": 0,
+    "graph": 0,
+    "rules": 0,
+    "temporal": 108
+  },
+  "model_artifact": "artifacts\\ransomware\\models\\rw0902_logistic_stacking_model.json",
+  "row_count": 108,
+  "scenario_count": 36,
+  "source_artifact": "artifacts\\ransomware\\offline\\rw0901_oof_component_scores.json",
+  "synthetic_only": true,
+  "task": "RW-090-2",
+  "training_fit_accuracy": 0.75,
+  "training_scope": {
+    "calibration_used": false,
+    "final_holdout_used": false,
+    "oof_only": true,
+    "splits": [
+      "train",
+      "validation"
+    ]
+  }
+}

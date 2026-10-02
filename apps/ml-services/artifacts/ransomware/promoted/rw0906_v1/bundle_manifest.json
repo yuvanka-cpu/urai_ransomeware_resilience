@@ -1,0 +1,209 @@
+{
+  "artifact_type": "versioned_promoted_artifact_bundle",
+  "availability_contract": {
+    "corrupt_is_unavailable": true,
+    "incompatible_is_unavailable": true,
+    "missing_is_unavailable": true,
+    "silent_substitution_forbidden": true,
+    "slow_is_unavailable": true,
+    "stale_is_unavailable": true
+  },
+  "bundle_version": "rw0906_v1",
+  "calibration": {
+    "global_fallback_present": true,
+    "method": "sigmoid_probability_calibration",
+    "sector_calibrators": [
+      "energy",
+      "petrochemical"
+    ],
+    "training_scope": {
+      "calibration_split_only": true,
+      "component_models_trained_on": [
+        "train",
+        "validation"
+      ],
+      "final_holdout_used": false,
+      "test_split_used": false
+    }
+  },
+  "checksums": {
+    "algorithm": "SHA-256",
+    "all_files_checksummed": true,
+    "file_count": 12
+  },
+  "created_at_utc": "2026-10-02T09:49:01.496940+00:00",
+  "environment": {
+    "python_executable": "C:\\Users\\DELL\\Desktop\\urai_ransomeware_resilience\\.venv\\Scripts\\python.exe",
+    "versions": {
+      "catboost": "1.2.10",
+      "numpy": "2.5.3",
+      "pandas": "3.0.6",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "python": "3.12.10",
+      "scikit-learn": "1.9.1",
+      "torch": "2.8.0+cpu"
+    }
+  },
+  "files": [
+    {
+      "artifact_role": "promoted_model",
+      "path": "models/rw0704_catboost_model.cbm",
+      "sha256": "5ab4efa512e4099a7d4afc717d797ff6310976b9719a50d2b3e8860a2c3c7bd8",
+      "size_bytes": 21624,
+      "source_path": "artifacts/ransomware/models/rw0704_catboost_model.cbm"
+    },
+    {
+      "artifact_role": "training_lineage",
+      "path": "models/rw0704_catboost_training_manifest.json",
+      "sha256": "34463e6d719f1c80315f98af96b2eb912d80755b6dacab3e1cc5ab19aec8c8ba",
+      "size_bytes": 4521,
+      "source_path": "artifacts/ransomware/models/rw0704_catboost_training_manifest.json"
+    },
+    {
+      "artifact_role": "promoted_model",
+      "path": "models/rw0902_logistic_stacking_model.json",
+      "sha256": "babf63c4bfd919864927d4f1c0610802294c5c4d81bbb0c1c2873e4327786b1f",
+      "size_bytes": 1956,
+      "source_path": "artifacts/ransomware/models/rw0902_logistic_stacking_model.json"
+    },
+    {
+      "artifact_role": "calibrator",
+      "path": "models/rw0903_sector_calibrators.json",
+      "sha256": "3cc5ae7934303620b2e5dbfa8ffc0684cedf80c86c978f5e7cfffb7c711c0487",
+      "size_bytes": 1139,
+      "source_path": "artifacts/ransomware/models/rw0903_sector_calibrators.json"
+    },
+    {
+      "artifact_role": "metric_report",
+      "path": "offline/rw0902_logistic_stacking_report.json",
+      "sha256": "7cfb472c8442a15cf2e2338f2f89e86f7a79a40f2dd96cfcc19bb5edcebb95f2",
+      "size_bytes": 1396,
+      "source_path": "artifacts/ransomware/offline/rw0902_logistic_stacking_report.json"
+    },
+    {
+      "artifact_role": "calibration_report",
+      "path": "offline/rw0903_sector_calibration_report.json",
+      "sha256": "16e6934fe2e50010161816446a53f9f27812a16b25e29e4686b52e3ddf6c7865",
+      "size_bytes": 1709,
+      "source_path": "artifacts/ransomware/offline/rw0903_sector_calibration_report.json"
+    },
+    {
+      "artifact_role": "threshold_policy",
+      "path": "offline/rw0904_threshold_policy_report.json",
+      "sha256": "577b5ed5675ec224abdbba9bc8db5b14ad4dfa52b1eacc0e5f47824c4cdb2433",
+      "size_bytes": 328727,
+      "source_path": "artifacts/ransomware/offline/rw0904_threshold_policy_report.json"
+    },
+    {
+      "artifact_role": "availability_contract",
+      "path": "offline/rw0905_artifact_failure_matrix.json",
+      "sha256": "91e509f8b5b646b17f504fa07e8b9c63af2a88d333abf734e63b34dbc08ddb43",
+      "size_bytes": 1500,
+      "source_path": "artifacts/ransomware/offline/rw0905_artifact_failure_matrix.json"
+    },
+    {
+      "artifact_role": "promotion_decision",
+      "path": "offline/rw0807_promotion_decision.json",
+      "sha256": "87cdf981655245a945edbb0c44ca33bb3aae23b05f7ba2c37809eb36d14ba7de",
+      "size_bytes": 3596,
+      "source_path": "artifacts/ransomware/offline/rw0807_promotion_decision.json"
+    },
+    {
+      "artifact_role": "feature_contract_evidence",
+      "path": "offline/rw0609_feature_parity_report.json",
+      "sha256": "0101ffc9446fa4f2dfc698bbe53e38d42eb7ba8a85fda68944c7d11b2075a548",
+      "size_bytes": 528,
+      "source_path": "artifacts/ransomware/offline/rw0609_feature_parity_report.json"
+    },
+    {
+      "artifact_role": "feature_contract",
+      "path": "contracts/feature_contract.md",
+      "sha256": "b3b09a27434102337f4cf26b9be86dc89e2685c8ae2fabb979bf1f253b9bbe12",
+      "size_bytes": 12956,
+      "source_path": "config/ransomware/shared/schemas/feature_contract.md"
+    },
+    {
+      "artifact_role": "split_lineage",
+      "path": "offline/split_assignment_manifest.json",
+      "sha256": "ebde535b343c99df371e564a404de7035e260c1c95686e073d4ead478562c082",
+      "size_bytes": 94523,
+      "source_path": "artifacts/ransomware/offline/split_assignment_manifest.json"
+    }
+  ],
+  "promotion_boundary": {
+    "challenger_promotion_status": "NO_CHALLENGER_PROMOTED",
+    "rejected_challengers_excluded": true,
+    "runtime_chain": [
+      "rw0704_catboost",
+      "rw0902_logistic_stacking",
+      "rw0903_sector_calibration",
+      "rw0904_threshold_policy"
+    ]
+  },
+  "runtime_contract": {
+    "human_approval_required": true,
+    "operational_state_claimed": false,
+    "physical_safety_determination": "not_determined",
+    "real_action_executed": false
+  },
+  "stacking": {
+    "algorithm": "sklearn.linear_model.LogisticRegression",
+    "components": [
+      "rules",
+      "anomaly",
+      "catboost",
+      "temporal",
+      "graph"
+    ],
+    "direct_score_averaging": false,
+    "feature_names": [
+      "rule_score",
+      "anomaly_score",
+      "catboost_score",
+      "temporal_score",
+      "graph_score",
+      "rules_missing",
+      "anomaly_missing",
+      "catboost_missing",
+      "temporal_missing",
+      "graph_missing"
+    ],
+    "missing_indicator_columns": [
+      "rules_missing",
+      "anomaly_missing",
+      "catboost_missing",
+      "temporal_missing",
+      "graph_missing"
+    ],
+    "model_type": "regularized_logistic_stacking"
+  },
+  "synthetic_only": true,
+  "task": "RW-090-6",
+  "threshold_policy": {
+    "candidate_policy": "observed_development_scenario_scores",
+    "high_risk_threshold": 0.294338,
+    "investigate_threshold": 0.239133,
+    "selection_cost": 49.0,
+    "thresholds_frozen_before_final_holdout": true
+  },
+  "training_lineage": {
+    "base_seed": 20260921,
+    "catboost_manifest_version": "1.0",
+    "catboost_version": "1.2.10",
+    "label_leakage_excluded": true,
+    "model_input_feature_count": 56,
+    "observable_feature_count": 54,
+    "scenario_count": 80,
+    "scenario_group_leakage_excluded": true,
+    "source_split_manifest": "artifacts\\ransomware\\offline\\split_assignment_manifest.json",
+    "source_split_manifest_sha256": "ebde535b343c99df371e564a404de7035e260c1c95686e073d4ead478562c082",
+    "splits_used_for_training": [
+      "train"
+    ],
+    "windows_minutes": [
+      1,
+      5,
+      15
+    ]
+  }
+}

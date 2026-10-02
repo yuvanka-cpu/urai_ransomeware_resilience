@@ -1,0 +1,77 @@
+{
+  "C": 1.0,
+  "algorithm": "sklearn.linear_model.LogisticRegression",
+  "coefficients": {
+    "anomaly_missing": 0.0,
+    "anomaly_score": -0.6298863433001316,
+    "catboost_missing": 0.0,
+    "catboost_score": 0.8105926128325462,
+    "graph_missing": 0.0,
+    "graph_score": -0.005783713723105326,
+    "rule_score": 0.5428174934046955,
+    "rules_missing": 0.0,
+    "temporal_missing": -0.5495017677923458,
+    "temporal_score": 0.0
+  },
+  "components": [
+    "rules",
+    "anomaly",
+    "catboost",
+    "temporal",
+    "graph"
+  ],
+  "feature_names": [
+    "rule_score",
+    "anomaly_score",
+    "catboost_score",
+    "temporal_score",
+    "graph_score",
+    "rules_missing",
+    "anomaly_missing",
+    "catboost_missing",
+    "temporal_missing",
+    "graph_missing"
+  ],
+  "intercept": -0.5495017677923458,
+  "missing_indicator_columns": [
+    "rules_missing",
+    "anomaly_missing",
+    "catboost_missing",
+    "temporal_missing",
+    "graph_missing"
+  ],
+  "model_type": "regularized_logistic_stacking",
+  "penalty": "l2",
+  "random_seed": 20260921,
+  "score_standardization": {
+    "columns": [
+      "rule_score",
+      "anomaly_score",
+      "catboost_score",
+      "temporal_score",
+      "graph_score"
+    ],
+    "mean": {
+      "anomaly_score": 0.7232614537037036,
+      "catboost_score": 0.2753657962962963,
+      "graph_score": 0.12000000000000002,
+      "rule_score": 0.08024707407407407,
+      "temporal_score": 0.0
+    },
+    "scale": {
+      "anomaly_score": 0.40862690884702807,
+      "catboost_score": 0.3018011836339404,
+      "graph_score": 0.2683281572999748,
+      "rule_score": 0.08327632435004424,
+      "temporal_score": 1.0
+    }
+  },
+  "solver": "liblinear",
+  "synthetic_only": true,
+  "task": "RW-090-2",
+  "temporal_component_contract": {
+    "missing_indicator": 1,
+    "score_value": null,
+    "status": "unavailable_rejected_challenger"
+  }
+}
