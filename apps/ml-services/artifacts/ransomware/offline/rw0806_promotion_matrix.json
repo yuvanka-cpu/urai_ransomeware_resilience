@@ -1,0 +1,320 @@
+{
+  "task": "RW-080-6",
+  "status": "PASS",
+  "comparison_scope": "stage_8_challengers",
+  "seed": 20260921,
+  "synthetic_only": true,
+  "real_action_executed": false,
+  "final_holdout_used": false,
+  "promotion_rule": "Promote only when challenger evidence demonstrates meaningful improvement over simpler baselines under the frozen evaluation contract, with calibration, robustness, runtime, explanation, and sector-specific evidence.",
+  "evidence_limits": [
+    "Current challenger reports are not untouched-final-holdout evidence.",
+    "Calibration metrics are not present in the challenger reports.",
+    "p50/p95 latency and memory measurements are not present in these challenger reports.",
+    "GraphSAGE/GATv2 results are controlled structural benchmarks over the two canonical sector graphs.",
+    "Therefore no challenger is promoted from RW-080-6."
+  ],
+  "challengers": {
+    "tabpfn_v3_5": {
+      "evidence_id": "RW-080-1",
+      "quality": {
+        "accuracy": 0.5555555555555556,
+        "balanced_accuracy": 0.5166666666666667,
+        "f1": 0.25,
+        "precision": 0.5,
+        "recall": 0.16666666666666666,
+        "roc_auc": 0.5652777777777779
+      },
+      "robustness": "scenario_group_leakage_excluded",
+      "calibration": "not_measured",
+      "runtime_memory": "not_measured_in_stage_8_report",
+      "explanation": "feature-contract based; no challenger-specific explanation evidence",
+      "energy": "not_separately_reported",
+      "petrochemical": "not_separately_reported",
+      "promotion": "REJECT",
+      "reason": "Validation quality is modest (recall 0.1667, F1 0.25, balanced accuracy 0.5167) and required calibration, runtime, memory, and sector-specific holdout evidence are absent."
+    },
+    "tcn": {
+      "evidence_id": "RW-080-2",
+      "quality": {
+        "attack_detection_rate": 1.0,
+        "mean_detection_delay_timesteps": 7.0,
+        "stage_recall": {
+          "discovery": 0.0,
+          "encryption_impact": 1.0,
+          "execution_persistence": 0.0,
+          "extortion_marker": 1.0,
+          "initial_access": 0.0,
+          "lateral_movement": 0.0,
+          "privilege_escalation": 0.0,
+          "recovery": 1.0,
+          "recovery_impairment": 0.0,
+          "staging": 0.0
+        }
+      },
+      "robustness": "scenario_boundary_crossing=false",
+      "calibration": "not_measured",
+      "runtime_memory": "not_measured_in_stage_8_report",
+      "explanation": "causal temporal architecture with observable-only inputs",
+      "energy": "not_separately_reported",
+      "petrochemical": "not_separately_reported",
+      "promotion": "REJECT",
+      "reason": "All 8 validation attack scenarios were detected, but mean detection delay was 7 timesteps and early-stage recall was 0.0 for initial access through recovery impairment. Required final-holdout and calibration evidence is absent."
+    },
+    "compact_transformer": {
+      "evidence_id": "RW-080-3",
+      "quality": {
+        "attack_detection_rate": 1.0,
+        "mean_detection_delay_timesteps": 0.0,
+        "false_positive_scenario_count": 1
+      },
+      "robustness": "scenario_boundary_crossing=false",
+      "calibration": "not_measured",
+      "runtime_memory": "not_measured_in_stage_8_report",
+      "explanation": "attention-based sequence representation; no independent explanation evidence",
+      "energy": "not_separately_reported",
+      "petrochemical": "not_separately_reported",
+      "promotion": "REJECT",
+      "reason": "The model detected all 8 validation attacks at timestep 0, but produced one false-positive fault scenario. The result also requires final-holdout and calibration validation before promotion."
+    },
+    "graphsage": {
+      "evidence_id": "RW-080-5",
+      "quality": {
+        "energy": {
+          "gatv2": {
+            "held_out_topology": {
+              "held_out_dependency": "energy-blr01-dep-007",
+              "metrics": {
+                "top_k_precision": 0.3333333333333333,
+                "top_k_recall": 1.0,
+                "weighted_overlap": 1.0
+              },
+              "target_assets": [
+                "energy-blr01-asset-scada-support-001"
+              ]
+            },
+            "localization": {
+              "top_k_precision": 0.6666666666666666,
+              "top_k_recall": 0.6666666666666666,
+              "weighted_overlap": 0.7272727272727273
+            },
+            "unseen_node": {
+              "inductive_score": 0.9986691474914551,
+              "node_count": 10,
+              "rank": 10,
+              "unseen_asset": "energy-blr01-asset-vpn-001"
+            }
+          },
+          "graphsage": {
+            "held_out_topology": {
+              "held_out_dependency": "energy-blr01-dep-007",
+              "metrics": {
+                "top_k_precision": 0.3333333333333333,
+                "top_k_recall": 1.0,
+                "weighted_overlap": 1.0
+              },
+              "target_assets": [
+                "energy-blr01-asset-scada-support-001"
+              ]
+            },
+            "localization": {
+              "top_k_precision": 1.0,
+              "top_k_recall": 1.0,
+              "weighted_overlap": 1.0
+            },
+            "unseen_node": {
+              "inductive_score": 0.9991664886474609,
+              "node_count": 10,
+              "rank": 10,
+              "unseen_asset": "energy-blr01-asset-vpn-001"
+            }
+          }
+        },
+        "petrochemical": {
+          "gatv2": {
+            "held_out_topology": {
+              "held_out_dependency": "petrochemical-mng01-dep-009",
+              "metrics": {
+                "top_k_precision": 0.3333333333333333,
+                "top_k_recall": 1.0,
+                "weighted_overlap": 1.0
+              },
+              "target_assets": [
+                "petrochemical-mng01-asset-dcs-hmi-001"
+              ]
+            },
+            "localization": {
+              "top_k_precision": 1.0,
+              "top_k_recall": 1.0,
+              "weighted_overlap": 1.0
+            },
+            "unseen_node": {
+              "inductive_score": 0.9998668432235718,
+              "node_count": 11,
+              "rank": 10,
+              "unseen_asset": "petrochemical-mng01-asset-vendor-access-001"
+            }
+          },
+          "graphsage": {
+            "held_out_topology": {
+              "held_out_dependency": "petrochemical-mng01-dep-009",
+              "metrics": {
+                "top_k_precision": 0.3333333333333333,
+                "top_k_recall": 1.0,
+                "weighted_overlap": 1.0
+              },
+              "target_assets": [
+                "petrochemical-mng01-asset-dcs-hmi-001"
+              ]
+            },
+            "localization": {
+              "top_k_precision": 1.0,
+              "top_k_recall": 1.0,
+              "weighted_overlap": 1.0
+            },
+            "unseen_node": {
+              "inductive_score": 0.9999195337295532,
+              "node_count": 11,
+              "rank": 11,
+              "unseen_asset": "petrochemical-mng01-asset-vendor-access-001"
+            }
+          }
+        }
+      },
+      "robustness": "unseen-node and held-out-topology tests executed",
+      "calibration": "not_measured",
+      "runtime_memory": "not_measured_in_stage_8_report",
+      "explanation": "graph structure and propagation paths are inspectable",
+      "energy": "controlled_structural_benchmark_only",
+      "petrochemical": "controlled_structural_benchmark_only",
+      "promotion": "REJECT",
+      "reason": "GraphSAGE achieved strong structural localization values, but the benchmark uses only the two canonical sector graphs and final_holdout_used=false. Unseen-node ranking also placed the held-out node last despite a high raw score, so production localization superiority is not established."
+    },
+    "gatv2": {
+      "evidence_id": "RW-080-5",
+      "quality": {
+        "energy": {
+          "gatv2": {
+            "held_out_topology": {
+              "held_out_dependency": "energy-blr01-dep-007",
+              "metrics": {
+                "top_k_precision": 0.3333333333333333,
+                "top_k_recall": 1.0,
+                "weighted_overlap": 1.0
+              },
+              "target_assets": [
+                "energy-blr01-asset-scada-support-001"
+              ]
+            },
+            "localization": {
+              "top_k_precision": 0.6666666666666666,
+              "top_k_recall": 0.6666666666666666,
+              "weighted_overlap": 0.7272727272727273
+            },
+            "unseen_node": {
+              "inductive_score": 0.9986691474914551,
+              "node_count": 10,
+              "rank": 10,
+              "unseen_asset": "energy-blr01-asset-vpn-001"
+            }
+          },
+          "graphsage": {
+            "held_out_topology": {
+              "held_out_dependency": "energy-blr01-dep-007",
+              "metrics": {
+                "top_k_precision": 0.3333333333333333,
+                "top_k_recall": 1.0,
+                "weighted_overlap": 1.0
+              },
+              "target_assets": [
+                "energy-blr01-asset-scada-support-001"
+              ]
+            },
+            "localization": {
+              "top_k_precision": 1.0,
+              "top_k_recall": 1.0,
+              "weighted_overlap": 1.0
+            },
+            "unseen_node": {
+              "inductive_score": 0.9991664886474609,
+              "node_count": 10,
+              "rank": 10,
+              "unseen_asset": "energy-blr01-asset-vpn-001"
+            }
+          }
+        },
+        "petrochemical": {
+          "gatv2": {
+            "held_out_topology": {
+              "held_out_dependency": "petrochemical-mng01-dep-009",
+              "metrics": {
+                "top_k_precision": 0.3333333333333333,
+                "top_k_recall": 1.0,
+                "weighted_overlap": 1.0
+              },
+              "target_assets": [
+                "petrochemical-mng01-asset-dcs-hmi-001"
+              ]
+            },
+            "localization": {
+              "top_k_precision": 1.0,
+              "top_k_recall": 1.0,
+              "weighted_overlap": 1.0
+            },
+            "unseen_node": {
+              "inductive_score": 0.9998668432235718,
+              "node_count": 11,
+              "rank": 10,
+              "unseen_asset": "petrochemical-mng01-asset-vendor-access-001"
+            }
+          },
+          "graphsage": {
+            "held_out_topology": {
+              "held_out_dependency": "petrochemical-mng01-dep-009",
+              "metrics": {
+                "top_k_precision": 0.3333333333333333,
+                "top_k_recall": 1.0,
+                "weighted_overlap": 1.0
+              },
+              "target_assets": [
+                "petrochemical-mng01-asset-dcs-hmi-001"
+              ]
+            },
+            "localization": {
+              "top_k_precision": 1.0,
+              "top_k_recall": 1.0,
+              "weighted_overlap": 1.0
+            },
+            "unseen_node": {
+              "inductive_score": 0.9999195337295532,
+              "node_count": 11,
+              "rank": 11,
+              "unseen_asset": "petrochemical-mng01-asset-vendor-access-001"
+            }
+          }
+        }
+      },
+      "robustness": "unseen-node and held-out-topology tests executed",
+      "calibration": "not_measured",
+      "runtime_memory": "not_measured_in_stage_8_report",
+      "explanation": "attention-based graph representation; structural paths remain inspectable",
+      "energy": "controlled_structural_benchmark_only",
+      "petrochemical": "controlled_structural_benchmark_only",
+      "promotion": "REJECT",
+      "reason": "GATv2 passed the structural benchmark but the benchmark is too small for promotion, with final_holdout_used=false and limited unseen-node ranking evidence."
+    }
+  },
+  "retained_baseline": {
+    "graph_method": "deterministic_weighted_graph_propagation",
+    "status": "RETAIN_AS_AUDITABLE_GRAPH_BASELINE",
+    "reason": "Deterministic propagation remains directly auditable and provides explicit edge types, paths, and bounded propagation without requiring learned graph-model claims."
+  },
+  "next_evidence_required": [
+    "Untouched final holdout evaluated once after contracts and thresholds are frozen.",
+    "Energy and petrochemical scorecards reported separately.",
+    "Brier score, log loss, reliability diagram, and expected calibration error.",
+    "p50/p95 latency, memory, cold/warm load, timeout/error rate.",
+    "Critical-service recall and IT-to-OT path plausibility for graph evaluation.",
+    "Promotion only after meaningful improvement over the simpler baseline is demonstrated."
+  ]
+}
