@@ -1,0 +1,117 @@
+{
+  "benchmark_type": "controlled_structural_benchmark",
+  "final_holdout_used": false,
+  "framework": "torch 2.8.0+cpu",
+  "models": [
+    "GraphSAGE",
+    "GATv2"
+  ],
+  "real_action_executed": false,
+  "results": {
+    "energy": {
+      "gatv2": {
+        "held_out_topology": {
+          "held_out_dependency": "energy-blr01-dep-007",
+          "metrics": {
+            "top_k_precision": 0.3333333333333333,
+            "top_k_recall": 1.0,
+            "weighted_overlap": 1.0
+          },
+          "target_assets": [
+            "energy-blr01-asset-scada-support-001"
+          ]
+        },
+        "localization": {
+          "top_k_precision": 0.6666666666666666,
+          "top_k_recall": 0.6666666666666666,
+          "weighted_overlap": 0.7272727272727273
+        },
+        "unseen_node": {
+          "inductive_score": 0.9986691474914551,
+          "node_count": 10,
+          "rank": 10,
+          "unseen_asset": "energy-blr01-asset-vpn-001"
+        }
+      },
+      "graphsage": {
+        "held_out_topology": {
+          "held_out_dependency": "energy-blr01-dep-007",
+          "metrics": {
+            "top_k_precision": 0.3333333333333333,
+            "top_k_recall": 1.0,
+            "weighted_overlap": 1.0
+          },
+          "target_assets": [
+            "energy-blr01-asset-scada-support-001"
+          ]
+        },
+        "localization": {
+          "top_k_precision": 1.0,
+          "top_k_recall": 1.0,
+          "weighted_overlap": 1.0
+        },
+        "unseen_node": {
+          "inductive_score": 0.9991664886474609,
+          "node_count": 10,
+          "rank": 10,
+          "unseen_asset": "energy-blr01-asset-vpn-001"
+        }
+      }
+    },
+    "petrochemical": {
+      "gatv2": {
+        "held_out_topology": {
+          "held_out_dependency": "petrochemical-mng01-dep-009",
+          "metrics": {
+            "top_k_precision": 0.3333333333333333,
+            "top_k_recall": 1.0,
+            "weighted_overlap": 1.0
+          },
+          "target_assets": [
+            "petrochemical-mng01-asset-dcs-hmi-001"
+          ]
+        },
+        "localization": {
+          "top_k_precision": 1.0,
+          "top_k_recall": 1.0,
+          "weighted_overlap": 1.0
+        },
+        "unseen_node": {
+          "inductive_score": 0.9998668432235718,
+          "node_count": 11,
+          "rank": 10,
+          "unseen_asset": "petrochemical-mng01-asset-vendor-access-001"
+        }
+      },
+      "graphsage": {
+        "held_out_topology": {
+          "held_out_dependency": "petrochemical-mng01-dep-009",
+          "metrics": {
+            "top_k_precision": 0.3333333333333333,
+            "top_k_recall": 1.0,
+            "weighted_overlap": 1.0
+          },
+          "target_assets": [
+            "petrochemical-mng01-asset-dcs-hmi-001"
+          ]
+        },
+        "localization": {
+          "top_k_precision": 1.0,
+          "top_k_recall": 1.0,
+          "weighted_overlap": 1.0
+        },
+        "unseen_node": {
+          "inductive_score": 0.9999195337295532,
+          "node_count": 11,
+          "rank": 11,
+          "unseen_asset": "petrochemical-mng01-asset-vendor-access-001"
+        }
+      }
+    }
+  },
+  "seed": 20260921,
+  "status": "PASS",
+  "synthetic_truth_used_as_deployed_feature": false,
+  "task": "RW-080-5",
+  "torch_geometric_required": false
+}
