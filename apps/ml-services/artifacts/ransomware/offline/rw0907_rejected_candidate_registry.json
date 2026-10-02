@@ -1,0 +1,79 @@
+{
+  "artifact_type": "rejected_candidate_registry",
+  "candidates": [
+    {
+      "candidate": "compact_transformer",
+      "evidence": {
+        "attack_detection_rate": 1.0,
+        "false_positive_scenario_count": 1,
+        "mean_detection_delay_timesteps": 0.0
+      },
+      "promotion_status": "REJECT",
+      "reason": "No promotion: zero reported detection delay alone is not sufficient to establish meaningful improvement. One false-positive fault scenario is present and required holdout, calibration, robustness, and runtime evidence is absent.",
+      "source_task": "RW-080-7"
+    },
+    {
+      "candidate": "gatv2",
+      "evidence": {},
+      "promotion_status": "REJECT",
+      "reason": "No promotion: GATv2 evidence is from a controlled structural benchmark, not a final holdout, and required critical-service localization and IT-to-OT path plausibility evidence is absent.",
+      "source_task": "RW-080-7"
+    },
+    {
+      "candidate": "graphsage",
+      "evidence": {},
+      "promotion_status": "REJECT",
+      "reason": "No promotion: GraphSAGE evidence is from a controlled structural benchmark, not a final holdout, and required critical-service localization and IT-to-OT path plausibility evidence is absent.",
+      "source_task": "RW-080-7"
+    },
+    {
+      "candidate": "tcn",
+      "evidence": {
+        "attack_detection_rate": 1.0,
+        "mean_detection_delay_timesteps": 7.0,
+        "stage_recall": {
+          "discovery": 0.0,
+          "encryption_impact": 1.0,
+          "execution_persistence": 0.0,
+          "extortion_marker": 1.0,
+          "initial_access": 0.0,
+          "lateral_movement": 0.0,
+          "privilege_escalation": 0.0,
+          "recovery": 1.0,
+          "recovery_impairment": 0.0,
+          "staging": 0.0
+        }
+      },
+      "promotion_status": "REJECT",
+      "reason": "No promotion: the available report does not establish the required improvement over the engineered-window baseline, does not contain untouched-final-holdout evidence, and does not provide the required calibration/runtime evidence.",
+      "source_task": "RW-080-7"
+    }
+  ],
+  "contract": {
+    "calibration_evidence_required": true,
+    "final_holdout_used": false,
+    "human_approval_required": true,
+    "operational_state_claimed": false,
+    "promotion_by_novelty_forbidden": true,
+    "promotion_by_pool_accuracy_forbidden": true,
+    "real_action_executed": false,
+    "runtime_evidence_required": true
+  },
+  "created_at_utc": "2026-10-02T09:57:07.545001+00:00",
+  "promotion_boundary": {
+    "all_rejected_candidates_recorded": true,
+    "final_decision": "NO_CHALLENGER_PROMOTED",
+    "rejected_candidate_count": 4
+  },
+  "retained_auditable_baseline": {
+    "component": "deterministic_weighted_graph_propagation",
+    "reason": "Retained as an auditable graph baseline; not treated as a promoted novel challenger.",
+    "status": "retained_baseline"
+  },
+  "source_artifacts": [
+    "artifacts/ransomware/offline/rw0806_promotion_matrix.json",
+    "artifacts/ransomware/offline/rw0807_promotion_decision.json"
+  ],
+  "synthetic_only": true,
+  "task": "RW-090-7"
+}
