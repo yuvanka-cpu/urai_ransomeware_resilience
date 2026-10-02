@@ -1,0 +1,24 @@
+{
+  "evidence_id": "RW-080-2",
+  "ground_truth_stage_used_only_for_evaluation": true,
+  "input_features_per_timestep": 162,
+  "label_source": "scenario.variant",
+  "observable_features_per_window": 54,
+  "ordered_by": [
+    "event_time",
+    "sequence_index"
+  ],
+  "scenario_boundary_crossing": false,
+  "scenario_count": 80,
+  "scenario_group_field": "scenario_id",
+  "status": "pass",
+  "synthetic_only": true,
+  "train_scenario_count": 18,
+  "validation_scenario_count": 18,
+  "window_size_timesteps": 8,
+  "windows_minutes": [
+    1,
+    5,
+    15
+  ]
+}

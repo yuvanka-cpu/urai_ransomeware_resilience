@@ -1,0 +1,141 @@
+{
+  "architecture": {
+    "attention_heads": 4,
+    "attention_pooling": true,
+    "encoder_layers": 2,
+    "feedforward_dimension": 64,
+    "model_dimension": 32
+  },
+  "epochs": 30,
+  "evidence_id": "RW-080-3",
+  "ground_truth_used_only_for_labels_and_evaluation": true,
+  "input_features_per_timestep": 162,
+  "learning_rate": 0.001,
+  "metrics": {
+    "attack_detection_rate": 1.0,
+    "attack_scenario_count": 8,
+    "detected_attack_count": 8,
+    "false_positive_scenario_count": 1,
+    "mean_detection_delay_timesteps": 0.0,
+    "scenario_results": [
+      {
+        "detected": true,
+        "detected_at_timestep": 0,
+        "scenario_id": "rw-attack-0c9fd799e68d",
+        "variant": "attack"
+      },
+      {
+        "detected": true,
+        "detected_at_timestep": 0,
+        "scenario_id": "rw-attack-42677f55525b",
+        "variant": "attack"
+      },
+      {
+        "detected": true,
+        "detected_at_timestep": 0,
+        "scenario_id": "rw-attack-4e3d94dcdd00",
+        "variant": "attack"
+      },
+      {
+        "detected": true,
+        "detected_at_timestep": 0,
+        "scenario_id": "rw-attack-9058e13e7f5d",
+        "variant": "attack"
+      },
+      {
+        "detected": true,
+        "detected_at_timestep": 0,
+        "scenario_id": "rw-attack-bb3c02c1ec92",
+        "variant": "attack"
+      },
+      {
+        "detected": true,
+        "detected_at_timestep": 0,
+        "scenario_id": "rw-attack-bdda848dfe26",
+        "variant": "attack"
+      },
+      {
+        "detected": true,
+        "detected_at_timestep": 0,
+        "scenario_id": "rw-attack-c7ca854f341c",
+        "variant": "attack"
+      },
+      {
+        "detected": true,
+        "detected_at_timestep": 0,
+        "scenario_id": "rw-attack-d78b39e51f60",
+        "variant": "attack"
+      },
+      {
+        "detected": false,
+        "detected_at_timestep": null,
+        "scenario_id": "rw-fault-2524646b7fad",
+        "variant": "fault"
+      },
+      {
+        "detected": false,
+        "detected_at_timestep": null,
+        "scenario_id": "rw-fault-442bb87886fd",
+        "variant": "fault"
+      },
+      {
+        "detected": false,
+        "detected_at_timestep": null,
+        "scenario_id": "rw-fault-77df187037f7",
+        "variant": "fault"
+      },
+      {
+        "detected": false,
+        "detected_at_timestep": null,
+        "scenario_id": "rw-fault-9f7799ba20e5",
+        "variant": "fault"
+      },
+      {
+        "detected": false,
+        "detected_at_timestep": null,
+        "scenario_id": "rw-fault-a7f17e9b618d",
+        "variant": "fault"
+      },
+      {
+        "detected": false,
+        "detected_at_timestep": null,
+        "scenario_id": "rw-fault-b098ba8c790e",
+        "variant": "fault"
+      },
+      {
+        "detected": false,
+        "detected_at_timestep": null,
+        "scenario_id": "rw-fault-b5059620d84e",
+        "variant": "fault"
+      },
+      {
+        "detected": true,
+        "detected_at_timestep": 2,
+        "scenario_id": "rw-fault-dce570fd95a3",
+        "variant": "fault"
+      },
+      {
+        "detected": false,
+        "detected_at_timestep": null,
+        "scenario_id": "rw-normal-4f3df0b12cac",
+        "variant": "normal"
+      },
+      {
+        "detected": false,
+        "detected_at_timestep": null,
+        "scenario_id": "rw-normal-6b71efef3857",
+        "variant": "normal"
+      }
+    ]
+  },
+  "model": "compact_transformer_encoder",
+  "model_artifact": "C:\\Users\\DELL\\Desktop\\urai_ransomeware_resilience\\apps\\ml-services\\artifacts\\ransomware\\offline\\rw0803_transformer_model.pt",
+  "real_action_executed": false,
+  "scenario_boundary_crossing": false,
+  "seed": 20260921,
+  "status": "pass",
+  "synthetic_only": true,
+  "train_scenario_count": 18,
+  "validation_scenario_count": 18,
+  "window_size_timesteps": 8
+}
