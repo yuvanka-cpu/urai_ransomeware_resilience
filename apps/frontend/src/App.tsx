@@ -265,10 +265,9 @@ function App() {
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     <div>
-                      <strong>{item.action ?? 'Review recommendation'}</strong>
+                      <strong>{item}</strong>
                       <p>
-                        {item.rationale ??
-                          'Evidence is available for human review; no operational action is executed.'}
+                        Evidence is available for human review; no operational action is executed.
                       </p>
                     </div>
                   </div>

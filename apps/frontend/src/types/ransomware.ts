@@ -69,13 +69,6 @@ export interface ModelResult {
   runtime_contract: RuntimeContract
 }
 
-export interface RecommendedAction {
-  action?: string
-  rationale?: string
-  evidence?: string[]
-  requires_human_review?: boolean
-}
-
 export interface AuditEvent {
   request_id?: string
   trace_id?: string
@@ -102,7 +95,7 @@ export interface RansomwareResult {
   decision: Decision
   model_result?: ModelResult
   recommendation_review_state?: string
-  recommended_actions: RecommendedAction[]
+  recommended_actions: string[]
   human_approval_required: true
   real_action_executed: false
   warnings: string[]
