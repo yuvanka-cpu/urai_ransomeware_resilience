@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { inferRansomware, RansomwareApiError } from './api/ransomwareApi'
+import { getRansomwareUiState } from './api/ransomwareUiState'
 import type { RansomwareResult } from './types/ransomware'
 import './App.css'
 
@@ -37,7 +38,7 @@ const NAV_ITEMS: View[] = [
 ]
 
 function formatPercent(value?: number) {
-  if (typeof value !== 'number') return '—'
+  if (typeof value !== 'number') return 'â€”'
   return `${(value * 100).toFixed(1)}%`
 }
 
@@ -102,6 +103,10 @@ function App() {
   const [error, setError] = useState<string | null>(null)
 
   const calibrated = result?.model_result?.probabilities?.calibrated
+  const uiState = getRansomwareUiState(
+    result,
+    error ? new RansomwareApiError(error, 'network') : null,
+  )
 
   const statusTone = useMemo(() => {
     if (!result) return 'success'
@@ -133,7 +138,7 @@ function App() {
     return (
       <>
         <SectionHeader
-          kicker="RW-120-3 · OVERVIEW"
+          kicker="RW-120-3 Â· OVERVIEW"
           title="Ransomware resilience posture"
           description="Review scored synthetic evidence, provenance, uncertainty, and human-review recommendations from the backend orchestrator."
         />
@@ -144,7 +149,7 @@ function App() {
             <strong className={`decision ${statusTone}`}>
               {decisionLabel(result?.decision)}
             </strong>
-            <small>Model decision · not recomputed by frontend</small>
+            <small>Model decision Â· not recomputed by frontend</small>
           </article>
 
           <article className="metric-card">
@@ -155,15 +160,15 @@ function App() {
 
           <article className="metric-card">
             <span className="metric-label">Runtime</span>
-            <strong>{result?.runtime_state?.replace('_', ' ') ?? '—'}</strong>
-            <small>Artifact: {result?.artifact_status ?? '—'}</small>
+            <strong>{result?.runtime_state?.replace('_', ' ') ?? 'â€”'}</strong>
+            <small>Artifact: {result?.artifact_status ?? 'â€”'}</small>
           </article>
 
           <article className="metric-card">
             <span className="metric-label">Provenance</span>
-            <strong>{result?.data_provenance ?? '—'}</strong>
+            <strong>{result?.data_provenance ?? 'â€”'}</strong>
             <small>
-              {result?.trace_id ? `Trace: ${result.trace_id.slice(0, 12)}…` : 'No trace loaded'}
+              {result?.trace_id ? `Trace: ${result.trace_id.slice(0, 12)}â€¦` : 'No trace loaded'}
             </small>
           </article>
         </div>
@@ -230,11 +235,11 @@ function App() {
               </div>
               <div>
                 <span>Bundle</span>
-                <strong>{result?.model_result?.bundle_version ?? '—'}</strong>
+                <strong>{result?.model_result?.bundle_version ?? 'â€”'}</strong>
               </div>
               <div>
                 <span>Calibration</span>
-                <strong>{result?.model_result?.calibration.method ?? '—'}</strong>
+                <strong>{result?.model_result?.calibration.method ?? 'â€”'}</strong>
               </div>
             </div>
           </article>
@@ -305,7 +310,7 @@ function App() {
             <div className="reserved-fields">
               <span>Reserved until backend supplies</span>
               <div>
-                incident stage · severity · resilience score · asset context · recovery context
+                incident stage Â· severity Â· resilience score Â· asset context Â· recovery context
               </div>
             </div>
           </article>
@@ -318,7 +323,7 @@ function App() {
     return (
       <>
         <SectionHeader
-          kicker="RW-120-4 · SCENARIO LAB"
+          kicker="RW-120-4 Â· SCENARIO LAB"
           title="Synthetic scenario"
           description="The dashboard submits a permitted synthetic scenario to the backend orchestrator. The browser never calls the ML service directly."
         />
@@ -343,7 +348,7 @@ function App() {
             </div>
 
             <button className="primary-button scenario-button" type="button" onClick={runAnalysis} disabled={loading}>
-              {loading ? 'Running analysis…' : 'Run synthetic scenario'}
+              {loading ? 'Running analysisâ€¦' : 'Run synthetic scenario'}
             </button>
           </article>
 
@@ -360,7 +365,7 @@ function App() {
     return (
       <>
         <SectionHeader
-          kicker="RW-120-5 · DETECTION"
+          kicker="RW-120-5 Â· DETECTION"
           title="Detection evidence"
           description="Model outputs are presented as scored evidence. The frontend does not recompute the backend decision."
         />
@@ -408,7 +413,7 @@ function App() {
     return (
       <>
         <SectionHeader
-          kicker="RW-120-6 · TIMELINE"
+          kicker="RW-120-6 Â· TIMELINE"
           title="Incident timeline"
           description="Timeline visualization is reserved for backend timeline evidence."
         />
@@ -424,7 +429,7 @@ function App() {
     return (
       <>
         <SectionHeader
-          kicker="RW-120-7 · SPREAD"
+          kicker="RW-120-7 Â· SPREAD"
           title="Propagation & spread"
           description="Propagation views require canonical asset, zone, and propagation-path evidence."
         />
@@ -440,7 +445,7 @@ function App() {
     return (
       <>
         <SectionHeader
-          kicker="RW-120-8 · RECOVERY"
+          kicker="RW-120-8 Â· RECOVERY"
           title="Recovery readiness"
           description="Recovery posture will be rendered only from backend-provided recoverability evidence."
         />
@@ -456,7 +461,7 @@ function App() {
     return (
       <>
         <SectionHeader
-          kicker="RW-120-9 · APPROVAL"
+          kicker="RW-120-9 Â· APPROVAL"
           title="Human approval boundary"
           description="Recommendations are non-executing. Approval remains a human-controlled review state."
         />
@@ -492,7 +497,7 @@ function App() {
     return (
       <>
         <SectionHeader
-          kicker="RW-121-0 · EVIDENCE & AUDIT"
+          kicker="RW-121-0 Â· EVIDENCE & AUDIT"
           title="Evidence, provenance & audit"
           description="Traceability fields come directly from the backend orchestration response."
         />
@@ -501,19 +506,19 @@ function App() {
           <div className="audit-grid">
             <div>
               <span>Request ID</span>
-              <code>{result?.request_id ?? '—'}</code>
+              <code>{result?.request_id ?? 'â€”'}</code>
             </div>
             <div>
               <span>Trace ID</span>
-              <code>{result?.trace_id ?? '—'}</code>
+              <code>{result?.trace_id ?? 'â€”'}</code>
             </div>
             <div>
               <span>Task</span>
-              <code>{result?.task_id ?? '—'}</code>
+              <code>{result?.task_id ?? 'â€”'}</code>
             </div>
             <div>
               <span>Data provenance</span>
-              <code>{result?.data_provenance ?? '—'}</code>
+              <code>{result?.data_provenance ?? 'â€”'}</code>
             </div>
           </div>
 
@@ -539,10 +544,10 @@ function App() {
             </div>
 
             <div className="detail-grid">
-              <div><span>Artifact</span><strong>{result?.artifact_status ?? '—'}</strong></div>
-              <div><span>Review state</span><strong>{result?.recommendation_review_state ?? '—'}</strong></div>
-              <div><span>Audit latency</span><strong>{result?.audit?.latency_ms != null ? `${result.audit.latency_ms.toFixed(2)} ms` : '—'}</strong></div>
-              <div><span>Artifact version</span><strong>{result?.audit?.artifact_versions?.join(', ') ?? '—'}</strong></div>
+              <div><span>Artifact</span><strong>{result?.artifact_status ?? 'â€”'}</strong></div>
+              <div><span>Review state</span><strong>{result?.recommendation_review_state ?? 'â€”'}</strong></div>
+              <div><span>Audit latency</span><strong>{result?.audit?.latency_ms != null ? `${result.audit.latency_ms.toFixed(2)} ms` : 'â€”'}</strong></div>
+              <div><span>Artifact version</span><strong>{result?.audit?.artifact_versions?.join(', ') ?? 'â€”'}</strong></div>
             </div>
           </article>
 
@@ -555,8 +560,8 @@ function App() {
             </div>
 
             <div className="approval-grid">
-              <div><span>Synthetic only</span><strong>{result?.model_result?.runtime_contract.synthetic_only ? 'TRUE' : '—'}</strong></div>
-              <div><span>Human approval</span><strong>{result?.model_result?.runtime_contract.human_approval_required ? 'TRUE' : '—'}</strong></div>
+              <div><span>Synthetic only</span><strong>{result?.model_result?.runtime_contract.synthetic_only ? 'TRUE' : 'â€”'}</strong></div>
+              <div><span>Human approval</span><strong>{result?.model_result?.runtime_contract.human_approval_required ? 'TRUE' : 'â€”'}</strong></div>
               <div><span>Real action</span><strong>FALSE</strong></div>
               <div><span>Physical safety</span><strong>NOT DETERMINED</strong></div>
             </div>
@@ -581,7 +586,7 @@ function App() {
     <div className="app-shell">
       <header className="topbar">
         <div>
-          <div className="eyebrow">URAI · ENERGY & PETROCHEMICAL</div>
+          <div className="eyebrow">URAI Â· ENERGY & PETROCHEMICAL</div>
           <h1>Ransomware Resilience Dashboard</h1>
         </div>
 
@@ -611,6 +616,14 @@ function App() {
         </aside>
 
         <main className="main-content">
+          <section className={`state-strip state-${uiState.id}`}>
+            <div>
+              <span className="panel-kicker">RW-121-1 · RUNTIME STATE</span>
+              <strong>{uiState.label}</strong>
+              <p>{uiState.detail}</p>
+            </div>
+            <span>{uiState.blocking ? 'BLOCKING' : 'NON-BLOCKING'}</span>
+          </section>
           {view === 'Overview' || view === 'Scenario Lab' ? null : error && (
             <section className="state-banner danger-banner">
               <div>
@@ -631,7 +644,7 @@ function App() {
                   <code>/api/v1/ransomware/infer</code>.
                 </p>
                 <button className="primary-button scenario-button" type="button" onClick={runAnalysis} disabled={loading}>
-                  {loading ? 'Running analysis…' : 'Run synthetic analysis'}
+                  {loading ? 'Running analysisâ€¦' : 'Run synthetic analysis'}
                 </button>
               </div>
             </section>
