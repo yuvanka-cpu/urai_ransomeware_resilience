@@ -61,7 +61,7 @@ export async function inferRansomware(
   timeoutMs = 2500,
 ): Promise<RansomwareResult> {
   const controller = new AbortController()
-  const timeout = window.setTimeout(() => controller.abort(), timeoutMs)
+  const timeout = globalThis.setTimeout(() => controller.abort(), timeoutMs)
 
   try {
     const response = await fetch(INFER_URL, {
@@ -116,6 +116,6 @@ export async function inferRansomware(
       'network',
     )
   } finally {
-    window.clearTimeout(timeout)
+    globalThis.clearTimeout(timeout)
   }
 }
