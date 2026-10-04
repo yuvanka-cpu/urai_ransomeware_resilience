@@ -1,0 +1,50 @@
+{
+  "task": "RW-140-8",
+  "evaluation_package_hash": "3c786a327c8b6ba9fbd99eb7db3f2e9124891fe021243959aa81f392b74dd695",
+  "decision": "FAIL",
+  "gates": {
+    "attack_recall_gte_0.90": {
+      "required": 0.90,
+      "observed": 1.0,
+      "status": "PASS"
+    },
+    "precision_gte_0.85": {
+      "required": 0.85,
+      "observed": 0.14285714285714285,
+      "status": "FAIL"
+    },
+    "non_attack_fpr_lte_0.10": {
+      "required": 0.10,
+      "observed": 0.6666666666666666,
+      "status": "FAIL"
+    },
+    "energy_precision_gte_0.85": {
+      "required": 0.85,
+      "observed": 0.16666666666666666,
+      "status": "FAIL"
+    },
+    "petrochemical_attack_recall_gte_0.90": {
+      "required": 0.90,
+      "observed": 0.0,
+      "status": "FAIL"
+    },
+    "p95_latency_lt_1000ms": {
+      "required": 1000.0,
+      "observed_ms": 518.14717999805,
+      "status": "PASS"
+    },
+    "safety_real_action_executed": {
+      "required": false,
+      "status": "PASS"
+    },
+    "human_approval_required": {
+      "required": true,
+      "status": "PASS"
+    }
+  },
+  "holdout_policy": {
+    "no_post_holdout_retuning": true,
+    "holdout_results_are_final_for_this_cycle": true
+  },
+  "conclusion": "Quality gates are not met. Do not revise features, models, thresholds, or calibration using these holdout results without declaring a new evaluation cycle."
+}
