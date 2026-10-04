@@ -17,23 +17,27 @@ type View =
 const SCENARIOS = {
   energy: {
     label: 'Energy · EN-RW-01 · Control centre',
-    schema_version: '1.0' as const,
-    use_case: 'ransomware_resilience' as const,
-    industry: 'energy',
-    site_id: 'synthetic-energy-001',
-    site_type: 'control_centre',
-    scenario_id: 'rw-attack-6ecce30389a5',
-    observable_input: {},
+    request: {
+      schema_version: '1.0' as const,
+      use_case: 'ransomware_resilience' as const,
+      industry: 'energy',
+      site_id: 'synthetic-energy-001',
+      site_type: 'control_centre',
+      scenario_id: 'rw-attack-6ecce30389a5',
+      observable_input: {},
+    },
   },
   petrochemical: {
     label: 'Petrochemical · PC-RW-01 · Refinery',
-    schema_version: '1.0' as const,
-    use_case: 'ransomware_resilience' as const,
-    industry: 'petrochemical',
-    site_id: 'synthetic-petrochemical-001',
-    site_type: 'refinery',
-    scenario_id: 'rw-attack-69adc08473b6',
-    observable_input: {},
+    request: {
+      schema_version: '1.0' as const,
+      use_case: 'ransomware_resilience' as const,
+      industry: 'petrochemical',
+      site_id: 'synthetic-petrochemical-001',
+      site_type: 'refinery',
+      scenario_id: 'rw-attack-69adc08473b6',
+      observable_input: {},
+    },
   },
 } as const
 
@@ -136,7 +140,7 @@ function App() {
     setError(null)
 
     try {
-      const nextResult = await inferRansomware(SCENARIOS[scenarioKey])
+      const nextResult = await inferRansomware(SCENARIOS[scenarioKey].request)
       setResult(nextResult)
     } catch (err) {
       const message =
@@ -233,19 +237,19 @@ function App() {
             <div className="detail-grid">
               <div>
                 <span>Scenario</span>
-                <strong>{result?.scenario_id ?? SCENARIOS[scenarioKey].scenario_id}</strong>
+                <strong>{result?.scenario_id ?? SCENARIOS[scenarioKey].request.scenario_id}</strong>
               </div>
               <div>
                 <span>Industry</span>
-                <strong>{result?.industry ?? SCENARIOS[scenarioKey].industry}</strong>
+                <strong>{result?.industry ?? SCENARIOS[scenarioKey].request.industry}</strong>
               </div>
               <div>
                 <span>Site</span>
-                <strong>{result?.site_id ?? SCENARIOS[scenarioKey].site_id}</strong>
+                <strong>{result?.site_id ?? SCENARIOS[scenarioKey].request.site_id}</strong>
               </div>
               <div>
                 <span>Site type</span>
-                <strong>{result?.site_type ?? SCENARIOS[scenarioKey].site_type}</strong>
+                <strong>{result?.site_type ?? SCENARIOS[scenarioKey].request.site_type}</strong>
               </div>
               <div>
                 <span>Bundle</span>
@@ -375,11 +379,11 @@ function App() {
             </div>
 
             <div className="detail-grid">
-              <div><span>Use case</span><strong>{scenario.use_case}</strong></div>
-              <div><span>Industry</span><strong>{scenario.industry}</strong></div>
-              <div><span>Site</span><strong>{scenario.site_id}</strong></div>
-              <div><span>Site type</span><strong>{scenario.site_type}</strong></div>
-              <div><span>Scenario ID</span><strong>{scenario.scenario_id}</strong></div>
+              <div><span>Use case</span><strong>{scenario.request.use_case}</strong></div>
+              <div><span>Industry</span><strong>{scenario.request.industry}</strong></div>
+              <div><span>Site</span><strong>{scenario.request.site_id}</strong></div>
+              <div><span>Site type</span><strong>{scenario.request.site_type}</strong></div>
+              <div><span>Scenario ID</span><strong>{scenario.request.scenario_id}</strong></div>
               <div><span>Observable</span><strong>Frozen scenario event stream</strong></div>
             </div>
 

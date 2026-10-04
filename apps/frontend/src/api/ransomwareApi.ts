@@ -74,8 +74,25 @@ export async function inferRansomware(
     })
 
     if (!response.ok) {
+      const errorBody = await response.text()
+      let detail = ''
+
+      try {
+        const parsed = JSON.parse(errorBody) as {
+          detail?: unknown
+        }
+        detail =
+          typeof parsed.detail === 'string'
+            ? parsed.detail
+            : parsed.detail
+              ? JSON.stringify(parsed.detail)
+              : ''
+      } catch {
+        detail = errorBody.trim()
+      }
+
       throw new RansomwareApiError(
-        `Backend returned HTTP ${response.status}.`,
+        `Backend returned HTTP ${response.status}${detail ? `: ${detail}` : '.'}`,
         'http',
       )
     }
