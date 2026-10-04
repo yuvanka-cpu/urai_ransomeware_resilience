@@ -83,6 +83,18 @@ export function getRansomwareUiState(
     }
   }
 
+  if (
+    error?.kind === 'http' &&
+    /synthetic scenario.*(prohibited|not permitted)/i.test(error.message)
+  ) {
+    return {
+      id: 'scenario_prohibited',
+      label: 'SCENARIO PROHIBITED',
+      detail: error.message,
+      blocking: true,
+    }
+  }
+
   if (error) {
     return {
       id: 'backend_unavailable',

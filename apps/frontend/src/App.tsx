@@ -39,6 +39,18 @@ const SCENARIOS = {
       observable_input: {},
     },
   },
+  prohibited: {
+    label: 'Failure test · Prohibited scenario',
+    request: {
+      schema_version: '1.0' as const,
+      use_case: 'ransomware_resilience' as const,
+      industry: 'petrochemical',
+      site_id: 'synthetic-petrochemical-001',
+      site_type: 'refinery',
+      scenario_id: 'rw-attack-902287f49390',
+      observable_input: {},
+    },
+  },
 } as const
 
 type ScenarioKey = keyof typeof SCENARIOS
@@ -118,13 +130,10 @@ function App() {
   const [scenarioKey, setScenarioKey] = useState<ScenarioKey>('energy')
   const [result, setResult] = useState<RansomwareResult | null>(null)
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<RansomwareApiError | null>(null)
 
   const calibrated = result?.model_result?.probabilities?.calibrated
-  const uiState = getRansomwareUiState(
-    result,
-    error ? new RansomwareApiError(error, 'network') : null,
-  )
+  const uiState = getRansomwareUiState(result, error)
 
   const statusTone = useMemo(() => {
     if (!result) return 'success'
@@ -143,9 +152,11 @@ function App() {
       const nextResult = await inferRansomware(SCENARIOS[scenarioKey].request)
       setResult(nextResult)
     } catch (err) {
-      const message =
-        err instanceof RansomwareApiError ? err.message : 'Backend request failed.'
-      setError(message)
+      const apiError =
+        err instanceof RansomwareApiError
+          ? err
+          : new RansomwareApiError('Backend request failed.', 'network')
+      setError(apiError)
       setResult(null)
     } finally {
       setLoading(false)
@@ -673,7 +684,7 @@ function App() {
             <section className="state-banner danger-banner">
               <div>
                 <strong>Backend unavailable</strong>
-                <p>{error}</p>
+                <p>{error?.message}</p>
               </div>
               <span>NO LIVE FALLBACK</span>
             </section>
