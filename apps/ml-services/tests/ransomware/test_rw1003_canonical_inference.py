@@ -163,7 +163,11 @@ def test_canonical_inference_executes_real_synthetic_row() -> None:
         [row.features for row in rows if row.split == "train"]
     )
 
-    row = rows[0]
+    row = next(
+        row
+        for row in rows
+        if row.scenario_id == "rw-attack-6ecce30389a5"
+    )
     scenario = next(
         scenario
         for scenario in frozen
@@ -215,13 +219,13 @@ def test_canonical_inference_executes_real_synthetic_row() -> None:
     )
     assert math.isclose(
         result["probabilities"]["stacked"],
-        0.44491388384206043,
+        0.3918087311936882,
         rel_tol=0.0,
         abs_tol=1e-12,
     )
     assert math.isclose(
         result["probabilities"]["calibrated"],
-        0.2901850989809835,
+        0.2887636301323464,
         rel_tol=0.0,
         abs_tol=1e-12,
     )

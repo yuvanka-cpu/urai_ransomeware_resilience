@@ -2,9 +2,7 @@ import json
 from pathlib import Path
 
 
-ARTIFACT = Path(
-    "artifacts/ransomware/offline/rw0807_promotion_decision.json"
-)
+ARTIFACT = Path(__file__).resolve().parents[2] / "artifacts/ransomware/offline/rw0807_promotion_decision.json"
 
 
 def test_rw0807_rejects_unproven_complexity():

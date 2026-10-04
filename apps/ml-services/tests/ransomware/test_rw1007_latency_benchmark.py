@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 
-REPORT = Path("artifacts/ransomware/offline/rw1007_latency_report.json")
+REPORT = Path(__file__).resolve().parents[2] / "artifacts/ransomware/offline/rw1007_latency_report.json"
 
 
 def test_rw1007_latency_report_exists_and_passes():

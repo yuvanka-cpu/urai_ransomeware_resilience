@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 
-ARTIFACT = Path("artifacts/ransomware/offline/rw0806_promotion_matrix.json")
+ARTIFACT = Path(__file__).resolve().parents[2] / "artifacts/ransomware/offline/rw0806_promotion_matrix.json"
 
 
 def test_rw0806_promotion_matrix_is_conservative_and_complete():
