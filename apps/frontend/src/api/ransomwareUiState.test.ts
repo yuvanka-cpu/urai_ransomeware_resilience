@@ -81,4 +81,26 @@ describe('RW-121-1 dashboard failure states', () => {
     }
     expect(getRansomwareUiState(result).id).toBe('fallback_active')
   })
+
+  it('shows ML timeout returned by the backend degradation contract', () => {
+    const result: RansomwareResult = {
+      ...baseResult(),
+      runtime_state: 'unavailable',
+      decision: 'unavailable',
+      data_provenance: 'UNAVAILABLE',
+      warnings: ['ML service timeout after retry policy'],
+    }
+    expect(getRansomwareUiState(result).id).toBe('ml_timeout')
+  })
+
+  it('shows backend unavailable for a generic unavailable result', () => {
+    const result: RansomwareResult = {
+      ...baseResult(),
+      runtime_state: 'unavailable',
+      decision: 'unavailable',
+      data_provenance: 'UNAVAILABLE',
+      warnings: ['ML service dependency unavailable'],
+    }
+    expect(getRansomwareUiState(result).id).toBe('backend_unavailable')
+  })
 })

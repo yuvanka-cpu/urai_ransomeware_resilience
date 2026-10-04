@@ -128,6 +128,27 @@ export function getRansomwareUiState(
     }
   }
 
+  if (
+    result.runtime_state === 'unavailable' &&
+    result.warnings.some((item) => /ml service.*timeout|timeout.*retry/i.test(item))
+  ) {
+    return {
+      id: 'ml_timeout',
+      label: 'ML TIMEOUT',
+      detail: result.warnings.find((item) => /timeout/i.test(item)) ?? 'ML service timeout.',
+      blocking: true,
+    }
+  }
+
+  if (result.runtime_state === 'unavailable') {
+    return {
+      id: 'backend_unavailable',
+      label: 'BACKEND UNAVAILABLE',
+      detail: result.warnings[0] ?? 'Backend inference is unavailable.',
+      blocking: true,
+    }
+  }
+
   const warning = result.warnings
     .map((item) =>
       WARNING_PATTERNS.find((candidate) => candidate.pattern.test(item)),
