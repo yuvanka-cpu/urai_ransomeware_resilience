@@ -3,6 +3,8 @@ import { inferRansomware, RansomwareApiError } from './api/ransomwareApi'
 import { getRansomwareUiState } from './api/ransomwareUiState'
 import type { RansomwareResult } from './types/ransomware'
 import './App.css'
+import { formatAttackRiskScore } from './api/ransomwareRiskScore'
+import { getForensicSignals } from './api/ransomwareForensicEvidence'
 
 type View =
   | 'Overview'
@@ -185,6 +187,20 @@ function App() {
             <span className="metric-label">Calibrated probability</span>
             <strong>{formatPercent(calibrated)}</strong>
             <small>Calibrated model output</small>
+          </article>
+
+          <article className="metric-card">
+            <span className="metric-label">Attack Risk Score</span>
+            <strong>
+              {formatAttackRiskScore(calibrated)}
+            </strong>
+            <small>Probability-based indicator; not operational impact</small>
+          </article>
+
+          <article className="metric-card">
+            <span className="metric-label">Model Confidence</span>
+            <strong>Not established</strong>
+            <small>Independent prediction confidence not yet validated</small>
           </article>
 
           <article className="metric-card">
@@ -587,6 +603,51 @@ function App() {
                 {warning}
               </div>
             ))}
+          </div>
+        </article>
+
+        <article className="panel">
+          <div className="panel-header">
+            <div>
+              <span className="panel-kicker">FORENSIC ANALYSIS</span>
+              <h3>Preliminary detection evidence review</h3>
+            </div>
+          </div>
+
+          <div className="detail-grid">
+            <div>
+              <span>Detection decision</span>
+              <strong>{result ? decisionLabel(result.decision) : 'Unavailable'}</strong>
+            </div>
+            <div>
+              <span>Calibrated attack probability</span>
+              <strong>{formatAttackRiskScore(result?.model_result?.probabilities?.calibrated)}</strong>
+            </div>
+            {getForensicSignals(result).map((signal) => (
+              <div key={signal.label}>
+                <span>{signal.label}</span>
+                <strong>{signal.value}</strong>
+              </div>
+            ))}
+            <div>
+              <span>Request ID</span>
+              <code>{result?.request_id ?? 'Unavailable'}</code>
+            </div>
+            <div>
+              <span>Trace ID</span>
+              <code>{result?.trace_id ?? 'Unavailable'}</code>
+            </div>
+          </div>
+
+          <div className="reserved-fields">
+            <span>Forensic interpretation limits</span>
+            <div>
+              These model outputs support preliminary detection review only.
+              Component scores are not causal explanations or proof of compromise.
+              Affected assets, attacker identity, and propagation path are not
+              established by the current live inference response. Human
+              investigation is required before drawing operational conclusions.
+            </div>
           </div>
         </article>
 
