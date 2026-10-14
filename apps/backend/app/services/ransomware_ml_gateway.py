@@ -59,7 +59,12 @@ def call_ml_service(
                     f"HTTP {response.status_code}: {response.text}"
                 )
 
-            body = response.json()
+            try:
+                body = response.json()
+            except ValueError as exc:
+                raise MLGatewayError(
+                    "ML service returned invalid JSON"
+                ) from exc
 
             if not isinstance(body, dict):
                 raise MLGatewayError(
