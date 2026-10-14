@@ -4,6 +4,7 @@ from app.policies.ransomware_degradation import build_unavailable_state
 from app.policies.ransomware_policy import validate_synthetic_request
 from app.schemas.requests import RansomwareRequest
 from app.services.ransomware_ml_gateway import MLGatewayError
+from app.services.ransomware_ml_response_validation import validate_ml_response
 from app.services.ransomware_orchestrator import (
     assemble_orchestration_response,
     build_request_context,
@@ -58,6 +59,10 @@ def ransomware_infer(request: RansomwareRequest):
 
     try:
         ml_response = run_ml_inference(request, context)
+        ml_response = validate_ml_response(
+            ml_response,
+            expected_scenario_id=request.scenario_id,
+        )
     except MLGatewayError as exc:
         return {
             **context,
