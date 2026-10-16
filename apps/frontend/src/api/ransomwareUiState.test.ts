@@ -25,6 +25,55 @@ function baseResult(): RansomwareResult {
   }
 }
 
+describe('RW-121-1 genuine backend failure contracts', () => {
+  it.each([
+    ['unavailable', 'UNAVAILABLE', 'backend_unavailable'],
+    ['degraded', 'UNAVAILABLE', 'backend_unavailable'],
+    ['fallback', 'FALLBACK', 'fallback_active'],
+  ] as const)(
+    'blocks a genuine %s response',
+    (runtimeState, provenance, expectedState) => {
+      const response = {
+        state: runtimeState,
+        runtime_state: runtimeState,
+        decision: 'unavailable' as const,
+        data_provenance: provenance,
+        request_id: 'req-failure-001',
+        trace_id: 'trace-failure-001',
+        warnings: ['ML service unavailable'],
+        fallback_is_live_inference: false as const,
+        human_approval_required: true as const,
+        real_action_executed: false as const,
+      }
+
+      const state = getRansomwareUiState(response)
+
+      expect(state.id).toBe(expectedState)
+      expect(state.blocking).toBe(true)
+    },
+  )
+
+  it('shows ML timeout for a genuine unavailable response', () => {
+    const response = {
+      state: 'unavailable' as const,
+      runtime_state: 'unavailable' as const,
+      decision: 'unavailable' as const,
+      data_provenance: 'UNAVAILABLE' as const,
+      request_id: 'req-timeout-001',
+      trace_id: 'trace-timeout-001',
+      warnings: ['ML service timeout after retry policy'],
+      fallback_is_live_inference: false as const,
+      human_approval_required: true as const,
+      real_action_executed: false as const,
+    }
+
+    const state = getRansomwareUiState(response)
+
+    expect(state.id).toBe('ml_timeout')
+    expect(state.blocking).toBe(true)
+  })
+})
+
 describe('RW-121-1 dashboard failure states', () => {
   it('shows no model artifact', () => {
     const result: RansomwareResult = { ...baseResult(), artifact_status: 'missing' }
@@ -34,6 +83,24 @@ describe('RW-121-1 dashboard failure states', () => {
   it('shows feature mismatch', () => {
     const result: RansomwareResult = { ...baseResult(), artifact_status: 'incompatible' }
     expect(getRansomwareUiState(result).id).toBe('feature_mismatch')
+  })
+
+  it.each([
+    'stale',
+    'corrupt',
+    'unavailable',
+  ] as const)('blocks unsafe artifact status: %s', (status) => {
+    const result: RansomwareResult = {
+      ...baseResult(),
+      artifact_status: status,
+    }
+
+    const state = getRansomwareUiState(result)
+
+    expect(state.id).toBe('no_artifact')
+    expect(state.blocking).toBe(true)
+    expect(state.label).toBe('MODEL ARTIFACT UNAVAILABLE')
+    expect(state.detail).toContain(status)
   })
 
   it('shows stale or missing calibration', () => {

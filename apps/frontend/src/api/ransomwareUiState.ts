@@ -1,6 +1,6 @@
 import type {
   ArtifactStatus,
-  RansomwareResult,
+  RansomwareApiResult,
 } from '../types/ransomware'
 import { RansomwareApiError } from './ransomwareApi'
 
@@ -67,11 +67,24 @@ function artifactState(status: ArtifactStatus): RansomwareUiState | null {
     }
   }
 
+  if (
+    status === 'stale' ||
+    status === 'corrupt' ||
+    status === 'unavailable'
+  ) {
+    return {
+      id: 'no_artifact',
+      label: 'MODEL ARTIFACT UNAVAILABLE',
+      detail: `Model artifact status is ${status}. Live inference must remain blocked.`,
+      blocking: true,
+    }
+  }
+
   return null
 }
 
 export function getRansomwareUiState(
-  result: RansomwareResult | null,
+  result: RansomwareApiResult | null,
   error: RansomwareApiError | null = null,
 ): RansomwareUiState {
   if (error?.kind === 'timeout') {
@@ -113,9 +126,6 @@ export function getRansomwareUiState(
     }
   }
 
-  const artifact = artifactState(result.artifact_status)
-  if (artifact) return artifact
-
   if (
     result.runtime_state === 'fallback' ||
     result.data_provenance === 'FALLBACK'
@@ -129,7 +139,8 @@ export function getRansomwareUiState(
   }
 
   if (
-    result.runtime_state === 'unavailable' &&
+    (result.runtime_state === 'unavailable' ||
+      result.runtime_state === 'degraded') &&
     result.warnings.some((item) => /ml service.*timeout|timeout.*retry/i.test(item))
   ) {
     return {
@@ -140,7 +151,10 @@ export function getRansomwareUiState(
     }
   }
 
-  if (result.runtime_state === 'unavailable') {
+  if (
+    result.runtime_state === 'unavailable' ||
+    result.runtime_state === 'degraded'
+  ) {
     return {
       id: 'backend_unavailable',
       label: 'BACKEND UNAVAILABLE',
@@ -148,6 +162,18 @@ export function getRansomwareUiState(
       blocking: true,
     }
   }
+
+  if (result.runtime_state !== 'live_model') {
+    return {
+      id: 'backend_unavailable',
+      label: 'INFERENCE UNAVAILABLE',
+      detail: result.warnings[0] ?? 'Live-model inference is unavailable.',
+      blocking: true,
+    }
+  }
+
+  const artifact = artifactState(result.artifact_status)
+  if (artifact) return artifact
 
   const warning = result.warnings
     .map((item) =>

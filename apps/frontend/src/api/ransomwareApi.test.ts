@@ -88,10 +88,185 @@ describe('RW-120-2 ransomware API adapter', () => {
 
     const result = await inferRansomware(VALID_REQUEST)
 
+    if (result.runtime_state !== 'live_model') {
+      throw new Error('Expected a live-model inference response.')
+    }
+
     expect(result.task_id).toBe('RW-110-1')
     expect(result.decision).toBe('investigate')
     expect(result.human_approval_required).toBe(true)
     expect(result.real_action_executed).toBe(false)
+  })
+
+  it('accepts a genuine backend unavailable response without fabricated model evidence', async () => {
+    const unavailableResponse = {
+      state: 'unavailable',
+      runtime_state: 'unavailable',
+      decision: 'unavailable',
+      data_provenance: 'UNAVAILABLE',
+      request_id: 'req-unavailable-001',
+      trace_id: 'trace-unavailable-001',
+      warnings: ['ML service dependency unavailable'],
+      fallback_is_live_inference: false,
+      human_approval_required: true,
+      real_action_executed: false,
+    }
+
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue(
+        new Response(JSON.stringify(unavailableResponse), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        }),
+      ),
+    )
+
+    const result = await inferRansomware(VALID_REQUEST)
+
+    expect(result.decision).toBe('unavailable')
+    expect(result.runtime_state).toBe('unavailable')
+    expect(result.data_provenance).toBe('UNAVAILABLE')
+    expect(result.human_approval_required).toBe(true)
+    expect(result.real_action_executed).toBe(false)
+    expect('model_result' in result).toBe(false)
+    expect('recommended_actions' in result).toBe(false)
+    expect('artifact_status' in result).toBe(false)
+  })
+
+  it.each([
+    ['degraded', 'UNAVAILABLE'],
+    ['fallback', 'FALLBACK'],
+  ] as const)(
+    'accepts a safe %s response with %s provenance',
+    async (runtimeState, provenance) => {
+      const response = {
+        state: runtimeState,
+        runtime_state: runtimeState,
+        decision: 'unavailable',
+        data_provenance: provenance,
+        request_id: 'req-failure-001',
+        trace_id: 'trace-failure-001',
+        warnings: ['Live-model inference unavailable'],
+        fallback_is_live_inference: false,
+        human_approval_required: true,
+        real_action_executed: false,
+      }
+
+      vi.stubGlobal(
+        'fetch',
+        vi.fn().mockResolvedValue(
+          new Response(JSON.stringify(response), { status: 200 }),
+        ),
+      )
+
+      const result = await inferRansomware(VALID_REQUEST)
+
+      expect(result.runtime_state).toBe(runtimeState)
+      expect(result.data_provenance).toBe(provenance)
+      expect(result.decision).toBe('unavailable')
+      expect('model_result' in result).toBe(false)
+    },
+  )
+
+  it.each([
+    { human_approval_required: false },
+    { real_action_executed: true },
+    { fallback_is_live_inference: true },
+    { model_result: { decision: 'normal' } },
+    { recommended_actions: ['Execute containment'] },
+    { artifact_status: 'loaded' },
+    { canonical_contract_complete: true },
+    { data_provenance: 'LIVE_MODEL' },
+  ])('rejects an unsafe unavailable response: %j', async (override) => {
+    const response = {
+      state: 'unavailable',
+      runtime_state: 'unavailable',
+      decision: 'unavailable',
+      data_provenance: 'UNAVAILABLE',
+      request_id: 'req-unsafe-001',
+      trace_id: 'trace-unsafe-001',
+      warnings: ['ML service unavailable'],
+      fallback_is_live_inference: false,
+      human_approval_required: true,
+      real_action_executed: false,
+      ...override,
+    }
+
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue(
+        new Response(JSON.stringify(response), { status: 200 }),
+      ),
+    )
+
+    await expect(inferRansomware(VALID_REQUEST)).rejects.toMatchObject({
+      kind: 'invalid_response',
+    })
+  })
+
+  it.each([
+    {
+      name: 'fallback runtime with normal decision',
+      override: { runtime_state: 'fallback', data_provenance: 'FALLBACK' },
+    },
+    {
+      name: 'fallback provenance on live-model runtime',
+      override: { data_provenance: 'FALLBACK' },
+    },
+    {
+      name: 'missing model evidence',
+      override: { model_result: undefined },
+    },
+    {
+      name: 'calibrated probability above one',
+      override: {
+        model_result: {
+          ...VALID_RESPONSE.model_result,
+          probabilities: {
+            ...VALID_RESPONSE.model_result.probabilities,
+            calibrated: 1.5,
+          },
+        },
+      },
+    },
+    {
+      name: 'conflicting nested decision',
+      override: {
+        model_result: {
+          ...VALID_RESPONSE.model_result,
+          decision: 'normal',
+        },
+      },
+    },
+    {
+      name: 'unsafe nested runtime contract',
+      override: {
+        model_result: {
+          ...VALID_RESPONSE.model_result,
+          runtime_contract: {
+            ...VALID_RESPONSE.model_result.runtime_contract,
+            real_action_executed: true,
+          },
+        },
+      },
+    },
+  ])('rejects a misleading live-model response: $name', async ({ override }) => {
+    const response = {
+      ...VALID_RESPONSE,
+      ...override,
+    }
+
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue(
+        new Response(JSON.stringify(response), { status: 200 }),
+      ),
+    )
+
+    await expect(inferRansomware(VALID_REQUEST)).rejects.toMatchObject({
+      kind: 'invalid_response',
+    })
   })
 
   it('rejects an invalid backend response contract', async () => {

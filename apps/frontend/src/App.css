@@ -225,6 +225,10 @@
   line-height: 1.4;
 }
 
+.decision.neutral {
+  color: inherit;
+}
+
 .decision.success {
   color: var(--success);
 }

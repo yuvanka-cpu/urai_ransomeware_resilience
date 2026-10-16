@@ -122,6 +122,23 @@ export interface RansomwareResult {
   explanations?: string[]
 }
 
+export interface RansomwareUnavailableResult {
+  state: 'unavailable' | 'degraded' | 'fallback'
+  runtime_state: 'unavailable' | 'degraded' | 'fallback'
+  decision: 'unavailable'
+  data_provenance: 'UNAVAILABLE' | 'FALLBACK'
+  request_id: string
+  trace_id: string
+  warnings: string[]
+  fallback_is_live_inference: false
+  human_approval_required: true
+  real_action_executed: false
+}
+
+export type RansomwareApiResult =
+  | RansomwareResult
+  | RansomwareUnavailableResult
+
 export interface RansomwareInferenceRequest {
   schema_version: '1.0'
   use_case: 'ransomware_resilience'

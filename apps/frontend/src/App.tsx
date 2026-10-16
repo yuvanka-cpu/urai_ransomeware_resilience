@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react'
 import { inferRansomware, RansomwareApiError } from './api/ransomwareApi'
 import { getRansomwareUiState } from './api/ransomwareUiState'
-import type { RansomwareResult } from './types/ransomware'
+import type { RansomwareApiResult, RansomwareResult } from './types/ransomware'
 import './App.css'
 import { formatAttackRiskScore } from './api/ransomwareRiskScore'
 import { getForensicSignals } from './api/ransomwareForensicEvidence'
+import ModelMonitoring from './ModelMonitoring'
+import IncidentMetrics from './IncidentMetrics'
 
 type View =
   | 'Overview'
@@ -15,6 +17,8 @@ type View =
   | 'Recovery'
   | 'Approval'
   | 'Evidence & Audit'
+  | 'Model Monitoring'
+  | 'Incident Metrics'
 
 const SCENARIOS = {
   energy: {
@@ -66,6 +70,8 @@ const NAV_ITEMS: View[] = [
   'Recovery',
   'Approval',
   'Evidence & Audit',
+  'Model Monitoring',
+  'Incident Metrics',
 ]
 
 function formatPercent(value?: number) {
@@ -130,21 +136,23 @@ function UnavailablePanel({
 function App() {
   const [view, setView] = useState<View>('Overview')
   const [scenarioKey, setScenarioKey] = useState<ScenarioKey>('energy')
-  const [result, setResult] = useState<RansomwareResult | null>(null)
+  const [apiResult, setApiResult] = useState<RansomwareApiResult | null>(null)
+  const result: RansomwareResult | null =
+    apiResult?.runtime_state === 'live_model' ? apiResult : null
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<RansomwareApiError | null>(null)
 
   const calibrated = result?.model_result?.probabilities?.calibrated
-  const uiState = getRansomwareUiState(result, error)
+  const uiState = getRansomwareUiState(apiResult, error)
 
   const statusTone = useMemo(() => {
-    if (!result) return 'success'
-    if (result.decision === 'unavailable' || result.decision === 'high_risk') {
+    if (!apiResult) return 'neutral'
+    if (apiResult.decision === 'unavailable' || apiResult.decision === 'high_risk') {
       return 'danger'
     }
-    if (result.decision === 'investigate') return 'warning'
+    if (apiResult.decision === 'investigate') return 'warning'
     return 'success'
-  }, [result])
+  }, [apiResult])
 
   async function runAnalysis() {
     setLoading(true)
@@ -152,14 +160,14 @@ function App() {
 
     try {
       const nextResult = await inferRansomware(SCENARIOS[scenarioKey].request)
-      setResult(nextResult)
+      setApiResult(nextResult)
     } catch (err) {
       const apiError =
         err instanceof RansomwareApiError
           ? err
           : new RansomwareApiError('Backend request failed.', 'network')
       setError(apiError)
-      setResult(null)
+      setApiResult(null)
     } finally {
       setLoading(false)
     }
@@ -178,7 +186,7 @@ function App() {
           <article className="metric-card">
             <span className="metric-label">Decision</span>
             <strong className={`decision ${statusTone}`}>
-              {decisionLabel(result?.decision)}
+              {decisionLabel(apiResult?.decision)}
             </strong>
             <small>Model decision - not recomputed by frontend</small>
           </article>
@@ -205,15 +213,15 @@ function App() {
 
           <article className="metric-card">
             <span className="metric-label">Runtime</span>
-            <strong>{result?.runtime_state?.replace('_', ' ') ?? '-'}</strong>
+            <strong>{apiResult?.runtime_state?.replace('_', ' ') ?? '-'}</strong>
             <small>Artifact: {result?.artifact_status ?? '-'}</small>
           </article>
 
           <article className="metric-card">
             <span className="metric-label">Provenance</span>
-            <strong>{result?.data_provenance ?? '-'}</strong>
+            <strong>{apiResult?.data_provenance ?? '-'}</strong>
             <small>
-              {result?.trace_id ? `Trace: ${result.trace_id.slice(0, 12)}...` : 'No trace loaded'}
+              {apiResult?.trace_id ? `Trace: ${apiResult.trace_id.slice(0, 12)}...` : 'No trace loaded'}
             </small>
           </article>
         </div>
@@ -225,7 +233,7 @@ function App() {
                 <span className="panel-kicker">MODEL EVIDENCE</span>
                 <h3>Component scores</h3>
               </div>
-              {result && <span className="status-dot live">MODEL</span>}
+              {result?.runtime_state === "live_model" && <span className="status-dot live">MODEL</span>}
             </div>
 
             <div className="score-list">
@@ -319,7 +327,13 @@ function App() {
                 ))}
               </div>
             ) : (
-              <p className="muted">Run the synthetic analysis to load recommendations.</p>
+              <p className="muted">
+                {!apiResult
+                  ? 'Run the synthetic analysis to load recommendations.'
+                  : !result
+                    ? 'Recommendations unavailable: live-model inference did not complete.'
+                    : 'No recommendations were supplied by the backend.'}
+              </p>
             )}
 
             <div className="safety-strip">
@@ -335,19 +349,33 @@ function App() {
                 <h3>Canonical evidence boundary</h3>
               </div>
               <span className="status-dot warning">
-                {result?.canonical_contract_complete ? 'COMPLETE' : 'PARTIAL'}
+                {!apiResult
+                  ? 'NOT LOADED'
+                  : !result
+                    ? 'UNAVAILABLE'
+                    : result.canonical_contract_complete
+                      ? 'COMPLETE'
+                      : 'PARTIAL'}
               </span>
             </div>
 
             <div className="contract-state">
               <strong>
-                {result?.canonical_contract_complete
-                  ? 'Canonical contract complete'
-                  : 'Canonical contract incomplete'}
+                {!apiResult
+                  ? 'No inference result loaded'
+                  : !result
+                    ? 'Canonical evidence unavailable: no live-model result'
+                    : result.canonical_contract_complete
+                      ? 'Canonical contract complete'
+                      : 'Canonical contract incomplete'}
               </strong>
               <p>
-                {result?.canonical_contract_warning ??
-                  'RW-1006 currently does not supply the complete browser-facing canonical contract.'}
+                {!apiResult
+                  ? 'Run a permitted synthetic scenario to request backend evidence.'
+                  : !result
+                    ? apiResult.warnings[0] ?? 'Live-model evidence is unavailable.'
+                    : result.canonical_contract_warning ??
+                      'RW-1006 currently does not supply the complete browser-facing canonical contract.'}
               </p>
             </div>
 
@@ -392,7 +420,7 @@ function App() {
                 onChange={(event) => {
                   const nextKey = event.target.value as ScenarioKey
                   setScenarioKey(nextKey)
-                  setResult(null)
+                  setApiResult(null)
                   setError(null)
                 }}
                 disabled={loading}
@@ -446,7 +474,7 @@ function App() {
           <div className="panel-header">
             <div>
               <span className="panel-kicker">DETECTION RESULT</span>
-              <h3>{decisionLabel(result?.decision)}</h3>
+              <h3>{decisionLabel(apiResult?.decision)}</h3>
             </div>
             <span className={`decision ${statusTone}`}>
               {formatPercent(result?.model_result?.probabilities?.calibrated)}
@@ -590,7 +618,7 @@ function App() {
             </div>
             <div>
               <span>Data provenance</span>
-              <code>{result?.data_provenance ?? '-'}</code>
+              <code>{apiResult?.data_provenance ?? '-'}</code>
             </div>
           </div>
 
@@ -696,6 +724,8 @@ function App() {
     if (view === 'Spread') return renderSpread()
     if (view === 'Recovery') return renderRecovery()
     if (view === 'Approval') return renderApproval()
+    if (view === 'Model Monitoring') return <ModelMonitoring />
+    if (view === 'Incident Metrics') return <IncidentMetrics />
     return renderAudit()
   }
 
@@ -733,14 +763,28 @@ function App() {
         </aside>
 
         <main className="main-content">
-          <section className={`state-strip state-${uiState.id}`}>
-            <div>
-              <span className="panel-kicker">RW-121-1 · RUNTIME STATE</span>
-              <strong>{uiState.label}</strong>
-              <p>{uiState.detail}</p>
-            </div>
-            <span>{uiState.blocking ? 'BLOCKING' : 'NON-BLOCKING'}</span>
-          </section>
+          {view === 'Model Monitoring' || view === 'Incident Metrics' ? (
+            <section className="state-strip">
+              <div>
+                <span className="panel-kicker">RW-130 · MONITORING SCOPE</span>
+                <strong>OFFLINE SYNTHETIC EVIDENCE</strong>
+                <p>
+                  Offline monitoring and incident-metric evidence are separate
+                  from inference. No live operational metrics are claimed.
+                </p>
+              </div>
+              <span>READ-ONLY</span>
+            </section>
+          ) : (
+            <section className={`state-strip state-${uiState.id}`}>
+              <div>
+                <span className="panel-kicker">RW-121-1 · RUNTIME STATE</span>
+                <strong>{uiState.label}</strong>
+                <p>{uiState.detail}</p>
+              </div>
+              <span>{uiState.blocking ? 'BLOCKING' : 'NON-BLOCKING'}</span>
+            </section>
+          )}
           {view === 'Overview' || view === 'Scenario Lab' ? null : error && (
             <section className="state-banner danger-banner">
               <div>
