@@ -7,6 +7,7 @@ import { formatAttackRiskScore } from './api/ransomwareRiskScore'
 import { getForensicSignals, getForensicInterpretations } from './api/ransomwareForensicEvidence'
 import ModelMonitoring from './ModelMonitoring'
 import IncidentMetrics from './IncidentMetrics'
+import { getApprovalDisplayState } from './api/ransomwareApprovalState'
 
 type View =
   | 'Overview'
@@ -599,6 +600,8 @@ function App() {
   }
 
   function renderApproval() {
+    const approval = getApprovalDisplayState(result)
+
     return (
       <>
         <SectionHeader
@@ -618,10 +621,10 @@ function App() {
             </div>
 
             <div className="approval-grid">
-              <div><span>Human approval required</span><strong>TRUE</strong></div>
-              <div><span>Real action executed</span><strong>FALSE</strong></div>
-              <div><span>Operational state claimed</span><strong>FALSE</strong></div>
-              <div><span>Physical safety determination</span><strong>NOT DETERMINED</strong></div>
+              <div><span>Human approval required</span><strong>{approval.humanApproval}</strong></div>
+              <div><span>Real action executed</span><strong>{approval.realAction}</strong></div>
+              <div><span>Operational state claimed</span><strong>{approval.operationalState}</strong></div>
+              <div><span>Physical safety determination</span><strong>{approval.physicalSafety}</strong></div>
             </div>
           </article>
 
