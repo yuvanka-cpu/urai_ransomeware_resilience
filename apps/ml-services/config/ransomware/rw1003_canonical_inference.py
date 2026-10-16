@@ -23,8 +23,8 @@ CALIBRATOR_PATH = BUNDLE_DIR / "models" / "rw0903_sector_calibrators.json"
 THRESHOLD_PATH = BUNDLE_DIR / "offline" / "rw0904_threshold_policy_report.json"
 CATBOOST_MODEL_PATH = BUNDLE_DIR / "models" / "rw0704_catboost_model.cbm"
 
-INVESTIGATE_THRESHOLD = 0.239133
-HIGH_RISK_THRESHOLD = 0.294338
+INVESTIGATE_THRESHOLD = 0.410065
+HIGH_RISK_THRESHOLD = 0.439306
 
 COMPONENTS = (
     "rules",
@@ -91,7 +91,7 @@ def _build_catboost_features(
 ) -> list[Any]:
     validate_feature_row(observable_features)
 
-    values = [observable_features[name] for name in EXPECTED_FEATURES]
+    values = [observable_features[name] for name in sorted(EXPECTED_FEATURES)]
     values.extend([industry, site_types])
     return values
 

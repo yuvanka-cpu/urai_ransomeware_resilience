@@ -13,7 +13,7 @@ from config.ransomware.catboost_trainer import (
     rows_to_matrix,
 )
 from config.ransomware.rw0901_oof_scores import (
-    _anomaly_score,
+    _anomaly_score_cycle2,
     _build_anomaly,
     _graph_score,
     _make_catboost,
@@ -257,7 +257,7 @@ def main() -> None:
     all_rows, feature_names = __import__(
         "config.ransomware.catboost_trainer",
         fromlist=["build_rows"],
-    ).build_rows(frozen)
+    ).build_rows(frozen, cycle2=True)
 
     development_ids = {s.scenario_id for s in development}
     calibration_ids = {s.scenario_id for s in calibration}
@@ -277,8 +277,15 @@ def main() -> None:
             f"Expected 30 calibration window rows, found {len(calibration_rows)}"
         )
 
-    # Train the component models ONLY on train + validation.
-    catboost = _make_catboost(feature_names, development_rows)
+    # Match production CatBoost training scope: fit only on train scenarios.
+    catboost_train_rows = [
+        row for row in development_rows
+        if row.split == "train"
+    ]
+    catboost = _make_catboost(
+        feature_names,
+        catboost_train_rows,
+    )
     anomaly = _build_anomaly(feature_names, development_rows)
 
     calibration_matrix = rows_to_matrix(
@@ -308,7 +315,10 @@ def main() -> None:
         rule_score = _rule_score(row.features)
 
         anomaly_evidence = anomaly.score(row.features)
-        anomaly_score = _anomaly_score(anomaly_evidence)
+        anomaly_score = _anomaly_score_cycle2(
+            anomaly_evidence,
+            feature_count=len(feature_names),
+        )
 
         graph_score, graph_exposed_count = _graph_score(
             scenario.industry,
@@ -381,39 +391,73 @@ def main() -> None:
         unique_labels = sorted(set(labels.tolist()))
 
         if len(unique_labels) == 2:
-            calibrator = fit_sigmoid(probabilities, labels)
-            calibrated = apply_sigmoid(
-                calibrator,
-                probabilities,
-            )
+            sector_fit = fit_sigmoid(probabilities, labels)
 
-            sector_calibrators[sector] = {
-                "status": "sector_specific",
-                **calibrator,
-            }
-
-            sector_metrics[sector] = {
-                "status": "sector_specific",
-                "scenario_count": len(
-                    {
-                        row["scenario_id"]
-                        for row in sector_rows
-                    }
-                ),
-                "row_count": len(sector_rows),
-                "label_counts": {
-                    str(value): int(np.sum(labels == value))
-                    for value in unique_labels
-                },
-                "pre_calibration": metrics(
-                    labels,
+            if sector_fit["coefficient"] > 0:
+                calibrator = sector_fit
+                calibrated = apply_sigmoid(
+                    calibrator,
                     probabilities,
-                ),
-                "post_calibration": metrics(
-                    labels,
-                    calibrated,
-                ),
-            }
+                )
+
+                sector_calibrators[sector] = {
+                    "status": "sector_specific",
+                    **calibrator,
+                }
+
+                sector_metrics[sector] = {
+                    "status": "sector_specific",
+                    "scenario_count": len(
+                        {
+                            row["scenario_id"]
+                            for row in sector_rows
+                        }
+                    ),
+                    "row_count": len(sector_rows),
+                    "label_counts": {
+                        str(value): int(np.sum(labels == value))
+                        for value in unique_labels
+                    },
+                    "pre_calibration": metrics(
+                        labels,
+                        probabilities,
+                    ),
+                    "post_calibration": metrics(
+                        labels,
+                        calibrated,
+                    ),
+                }
+            if sector_fit["coefficient"] <= 0:
+                calibrated = apply_sigmoid(
+                    global_calibrator,
+                    probabilities,
+                )
+                sector_calibrators[sector] = {
+                    "status": "fallback_global_non_monotonic_sector_fit",
+                    "fallback": "global_sigmoid",
+                    "sector_coefficient": sector_fit["coefficient"],
+                    "sector_intercept": sector_fit["intercept"],
+                    **global_calibrator,
+                }
+                sector_metrics[sector] = {
+                    "status": "fallback_global_non_monotonic_sector_fit",
+                    "scenario_count": len({
+                        row["scenario_id"] for row in sector_rows
+                    }),
+                    "row_count": len(sector_rows),
+                    "label_counts": {
+                        str(value): int(np.sum(labels == value))
+                        for value in unique_labels
+                    },
+                    "pre_calibration": metrics(
+                        labels,
+                        probabilities,
+                    ),
+                    "post_calibration": metrics(
+                        labels,
+                        calibrated,
+                    ),
+                }
         else:
             sector_calibrators[sector] = {
                 "status": "insufficient_class_diversity",

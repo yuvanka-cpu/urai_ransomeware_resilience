@@ -67,6 +67,45 @@ def _anomaly_score(evidence) -> float:
     return round(max(0.0, min(1.0, max(candidates))), 6)
 
 
+def _anomaly_score_cycle2(
+    evidence,
+    *,
+    feature_count: int = 54,
+) -> float:
+    if feature_count <= 0:
+        raise ValueError("feature_count must be positive")
+
+    univariate_strength = min(
+        1.0,
+        float(evidence.univariate_evidence_count) / feature_count,
+    )
+
+    multivariate_strength = (
+        float(evidence.multivariate_score)
+        / float(evidence.multivariate_threshold)
+        if evidence.multivariate_threshold > 0
+        else 0.0
+    )
+    multivariate_strength = max(0.0, min(1.0, multivariate_strength))
+
+    isolation_strength = max(
+        0.0,
+        min(
+            1.0,
+            (float(evidence.isolation_score) - 0.5) / 0.5,
+        ),
+    )
+
+    return round(
+        (
+            univariate_strength
+            + multivariate_strength
+            + isolation_strength
+        ) / 3.0,
+        6,
+    )
+
+
 def _graph_score(
     sector: str,
     events,
@@ -180,7 +219,7 @@ def generate_oof():
         random_state=SEED,
     )
 
-    rows, feature_names = build_rows(frozen)
+    rows, feature_names = build_rows(frozen, cycle2=True)
 
     rows_by_scenario = {}
     for row in rows:
@@ -236,7 +275,7 @@ def generate_oof():
             rule_score = _rule_score(row.features)
 
             anomaly_evidence = anomaly.score(row.features)
-            anomaly_score = _anomaly_score(anomaly_evidence)
+            anomaly_score = _anomaly_score_cycle2(anomaly_evidence, feature_count=len(feature_names))
 
             graph_score, graph_exposed_count = _graph_score(
                 scenario.industry,

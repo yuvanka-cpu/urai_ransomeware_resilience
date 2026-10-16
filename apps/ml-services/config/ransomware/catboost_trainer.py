@@ -11,6 +11,7 @@ from sklearn.metrics import accuracy_score, log_loss, precision_score, recall_sc
 from sklearn.model_selection import StratifiedGroupKFold
 
 from config.ransomware.features.window_features import extract_window_features
+from config.ransomware.features.cycle2_observable_enrichment import enrich_cycle2_events
 from config.ransomware.scenarios.scenario_event_assembler import (
     assemble_scenario_events,
 )
@@ -105,11 +106,14 @@ def load_and_verify_scenarios():
     return manifest, frozen
 
 
-def build_rows(frozen):
+def build_rows(frozen, *, cycle2: bool = False):
     rows: list[Row] = []
 
     for scenario in frozen:
         events = assemble_scenario_events(scenario)
+
+        if cycle2:
+            events = enrich_cycle2_events(events)
 
         if not events:
             raise ValueError(
@@ -380,7 +384,7 @@ def main():
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
 
     manifest, frozen = load_and_verify_scenarios()
-    rows, feature_names = build_rows(frozen)
+    rows, feature_names = build_rows(frozen, cycle2=True)
 
     split_counts = {}
     variant_counts = {}
@@ -426,10 +430,10 @@ def main():
         "parameters": {
             "loss_function": "Logloss",
             "eval_metric": "Logloss",
-            "iterations": 200,
-            "depth": 5,
+            "iterations": 120,
+            "depth": 4,
             "learning_rate": 0.05,
-            "l2_leaf_reg": 3.0,
+            "l2_leaf_reg": 10.0,
             "random_seed": SEED,
             "thread_count": 1,
         },

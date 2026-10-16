@@ -10,7 +10,7 @@ from pathlib import Path
 
 from fastapi.testclient import TestClient
 
-from config.ransomware.rw1006_internal_api import app
+from config.ransomware.rw1006_internal_api_cycle2 import app
 
 
 @dataclass(frozen=True)

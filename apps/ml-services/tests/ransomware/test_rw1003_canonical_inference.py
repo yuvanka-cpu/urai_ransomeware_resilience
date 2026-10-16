@@ -140,6 +140,7 @@ def test_canonical_inference_executes_real_synthetic_row() -> None:
         build_rows,
         load_and_verify_scenarios,
     )
+    from config.ransomware.features.cycle2_observable_enrichment import enrich_cycle2_events
     from config.ransomware.features.window_features import (
         extract_window_features,
     )
@@ -209,23 +210,23 @@ def test_canonical_inference_executes_real_synthetic_row() -> None:
     assert result["bundle_version"] == "rw0906_v1"
     assert result["task"] == "RW-100-3"
     assert result["sector"] == row.industry
-    assert result["decision"] == "investigate"
+    assert result["decision"] == "normal"
 
     assert math.isclose(
         result["probabilities"]["catboost"],
-        0.46896461810331674,
+        0.5129663723425437,
         rel_tol=0.0,
         abs_tol=1e-12,
     )
     assert math.isclose(
         result["probabilities"]["stacked"],
-        0.3918087311936882,
+        0.17610878213001857,
         rel_tol=0.0,
         abs_tol=1e-12,
     )
     assert math.isclose(
         result["probabilities"]["calibrated"],
-        0.2887636301323464,
+        0.39292498539032394,
         rel_tol=0.0,
         abs_tol=1e-12,
     )

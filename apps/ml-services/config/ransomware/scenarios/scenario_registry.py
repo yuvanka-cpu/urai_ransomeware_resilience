@@ -20,6 +20,73 @@ SPLITS = (
 
 DEFAULT_SEED = 20260921
 
+# Cycle-2 deterministic sector/variant stratification.
+# Each sector has 10 scenarios for each variant in the current
+# synthetic scenario pool. The quotas guarantee class diversity
+# in calibration and positive coverage in the final holdout.
+SPLIT_QUOTAS = {
+    "energy": {
+        "attack": {
+            "train": 2,
+            "validation": 2,
+            "calibration": 2,
+            "test": 2,
+            "untouched_holdout": 2,
+        },
+        "benign": {
+            "train": 2,
+            "validation": 2,
+            "calibration": 1,
+            "test": 2,
+            "untouched_holdout": 3,
+        },
+        "fault": {
+            "train": 2,
+            "validation": 2,
+            "calibration": 1,
+            "test": 2,
+            "untouched_holdout": 3,
+        },
+        "normal": {
+            "train": 3,
+            "validation": 3,
+            "calibration": 1,
+            "test": 1,
+            "untouched_holdout": 2,
+        },
+    },
+    "petrochemical": {
+        "attack": {
+            "train": 2,
+            "validation": 2,
+            "calibration": 2,
+            "test": 2,
+            "untouched_holdout": 2,
+        },
+        "benign": {
+            "train": 2,
+            "validation": 2,
+            "calibration": 1,
+            "test": 2,
+            "untouched_holdout": 3,
+        },
+        "fault": {
+            "train": 2,
+            "validation": 2,
+            "calibration": 1,
+            "test": 2,
+            "untouched_holdout": 3,
+        },
+        "normal": {
+            "train": 3,
+            "validation": 3,
+            "calibration": 1,
+            "test": 1,
+            "untouched_holdout": 2,
+        },
+    },
+}
+
 
 @dataclass(frozen=True)
 class FrozenScenario:
@@ -69,20 +136,61 @@ def build_frozen_scenarios(
     for asset_id in asset_ids:
         generated.extend(generate_use_case_scenarios(asset_id))
 
+    prepared = []
+
     for scenario in generated:
         seed = _scenario_seed(scenario, base_seed)
         scenario_id = _scenario_id(scenario, seed)
+        prepared.append((scenario, seed, scenario_id))
 
-        split_material = (
-            f"{scenario.industry}|{scenario.use_case_id}|"
-            f"{scenario.variant}|split"
+    split_lookup = {}
+
+    grouped = {}
+    for scenario, seed, scenario_id in prepared:
+        key = (scenario.industry, scenario.variant)
+        grouped.setdefault(key, []).append(
+            (scenario, seed, scenario_id)
         )
-        split_digest = hashlib.sha256(
-            split_material.encode("utf-8")
-        ).hexdigest()
 
-        split_index = int(split_digest[:8], 16) % len(SPLITS)
-        split = SPLITS[split_index]
+    for (industry, variant), group in grouped.items():
+        if industry not in SPLIT_QUOTAS:
+            raise ValueError(
+                f"Missing split quotas for industry: {industry}"
+            )
+
+        if variant not in SPLIT_QUOTAS[industry]:
+            raise ValueError(
+                f"Missing split quotas for {industry}/{variant}"
+            )
+
+        quotas = SPLIT_QUOTAS[industry][variant]
+        expected = sum(quotas.values())
+
+        if len(group) != expected:
+            raise ValueError(
+                f"Expected {expected} scenarios for "
+                f"{industry}/{variant}, found {len(group)}"
+            )
+
+        ranked = sorted(
+            group,
+            key=lambda item: hashlib.sha256(
+                f"{base_seed}|{item[2]}|cycle-2-stratified-v1800".encode("utf-8")
+            ).hexdigest(),
+        )
+
+        offset = 0
+
+        for split in SPLITS:
+            count = quotas[split]
+
+            for item in ranked[offset:offset + count]:
+                split_lookup[item[2]] = split
+
+            offset += count
+
+    for scenario, seed, scenario_id in prepared:
+        split = split_lookup[scenario_id]
 
         scenarios.append(
             FrozenScenario(

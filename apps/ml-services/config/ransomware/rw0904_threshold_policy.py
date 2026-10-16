@@ -84,29 +84,13 @@ def _calibrated_rows(
         )
 
         sector = row["industry"]
-        sector_entry = calibrator_payload["sector_calibrators"][sector]
 
-        if sector_entry["status"] == "sector_specific":
-            # RW-090-3 stores sigmoid parameters directly in the
-            # sector entry.
-            calibrator = sector_entry
-            calibration_status = "sector_specific"
-
-        elif sector_entry["status"] == "insufficient_class_diversity":
-            # RW-090-3 explicitly declares global sigmoid fallback.
-            if sector_entry.get("fallback") != "global_sigmoid":
-                raise AssertionError(
-                    f"Unexpected fallback contract for {sector}"
-                )
-
-            calibrator = calibrator_payload["global_calibrator"]
-            calibration_status = "global_fallback"
-
-        else:
-            raise AssertionError(
-                f"Unexpected sector calibration status for {sector}: "
-                f"{sector_entry['status']}"
-            )
+        # Decision thresholds are selected on one common calibrated scale.
+        # Sector-specific calibrators remain preserved by RW-090-3 for
+        # calibration reporting, but must not create cross-sector score
+        # shifts that invalidate one shared threshold policy.
+        calibrator = calibrator_payload["global_calibrator"]
+        calibration_status = "global_decision_calibration"
 
         probability = float(
             apply_sigmoid(
