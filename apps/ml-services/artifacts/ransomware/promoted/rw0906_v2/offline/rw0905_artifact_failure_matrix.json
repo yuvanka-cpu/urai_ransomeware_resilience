@@ -1,0 +1,55 @@
+{
+  "artifact_type": "artifact_failure_matrix",
+  "availability_policy": {
+    "checksum_algorithm": "sha256",
+    "max_age_seconds": 86400,
+    "max_latency_ms": 1000
+  },
+  "contract": {
+    "corrupt_is_unavailable": true,
+    "human_approval_required": true,
+    "incompatible_is_unavailable": true,
+    "missing_is_unavailable": true,
+    "operational_state_claimed": false,
+    "physical_safety_determination": "not_determined",
+    "real_action_executed": false,
+    "replacement_artifact_not_selected": true,
+    "silent_substitution_forbidden": true,
+    "slow_is_unavailable": true,
+    "stale_is_unavailable": true
+  },
+  "failure_matrix": [
+    {
+      "decision": "unavailable",
+      "failure": "missing",
+      "runtime_status": "unavailable",
+      "silent_substitution": false
+    },
+    {
+      "decision": "unavailable",
+      "failure": "corrupt",
+      "runtime_status": "unavailable",
+      "silent_substitution": false
+    },
+    {
+      "decision": "unavailable",
+      "failure": "stale",
+      "runtime_status": "unavailable",
+      "silent_substitution": false
+    },
+    {
+      "decision": "unavailable",
+      "failure": "incompatible",
+      "runtime_status": "unavailable",
+      "silent_substitution": false
+    },
+    {
+      "decision": "unavailable",
+      "failure": "slow",
+      "runtime_status": "unavailable",
+      "silent_substitution": false
+    }
+  ],
+  "synthetic_only": true,
+  "task": "RW-090-5"
+}

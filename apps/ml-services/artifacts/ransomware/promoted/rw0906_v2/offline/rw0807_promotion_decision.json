@@ -1,0 +1,74 @@
+{
+  "task": "RW-080-7",
+  "status": "PASS",
+  "decision": "NO_CHALLENGER_PROMOTED",
+  "seed": 20260921,
+  "synthetic_only": true,
+  "real_action_executed": false,
+  "final_holdout_used": false,
+  "predeclared_thresholds": {
+    "temporal_detection_delay_improvement_timesteps": 2.0,
+    "temporal_stage_recall_improvement_absolute": 0.1,
+    "graph_weighted_overlap_improvement_absolute": 0.1,
+    "graph_requires_critical_service_localization": true,
+    "graph_requires_it_to_ot_path_plausibility": true
+  },
+  "baseline_policy": "Temporal and graph complexity are rejected unless the challenger demonstrates the declared meaningful improvement over the simpler baseline under the frozen evaluation contract.",
+  "decisions": {
+    "tcn": {
+      "promotion": "REJECT",
+      "evidence": {
+        "attack_detection_rate": 1.0,
+        "mean_detection_delay_timesteps": 7.0,
+        "stage_recall": {
+          "discovery": 0.0,
+          "encryption_impact": 1.0,
+          "execution_persistence": 0.0,
+          "extortion_marker": 1.0,
+          "initial_access": 0.0,
+          "lateral_movement": 0.0,
+          "privilege_escalation": 0.0,
+          "recovery": 1.0,
+          "recovery_impairment": 0.0,
+          "staging": 0.0
+        }
+      },
+      "reason": "No promotion: the available report does not establish the required improvement over the engineered-window baseline, does not contain untouched-final-holdout evidence, and does not provide the required calibration/runtime evidence."
+    },
+    "compact_transformer": {
+      "promotion": "REJECT",
+      "evidence": {
+        "attack_detection_rate": 1.0,
+        "mean_detection_delay_timesteps": 0.0,
+        "false_positive_scenario_count": 1
+      },
+      "reason": "No promotion: zero reported detection delay alone is not sufficient to establish meaningful improvement. One false-positive fault scenario is present and required holdout, calibration, robustness, and runtime evidence is absent."
+    },
+    "graphsage": {
+      "promotion": "REJECT",
+      "reason": "No promotion: GraphSAGE evidence is from a controlled structural benchmark, not a final holdout, and required critical-service localization and IT-to-OT path plausibility evidence is absent."
+    },
+    "gatv2": {
+      "promotion": "REJECT",
+      "reason": "No promotion: GATv2 evidence is from a controlled structural benchmark, not a final holdout, and required critical-service localization and IT-to-OT path plausibility evidence is absent."
+    }
+  },
+  "graph_evidence_summary": {
+    "benchmark_type": "controlled_structural_benchmark",
+    "final_holdout_used": false,
+    "energy_results_present": true,
+    "petrochemical_results_present": true
+  },
+  "required_follow_up_evidence": [
+    "Untouched final holdout evaluated once after thresholds are frozen.",
+    "Separate energy and petrochemical scorecards.",
+    "Direct comparison against the simpler baseline.",
+    "Brier score, log loss, reliability diagram, and expected calibration error.",
+    "p50/p95 latency, memory, cold/warm load, and timeout/error rate.",
+    "Critical-service localization recall.",
+    "IT-to-OT path plausibility for graph methods.",
+    "Benign-operation false-positive families."
+  ],
+  "stage_8_exit_statement": "Every challenger has an explicit promotion/rejection rationale. No temporal or learned graph challenger is promoted from the current evidence. Deterministic weighted graph propagation remains the auditable graph baseline.",
+  "rw0806_matrix_status": "PASS"
+}

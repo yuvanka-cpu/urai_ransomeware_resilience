@@ -1,0 +1,78 @@
+{
+  "calibration_rows": 30,
+  "calibration_scenarios": 10,
+  "contract": {
+    "calibration_split_only": true,
+    "final_holdout_used": false,
+    "global_fallback_is_explicit": true,
+    "insufficient_sector_data_is_explicit": true,
+    "raw_component_scores_preserved": true,
+    "sector_specific_when_class_diversity_allows": true,
+    "temporal_rejected_challenger_not_fabricated": true,
+    "test_split_used": false
+  },
+  "global_label_counts": {
+    "0": 18,
+    "1": 12
+  },
+  "global_post_calibration": {
+    "brier": 0.23403191065417475,
+    "ece_5_bin": 0.13153076834575866,
+    "log_loss": 0.6605640096828506
+  },
+  "global_pre_calibration": {
+    "brier": 0.26532705237597226,
+    "ece_5_bin": 0.1846666455274702,
+    "log_loss": 0.7356982799708202
+  },
+  "sector_metrics": {
+    "energy": {
+      "label_counts": {
+        "0": 9,
+        "1": 6
+      },
+      "post_calibration": {
+        "brier": 0.23881106808380245,
+        "ece_5_bin": 0.008068727543726653,
+        "log_loss": 0.6705506809579359
+      },
+      "pre_calibration": {
+        "brier": 0.27357599268828686,
+        "ece_5_bin": 0.19193677386959293,
+        "log_loss": 0.7594639460966881
+      },
+      "row_count": 15,
+      "scenario_count": 5,
+      "status": "sector_specific"
+    },
+    "petrochemical": {
+      "label_counts": {
+        "0": 9,
+        "1": 6
+      },
+      "post_calibration": {
+        "brier": 0.23096121507133793,
+        "ece_5_bin": 0.09186357683446422,
+        "log_loss": 0.654053971828572
+      },
+      "pre_calibration": {
+        "brier": 0.25707811206365766,
+        "ece_5_bin": 0.2771357176687725,
+        "log_loss": 0.7119326138449521
+      },
+      "row_count": 15,
+      "scenario_count": 5,
+      "status": "sector_specific"
+    }
+  },
+  "sector_row_counts": {
+    "energy": 15,
+    "petrochemical": 15
+  },
+  "sector_scenario_counts": {
+    "energy": 5,
+    "petrochemical": 5
+  },
+  "synthetic_only": true,
+  "task": "RW-090-3"
+}

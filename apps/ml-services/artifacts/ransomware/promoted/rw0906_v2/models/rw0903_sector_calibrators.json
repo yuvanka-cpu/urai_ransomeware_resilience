@@ -1,0 +1,47 @@
+{
+  "global_calibrator": {
+    "coefficient": 0.48324229708408156,
+    "intercept": 0.19497511258479536,
+    "method": "sigmoid",
+    "negative_count": 18,
+    "positive_count": 12,
+    "sample_count": 30
+  },
+  "method": "sigmoid_probability_calibration",
+  "sector_calibrators": {
+    "energy": {
+      "coefficient": 0.23872960229183843,
+      "intercept": -0.0666890036240438,
+      "method": "sigmoid",
+      "negative_count": 9,
+      "positive_count": 6,
+      "sample_count": 15,
+      "status": "sector_specific"
+    },
+    "petrochemical": {
+      "coefficient": 0.4523076798961447,
+      "intercept": 0.12736751887939401,
+      "method": "sigmoid",
+      "negative_count": 9,
+      "positive_count": 6,
+      "sample_count": 15,
+      "status": "sector_specific"
+    }
+  },
+  "synthetic_only": true,
+  "task": "RW-090-3",
+  "temporal_component": {
+    "missing_indicator": 1,
+    "score": null,
+    "status": "unavailable_rejected_challenger"
+  },
+  "training_scope": {
+    "calibration_split_only": true,
+    "component_models_trained_on": [
+      "train",
+      "validation"
+    ],
+    "final_holdout_used": false,
+    "test_split_used": false
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "task_id": "RW-060-9",
+  "title": "Offline/online feature parity",
+  "status": "pass",
+  "synthetic_only": true,
+  "real_action_executed": false,
+  "compared_fields": 54,
+  "comparison_coverage": "100%",
+  "tolerance": 1e-09,
+  "mismatches": 0,
+  "unexplained_mismatches": 0,
+  "identical_replay_preserved_parity": true,
+  "conflicting_replay_rejected": true,
+  "missing_fields_fail_parity": true,
+  "shared_feature_extractor": true,
+  "full_ransomware_suite": {
+    "passed": 252,
+    "failed": 0
+  }
+}
