@@ -4,7 +4,7 @@ import { getRansomwareUiState } from './api/ransomwareUiState'
 import type { RansomwareApiResult, RansomwareResult } from './types/ransomware'
 import './App.css'
 import { formatAttackRiskScore } from './api/ransomwareRiskScore'
-import { getForensicSignals } from './api/ransomwareForensicEvidence'
+import { getForensicSignals, getForensicInterpretations } from './api/ransomwareForensicEvidence'
 import ModelMonitoring from './ModelMonitoring'
 import IncidentMetrics from './IncidentMetrics'
 
@@ -302,8 +302,8 @@ function App() {
           <article className="panel">
             <div className="panel-header">
               <div>
-                <span className="panel-kicker">RECOMMENDATIONS</span>
-                <h3>Human review queue</h3>
+                <span className="panel-kicker">AI PLAYBOOK · ADVISORY ONLY</span>
+                <h3>Evidence-aware investigation guidance</h3>
               </div>
               <span className="review-chip">
                 {result?.recommendation_review_state ?? 'NOT LOADED'}
@@ -320,7 +320,7 @@ function App() {
                     <div>
                       <strong>{item}</strong>
                       <p>
-                        Evidence is available for human review; no operational action is executed.
+                        Advisory guidance only. Verify supporting evidence before drawing conclusions; no operational action is executed.
                       </p>
                     </div>
                   </div>
@@ -668,6 +668,24 @@ function App() {
           </div>
 
           <div className="reserved-fields">
+            <span>Evidence interpretation &amp; investigation guidance</span>
+            {getForensicInterpretations(result).length > 0 ? (
+              getForensicInterpretations(result).map((item) => (
+                <div key={item.signal}>
+                  <strong>{item.signal}</strong>
+                  <p>{item.interpretation}</p>
+                  <p><strong>Analyst review:</strong> {item.investigation}</p>
+                </div>
+              ))
+            ) : (
+              <div>
+                Verified live-model component evidence is unavailable.
+                No forensic interpretation is inferred.
+              </div>
+            )}
+          </div>
+
+          <div className="reserved-fields">
             <span>Forensic interpretation limits</span>
             <div>
               These model outputs support preliminary detection review only.
@@ -691,7 +709,7 @@ function App() {
             <div className="detail-grid">
               <div><span>Artifact</span><strong>{result?.artifact_status ?? '-'}</strong></div>
               <div><span>Review state</span><strong>{result?.recommendation_review_state ?? '-'}</strong></div>
-              <div><span>Audit latency</span><strong>{result?.audit?.latency_ms != null ? `${result.audit.latency_ms.toFixed(2)} ms` : '-'}</strong></div>
+              <div><span>ML gateway request latency</span><strong>{result?.audit?.latency_ms != null ? `${result.audit.latency_ms.toFixed(2)} ms` : '-'}</strong></div>
               <div><span>Artifact version</span><strong>{result?.audit?.artifact_versions?.join(', ') ?? '-'}</strong></div>
             </div>
           </article>

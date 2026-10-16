@@ -47,3 +47,64 @@ def test_rw1104_does_not_create_or_replace_model_decision():
             item.startswith("Decision:")
             for item in recommendations
         )
+
+
+def test_evidence_aware_guidance():
+    recommendations = assemble_recommendations(
+        decision="investigate",
+        evidence=[
+            "rule_score=0.42",
+            "anomaly_score=0.31",
+            "graph_score=0.72",
+            "catboost_score=0.46",
+        ],
+    )
+
+    text = " ".join(recommendations).lower()
+
+    assert "rule-based detection" in text
+    assert "anomaly signal" in text
+    assert "relationship and dependency" in text
+    assert "catboost classifier" in text
+
+
+def test_invalid_scores_do_not_generate_signal_guidance():
+    recommendations = assemble_recommendations(
+        decision="investigate",
+        evidence=[
+            "rule_score=nan",
+            "anomaly_score=2.5",
+            "graph_score=invalid",
+        ],
+    )
+
+    text = " ".join(recommendations).lower()
+
+    assert "supporting model signals are unavailable" in text
+    assert "rule-based detection signal" not in text
+    assert "relationship and dependency evidence" not in text
+
+
+def test_unavailable_decision_does_not_generate_playbook_guidance():
+    recommendations = assemble_recommendations(
+        decision="unavailable",
+        evidence=["rule_score=0.8"],
+    )
+
+    assert len(recommendations) == 1
+    assert "dependency failure" in recommendations[0]
+
+
+def test_playbook_remains_advisory():
+    recommendations = assemble_recommendations(
+        decision="high_risk",
+        evidence=["rule_score=0.9", "graph_score=0.8"],
+    )
+
+    text = " ".join(recommendations).lower()
+
+    assert "human review" in text
+    assert not any(
+        word in text
+        for word in ["execute", "isolate", "disable", "shutdown", "encrypt"]
+    )
