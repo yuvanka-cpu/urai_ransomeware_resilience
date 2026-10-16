@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 
 from app.routes.ransomware import router as ransomware_router
+from app.routes.ransomware_monitoring import router as monitoring_router
 
 
 app = FastAPI()
@@ -21,6 +22,7 @@ app.add_middleware(
 )
 
 app.include_router(ransomware_router)
+app.include_router(monitoring_router)
 
 
 @app.get("/health")
