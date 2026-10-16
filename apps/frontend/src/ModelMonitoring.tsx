@@ -1,17 +1,24 @@
 import { useEffect, useState } from 'react'
 import {
   fetchDataDriftReport,
+  fetchModelDriftReport,
   type DataDriftReport,
+  type ModelDriftReport,
 } from './api/ransomwareMonitoring'
 
 export default function ModelMonitoring() {
   const [report, setReport] = useState<DataDriftReport | null>(null)
+  const [modelDrift, setModelDrift] = useState<ModelDriftReport | null>(null)
 
   useEffect(() => {
     let active = true
 
     fetchDataDriftReport().then((data) => {
       if (active) setReport(data)
+    })
+
+    fetchModelDriftReport().then((data) => {
+      if (active) setModelDrift(data)
     })
 
     return () => {
@@ -132,9 +139,14 @@ export default function ModelMonitoring() {
         </div>
 
         <p>
-          No independently evaluated, compatible chronological performance
-          periods are available. The dashboard cannot establish model
-          performance drift from the current synthetic development split.
+          {modelDrift === null
+            ? 'Checking model-drift evidence availability...'
+            : modelDrift.reason}
+        </p>
+        <p className="muted">
+          Model drift requires independently evaluated chronological periods
+          with compatible model, population, and metric definitions.
+          No production performance drift is claimed.
         </p>
       </article>
     </>

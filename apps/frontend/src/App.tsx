@@ -547,12 +547,53 @@ function App() {
         <SectionHeader
           kicker="RW-120-8 - RECOVERY"
           title="Recovery readiness"
-          description="Recovery posture will be rendered only from backend-provided recoverability evidence."
+          description="Recovery posture requires independently verified recoverability evidence."
         />
+
         <UnavailablePanel
           title="Recovery evidence unavailable"
-          detail="The current backend response does not emit backup readiness, recovery context, or resilience score. The frontend does not infer them."
+          detail="The current Cycle 2 inference response does not provide verified backup readiness, recovery context, or a resilience score. No recovery outcome is inferred."
         />
+
+        <article className="panel">
+          <div className="panel-header">
+            <div>
+              <span className="panel-kicker">
+                RW-120-8 · RECOVERY EVIDENCE
+              </span>
+              <h3>Recovery readiness verification</h3>
+            </div>
+            <span className="status-dot warning">NOT VERIFIED</span>
+          </div>
+
+          <div className="detail-grid">
+            {[
+              ['Latest backup age', 'No verified backup timestamp'],
+              ['Immutable backup copy', 'Availability not established'],
+              ['Last restore test', 'No verified restore-test record'],
+              ['Configuration coverage', 'Coverage not established'],
+              ['Recovery dependencies', 'No verified dependency assessment'],
+              ['Resilience score', 'Not calculated from verified evidence'],
+            ].map(([label, status]) => (
+              <div key={label}>
+                <span>{label}</span>
+                <strong>{status}</strong>
+              </div>
+            ))}
+          </div>
+
+          <div className="inline-warning">
+            SYNTHETIC DEFENSIVE PROTOTYPE ONLY. NO BACKUP RESTORATION,
+            OPERATIONAL RECOVERY, OR PHYSICAL SAFETY OUTCOME IS CLAIMED.
+          </div>
+
+          <p className="muted">
+            Recovery readiness requires independently verified backup inventory,
+            immutability evidence, restore-test records, configuration coverage,
+            and dependency information. Legacy mock responses are not accepted
+            as live recovery evidence.
+          </p>
+        </article>
       </>
     )
   }

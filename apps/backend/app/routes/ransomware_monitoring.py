@@ -91,3 +91,49 @@ def get_data_drift() -> dict:
         return unavailable("Offline monitoring results are inconsistent.")
 
     return report
+
+
+@router.get("/api/v1/ransomware/monitoring/model-drift")
+def get_model_drift() -> dict:
+    """Report model-drift evidence availability without inventing evaluations."""
+    return {
+        "task_id": "RW-130-2",
+        "status": "unavailable",
+        "drift_detected": None,
+        "analysis_type": "offline_model_performance_comparison",
+        "is_live_monitoring": False,
+        "reason": (
+            "Two compatible, independently evaluated chronological periods "
+            "are required. No verified comparison dataset is configured."
+        ),
+        "metric_changes": {},
+    }
+
+
+@router.get("/api/v1/ransomware/monitoring/incident-timing")
+def get_incident_timing() -> dict:
+    """Report timing availability without inferring incident timestamps."""
+    return {
+        "task_id": "RW-130-3",
+        "status": "unavailable",
+        "analysis_type": "offline_incident_timing",
+        "is_live_monitoring": False,
+        "reason": (
+            "Verified incident onset, detection, response, and recovery "
+            "timestamps are not available."
+        ),
+        "metrics": {
+            "mttd": {
+                "status": "unavailable",
+                "mean_minutes": None,
+            },
+            "mean_response_time": {
+                "status": "unavailable",
+                "mean_minutes": None,
+            },
+            "mean_recovery_time": {
+                "status": "unavailable",
+                "mean_minutes": None,
+            },
+        },
+    }

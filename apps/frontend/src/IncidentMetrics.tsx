@@ -1,4 +1,24 @@
+import { useEffect, useState } from 'react'
+import {
+  fetchIncidentTimingReport,
+  type IncidentTimingReport,
+} from './api/ransomwareMonitoring'
+
 export default function IncidentMetrics() {
+  const [report, setReport] = useState<IncidentTimingReport | null>(null)
+
+  useEffect(() => {
+    let active = true
+
+    fetchIncidentTimingReport().then((data) => {
+      if (active) setReport(data)
+    })
+
+    return () => {
+      active = false
+    }
+  }, [])
+
   const metrics = [
     {
       name: 'Mean Time to Detect (MTTD)',
@@ -34,7 +54,9 @@ export default function IncidentMetrics() {
         {metrics.map((metric) => (
           <article className="metric-card" key={metric.name}>
             <span className="metric-label">{metric.name}</span>
-            <strong>Unavailable</strong>
+            <strong>
+              {report === null ? 'Loading...' : 'Unavailable'}
+            </strong>
             <small>{metric.definition}</small>
           </article>
         ))}
@@ -50,9 +72,10 @@ export default function IncidentMetrics() {
         </div>
 
         <p>
-          No independently verified incident timestamp dataset is connected
-          to this dashboard. No operational MTTD or response/recovery
-          performance is claimed.
+          {report === null
+            ? 'Checking incident-timing evidence availability...'
+            : report.reason}
+          {' '}No operational MTTD or response/recovery performance is claimed.
         </p>
 
         <div className="detail-grid">
