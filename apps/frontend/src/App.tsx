@@ -1,4 +1,9 @@
-import { useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import {
+  fetchRecoveryEvidence,
+  unavailableRecovery,
+  type RecoveryEvidenceReport,
+} from './api/ransomwareRecovery'
 import { inferRansomware, RansomwareApiError } from './api/ransomwareApi'
 import { getRansomwareUiState } from './api/ransomwareUiState'
 import type { RansomwareApiResult, RansomwareResult } from './types/ransomware'
@@ -138,6 +143,96 @@ function UnavailablePanel({
   )
 }
 
+function RecoveryView() {
+  const [recoveryEvidence, setRecoveryEvidence] =
+    useState<RecoveryEvidenceReport>(() =>
+      unavailableRecovery('Recovery evidence has not been requested.'),
+    )
+  const [recoveryLoading, setRecoveryLoading] = useState(true)
+
+  useEffect(() => {
+    let active = true
+
+    void fetchRecoveryEvidence().then((report) => {
+      if (!active) return
+      setRecoveryEvidence(report)
+      setRecoveryLoading(false)
+    })
+
+    return () => {
+      active = false
+    }
+  }, [])
+
+    const recoveryLabels: Record<keyof typeof recoveryEvidence.checks, string> = {
+      latest_backup_age: 'Latest backup age',
+      immutable_backup_copy: 'Immutable backup copy',
+      last_restore_test: 'Last restore test',
+      configuration_coverage: 'Configuration coverage',
+      recovery_dependencies: 'Recovery dependencies',
+      resilience_score: 'Resilience score',
+    }
+
+    return (
+      <>
+        <SectionHeader
+          kicker="RW-120-8 - RECOVERY"
+          title="Recovery readiness"
+          description="Recovery posture requires independently verified recoverability evidence."
+        />
+
+        <UnavailablePanel
+          title="Recovery evidence unavailable"
+          detail={
+            recoveryLoading
+              ? 'Checking recovery evidence availability...'
+              : recoveryEvidence.reason
+          }
+        />
+
+        <article className="panel">
+          <div className="panel-header">
+            <div>
+              <span className="panel-kicker">
+                RW-120-8 · RECOVERY EVIDENCE
+              </span>
+              <h3>Recovery readiness verification</h3>
+            </div>
+            <span className="status-dot warning">NOT VERIFIED</span>
+          </div>
+
+          <div className="detail-grid">
+            {Object.entries(recoveryEvidence.checks).map(([key, check]) => (
+              <div key={key}>
+                <span>
+                  {recoveryLabels[key as keyof typeof recoveryLabels]}
+                </span>
+                <strong>
+                  {recoveryLoading
+                    ? 'CHECKING'
+                    : check.status.toUpperCase()}
+                </strong>
+                <p className="muted">{check.evidence_required}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="inline-warning">
+            SYNTHETIC DEFENSIVE PROTOTYPE ONLY. NO BACKUP RESTORATION,
+            OPERATIONAL RECOVERY, OR PHYSICAL SAFETY OUTCOME IS CLAIMED.
+          </div>
+
+          <p className="muted">
+            The backend reports evidence availability only. Synthetic ML
+            backup and restore features do not establish recoverability.
+            No resilience score is calculated without verified evidence
+            and an approved scoring methodology.
+          </p>
+        </article>
+      </>
+    )
+}
+
 function App() {
   const [view, setView] = useState<View>('Overview')
   const analysisRequestId = useRef(0)
@@ -151,7 +246,6 @@ function App() {
   const [timelineLoading, setTimelineLoading] = useState(false)
   const [timelineScenarioId, setTimelineScenarioId] = useState<string | null>(null)
   const [error, setError] = useState<RansomwareApiError | null>(null)
-
   const calibrated = result?.model_result?.probabilities?.calibrated
   const uiState = getRansomwareUiState(apiResult, error)
 
@@ -776,63 +870,6 @@ function App() {
     )
   }
 
-  function renderRecovery() {
-    return (
-      <>
-        <SectionHeader
-          kicker="RW-120-8 - RECOVERY"
-          title="Recovery readiness"
-          description="Recovery posture requires independently verified recoverability evidence."
-        />
-
-        <UnavailablePanel
-          title="Recovery evidence unavailable"
-          detail="The current Cycle 2 inference response does not provide verified backup readiness, recovery context, or a resilience score. No recovery outcome is inferred."
-        />
-
-        <article className="panel">
-          <div className="panel-header">
-            <div>
-              <span className="panel-kicker">
-                RW-120-8 · RECOVERY EVIDENCE
-              </span>
-              <h3>Recovery readiness verification</h3>
-            </div>
-            <span className="status-dot warning">NOT VERIFIED</span>
-          </div>
-
-          <div className="detail-grid">
-            {[
-              ['Latest backup age', 'No verified backup timestamp'],
-              ['Immutable backup copy', 'Availability not established'],
-              ['Last restore test', 'No verified restore-test record'],
-              ['Configuration coverage', 'Coverage not established'],
-              ['Recovery dependencies', 'No verified dependency assessment'],
-              ['Resilience score', 'Not calculated from verified evidence'],
-            ].map(([label, status]) => (
-              <div key={label}>
-                <span>{label}</span>
-                <strong>{status}</strong>
-              </div>
-            ))}
-          </div>
-
-          <div className="inline-warning">
-            SYNTHETIC DEFENSIVE PROTOTYPE ONLY. NO BACKUP RESTORATION,
-            OPERATIONAL RECOVERY, OR PHYSICAL SAFETY OUTCOME IS CLAIMED.
-          </div>
-
-          <p className="muted">
-            Recovery readiness requires independently verified backup inventory,
-            immutability evidence, restore-test records, configuration coverage,
-            and dependency information. Legacy mock responses are not accepted
-            as live recovery evidence.
-          </p>
-        </article>
-      </>
-    )
-  }
-
   function renderApproval() {
     const approval = getApprovalDisplayState(result)
 
@@ -1018,7 +1055,7 @@ function App() {
     if (view === 'Detection') return renderDetection()
     if (view === 'Timeline') return renderTimeline()
     if (view === 'Spread') return renderSpread()
-    if (view === 'Recovery') return renderRecovery()
+    if (view === 'Recovery') return <RecoveryView />
     if (view === 'Approval') return renderApproval()
     if (view === 'Model Monitoring') return <ModelMonitoring />
     if (view === 'Incident Metrics') return <IncidentMetrics />
