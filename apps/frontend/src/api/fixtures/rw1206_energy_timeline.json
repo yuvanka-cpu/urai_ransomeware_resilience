@@ -1,0 +1,386 @@
+{
+  "schema_version": "1.0",
+  "task_id": "RW-120-6",
+  "scenario_id": "rw-attack-070891bdbaec",
+  "data_provenance": "synthetic_development",
+  "is_operational_incident_timeline": false,
+  "status": "available",
+  "scope": "offline_synthetic_observable_evidence",
+  "event_count": 24,
+  "first_event_at": "2026-01-01T06:00:00Z",
+  "last_event_at": "2026-01-01T06:23:00Z",
+  "observed_asset_ids": [
+    "energy-blr01-asset-identity-001"
+  ],
+  "event_family_counts": {
+    "communications": 1,
+    "cross": 1,
+    "failover": 1,
+    "file": 6,
+    "ingestion": 1,
+    "log": 1,
+    "service": 1,
+    "stale": 1,
+    "synthetic": 10,
+    "time": 1
+  },
+  "timeline": [
+    {
+      "sequence_index": 0,
+      "event_time": "2026-01-01T06:00:00Z",
+      "event_family": "synthetic",
+      "event_type": "initial_access_observable",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "stage": "initial_access",
+        "observable_only": true
+      }
+    },
+    {
+      "sequence_index": 1,
+      "event_time": "2026-01-01T06:01:00Z",
+      "event_family": "synthetic",
+      "event_type": "execution_persistence_observable",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "stage": "execution_persistence",
+        "observable_only": true
+      }
+    },
+    {
+      "sequence_index": 2,
+      "event_time": "2026-01-01T06:02:00Z",
+      "event_family": "synthetic",
+      "event_type": "privilege_escalation_observable",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "stage": "privilege_escalation",
+        "observable_only": true
+      }
+    },
+    {
+      "sequence_index": 3,
+      "event_time": "2026-01-01T06:03:00Z",
+      "event_family": "synthetic",
+      "event_type": "discovery_observable",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "stage": "discovery",
+        "observable_only": true
+      }
+    },
+    {
+      "sequence_index": 4,
+      "event_time": "2026-01-01T06:04:00Z",
+      "event_family": "synthetic",
+      "event_type": "lateral_movement_observable",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "stage": "lateral_movement",
+        "observable_only": true
+      }
+    },
+    {
+      "sequence_index": 5,
+      "event_time": "2026-01-01T06:05:00Z",
+      "event_family": "synthetic",
+      "event_type": "staging_observable",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "stage": "staging",
+        "observable_only": true
+      }
+    },
+    {
+      "sequence_index": 6,
+      "event_time": "2026-01-01T06:06:00Z",
+      "event_family": "synthetic",
+      "event_type": "recovery_impairment_observable",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "stage": "recovery_impairment",
+        "observable_only": true
+      }
+    },
+    {
+      "sequence_index": 7,
+      "event_time": "2026-01-01T06:07:00Z",
+      "event_family": "synthetic",
+      "event_type": "encryption_impact_observable",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "stage": "encryption_impact",
+        "observable_only": true
+      }
+    },
+    {
+      "sequence_index": 8,
+      "event_time": "2026-01-01T06:08:00Z",
+      "event_family": "synthetic",
+      "event_type": "extortion_marker_observable",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "stage": "extortion_marker",
+        "observable_only": true
+      }
+    },
+    {
+      "sequence_index": 9,
+      "event_time": "2026-01-01T06:09:00Z",
+      "event_family": "synthetic",
+      "event_type": "recovery_observable",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "stage": "recovery",
+        "observable_only": true
+      }
+    },
+    {
+      "sequence_index": 10,
+      "event_time": "2026-01-01T06:10:00Z",
+      "event_family": "file",
+      "event_type": "file_write_spike",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "value": 0.868,
+        "operational_action_executed": false
+      }
+    },
+    {
+      "sequence_index": 11,
+      "event_time": "2026-01-01T06:11:00Z",
+      "event_family": "file",
+      "event_type": "file_rename_spike",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "value": 0.822,
+        "operational_action_executed": false
+      }
+    },
+    {
+      "sequence_index": 12,
+      "event_time": "2026-01-01T06:12:00Z",
+      "event_family": "file",
+      "event_type": "synthetic_extension_change",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "value": 0.905,
+        "operational_action_executed": false
+      }
+    },
+    {
+      "sequence_index": 13,
+      "event_time": "2026-01-01T06:13:00Z",
+      "event_family": "file",
+      "event_type": "entropy_proxy_increase",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "value": 0.91,
+        "operational_action_executed": false
+      }
+    },
+    {
+      "sequence_index": 14,
+      "event_time": "2026-01-01T06:14:00Z",
+      "event_family": "file",
+      "event_type": "service_availability_decrease",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "value": 0.329,
+        "operational_action_executed": false
+      }
+    },
+    {
+      "sequence_index": 15,
+      "event_time": "2026-01-01T06:15:00Z",
+      "event_family": "service",
+      "event_type": "service_state",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "evidence_name": "service_state",
+        "observable_value": 0.826,
+        "scenario_family": "cyber_impact_vs_visibility_failure",
+        "site_types": [
+          "control_centre",
+          "substation"
+        ],
+        "protected_boundary_context": [
+          "supervisory_control",
+          "field_control"
+        ],
+        "evidence_index": 0
+      }
+    },
+    {
+      "sequence_index": 16,
+      "event_time": "2026-01-01T06:16:00Z",
+      "event_family": "log",
+      "event_type": "log_termination",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "evidence_name": "log_termination",
+        "observable_value": 0.169,
+        "scenario_family": "cyber_impact_vs_visibility_failure",
+        "site_types": [
+          "control_centre",
+          "substation"
+        ],
+        "protected_boundary_context": [
+          "supervisory_control",
+          "field_control"
+        ],
+        "evidence_index": 1
+      }
+    },
+    {
+      "sequence_index": 17,
+      "event_time": "2026-01-01T06:17:00Z",
+      "event_family": "ingestion",
+      "event_type": "ingestion_lag",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "evidence_name": "ingestion_lag",
+        "observable_value": 0.187,
+        "scenario_family": "cyber_impact_vs_visibility_failure",
+        "site_types": [
+          "control_centre",
+          "substation"
+        ],
+        "protected_boundary_context": [
+          "supervisory_control",
+          "field_control"
+        ],
+        "evidence_index": 2
+      }
+    },
+    {
+      "sequence_index": 18,
+      "event_time": "2026-01-01T06:18:00Z",
+      "event_family": "stale",
+      "event_type": "stale_point_rate",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "evidence_name": "stale_point_rate",
+        "observable_value": 0.301,
+        "scenario_family": "cyber_impact_vs_visibility_failure",
+        "site_types": [
+          "control_centre",
+          "substation"
+        ],
+        "protected_boundary_context": [
+          "supervisory_control",
+          "field_control"
+        ],
+        "evidence_index": 3
+      }
+    },
+    {
+      "sequence_index": 19,
+      "event_time": "2026-01-01T06:19:00Z",
+      "event_family": "communications",
+      "event_type": "communications_health",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "evidence_name": "communications_health",
+        "observable_value": 0.625,
+        "scenario_family": "cyber_impact_vs_visibility_failure",
+        "site_types": [
+          "control_centre",
+          "substation"
+        ],
+        "protected_boundary_context": [
+          "supervisory_control",
+          "field_control"
+        ],
+        "evidence_index": 4
+      }
+    },
+    {
+      "sequence_index": 20,
+      "event_time": "2026-01-01T06:20:00Z",
+      "event_family": "file",
+      "event_type": "file_evidence",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "evidence_name": "file_evidence",
+        "observable_value": 0.705,
+        "scenario_family": "cyber_impact_vs_visibility_failure",
+        "site_types": [
+          "control_centre",
+          "substation"
+        ],
+        "protected_boundary_context": [
+          "supervisory_control",
+          "field_control"
+        ],
+        "evidence_index": 5
+      }
+    },
+    {
+      "sequence_index": 21,
+      "event_time": "2026-01-01T06:21:00Z",
+      "event_family": "failover",
+      "event_type": "failover_state",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "evidence_name": "failover_state",
+        "observable_value": 0.515,
+        "scenario_family": "cyber_impact_vs_visibility_failure",
+        "site_types": [
+          "control_centre",
+          "substation"
+        ],
+        "protected_boundary_context": [
+          "supervisory_control",
+          "field_control"
+        ],
+        "evidence_index": 6
+      }
+    },
+    {
+      "sequence_index": 22,
+      "event_time": "2026-01-01T06:22:00Z",
+      "event_family": "time",
+      "event_type": "time_synchronization",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "evidence_name": "time_synchronization",
+        "observable_value": 0.857,
+        "scenario_family": "cyber_impact_vs_visibility_failure",
+        "site_types": [
+          "control_centre",
+          "substation"
+        ],
+        "protected_boundary_context": [
+          "supervisory_control",
+          "field_control"
+        ],
+        "evidence_index": 7
+      }
+    },
+    {
+      "sequence_index": 23,
+      "event_time": "2026-01-01T06:23:00Z",
+      "event_family": "cross",
+      "event_type": "cross_source_correlation",
+      "asset_id": "energy-blr01-asset-identity-001",
+      "attributes": {
+        "evidence_name": "cross_source_correlation",
+        "observable_value": 0.689,
+        "scenario_family": "cyber_impact_vs_visibility_failure",
+        "site_types": [
+          "control_centre",
+          "substation"
+        ],
+        "protected_boundary_context": [
+          "supervisory_control",
+          "field_control"
+        ],
+        "evidence_index": 8
+      }
+    }
+  ],
+  "sequence_fingerprint_sha256": "736a88d6197d2ce62efbcfe61055b5f6595c22e308a1efabfc2b4bd45b505b19",
+  "fingerprint_scope": "Event sequence index, family, type, asset ID and attributes; timestamps are excluded.",
+  "limitations": "Synthetic observable events only. Observed assets are not confirmed compromised assets. This is not a verified incident reconstruction or chain-of-custody record."
+}

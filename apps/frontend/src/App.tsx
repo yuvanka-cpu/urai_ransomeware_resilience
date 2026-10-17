@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { inferRansomware, RansomwareApiError } from './api/ransomwareApi'
 import { getRansomwareUiState } from './api/ransomwareUiState'
 import type { RansomwareApiResult, RansomwareResult } from './types/ransomware'
@@ -8,6 +8,10 @@ import { getForensicSignals, getForensicInterpretations } from './api/ransomware
 import ModelMonitoring from './ModelMonitoring'
 import IncidentMetrics from './IncidentMetrics'
 import { getApprovalDisplayState } from './api/ransomwareApprovalState'
+import {
+  fetchObservableTimeline,
+  type ObservableTimelineResult,
+} from './api/ransomwareTimeline'
 
 type View =
   | 'Overview'
@@ -23,14 +27,14 @@ type View =
 
 const SCENARIOS = {
   energy: {
-    label: 'Energy · EN-RW-01 · Control centre',
+    label: 'Energy · EN-RW-03 · Control centre',
     request: {
       schema_version: '1.0' as const,
       use_case: 'ransomware_resilience' as const,
       industry: 'energy',
       site_id: 'synthetic-energy-001',
       site_type: 'control_centre',
-      scenario_id: 'rw-attack-6ecce30389a5',
+      scenario_id: 'rw-attack-070891bdbaec',
       observable_input: {},
     },
   },
@@ -136,11 +140,16 @@ function UnavailablePanel({
 
 function App() {
   const [view, setView] = useState<View>('Overview')
+  const analysisRequestId = useRef(0)
   const [scenarioKey, setScenarioKey] = useState<ScenarioKey>('energy')
   const [apiResult, setApiResult] = useState<RansomwareApiResult | null>(null)
   const result: RansomwareResult | null =
     apiResult?.runtime_state === 'live_model' ? apiResult : null
   const [loading, setLoading] = useState(false)
+  const [timelineResult, setTimelineResult] =
+    useState<ObservableTimelineResult | null>(null)
+  const [timelineLoading, setTimelineLoading] = useState(false)
+  const [timelineScenarioId, setTimelineScenarioId] = useState<string | null>(null)
   const [error, setError] = useState<RansomwareApiError | null>(null)
 
   const calibrated = result?.model_result?.probabilities?.calibrated
@@ -156,21 +165,57 @@ function App() {
   }, [apiResult])
 
   async function runAnalysis() {
+    const request = SCENARIOS[scenarioKey].request
+    const requestId = ++analysisRequestId.current
+
     setLoading(true)
+    setTimelineLoading(false)
+    setTimelineResult(null)
+    setTimelineScenarioId(null)
     setError(null)
 
     try {
-      const nextResult = await inferRansomware(SCENARIOS[scenarioKey].request)
+      const nextResult = await inferRansomware(request)
+      if (requestId !== analysisRequestId.current) return
       setApiResult(nextResult)
+
+      if (
+        nextResult.runtime_state === 'live_model' &&
+        nextResult.scenario_id === request.scenario_id
+      ) {
+        setTimelineLoading(true)
+
+        try {
+          const timeline = await fetchObservableTimeline(request)
+          if (requestId !== analysisRequestId.current) return
+          setTimelineResult(timeline)
+          setTimelineScenarioId(request.scenario_id)
+        } catch {
+          // Timeline failure must not invalidate a successful inference.
+          if (requestId === analysisRequestId.current) {
+            setTimelineResult(null)
+            setTimelineScenarioId(null)
+          }
+        } finally {
+          if (requestId === analysisRequestId.current) {
+            setTimelineLoading(false)
+          }
+        }
+      }
     } catch (err) {
+      if (requestId !== analysisRequestId.current) return
       const apiError =
         err instanceof RansomwareApiError
           ? err
           : new RansomwareApiError('Backend request failed.', 'network')
       setError(apiError)
       setApiResult(null)
+      setTimelineResult(null)
+      setTimelineScenarioId(null)
     } finally {
-      setLoading(false)
+      if (requestId === analysisRequestId.current) {
+        setLoading(false)
+      }
     }
   }
 
@@ -420,8 +465,11 @@ function App() {
                 value={scenarioKey}
                 onChange={(event) => {
                   const nextKey = event.target.value as ScenarioKey
+                  ++analysisRequestId.current
                   setScenarioKey(nextKey)
                   setApiResult(null)
+                  setTimelineResult(null)
+                  setTimelineScenarioId(null)
                   setError(null)
                 }}
                 disabled={loading}
@@ -511,32 +559,218 @@ function App() {
   }
 
   function renderTimeline() {
+    const selectedScenarioId = SCENARIOS[scenarioKey].request.scenario_id
+
+    const evidence =
+      result?.scenario_id === selectedScenarioId &&
+      timelineScenarioId === selectedScenarioId &&
+      timelineResult?.scenario_id === selectedScenarioId
+        ? timelineResult
+        : null
+
     return (
       <>
         <SectionHeader
           kicker="RW-120-6 - TIMELINE"
-          title="Incident timeline"
-          description="Timeline visualization is reserved for backend timeline evidence."
+          title="Synthetic observable-event timeline"
+          description="Chronological synthetic observations supplied and validated by the backend. These are not confirmed ransomware stages or operational incidents."
         />
-        <UnavailablePanel
-          title="Timeline data unavailable"
-          detail="The current RW-1006 response does not emit the canonical incident timeline. No synthetic timeline is invented by the frontend."
-        />
+
+        {timelineLoading ? (
+          <article className="panel">
+            <h3>Loading timeline evidence...</h3>
+            <p>Waiting for independently validated synthetic observations.</p>
+          </article>
+        ) : evidence?.status === 'available' ? (
+          <article className="panel">
+            <div className="panel-header">
+              <div>
+                <span className="panel-kicker">SYNTHETIC DEVELOPMENT EVIDENCE</span>
+                <h3>{evidence.event_count} observable events</h3>
+              </div>
+              <span className="boundary-chip">NOT OPERATIONAL</span>
+            </div>
+
+            <p>
+              These events are synthetic observations only. Event names and
+              attributes do not establish compromise, incident progression,
+              physical safety impact, or verified asset propagation.
+            </p>
+
+            <div className="detail-grid">
+              <div>
+                <span>First observation</span>
+                <strong>{evidence.first_event_at}</strong>
+              </div>
+              <div>
+                <span>Last observation</span>
+                <strong>{evidence.last_event_at}</strong>
+              </div>
+              <div>
+                <span>Observed assets</span>
+                <strong>{evidence.observed_asset_ids.length}</strong>
+              </div>
+              <div>
+                <span>Evidence provenance</span>
+                <strong>{evidence.data_provenance}</strong>
+              </div>
+            </div>
+
+            <div className="reserved-fields">
+              <span>Sequence fingerprint (SHA-256)</span>
+              <div><code>{evidence.sequence_fingerprint_sha256}</code></div>
+            </div>
+
+            <div className="reserved-fields">
+              <span>Evidence limitations</span>
+              <div>{evidence.limitations}</div>
+            </div>
+
+            <div className="timeline-events">
+              {evidence.timeline.map((event) => (
+                <article
+                  className="panel"
+                  key={`${event.sequence_index}-${event.asset_id}`}
+                >
+                  <div className="panel-header">
+                    <div>
+                      <span className="panel-kicker">
+                        OBSERVATION {event.sequence_index + 1}
+                      </span>
+                      <h3>{event.event_type.replaceAll('_', ' ')}</h3>
+                    </div>
+                    <span className="boundary-chip">SYNTHETIC</span>
+                  </div>
+
+                  <div className="detail-grid">
+                    <div>
+                      <span>Timestamp (UTC/offset)</span>
+                      <strong>{event.event_time}</strong>
+                    </div>
+                    <div>
+                      <span>Event family</span>
+                      <strong>{event.event_family}</strong>
+                    </div>
+                    <div>
+                      <span>Observed asset ID</span>
+                      <strong>{event.asset_id}</strong>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </article>
+        ) : (
+          <UnavailablePanel
+            title="Timeline evidence unavailable"
+            detail={
+              evidence?.status === 'unavailable'
+                ? evidence.reason
+                : 'Run a permitted synthetic scenario to request validated observable-event evidence. No canonical incident timeline is inferred.'
+            }
+          />
+        )}
       </>
     )
   }
 
   function renderSpread() {
+    const selectedScenario = SCENARIOS[scenarioKey].request
+
+    const evidence =
+      result?.scenario_id === selectedScenario.scenario_id &&
+      timelineScenarioId === selectedScenario.scenario_id &&
+      timelineResult?.scenario_id === selectedScenario.scenario_id &&
+      timelineResult.status === 'available'
+        ? timelineResult
+        : null
+
+    const sectorNamingMismatch =
+      evidence?.observed_asset_ids.some((assetId) => {
+        const normalized = assetId.toLowerCase()
+        return (
+          (selectedScenario.industry === 'petrochemical' &&
+            normalized.startsWith('energy-')) ||
+          (selectedScenario.industry === 'energy' &&
+            normalized.startsWith('petrochemical-'))
+        )
+      }) ?? false
+
     return (
       <>
         <SectionHeader
           kicker="RW-120-7 - SPREAD"
           title="Propagation & spread"
-          description="Propagation views require canonical asset, zone, and propagation-path evidence."
+          description="Observed synthetic asset context is distinct from verified compromise, propagation, and operational blast radius."
         />
+
+        {timelineLoading ? (
+          <article className="panel">
+            <h3>Loading asset observations...</h3>
+            <p>Waiting for validated synthetic Timeline evidence.</p>
+          </article>
+        ) : evidence ? (
+          <article className="panel">
+            <div className="panel-header">
+              <div>
+                <span className="panel-kicker">SYNTHETIC OBSERVABLE EVIDENCE</span>
+                <h3>{evidence.observed_asset_ids.length} observed asset identifier(s)</h3>
+              </div>
+              <span className="boundary-chip">NOT VERIFIED SPREAD</span>
+            </div>
+
+            <p>
+              These identifiers occur in validated synthetic event records.
+              Observation does not establish that an asset is compromised,
+              affected, or part of a ransomware propagation path.
+            </p>
+
+            <div className="detail-grid">
+              <div>
+                <span>Scenario industry</span>
+                <strong>{selectedScenario.industry}</strong>
+              </div>
+              <div>
+                <span>Synthetic event count</span>
+                <strong>{evidence.event_count}</strong>
+              </div>
+              <div>
+                <span>Evidence provenance</span>
+                <strong>{evidence.data_provenance}</strong>
+              </div>
+            </div>
+
+            <div className="reserved-fields">
+              <span>Observed asset identifiers</span>
+              {evidence.observed_asset_ids.map((assetId) => (
+                <div key={assetId}><code>{assetId}</code></div>
+              ))}
+            </div>
+
+            {sectorNamingMismatch && (
+              <div className="inline-warning">
+                SYNTHETIC DATA QUALITY WARNING: An observed asset identifier
+                uses a sector prefix inconsistent with the selected scenario.
+                The original identifier is preserved; its sector association
+                has not been independently verified.
+              </div>
+            )}
+
+            <div className="reserved-fields">
+              <span>Evidence limitations</span>
+              <div>{evidence.limitations}</div>
+            </div>
+          </article>
+        ) : (
+          <UnavailablePanel
+            title="Observed asset context unavailable"
+            detail="No validated synthetic observable-event evidence is loaded for the selected scenario."
+          />
+        )}
+
         <UnavailablePanel
           title="Propagation context unavailable"
-          detail="The current RW-1006 response does not emit full affected/suspected asset context, zones, or a canonical propagation path."
+          detail="No independently verified affected/suspected asset classification, zone-to-zone propagation path, or operational blast radius is available. Event names such as lateral_movement_observable do not establish confirmed movement."
         />
       </>
     )

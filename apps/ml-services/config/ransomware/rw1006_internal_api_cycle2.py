@@ -299,3 +299,44 @@ def main() -> None:
     print(f"Endpoint: POST /internal/ransomware/infer")
     print(f"Mode: {MODE}")
     print("Frontend direct access: forbidden by architecture")
+
+@app.post("/internal/ransomware/observable-timeline")
+def observable_timeline(request: InternalInferenceRequest) -> dict[str, Any]:
+    """Expose validated development-only synthetic observable events."""
+    from config.ransomware.rw1304_forensic_summary import (
+        summarize_forensic_events,
+    )
+
+    scenarios, _, _ = _runtime_context()
+    scenario = scenarios.get(request.scenario_id)
+
+    if scenario is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Synthetic development scenario not available",
+        )
+
+    if scenario.industry != request.industry:
+        raise HTTPException(
+            status_code=422,
+            detail="Scenario industry does not match request industry",
+        )
+
+    if request.site_type not in scenario.site_types:
+        raise HTTPException(
+            status_code=422,
+            detail="Scenario site type does not match request site type",
+        )
+
+    summary = summarize_forensic_events(
+        assemble_scenario_events(scenario)
+    )
+
+    return {
+        "schema_version": API_SCHEMA_VERSION,
+        "task_id": "RW-120-6",
+        "scenario_id": request.scenario_id,
+        "data_provenance": "synthetic_development",
+        "is_operational_incident_timeline": False,
+        **summary,
+    }
