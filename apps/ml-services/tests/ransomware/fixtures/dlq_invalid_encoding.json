@@ -1,0 +1,7 @@
+{
+  "event_id": "evt-dlq-003",
+  "source_system": "network",
+  "reason_code": "invalid_encoding",
+  "message": "source payload encoding rejected",
+  "raw_payload": "{\"encoding\":\"unsupported\"}"
+}

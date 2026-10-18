@@ -1,0 +1,7 @@
+{
+  "event_id": "evt-dlq-005",
+  "source_system": "endpoint",
+  "reason_code": "normalization_failure",
+  "message": "timestamp normalization failed",
+  "raw_payload": "{\"event_time\":\"not-a-timestamp\"}"
+}

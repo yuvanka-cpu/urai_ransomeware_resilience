@@ -1,0 +1,7 @@
+{
+  "event_id": "evt-dlq-004",
+  "source_system": "backup",
+  "reason_code": "incompatible_structure",
+  "message": "expected object but received array",
+  "raw_payload": "[\"unexpected\",\"array\"]"
+}

@@ -1,0 +1,7 @@
+{
+  "event_id": "evt-dlq-002",
+  "source_system": "identity",
+  "reason_code": "required_field_missing",
+  "message": "required asset_id field missing",
+  "raw_payload": "{\"event_type\":\"authentication_failure\"}"
+}
