@@ -3,14 +3,14 @@
   "algorithm": "sklearn.linear_model.LogisticRegression",
   "coefficients": {
     "anomaly_missing": 0.0,
-    "anomaly_score": -0.6298863433001316,
+    "anomaly_score": -0.04501630135440854,
     "catboost_missing": 0.0,
-    "catboost_score": 0.8105926128325462,
+    "catboost_score": -0.1052367680194239,
     "graph_missing": 0.0,
-    "graph_score": -0.005783713723105326,
-    "rule_score": 0.5428174934046955,
+    "graph_score": -0.0045704226240849966,
+    "rule_score": 0.1352018334416189,
     "rules_missing": 0.0,
-    "temporal_missing": -0.5495017677923458,
+    "temporal_missing": -0.6139787337788724,
     "temporal_score": 0.0
   },
   "components": [
@@ -32,7 +32,7 @@
     "temporal_missing",
     "graph_missing"
   ],
-  "intercept": -0.5495017677923458,
+  "intercept": -0.6139787337788724,
   "missing_indicator_columns": [
     "rules_missing",
     "anomaly_missing",
@@ -52,17 +52,17 @@
       "graph_score"
     ],
     "mean": {
-      "anomaly_score": 0.7232614537037036,
-      "catboost_score": 0.2753657962962963,
-      "graph_score": 0.12000000000000002,
-      "rule_score": 0.08024707407407407,
+      "anomaly_score": 0.16492970370370372,
+      "catboost_score": 0.30229441666666673,
+      "graph_score": 0.17999999999999997,
+      "rule_score": 0.1296296574074074,
       "temporal_score": 0.0
     },
     "scale": {
-      "anomaly_score": 0.40862690884702807,
-      "catboost_score": 0.3018011836339404,
-      "graph_score": 0.2683281572999748,
-      "rule_score": 0.08327632435004424,
+      "anomaly_score": 0.1392457610165526,
+      "catboost_score": 0.27435233455868135,
+      "graph_score": 0.31176914536239786,
+      "rule_score": 0.15101388711492247,
       "temporal_score": 1.0
     }
   },

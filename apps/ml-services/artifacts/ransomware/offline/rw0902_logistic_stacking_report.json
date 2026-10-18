@@ -28,8 +28,8 @@
     "graph_missing"
   ],
   "label_counts": {
-    "0": 78,
-    "1": 30
+    "0": 84,
+    "1": 24
   },
   "matrix_shape": [
     108,
@@ -48,7 +48,7 @@
   "source_artifact": "artifacts\\ransomware\\offline\\rw0901_oof_component_scores.json",
   "synthetic_only": true,
   "task": "RW-090-2",
-  "training_fit_accuracy": 0.75,
+  "training_fit_accuracy": 0.7777777777777778,
   "training_scope": {
     "calibration_used": false,
     "final_holdout_used": false,

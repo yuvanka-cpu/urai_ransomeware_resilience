@@ -253,7 +253,10 @@ with httpx.Client(timeout=5.0) as client:
             response.raise_for_status()
             payload = response.json()
 
-            model_result = payload.get("result", payload)
+            model_result = payload.get("model_result")
+            if not isinstance(model_result, dict):
+                model_result = payload.get("result", payload)
+
             probabilities = model_result.get("probabilities", {})
             decision = model_result.get("decision", "unavailable")
 
@@ -272,13 +275,13 @@ with httpx.Client(timeout=5.0) as client:
                 "predicted_attack": predicted_attack,
                 "decision": decision,
                 "calibrated_probability": calibrated if calibrated is not None else 0.0,
-                "request_id": model_result.get("request_id") or payload.get("request_id"),
-                "trace_id": model_result.get("trace_id") or payload.get("trace_id"),
-                "artifact_status": model_result.get("artifact_status"),
-                "data_provenance": model_result.get("data_provenance"),
-                "runtime_state": model_result.get("runtime_state"),
-                "warnings": model_result.get("warnings", []),
-                "audit": model_result.get("audit", {}),
+                "request_id": payload.get("request_id"),
+                "trace_id": payload.get("trace_id"),
+                "artifact_status": payload.get("artifact_status"),
+                "data_provenance": payload.get("data_provenance"),
+                "runtime_state": payload.get("runtime_state"),
+                "warnings": payload.get("warnings", []),
+                "audit": payload.get("audit", {}),
                 "endpoint_latency_ms": elapsed_ms,
                 "response": payload,
             })

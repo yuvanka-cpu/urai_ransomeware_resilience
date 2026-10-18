@@ -1,30 +1,31 @@
 {
   "global_calibrator": {
-    "coefficient": 0.014902812639115562,
-    "intercept": -1.1515236981970445,
+    "coefficient": 0.48324229708408156,
+    "intercept": 0.19497511258479536,
     "method": "sigmoid",
-    "negative_count": 24,
-    "positive_count": 6,
+    "negative_count": 18,
+    "positive_count": 12,
     "sample_count": 30
   },
   "method": "sigmoid_probability_calibration",
   "sector_calibrators": {
     "energy": {
-      "coefficient": 0.0316337124133443,
-      "intercept": -0.8874865192230148,
+      "coefficient": 0.23872960229183843,
+      "intercept": -0.0666890036240438,
       "method": "sigmoid",
-      "negative_count": 18,
+      "negative_count": 9,
       "positive_count": 6,
-      "sample_count": 24,
+      "sample_count": 15,
       "status": "sector_specific"
     },
     "petrochemical": {
-      "fallback": "global_sigmoid",
-      "sample_count": 6,
-      "status": "insufficient_class_diversity",
-      "unique_labels": [
-        0
-      ]
+      "coefficient": 0.4523076798961447,
+      "intercept": 0.12736751887939401,
+      "method": "sigmoid",
+      "negative_count": 9,
+      "positive_count": 6,
+      "sample_count": 15,
+      "status": "sector_specific"
     }
   },
   "synthetic_only": true,

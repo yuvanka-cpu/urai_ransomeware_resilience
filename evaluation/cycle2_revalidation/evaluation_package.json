@@ -1,0 +1,131 @@
+{
+  "task": "RW-CYCLE2-REVALIDATION",
+  "created_at": "2026-10-07T12:42:36.511879+00:00",
+  "manifest_sha256": "0e9f99d2d7fc9061978aa62ba2e9fcff0ae2c573fee0ad09138b153333c6cc68",
+  "scenario_ids": [
+    "rw-attack-1864c4aed9b3",
+    "rw-attack-2cfbb8e9188d",
+    "rw-attack-6ecce30389a5",
+    "rw-attack-d9a9c8020dce",
+    "rw-benign-3621ede6712b",
+    "rw-benign-46ec6219189c",
+    "rw-benign-9c4af983d47c",
+    "rw-benign-ddc48dcc2d83",
+    "rw-fault-8a9f266b7b54",
+    "rw-fault-8c88fa035ecb",
+    "rw-fault-b098ba8c790e",
+    "rw-fault-b5059620d84e",
+    "rw-normal-096e14e368c2",
+    "rw-normal-4f3df0b12cac"
+  ],
+  "scorecard_sha256": "0e5f3d0ebcd3452f0e77fbd6d81be233cba88530a8ac7a9c60409f6aad435993",
+  "results_sha256": "e42ceb66272e4020275938788de9330aca524685f9d159dca9d7da9af9e1d3a1",
+  "scorecard": {
+    "task": "RW-CYCLE2-REVALIDATION",
+    "status": "complete",
+    "evaluation_set": "test",
+    "evaluation_set_description": "Pre-existing held-out test partition; independent of train/validation/calibration. Not claimed as a newly generated untouched holdout.",
+    "original_20_scenario_holdout_preserved": true,
+    "manifest_sha256": "0e9f99d2d7fc9061978aa62ba2e9fcff0ae2c573fee0ad09138b153333c6cc68",
+    "scenario_count": 14,
+    "scored_count": 14,
+    "failed_count": 0,
+    "overall": {
+      "detection": {
+        "tp": 1,
+        "tn": 6,
+        "fp": 4,
+        "fn": 3,
+        "precision": 0.2,
+        "recall": 0.25,
+        "f1": 0.22222222222222224,
+        "balanced_accuracy": 0.425,
+        "false_positive_rate": 0.4
+      },
+      "calibration": {
+        "brier_score": 0.2190214848574017,
+        "log_loss": 0.6305740169575911,
+        "ece": 0.18275801913847747
+      }
+    },
+    "sector_slices": {
+      "energy": {
+        "count": 7,
+        "detection": {
+          "tp": 1,
+          "tn": 3,
+          "fp": 2,
+          "fn": 1,
+          "precision": 0.3333333333333333,
+          "recall": 0.5,
+          "f1": 0.4,
+          "balanced_accuracy": 0.55,
+          "false_positive_rate": 0.4
+        },
+        "calibration": {
+          "brier_score": 0.21484484450214428,
+          "log_loss": 0.6219659426662932,
+          "ece": 0.12366940896054768
+        }
+      },
+      "petrochemical": {
+        "count": 7,
+        "detection": {
+          "tp": 0,
+          "tn": 3,
+          "fp": 2,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "balanced_accuracy": 0.3,
+          "false_positive_rate": 0.4
+        },
+        "calibration": {
+          "brier_score": 0.22319812521265914,
+          "log_loss": 0.6391820912488889,
+          "ece": 0.2954467668389508
+        }
+      }
+    },
+    "runtime": {
+      "endpoint_latency_ms": {
+        "p50": 99.92900000042937,
+        "p95": 1092.3290150001767,
+        "min": 94.93500000007771,
+        "max": 2912.1280999997907
+      },
+      "timeout_or_error_rate": 0.0
+    },
+    "progression": {
+      "status": "unavailable",
+      "reason": "Cycle-2 canonical API does not expose incident_stage/timeline fields."
+    },
+    "localization": {
+      "status": "unavailable",
+      "reason": "Cycle-2 canonical API does not expose affected/suspected asset or propagation-path fields."
+    },
+    "safety": {
+      "real_action_executed_all_false": true,
+      "human_approval_required_all_true": true,
+      "operational_state_claimed_all_false": true,
+      "physical_safety_determination_all_not_determined": true
+    },
+    "core_quality_gate_comparison": {
+      "attack_recall_target": 0.9,
+      "precision_target": 0.85,
+      "non_attack_fpr_target": 0.1,
+      "p95_latency_target_ms": 1000.0,
+      "attack_recall": 0.25,
+      "precision": 0.2,
+      "non_attack_fpr": 0.4,
+      "p95_latency_ms": 1092.3290150001767
+    },
+    "limitations": [
+      "This is a Cycle-2 revalidation on the pre-existing test partition, not a newly generated untouched holdout.",
+      "The original frozen 20-scenario holdout was not modified or rerun.",
+      "Progression and localization acceptance metrics remain unavailable from the current canonical API contract."
+    ]
+  },
+  "evaluation_package_sha256": "6c206caf21375834b070ad02230368162306443173c89dc802da6786264d4255"
+}

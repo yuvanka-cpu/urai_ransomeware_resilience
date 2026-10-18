@@ -7,15 +7,15 @@
     "site_types"
   ],
   "class_weights": [
-    0.5625,
-    4.5
+    0.6428571428571429,
+    2.25
   ],
-  "created_at_utc": "2026-09-27T09:40:14.508996+00:00",
+  "created_at_utc": "2026-10-06T12:03:55.451864+00:00",
   "evidence_id": "RW-070-4",
   "frozen_validation": {
-    "accuracy": 0.6666666666666666,
-    "log_loss": 0.6728866674937356,
-    "precision": 0.6666666666666666,
+    "accuracy": 0.7222222222222222,
+    "log_loss": 0.6365945345564928,
+    "precision": 0.4,
     "recall": 0.5,
     "validation_rows": 54,
     "validation_scenarios": 18
@@ -24,22 +24,22 @@
   "group_field": "scenario_id",
   "grouped_cv": [
     {
-      "accuracy": 0.9259259259259259,
+      "accuracy": 0.6666666666666666,
       "fit_scenarios": 9,
       "fold": 1,
-      "log_loss": 0.17587520777808302,
-      "precision": 0.6,
-      "recall": 1.0,
+      "log_loss": 0.6793340055209548,
+      "precision": 0.0,
+      "recall": 0.0,
       "validation_rows": 27,
       "validation_scenarios": 9
     },
     {
-      "accuracy": 1.0,
+      "accuracy": 0.4074074074074074,
       "fit_scenarios": 9,
       "fold": 2,
-      "log_loss": 0.050192727496488475,
-      "precision": 1.0,
-      "recall": 1.0,
+      "log_loss": 0.7020548221148536,
+      "precision": 0.14285714285714285,
+      "recall": 0.3333333333333333,
       "validation_rows": 27,
       "validation_scenarios": 9
     }
@@ -47,7 +47,7 @@
   "label_leakage_excluded": true,
   "manifest_version": "1.0",
   "model_input_feature_count": 56,
-  "model_sha256": "5ab4efa512e4099a7d4afc717d797ff6310976b9719a50d2b3e8860a2c3c7bd8",
+  "model_sha256": "ad66f679dfa88f8adc2b8da2536d0563be706a08c5f4e31ef189e6b488d6cb05",
   "observable_feature_count": 54,
   "observable_feature_names": [
     "alarm_support_health_ratio",
@@ -106,10 +106,10 @@
     "zone_crossing_count"
   ],
   "parameters": {
-    "depth": 5,
+    "depth": 4,
     "eval_metric": "Logloss",
-    "iterations": 200,
-    "l2_leaf_reg": 3.0,
+    "iterations": 120,
+    "l2_leaf_reg": 10.0,
     "learning_rate": 0.05,
     "loss_function": "Logloss",
     "random_seed": 20260921,
@@ -119,7 +119,7 @@
   "scenario_count": 80,
   "scenario_group_leakage_excluded": true,
   "source_split_manifest": "artifacts\\ransomware\\offline\\split_assignment_manifest.json",
-  "source_split_manifest_sha256": "ebde535b343c99df371e564a404de7035e260c1c95686e073d4ead478562c082",
+  "source_split_manifest_sha256": "0e9f99d2d7fc9061978aa62ba2e9fcff0ae2c573fee0ad09138b153333c6cc68",
   "split_row_counts": {
     "calibration": 30,
     "test": 42,
@@ -134,25 +134,26 @@
   "synthetic_only": true,
   "target_field": "variant == attack",
   "variant_row_counts": {
-    "calibration:attack": 6,
+    "calibration:attack": 12,
     "calibration:benign": 6,
     "calibration:fault": 6,
-    "calibration:normal": 12,
-    "test:attack": 18,
+    "calibration:normal": 6,
+    "test:attack": 12,
     "test:benign": 12,
-    "test:fault": 6,
+    "test:fault": 12,
     "test:normal": 6,
-    "train:attack": 6,
-    "train:benign": 30,
-    "train:fault": 6,
-    "train:normal": 12,
-    "untouched_holdout:attack": 6,
-    "untouched_holdout:benign": 12,
+    "train:attack": 12,
+    "train:benign": 12,
+    "train:fault": 12,
+    "train:normal": 18,
+    "untouched_holdout:attack": 12,
+    "untouched_holdout:benign": 18,
     "untouched_holdout:fault": 18,
-    "untouched_holdout:normal": 24,
-    "validation:attack": 24,
-    "validation:fault": 24,
-    "validation:normal": 6
+    "untouched_holdout:normal": 12,
+    "validation:attack": 12,
+    "validation:benign": 12,
+    "validation:fault": 12,
+    "validation:normal": 18
   },
   "windows_minutes": [
     1,

@@ -1,0 +1,51 @@
+{
+  "task": "RW-140",
+  "status": "complete",
+  "manifest_sha256": "0e9f99d2d7fc9061978aa62ba2e9fcff0ae2c573fee0ad09138b153333c6cc68",
+  "scenario_count": 20,
+  "scored_count": 0,
+  "failed_count": 20,
+  "overall": {
+    "detection": null,
+    "calibration": null
+  },
+  "sector_slices": {
+    "energy": {
+      "status": "no_scored_rows"
+    },
+    "petrochemical": {
+      "status": "no_scored_rows"
+    }
+  },
+  "runtime": {
+    "endpoint_latency_ms": {
+      "p50": 513.2853499962948,
+      "p95": 613.0568900029178,
+      "min": 409.4512000156101,
+      "max": 1136.5959999966435
+    },
+    "timeout_or_error_rate": 1.0,
+    "cold_warm_memory": "not measured by frontend-facing API runner"
+  },
+  "progression": {
+    "status": "unavailable",
+    "reason": "Current canonical API output does not expose incident_stage/timeline fields."
+  },
+  "localization": {
+    "status": "unavailable",
+    "reason": "Current canonical API output does not expose localization/affected-asset fields."
+  },
+  "canonical_contract_gap": {
+    "status": "partial",
+    "missing_fields_observed": []
+  },
+  "safety": {
+    "real_action_executed_all_false": true,
+    "human_approval_required_all_true": true
+  },
+  "limitations": [
+    "Untouched holdout was executed exactly once per scenario through POST /api/v1/ransomware/infer.",
+    "Progression/localization metrics remain unavailable because the current canonical API contract does not emit the required fields.",
+    "Cold/warm memory was not measured through the browser-facing API runner."
+  ]
+}

@@ -1,140 +1,129 @@
 {
   "task": "RW-140-1",
-  "scenario_count": 20,
-  "results_sha256": "52944c48ea7761f0bdf4645c3c3e7188a73fbbda5b5bb5d9e5b2b3af74316308",
-  "scorecard_sha256": "ee443af6678a4f3d219c0b07c4e1c17dd3cb11afd6f628a7a7949ed870cddcbd",
+  "run_manifest": {
+    "run": "RW-140-1",
+    "created_at": "2026-10-05T17:24:06.581184+00:00",
+    "manifest_sha256": "0e9f99d2d7fc9061978aa62ba2e9fcff0ae2c573fee0ad09138b153333c6cc68",
+    "scenario_count": 20,
+    "scenario_ids": [
+      "rw-attack-4e3d94dcdd00",
+      "rw-attack-a3dba39e05da",
+      "rw-attack-bb3c02c1ec92",
+      "rw-attack-c7ca854f341c",
+      "rw-benign-14cea5e491d3",
+      "rw-benign-380a5134c295",
+      "rw-benign-8b1729406449",
+      "rw-benign-b7640fc832ca",
+      "rw-benign-daa39e0b0ddc",
+      "rw-benign-ecea2a6b2b9d",
+      "rw-fault-442bb87886fd",
+      "rw-fault-4d7db2fa4272",
+      "rw-fault-9f7799ba20e5",
+      "rw-fault-a6d3d6adfef5",
+      "rw-fault-a7f17e9b618d",
+      "rw-fault-dcc0d567a410",
+      "rw-normal-0e4809c06c6c",
+      "rw-normal-67d0ee3a7849",
+      "rw-normal-6b71efef3857",
+      "rw-normal-9794187082bf"
+    ],
+    "exactly_once_policy": true
+  },
+  "scorecard_sha256": "7b04c1198e924c11ef4bba789fac20b620a4363ac3daffcb35449ea3c637d110",
+  "results_sha256": "55255b3ee47b5277d469aeedf7504b21b55c0e71bd541edba0217fcbe0bba7df",
   "scorecard": {
     "task": "RW-140",
-    "status": "complete_with_documented_exact_once_exception",
-    "run_manifest": {
-      "run": "RW-140-1",
-      "created_at": "2026-10-04T03:37:33.996732+00:00",
-      "manifest_sha256": "ebde535b343c99df371e564a404de7035e260c1c95686e073d4ead478562c082",
-      "scenario_count": 20,
-      "scenario_ids": [
-        "rw-attack-070891bdbaec",
-        "rw-attack-879da6396666",
-        "rw-benign-19461c5197da",
-        "rw-benign-46ec6219189c",
-        "rw-benign-8f6de09cb7a0",
-        "rw-benign-9ab4a3d8e8f5",
-        "rw-fault-0457f4b1c9ea",
-        "rw-fault-1ac971614ea8",
-        "rw-fault-8a9f266b7b54",
-        "rw-fault-b71d98444fa9",
-        "rw-fault-bb79ea396b61",
-        "rw-fault-dfd54192c2cd",
-        "rw-normal-377b42109c44",
-        "rw-normal-3a3e3c9d818a",
-        "rw-normal-481299de330a",
-        "rw-normal-7be84a05e946",
-        "rw-normal-9990eb0fe89c",
-        "rw-normal-b79e1b84be12",
-        "rw-normal-f96ffedf17c7",
-        "rw-normal-fedc31afc85b"
-      ],
-      "exactly_once_policy": true
-    },
+    "status": "complete",
+    "manifest_sha256": "0e9f99d2d7fc9061978aa62ba2e9fcff0ae2c573fee0ad09138b153333c6cc68",
     "scenario_count": 20,
     "scored_count": 20,
     "failed_count": 0,
     "overall": {
       "detection": {
-        "tp": 2,
-        "tn": 6,
-        "fp": 12,
-        "fn": 0,
-        "precision": 0.14285714285714285,
-        "recall": 1.0,
-        "f1": 0.25,
-        "pr_auc": 0.26785714285714285,
-        "roc_auc": 0.7777777777777778,
-        "balanced_accuracy": 0.6666666666666666,
-        "false_positive_rate": 0.6666666666666666
+        "tp": 0,
+        "tn": 16,
+        "fp": 0,
+        "fn": 4,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "roc_auc": 0.5625,
+        "pr_auc": 0.2797149122807018,
+        "balanced_accuracy": 0.5,
+        "false_positive_rate": 0.0
       },
       "calibration": {
-        "brier_score": 0.11493646726790785,
-        "log_loss": 0.4033416013204102,
-        "ece": 0.1690257249262939,
+        "brier_score": 0.20809820581017574,
+        "log_loss": 0.6086544571790451,
+        "ece": 0.21976316453789824,
         "reliability_bins": [
           {
-            "lower": 0.2,
-            "upper": 0.3,
+            "lower": 0.4,
+            "upper": 0.5,
             "count": 20,
-            "mean_confidence": 0.2690257249262939,
-            "empirical_rate": 0.1
+            "mean_confidence": 0.41976316453789825,
+            "empirical_rate": 0.2
           }
         ]
       }
     },
     "sector_slices": {
       "energy": {
-        "count": 12,
-        "variant_counts": {
-          "attack": 2,
-          "benign": 2,
-          "fault": 4,
-          "normal": 4
-        },
+        "count": 10,
         "detection": {
-          "tp": 2,
-          "tn": 0,
-          "fp": 10,
-          "fn": 0,
-          "precision": 0.16666666666666666,
-          "recall": 1.0,
-          "f1": 0.2857142857142857,
-          "pr_auc": 0.26785714285714285,
-          "roc_auc": 0.6,
+          "tp": 0,
+          "tn": 8,
+          "fp": 0,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "roc_auc": 0.4375,
+          "pr_auc": 0.2777777777777778,
           "balanced_accuracy": 0.5,
-          "false_positive_rate": 1.0
+          "false_positive_rate": 0.0
         },
         "calibration": {
-          "brier_score": 0.15363371694500458,
-          "log_loss": 0.4905797420090458,
-          "ece": 0.12270060332427243,
+          "brier_score": 0.20865160563995633,
+          "log_loss": 0.6097877555204402,
+          "ece": 0.21963489109185136,
           "reliability_bins": [
             {
-              "lower": 0.2,
-              "upper": 0.3,
-              "count": 12,
-              "mean_confidence": 0.2893672699909391,
-              "empirical_rate": 0.16666666666666666
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 10,
+              "mean_confidence": 0.41963489109185137,
+              "empirical_rate": 0.2
             }
           ]
         }
       },
       "petrochemical": {
-        "count": 8,
-        "variant_counts": {
-          "benign": 2,
-          "fault": 2,
-          "normal": 4
-        },
+        "count": 10,
         "detection": {
           "tp": 0,
-          "tn": 6,
-          "fp": 2,
-          "fn": 0,
+          "tn": 8,
+          "fp": 0,
+          "fn": 2,
           "precision": 0.0,
           "recall": 0.0,
           "f1": 0.0,
-          "pr_auc": null,
-          "roc_auc": null,
-          "balanced_accuracy": 0.375,
-          "false_positive_rate": 0.25
+          "roc_auc": 0.75,
+          "pr_auc": 0.41666666666666663,
+          "balanced_accuracy": 0.5,
+          "false_positive_rate": 0.0
         },
         "calibration": {
-          "brier_score": 0.05689059275226273,
-          "log_loss": 0.2724843902874567,
-          "ece": 0.23851340732932616,
+          "brier_score": 0.20754480598039513,
+          "log_loss": 0.6075211588376499,
+          "ece": 0.21989143798394517,
           "reliability_bins": [
             {
-              "lower": 0.2,
-              "upper": 0.3,
-              "count": 8,
-              "mean_confidence": 0.23851340732932616,
-              "empirical_rate": 0.0
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 10,
+              "mean_confidence": 0.4198914379839452,
+              "empirical_rate": 0.2
             }
           ]
         }
@@ -142,21 +131,21 @@
     },
     "runtime": {
       "endpoint_latency_ms": {
-        "p50": 477.29775000334485,
-        "p95": 518.14717999805,
-        "min": 386.84249999641906,
-        "max": 562.1507999894675
+        "p50": 1534.5867500000168,
+        "p95": 1655.6594849927933,
+        "min": 1491.2365000054706,
+        "max": 1808.7269999959972
       },
       "timeout_or_error_rate": 0.0,
-      "cold_warm_memory": "not measured by this API runner"
+      "cold_warm_memory": "not measured by frontend-facing API runner"
     },
     "progression": {
       "status": "unavailable",
-      "reason": "Current canonical API does not emit incident_stage or timeline."
+      "reason": "Current canonical API output does not expose incident_stage/timeline fields."
     },
     "localization": {
       "status": "unavailable",
-      "reason": "Current canonical API does not emit affected/suspected assets or propagation context."
+      "reason": "Current canonical API output does not expose localization/affected-asset fields."
     },
     "canonical_contract_gap": {
       "status": "partial",
@@ -176,11 +165,10 @@
       "human_approval_required_all_true": true
     },
     "limitations": [
-      "The 20 final-holdout runner requests were completed once each and their raw responses were retained.",
-      "One subsequent diagnostic request was made against the first holdout scenario to inspect the response envelope; it is excluded from the final evidence set.",
-      "Progression/localization metrics remain unavailable because the canonical API does not emit the required fields.",
-      "Cold/warm memory was not measured through the browser-facing API."
+      "Untouched holdout was executed exactly once per scenario through POST /api/v1/ransomware/infer.",
+      "Progression/localization metrics remain unavailable because the current canonical API contract does not emit the required fields.",
+      "Cold/warm memory was not measured through the browser-facing API runner."
     ]
   },
-  "evaluation_package_sha256": "3c786a327c8b6ba9fbd99eb7db3f2e9124891fe021243959aa81f392b74dd695"
+  "evaluation_package_sha256": "6900fed2d9b170248cacc3bbb6e6e81b3266a0ce438065a5af14488e98252d0c"
 }

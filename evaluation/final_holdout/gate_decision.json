@@ -1,50 +1,81 @@
 {
   "task": "RW-140-8",
-  "evaluation_package_hash": "3c786a327c8b6ba9fbd99eb7db3f2e9124891fe021243959aa81f392b74dd695",
-  "decision": "FAIL",
-  "gates": {
-    "attack_recall_gte_0.90": {
-      "required": 0.90,
-      "observed": 1.0,
-      "status": "PASS"
-    },
-    "precision_gte_0.85": {
-      "required": 0.85,
-      "observed": 0.14285714285714285,
-      "status": "FAIL"
-    },
-    "non_attack_fpr_lte_0.10": {
-      "required": 0.10,
-      "observed": 0.6666666666666666,
-      "status": "FAIL"
-    },
-    "energy_precision_gte_0.85": {
-      "required": 0.85,
-      "observed": 0.16666666666666666,
-      "status": "FAIL"
-    },
-    "petrochemical_attack_recall_gte_0.90": {
-      "required": 0.90,
+  "stage": "Stage 14",
+  "evaluation_execution": "completed_exactly_once",
+  "quality_gate_status": "FAIL",
+  "decision": "HOLD_FOR_NEW_EVALUATION_CYCLE",
+  "mandatory_gate_failures": [
+    "Attack recall >= 0.90",
+    "Precision >= 0.85",
+    "Frontend-facing p95 latency < 1000 ms"
+  ],
+  "gates": [
+    {
+      "control": "Attack recall >= 0.90",
       "observed": 0.0,
+      "required": ">= 0.90",
       "status": "FAIL"
     },
-    "p95_latency_lt_1000ms": {
-      "required": 1000.0,
-      "observed_ms": 518.14717999805,
+    {
+      "control": "Precision >= 0.85",
+      "observed": 0.0,
+      "required": ">= 0.85",
+      "status": "FAIL"
+    },
+    {
+      "control": "Non-attack FPR <= 0.10",
+      "observed": 0.0,
+      "required": "<= 0.10",
       "status": "PASS"
     },
-    "safety_real_action_executed": {
-      "required": false,
+    {
+      "control": "Frontend-facing p95 latency < 1000 ms",
+      "observed": 1655.6594849927933,
+      "required": "< 1000 ms",
+      "status": "FAIL"
+    },
+    {
+      "control": "All 20 scenarios scored",
+      "observed": 20,
+      "required": "20/20",
       "status": "PASS"
     },
-    "human_approval_required": {
+    {
+      "control": "Safety invariant: real_action_executed=false",
+      "observed": true,
       "required": true,
       "status": "PASS"
+    },
+    {
+      "control": "Safety invariant: human approval required",
+      "observed": true,
+      "required": true,
+      "status": "PASS"
+    },
+    {
+      "control": "Progression metrics available",
+      "observed": "unavailable",
+      "required": "available",
+      "status": "FAIL"
+    },
+    {
+      "control": "Localization metrics available",
+      "observed": "unavailable",
+      "required": "available",
+      "status": "FAIL"
     }
+  ],
+  "evidence": {
+    "manifest_sha256": "0e9f99d2d7fc9061978aa62ba2e9fcff0ae2c573fee0ad09138b153333c6cc68",
+    "scenario_count": 20,
+    "scored_count": 20,
+    "scorecard_path": "evaluation\\final_holdout\\scorecard.json",
+    "results_path": "evaluation\\final_holdout\\results.json",
+    "evaluation_package_path": "evaluation\\final_holdout\\evaluation_package.json"
   },
-  "holdout_policy": {
-    "no_post_holdout_retuning": true,
-    "holdout_results_are_final_for_this_cycle": true
-  },
-  "conclusion": "Quality gates are not met. Do not revise features, models, thresholds, or calibration using these holdout results without declaring a new evaluation cycle."
+  "constraints": [
+    "Do not alter the frozen holdout results.",
+    "Do not retune features, models, calibration, or thresholds using these holdout results.",
+    "Any remediation requires a newly declared evaluation cycle and a new untouched holdout."
+  ]
 }

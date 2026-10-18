@@ -1,0 +1,2422 @@
+[
+  {
+    "ordinal": 1,
+    "scenario_id": "rw-attack-4e3d94dcdd00",
+    "industry": "petrochemical",
+    "site_id": "synthetic-petrochemical-001",
+    "site_type": "refinery",
+    "variant": "attack",
+    "truth_attack": true,
+    "scored": false,
+    "predicted_attack": false,
+    "decision": "normal",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-9c867c1b38b4421a9b6fd850f3e17e00",
+    "trace_id": "trace-f6c513e186f9413bbfcade5f272276f5",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-9c867c1b38b4421a9b6fd850f3e17e00",
+      "trace_id": "trace-f6c513e186f9413bbfcade5f272276f5",
+      "scenario_id": "rw-attack-4e3d94dcdd00",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 1117.434,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 1136.5959999966435,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-9c867c1b38b4421a9b6fd850f3e17e00",
+      "trace_id": "trace-f6c513e186f9413bbfcade5f272276f5",
+      "use_case": "ransomware_resilience",
+      "industry": "petrochemical",
+      "site_id": "synthetic-petrochemical-001",
+      "site_type": "refinery",
+      "scenario_id": "rw-attack-4e3d94dcdd00",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "normal",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "petrochemical",
+        "decision": "normal",
+        "probabilities": {
+          "catboost": 0.4772454101615647,
+          "stacked": 0.18185126412256905,
+          "calibrated": 0.23614438482333924
+        },
+        "components": {
+          "rule_score": 0.0,
+          "anomaly_score": 1.0,
+          "catboost_score": 0.4772454101615647,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "global_fallback",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Continue monitoring the available synthetic evidence.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-9c867c1b38b4421a9b6fd850f3e17e00",
+        "trace_id": "trace-f6c513e186f9413bbfcade5f272276f5",
+        "scenario_id": "rw-attack-4e3d94dcdd00",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 1117.434,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  },
+  {
+    "ordinal": 2,
+    "scenario_id": "rw-attack-a3dba39e05da",
+    "industry": "energy",
+    "site_id": "synthetic-energy-001",
+    "site_type": "control_centre",
+    "variant": "attack",
+    "truth_attack": true,
+    "scored": false,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-b96616a01cd741499ea8ba3dddb148f0",
+    "trace_id": "trace-0a1faccbcea4497a9b149a743f3aee0e",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-b96616a01cd741499ea8ba3dddb148f0",
+      "trace_id": "trace-0a1faccbcea4497a9b149a743f3aee0e",
+      "scenario_id": "rw-attack-a3dba39e05da",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 482.522,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 487.2256000235211,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-b96616a01cd741499ea8ba3dddb148f0",
+      "trace_id": "trace-0a1faccbcea4497a9b149a743f3aee0e",
+      "use_case": "ransomware_resilience",
+      "industry": "energy",
+      "site_id": "synthetic-energy-001",
+      "site_type": "control_centre",
+      "scenario_id": "rw-attack-a3dba39e05da",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "investigate",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "energy",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.46896461810331674,
+          "stacked": 0.4429899505554965,
+          "calibrated": 0.29013431927169064
+        },
+        "components": {
+          "rule_score": 0.0,
+          "anomaly_score": 0.148489,
+          "catboost_score": 0.46896461810331674,
+          "temporal_score": null,
+          "graph_score": 0.72,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 6,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "sector_specific",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Review the scored evidence and investigate the suspected activity.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-b96616a01cd741499ea8ba3dddb148f0",
+        "trace_id": "trace-0a1faccbcea4497a9b149a743f3aee0e",
+        "scenario_id": "rw-attack-a3dba39e05da",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 482.522,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  },
+  {
+    "ordinal": 3,
+    "scenario_id": "rw-attack-bb3c02c1ec92",
+    "industry": "petrochemical",
+    "site_id": "synthetic-petrochemical-001",
+    "site_type": "refinery",
+    "variant": "attack",
+    "truth_attack": true,
+    "scored": false,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-c1a6b72c7ada4f3ba09c6c49d4e1a699",
+    "trace_id": "trace-49e99675db89455bb2a4d245459c9c29",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-c1a6b72c7ada4f3ba09c6c49d4e1a699",
+      "trace_id": "trace-49e99675db89455bb2a4d245459c9c29",
+      "scenario_id": "rw-attack-bb3c02c1ec92",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 536.792,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 540.0965000153519,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-c1a6b72c7ada4f3ba09c6c49d4e1a699",
+      "trace_id": "trace-49e99675db89455bb2a4d245459c9c29",
+      "use_case": "ransomware_resilience",
+      "industry": "petrochemical",
+      "site_id": "synthetic-petrochemical-001",
+      "site_type": "refinery",
+      "scenario_id": "rw-attack-bb3c02c1ec92",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "investigate",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "petrochemical",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.4772454101615647,
+          "stacked": 0.4540761888154232,
+          "calibrated": 0.23971019478731143
+        },
+        "components": {
+          "rule_score": 0.0,
+          "anomaly_score": 0.143908,
+          "catboost_score": 0.4772454101615647,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "global_fallback",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Review the scored evidence and investigate the suspected activity.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-c1a6b72c7ada4f3ba09c6c49d4e1a699",
+        "trace_id": "trace-49e99675db89455bb2a4d245459c9c29",
+        "scenario_id": "rw-attack-bb3c02c1ec92",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 536.792,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  },
+  {
+    "ordinal": 4,
+    "scenario_id": "rw-attack-c7ca854f341c",
+    "industry": "energy",
+    "site_id": "synthetic-energy-001",
+    "site_type": "control_centre",
+    "variant": "attack",
+    "truth_attack": true,
+    "scored": false,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-a2fc1fc84858414eaf91d7971f67aa82",
+    "trace_id": "trace-029a7e724abe483b803925e3f768e6df",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-a2fc1fc84858414eaf91d7971f67aa82",
+      "trace_id": "trace-029a7e724abe483b803925e3f768e6df",
+      "scenario_id": "rw-attack-c7ca854f341c",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 525.25,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 528.3569000021089,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-a2fc1fc84858414eaf91d7971f67aa82",
+      "trace_id": "trace-029a7e724abe483b803925e3f768e6df",
+      "use_case": "ransomware_resilience",
+      "industry": "energy",
+      "site_id": "synthetic-energy-001",
+      "site_type": "control_centre",
+      "scenario_id": "rw-attack-c7ca854f341c",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "investigate",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "energy",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.46896461810331674,
+          "stacked": 0.4508587127312668,
+          "calibrated": 0.2903417698025521
+        },
+        "components": {
+          "rule_score": 0.0,
+          "anomaly_score": 0.127837,
+          "catboost_score": 0.46896461810331674,
+          "temporal_score": null,
+          "graph_score": 0.72,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 6,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "sector_specific",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Review the scored evidence and investigate the suspected activity.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-a2fc1fc84858414eaf91d7971f67aa82",
+        "trace_id": "trace-029a7e724abe483b803925e3f768e6df",
+        "scenario_id": "rw-attack-c7ca854f341c",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 525.25,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  },
+  {
+    "ordinal": 5,
+    "scenario_id": "rw-benign-14cea5e491d3",
+    "industry": "energy",
+    "site_id": "synthetic-energy-001",
+    "site_type": "control_centre",
+    "variant": "benign",
+    "truth_attack": false,
+    "scored": false,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-7e4df33927a9423b8f0aba357afba9cd",
+    "trace_id": "trace-cd33ecbc5779463cb603a8b86a421bdf",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-7e4df33927a9423b8f0aba357afba9cd",
+      "trace_id": "trace-cd33ecbc5779463cb603a8b86a421bdf",
+      "scenario_id": "rw-benign-14cea5e491d3",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 514.978,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 518.1809999921825,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-7e4df33927a9423b8f0aba357afba9cd",
+      "trace_id": "trace-cd33ecbc5779463cb603a8b86a421bdf",
+      "use_case": "ransomware_resilience",
+      "industry": "energy",
+      "site_id": "synthetic-energy-001",
+      "site_type": "control_centre",
+      "scenario_id": "rw-benign-14cea5e491d3",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "investigate",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "energy",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.46896461810331674,
+          "stacked": 0.3881168303161522,
+          "calibrated": 0.28866281293870605
+        },
+        "components": {
+          "rule_score": 0.166667,
+          "anomaly_score": 1.0,
+          "catboost_score": 0.46896461810331674,
+          "temporal_score": null,
+          "graph_score": 0.72,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 6,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "sector_specific",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Review the scored evidence and investigate the suspected activity.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-7e4df33927a9423b8f0aba357afba9cd",
+        "trace_id": "trace-cd33ecbc5779463cb603a8b86a421bdf",
+        "scenario_id": "rw-benign-14cea5e491d3",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 514.978,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  },
+  {
+    "ordinal": 6,
+    "scenario_id": "rw-benign-380a5134c295",
+    "industry": "energy",
+    "site_id": "synthetic-energy-001",
+    "site_type": "control_centre",
+    "variant": "benign",
+    "truth_attack": false,
+    "scored": false,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-676e0490c2ff4ec5bdc920d74e672891",
+    "trace_id": "trace-63f1a36da80c48f49a0322dc2f9b6dda",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-676e0490c2ff4ec5bdc920d74e672891",
+      "trace_id": "trace-63f1a36da80c48f49a0322dc2f9b6dda",
+      "scenario_id": "rw-benign-380a5134c295",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 505.194,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 508.3897000004072,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-676e0490c2ff4ec5bdc920d74e672891",
+      "trace_id": "trace-63f1a36da80c48f49a0322dc2f9b6dda",
+      "use_case": "ransomware_resilience",
+      "industry": "energy",
+      "site_id": "synthetic-energy-001",
+      "site_type": "control_centre",
+      "scenario_id": "rw-benign-380a5134c295",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "investigate",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "energy",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.46896461810331674,
+          "stacked": 0.3918087311936882,
+          "calibrated": 0.2887636301323464
+        },
+        "components": {
+          "rule_score": 0.166667,
+          "anomaly_score": 1.0,
+          "catboost_score": 0.46896461810331674,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "sector_specific",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Review the scored evidence and investigate the suspected activity.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-676e0490c2ff4ec5bdc920d74e672891",
+        "trace_id": "trace-63f1a36da80c48f49a0322dc2f9b6dda",
+        "scenario_id": "rw-benign-380a5134c295",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 505.194,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  },
+  {
+    "ordinal": 7,
+    "scenario_id": "rw-benign-8b1729406449",
+    "industry": "petrochemical",
+    "site_id": "synthetic-petrochemical-001",
+    "site_type": "refinery",
+    "variant": "benign",
+    "truth_attack": false,
+    "scored": false,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-c87b050cb1054a999fad611f546eea47",
+    "trace_id": "trace-3e2e602d15fe4fd4a5758122b982774a",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-c87b050cb1054a999fad611f546eea47",
+      "trace_id": "trace-3e2e602d15fe4fd4a5758122b982774a",
+      "scenario_id": "rw-benign-8b1729406449",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 493.642,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 496.2559000123292,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-c87b050cb1054a999fad611f546eea47",
+      "trace_id": "trace-3e2e602d15fe4fd4a5758122b982774a",
+      "use_case": "ransomware_resilience",
+      "industry": "petrochemical",
+      "site_id": "synthetic-petrochemical-001",
+      "site_type": "refinery",
+      "scenario_id": "rw-benign-8b1729406449",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "investigate",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "petrochemical",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.4772454101615647,
+          "stacked": 0.4742407135678291,
+          "calibrated": 0.23993049566459115
+        },
+        "components": {
+          "rule_score": 0.0,
+          "anomaly_score": 0.091305,
+          "catboost_score": 0.4772454101615647,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "global_fallback",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Review the scored evidence and investigate the suspected activity.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-c87b050cb1054a999fad611f546eea47",
+        "trace_id": "trace-3e2e602d15fe4fd4a5758122b982774a",
+        "scenario_id": "rw-benign-8b1729406449",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 493.642,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  },
+  {
+    "ordinal": 8,
+    "scenario_id": "rw-benign-b7640fc832ca",
+    "industry": "energy",
+    "site_id": "synthetic-energy-001",
+    "site_type": "control_centre",
+    "variant": "benign",
+    "truth_attack": false,
+    "scored": false,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-45aa7897534e4884bef208c002bc7e6b",
+    "trace_id": "trace-92afb7d904b44a1a903db636ee5c8c03",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-45aa7897534e4884bef208c002bc7e6b",
+      "trace_id": "trace-92afb7d904b44a1a903db636ee5c8c03",
+      "scenario_id": "rw-benign-b7640fc832ca",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 562.352,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 565.6348000047728,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-45aa7897534e4884bef208c002bc7e6b",
+      "trace_id": "trace-92afb7d904b44a1a903db636ee5c8c03",
+      "use_case": "ransomware_resilience",
+      "industry": "energy",
+      "site_id": "synthetic-energy-001",
+      "site_type": "control_centre",
+      "scenario_id": "rw-benign-b7640fc832ca",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "investigate",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "energy",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.46896461810331674,
+          "stacked": 0.4704117677748224,
+          "calibrated": 0.29085506530742045
+        },
+        "components": {
+          "rule_score": 0.0,
+          "anomaly_score": 0.086843,
+          "catboost_score": 0.46896461810331674,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "sector_specific",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Review the scored evidence and investigate the suspected activity.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-45aa7897534e4884bef208c002bc7e6b",
+        "trace_id": "trace-92afb7d904b44a1a903db636ee5c8c03",
+        "scenario_id": "rw-benign-b7640fc832ca",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 562.352,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  },
+  {
+    "ordinal": 9,
+    "scenario_id": "rw-benign-daa39e0b0ddc",
+    "industry": "petrochemical",
+    "site_id": "synthetic-petrochemical-001",
+    "site_type": "refinery",
+    "variant": "benign",
+    "truth_attack": false,
+    "scored": false,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-7cc83923b9694ba4aab8fc687d84a727",
+    "trace_id": "trace-df1104b0c36b421cab692bbc948e11a6",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-7cc83923b9694ba4aab8fc687d84a727",
+      "trace_id": "trace-df1104b0c36b421cab692bbc948e11a6",
+      "scenario_id": "rw-benign-daa39e0b0ddc",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 501.06,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 504.4748999935109,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-7cc83923b9694ba4aab8fc687d84a727",
+      "trace_id": "trace-df1104b0c36b421cab692bbc948e11a6",
+      "use_case": "ransomware_resilience",
+      "industry": "petrochemical",
+      "site_id": "synthetic-petrochemical-001",
+      "site_type": "refinery",
+      "scenario_id": "rw-benign-daa39e0b0ddc",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "investigate",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "petrochemical",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.4772454101615647,
+          "stacked": 0.46804551886574275,
+          "calibrated": 0.23986292864792252
+        },
+        "components": {
+          "rule_score": 0.0,
+          "anomaly_score": 0.107435,
+          "catboost_score": 0.4772454101615647,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "global_fallback",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Review the scored evidence and investigate the suspected activity.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-7cc83923b9694ba4aab8fc687d84a727",
+        "trace_id": "trace-df1104b0c36b421cab692bbc948e11a6",
+        "scenario_id": "rw-benign-daa39e0b0ddc",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 501.06,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  },
+  {
+    "ordinal": 10,
+    "scenario_id": "rw-benign-ecea2a6b2b9d",
+    "industry": "petrochemical",
+    "site_id": "synthetic-petrochemical-001",
+    "site_type": "refinery",
+    "variant": "benign",
+    "truth_attack": false,
+    "scored": false,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-2a1e890f83fd47e78e2923f3f888962e",
+    "trace_id": "trace-76318af0d9104d598fd77ca0b2a80946",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-2a1e890f83fd47e78e2923f3f888962e",
+      "trace_id": "trace-76318af0d9104d598fd77ca0b2a80946",
+      "scenario_id": "rw-benign-ecea2a6b2b9d",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 504.647,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 507.33279998530634,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-2a1e890f83fd47e78e2923f3f888962e",
+      "trace_id": "trace-76318af0d9104d598fd77ca0b2a80946",
+      "use_case": "ransomware_resilience",
+      "industry": "petrochemical",
+      "site_id": "synthetic-petrochemical-001",
+      "site_type": "refinery",
+      "scenario_id": "rw-benign-ecea2a6b2b9d",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "investigate",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "petrochemical",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.4772454101615647,
+          "stacked": 0.4545710751195724,
+          "calibrated": 0.23971561657209892
+        },
+        "components": {
+          "rule_score": 0.0,
+          "anomaly_score": 0.142613,
+          "catboost_score": 0.4772454101615647,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "global_fallback",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Review the scored evidence and investigate the suspected activity.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-2a1e890f83fd47e78e2923f3f888962e",
+        "trace_id": "trace-76318af0d9104d598fd77ca0b2a80946",
+        "scenario_id": "rw-benign-ecea2a6b2b9d",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 504.647,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  },
+  {
+    "ordinal": 11,
+    "scenario_id": "rw-fault-442bb87886fd",
+    "industry": "petrochemical",
+    "site_id": "synthetic-petrochemical-001",
+    "site_type": "refinery",
+    "variant": "fault",
+    "truth_attack": false,
+    "scored": false,
+    "predicted_attack": false,
+    "decision": "normal",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-89bf021408eb443ab3f269c6a4ad02eb",
+    "trace_id": "trace-38d0ec62f16d4b349d5745cc8572944e",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-89bf021408eb443ab3f269c6a4ad02eb",
+      "trace_id": "trace-38d0ec62f16d4b349d5745cc8572944e",
+      "scenario_id": "rw-fault-442bb87886fd",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 406.342,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 409.4512000156101,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-89bf021408eb443ab3f269c6a4ad02eb",
+      "trace_id": "trace-38d0ec62f16d4b349d5745cc8572944e",
+      "use_case": "ransomware_resilience",
+      "industry": "petrochemical",
+      "site_id": "synthetic-petrochemical-001",
+      "site_type": "refinery",
+      "scenario_id": "rw-fault-442bb87886fd",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "normal",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "petrochemical",
+        "decision": "normal",
+        "probabilities": {
+          "catboost": 0.4772454101615647,
+          "stacked": 0.3971211978882799,
+          "calibrated": 0.2390772272858063
+        },
+        "components": {
+          "rule_score": 0.166667,
+          "anomaly_score": 1.0,
+          "catboost_score": 0.4772454101615647,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "global_fallback",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Continue monitoring the available synthetic evidence.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-89bf021408eb443ab3f269c6a4ad02eb",
+        "trace_id": "trace-38d0ec62f16d4b349d5745cc8572944e",
+        "scenario_id": "rw-fault-442bb87886fd",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 406.342,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  },
+  {
+    "ordinal": 12,
+    "scenario_id": "rw-fault-4d7db2fa4272",
+    "industry": "energy",
+    "site_id": "synthetic-energy-001",
+    "site_type": "control_centre",
+    "variant": "fault",
+    "truth_attack": false,
+    "scored": false,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-50a7ef59b1354e92885443ac18be141f",
+    "trace_id": "trace-810df2669f554d49941a1f7a1ade91b8",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-50a7ef59b1354e92885443ac18be141f",
+      "trace_id": "trace-810df2669f554d49941a1f7a1ade91b8",
+      "scenario_id": "rw-fault-4d7db2fa4272",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 463.713,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 466.7235999950208,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-50a7ef59b1354e92885443ac18be141f",
+      "trace_id": "trace-810df2669f554d49941a1f7a1ade91b8",
+      "use_case": "ransomware_resilience",
+      "industry": "energy",
+      "site_id": "synthetic-energy-001",
+      "site_type": "control_centre",
+      "scenario_id": "rw-fault-4d7db2fa4272",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "investigate",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "energy",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.46896461810331674,
+          "stacked": 0.17856560748610376,
+          "calibrated": 0.2817570715839069
+        },
+        "components": {
+          "rule_score": 0.0,
+          "anomaly_score": 1.0,
+          "catboost_score": 0.46896461810331674,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "sector_specific",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Review the scored evidence and investigate the suspected activity.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-50a7ef59b1354e92885443ac18be141f",
+        "trace_id": "trace-810df2669f554d49941a1f7a1ade91b8",
+        "scenario_id": "rw-fault-4d7db2fa4272",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 463.713,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  },
+  {
+    "ordinal": 13,
+    "scenario_id": "rw-fault-9f7799ba20e5",
+    "industry": "petrochemical",
+    "site_id": "synthetic-petrochemical-001",
+    "site_type": "refinery",
+    "variant": "fault",
+    "truth_attack": false,
+    "scored": false,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-998d332b10214ac784def8132d5e53a4",
+    "trace_id": "trace-276ea2c6bdfe48fc83af9c7828815390",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-998d332b10214ac784def8132d5e53a4",
+      "trace_id": "trace-276ea2c6bdfe48fc83af9c7828815390",
+      "scenario_id": "rw-fault-9f7799ba20e5",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 448.823,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 451.6077000007499,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-998d332b10214ac784def8132d5e53a4",
+      "trace_id": "trace-276ea2c6bdfe48fc83af9c7828815390",
+      "use_case": "ransomware_resilience",
+      "industry": "petrochemical",
+      "site_id": "synthetic-petrochemical-001",
+      "site_type": "refinery",
+      "scenario_id": "rw-fault-9f7799ba20e5",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "investigate",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "petrochemical",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.4772454101615647,
+          "stacked": 0.44528214819248574,
+          "calibrated": 0.23961368851101117
+        },
+        "components": {
+          "rule_score": 0.0,
+          "anomaly_score": 0.166962,
+          "catboost_score": 0.4772454101615647,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "global_fallback",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Review the scored evidence and investigate the suspected activity.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-998d332b10214ac784def8132d5e53a4",
+        "trace_id": "trace-276ea2c6bdfe48fc83af9c7828815390",
+        "scenario_id": "rw-fault-9f7799ba20e5",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 448.823,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  },
+  {
+    "ordinal": 14,
+    "scenario_id": "rw-fault-a6d3d6adfef5",
+    "industry": "energy",
+    "site_id": "synthetic-energy-001",
+    "site_type": "control_centre",
+    "variant": "fault",
+    "truth_attack": false,
+    "scored": false,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-de245bba737c4642ac121ca200590746",
+    "trace_id": "trace-ff31cc0011d443df9a4f9d95c0ac8714",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-de245bba737c4642ac121ca200590746",
+      "trace_id": "trace-ff31cc0011d443df9a4f9d95c0ac8714",
+      "scenario_id": "rw-fault-a6d3d6adfef5",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 476.014,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 478.949400014244,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-de245bba737c4642ac121ca200590746",
+      "trace_id": "trace-ff31cc0011d443df9a4f9d95c0ac8714",
+      "use_case": "ransomware_resilience",
+      "industry": "energy",
+      "site_id": "synthetic-energy-001",
+      "site_type": "control_centre",
+      "scenario_id": "rw-fault-a6d3d6adfef5",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "investigate",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "energy",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.46896461810331674,
+          "stacked": 0.3881168303161522,
+          "calibrated": 0.28866281293870605
+        },
+        "components": {
+          "rule_score": 0.166667,
+          "anomaly_score": 1.0,
+          "catboost_score": 0.46896461810331674,
+          "temporal_score": null,
+          "graph_score": 0.72,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 6,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "sector_specific",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Review the scored evidence and investigate the suspected activity.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-de245bba737c4642ac121ca200590746",
+        "trace_id": "trace-ff31cc0011d443df9a4f9d95c0ac8714",
+        "scenario_id": "rw-fault-a6d3d6adfef5",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 476.014,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  },
+  {
+    "ordinal": 15,
+    "scenario_id": "rw-fault-a7f17e9b618d",
+    "industry": "petrochemical",
+    "site_id": "synthetic-petrochemical-001",
+    "site_type": "refinery",
+    "variant": "fault",
+    "truth_attack": false,
+    "scored": false,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-94d1c5d5dffd409490561f7da2018424",
+    "trace_id": "trace-68272d00efcf4768bfb8674666fcd1af",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-94d1c5d5dffd409490561f7da2018424",
+      "trace_id": "trace-68272d00efcf4768bfb8674666fcd1af",
+      "scenario_id": "rw-fault-a7f17e9b618d",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 531.832,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 534.94809998665,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-94d1c5d5dffd409490561f7da2018424",
+      "trace_id": "trace-68272d00efcf4768bfb8674666fcd1af",
+      "use_case": "ransomware_resilience",
+      "industry": "petrochemical",
+      "site_id": "synthetic-petrochemical-001",
+      "site_type": "refinery",
+      "scenario_id": "rw-fault-a7f17e9b618d",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "investigate",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "petrochemical",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.4772454101615647,
+          "stacked": 0.4573318280347879,
+          "calibrated": 0.2397458461313295
+        },
+        "components": {
+          "rule_score": 0.0,
+          "anomaly_score": 0.135393,
+          "catboost_score": 0.4772454101615647,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "global_fallback",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Review the scored evidence and investigate the suspected activity.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-94d1c5d5dffd409490561f7da2018424",
+        "trace_id": "trace-68272d00efcf4768bfb8674666fcd1af",
+        "scenario_id": "rw-fault-a7f17e9b618d",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 531.832,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  },
+  {
+    "ordinal": 16,
+    "scenario_id": "rw-fault-dcc0d567a410",
+    "industry": "energy",
+    "site_id": "synthetic-energy-001",
+    "site_type": "control_centre",
+    "variant": "fault",
+    "truth_attack": false,
+    "scored": false,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-6009240f8c344dc19258b7bb76a77e82",
+    "trace_id": "trace-9543a202eded43faa3db56ad384a8d61",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-6009240f8c344dc19258b7bb76a77e82",
+      "trace_id": "trace-9543a202eded43faa3db56ad384a8d61",
+      "scenario_id": "rw-fault-dcc0d567a410",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 582.517,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 585.5022000032477,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-6009240f8c344dc19258b7bb76a77e82",
+      "trace_id": "trace-9543a202eded43faa3db56ad384a8d61",
+      "use_case": "ransomware_resilience",
+      "industry": "energy",
+      "site_id": "synthetic-energy-001",
+      "site_type": "control_centre",
+      "scenario_id": "rw-fault-dcc0d567a410",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "investigate",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "energy",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.46896461810331674,
+          "stacked": 0.3918087311936882,
+          "calibrated": 0.2887636301323464
+        },
+        "components": {
+          "rule_score": 0.166667,
+          "anomaly_score": 1.0,
+          "catboost_score": 0.46896461810331674,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "sector_specific",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Review the scored evidence and investigate the suspected activity.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-6009240f8c344dc19258b7bb76a77e82",
+        "trace_id": "trace-9543a202eded43faa3db56ad384a8d61",
+        "scenario_id": "rw-fault-dcc0d567a410",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 582.517,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  },
+  {
+    "ordinal": 17,
+    "scenario_id": "rw-normal-0e4809c06c6c",
+    "industry": "energy",
+    "site_id": "synthetic-energy-001",
+    "site_type": "control_centre",
+    "variant": "normal",
+    "truth_attack": false,
+    "scored": false,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-8931716e1dd54792804cc8c2d6573634",
+    "trace_id": "trace-f596c337da964324bc6b44e40ded4b20",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-8931716e1dd54792804cc8c2d6573634",
+      "trace_id": "trace-f596c337da964324bc6b44e40ded4b20",
+      "scenario_id": "rw-normal-0e4809c06c6c",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 554.845,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 557.5983999879099,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-8931716e1dd54792804cc8c2d6573634",
+      "trace_id": "trace-f596c337da964324bc6b44e40ded4b20",
+      "use_case": "ransomware_resilience",
+      "industry": "energy",
+      "site_id": "synthetic-energy-001",
+      "site_type": "control_centre",
+      "scenario_id": "rw-normal-0e4809c06c6c",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "investigate",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "energy",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.46896461810331674,
+          "stacked": 0.17856560748610376,
+          "calibrated": 0.2817570715839069
+        },
+        "components": {
+          "rule_score": 0.0,
+          "anomaly_score": 1.0,
+          "catboost_score": 0.46896461810331674,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "sector_specific",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Review the scored evidence and investigate the suspected activity.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-8931716e1dd54792804cc8c2d6573634",
+        "trace_id": "trace-f596c337da964324bc6b44e40ded4b20",
+        "scenario_id": "rw-normal-0e4809c06c6c",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 554.845,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  },
+  {
+    "ordinal": 18,
+    "scenario_id": "rw-normal-67d0ee3a7849",
+    "industry": "petrochemical",
+    "site_id": "synthetic-petrochemical-001",
+    "site_type": "refinery",
+    "variant": "normal",
+    "truth_attack": false,
+    "scored": false,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-6d9d8770b3dc4646b3acca2039fbcbd9",
+    "trace_id": "trace-167a2cda344b4d0e9e7739a3e6df27b6",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-6d9d8770b3dc4646b3acca2039fbcbd9",
+      "trace_id": "trace-167a2cda344b4d0e9e7739a3e6df27b6",
+      "scenario_id": "rw-normal-67d0ee3a7849",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 580.661,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 583.8153999939095,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-6d9d8770b3dc4646b3acca2039fbcbd9",
+      "trace_id": "trace-167a2cda344b4d0e9e7739a3e6df27b6",
+      "use_case": "ransomware_resilience",
+      "industry": "petrochemical",
+      "site_id": "synthetic-petrochemical-001",
+      "site_type": "refinery",
+      "scenario_id": "rw-normal-67d0ee3a7849",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "investigate",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "petrochemical",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.4772454101615647,
+          "stacked": 0.44420868342658043,
+          "calibrated": 0.23960188554467135
+        },
+        "components": {
+          "rule_score": 0.0,
+          "anomaly_score": 0.169782,
+          "catboost_score": 0.4772454101615647,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "global_fallback",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Review the scored evidence and investigate the suspected activity.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-6d9d8770b3dc4646b3acca2039fbcbd9",
+        "trace_id": "trace-167a2cda344b4d0e9e7739a3e6df27b6",
+        "scenario_id": "rw-normal-67d0ee3a7849",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 580.661,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  },
+  {
+    "ordinal": 19,
+    "scenario_id": "rw-normal-6b71efef3857",
+    "industry": "petrochemical",
+    "site_id": "synthetic-petrochemical-001",
+    "site_type": "refinery",
+    "variant": "normal",
+    "truth_attack": false,
+    "scored": false,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-23885908f057412089c264275a83cbbe",
+    "trace_id": "trace-8e521bb6a4534478b91d2cca1e891ca0",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-23885908f057412089c264275a83cbbe",
+      "trace_id": "trace-8e521bb6a4534478b91d2cca1e891ca0",
+      "scenario_id": "rw-normal-6b71efef3857",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 481.881,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 485.28880000230856,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-23885908f057412089c264275a83cbbe",
+      "trace_id": "trace-8e521bb6a4534478b91d2cca1e891ca0",
+      "use_case": "ransomware_resilience",
+      "industry": "petrochemical",
+      "site_id": "synthetic-petrochemical-001",
+      "site_type": "refinery",
+      "scenario_id": "rw-normal-6b71efef3857",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "investigate",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "petrochemical",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.4772454101615647,
+          "stacked": 0.4508263802352314,
+          "calibrated": 0.23967456800471984
+        },
+        "components": {
+          "rule_score": 0.0,
+          "anomaly_score": 0.152418,
+          "catboost_score": 0.4772454101615647,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "global_fallback",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Review the scored evidence and investigate the suspected activity.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-23885908f057412089c264275a83cbbe",
+        "trace_id": "trace-8e521bb6a4534478b91d2cca1e891ca0",
+        "scenario_id": "rw-normal-6b71efef3857",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 481.881,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  },
+  {
+    "ordinal": 20,
+    "scenario_id": "rw-normal-9794187082bf",
+    "industry": "energy",
+    "site_id": "synthetic-energy-001",
+    "site_type": "control_centre",
+    "variant": "normal",
+    "truth_attack": false,
+    "scored": false,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.0,
+    "request_id": "rw-d7ce454ab5174532b9239ed032a53c32",
+    "trace_id": "trace-ce7794299eda492eb5a6a50498bc72b9",
+    "artifact_status": "loaded",
+    "data_provenance": "LIVE_MODEL",
+    "runtime_state": "live_model",
+    "warnings": [
+      "Synthetic defensive analysis only; physical safety is not determined.",
+      "Temporal challenger unavailable; calibrated result excludes it."
+    ],
+    "audit": {
+      "event_type": "ransomware_orchestration",
+      "request_id": "rw-d7ce454ab5174532b9239ed032a53c32",
+      "trace_id": "trace-ce7794299eda492eb5a6a50498bc72b9",
+      "scenario_id": "rw-normal-9794187082bf",
+      "artifact_versions": [
+        "rw0906_v1"
+      ],
+      "data_provenance": "LIVE_MODEL",
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "latency_ms": 530.263,
+      "recommendation_review_state": "pending_review"
+    },
+    "endpoint_latency_ms": 532.9315999988467,
+    "response": {
+      "schema_version": "1.0",
+      "task_id": "RW-110-1",
+      "request_id": "rw-d7ce454ab5174532b9239ed032a53c32",
+      "trace_id": "trace-ce7794299eda492eb5a6a50498bc72b9",
+      "use_case": "ransomware_resilience",
+      "industry": "energy",
+      "site_id": "synthetic-energy-001",
+      "site_type": "control_centre",
+      "scenario_id": "rw-normal-9794187082bf",
+      "observable_input": {},
+      "runtime_state": "live_model",
+      "artifact_status": "loaded",
+      "data_provenance": "LIVE_MODEL",
+      "decision": "investigate",
+      "model_result": {
+        "bundle_version": "rw0906_v1",
+        "task": "RW-100-3",
+        "sector": "energy",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.46896461810331674,
+          "stacked": 0.4465819204090067,
+          "calibrated": 0.2902290935616834
+        },
+        "components": {
+          "rule_score": 0.0,
+          "anomaly_score": 0.139053,
+          "catboost_score": 0.46896461810331674,
+          "temporal_score": null,
+          "graph_score": 0.72,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 6,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger"
+        },
+        "calibration": {
+          "source": "sector_specific",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.239133,
+          "high_risk": 0.294338
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "recommendation_review_state": "pending_review",
+      "recommended_actions": [
+        "Review the scored evidence and investigate the suspected activity.",
+        "Trace each recommendation to the corresponding scored evidence."
+      ],
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "warnings": [
+        "Synthetic defensive analysis only; physical safety is not determined.",
+        "Temporal challenger unavailable; calibrated result excludes it."
+      ],
+      "canonical_contract_complete": false,
+      "canonical_contract_warning": "RW-1006 does not currently emit incident_stage, severity, resilience_score, or full asset/recovery context; no backend value is fabricated for these fields.",
+      "audit": {
+        "event_type": "ransomware_orchestration",
+        "request_id": "rw-d7ce454ab5174532b9239ed032a53c32",
+        "trace_id": "trace-ce7794299eda492eb5a6a50498bc72b9",
+        "scenario_id": "rw-normal-9794187082bf",
+        "artifact_versions": [
+          "rw0906_v1"
+        ],
+        "data_provenance": "LIVE_MODEL",
+        "warnings": [
+          "Synthetic defensive analysis only; physical safety is not determined.",
+          "Temporal challenger unavailable; calibrated result excludes it."
+        ],
+        "latency_ms": 530.263,
+        "recommendation_review_state": "pending_review"
+      }
+    }
+  }
+]

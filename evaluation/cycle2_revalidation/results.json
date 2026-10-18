@@ -1,0 +1,1080 @@
+[
+  {
+    "ordinal": 1,
+    "scenario_id": "rw-attack-1864c4aed9b3",
+    "industry": "petrochemical",
+    "site_id": "synthetic-petrochemical-001",
+    "site_type": "petrochemical_complex",
+    "use_case_id": "PC-RW-02",
+    "variant": "attack",
+    "truth_attack": true,
+    "scored": true,
+    "predicted_attack": false,
+    "decision": "normal",
+    "calibrated_probability": 0.3997918922294527,
+    "bundle_version": "rw0906_v2",
+    "runtime_contract": {
+      "synthetic_only": true,
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "operational_state_claimed": false,
+      "physical_safety_determination": "not_determined"
+    },
+    "endpoint_latency_ms": 2912.1280999997907,
+    "response": {
+      "schema_version": "1.0",
+      "task": "RW-100-6",
+      "mode": "synthetic_scenario",
+      "request_id": "b936798b-1eee-454f-9a4d-1810faa9b941",
+      "trace_id": "1b540e32-15fa-47f3-a447-eaabd67342da",
+      "scenario_id": "rw-attack-1864c4aed9b3",
+      "bundle_version": "rw0906_v2",
+      "result": {
+        "bundle_version": "rw0906_v2",
+        "task": "RW-100-3",
+        "sector": "petrochemical",
+        "decision": "normal",
+        "probabilities": {
+          "catboost": 0.4458072323213264,
+          "stacked": 0.22368515368547517,
+          "calibrated": 0.3997918922294527
+        },
+        "components": {
+          "rule_score": 0.166667,
+          "anomaly_score": 0.155991,
+          "catboost_score": 0.4458072323213264,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger",
+          "window_minutes": 15
+        },
+        "calibration": {
+          "source": "global_decision_calibration",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.410065,
+          "high_risk": 0.439306
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "runtime_contract": {
+        "synthetic_only": true,
+        "human_approval_required": true,
+        "real_action_executed": false,
+        "operational_state_claimed": false,
+        "physical_safety_determination": "not_determined"
+      }
+    }
+  },
+  {
+    "ordinal": 2,
+    "scenario_id": "rw-attack-2cfbb8e9188d",
+    "industry": "energy",
+    "site_id": "synthetic-energy-001",
+    "site_type": "control_centre",
+    "use_case_id": "EN-RW-02",
+    "variant": "attack",
+    "truth_attack": true,
+    "scored": true,
+    "predicted_attack": false,
+    "decision": "normal",
+    "calibrated_probability": 0.39970761621480033,
+    "bundle_version": "rw0906_v2",
+    "runtime_contract": {
+      "synthetic_only": true,
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "operational_state_claimed": false,
+      "physical_safety_determination": "not_determined"
+    },
+    "endpoint_latency_ms": 100.78220000013971,
+    "response": {
+      "schema_version": "1.0",
+      "task": "RW-100-6",
+      "mode": "synthetic_scenario",
+      "request_id": "8d25e606-999e-4108-8a40-37dfa7f13e26",
+      "trace_id": "b8147eaf-8a73-40c4-9dc4-93e29edb7ae0",
+      "scenario_id": "rw-attack-2cfbb8e9188d",
+      "bundle_version": "rw0906_v2",
+      "result": {
+        "bundle_version": "rw0906_v2",
+        "task": "RW-100-3",
+        "sector": "energy",
+        "decision": "normal",
+        "probabilities": {
+          "catboost": 0.45218588392013515,
+          "stacked": 0.22355896909497297,
+          "calibrated": 0.39970761621480033
+        },
+        "components": {
+          "rule_score": 0.166667,
+          "anomaly_score": 0.118022,
+          "catboost_score": 0.45218588392013515,
+          "temporal_score": null,
+          "graph_score": 0.72,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 6,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger",
+          "window_minutes": 15
+        },
+        "calibration": {
+          "source": "global_decision_calibration",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.410065,
+          "high_risk": 0.439306
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "runtime_contract": {
+        "synthetic_only": true,
+        "human_approval_required": true,
+        "real_action_executed": false,
+        "operational_state_claimed": false,
+        "physical_safety_determination": "not_determined"
+      }
+    }
+  },
+  {
+    "ordinal": 3,
+    "scenario_id": "rw-attack-6ecce30389a5",
+    "industry": "energy",
+    "site_id": "synthetic-energy-001",
+    "site_type": "control_centre",
+    "use_case_id": "EN-RW-01",
+    "variant": "attack",
+    "truth_attack": true,
+    "scored": true,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.4356460633583735,
+    "bundle_version": "rw0906_v2",
+    "runtime_contract": {
+      "synthetic_only": true,
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "operational_state_claimed": false,
+      "physical_safety_determination": "not_determined"
+    },
+    "endpoint_latency_ms": 100.37009999996371,
+    "response": {
+      "schema_version": "1.0",
+      "task": "RW-100-6",
+      "mode": "synthetic_scenario",
+      "request_id": "e263931e-c551-44f4-a7d7-9adf0d86c79b",
+      "trace_id": "67475133-111b-4de4-91c9-3e9c0a301227",
+      "scenario_id": "rw-attack-6ecce30389a5",
+      "bundle_version": "rw0906_v2",
+      "result": {
+        "bundle_version": "rw0906_v2",
+        "task": "RW-100-3",
+        "sector": "energy",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.42639759289622914,
+          "stacked": 0.2810764282998127,
+          "calibrated": 0.4356460633583735
+        },
+        "components": {
+          "rule_score": 0.5,
+          "anomaly_score": 0.158113,
+          "catboost_score": 0.42639759289622914,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger",
+          "window_minutes": 15
+        },
+        "calibration": {
+          "source": "global_decision_calibration",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.410065,
+          "high_risk": 0.439306
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "runtime_contract": {
+        "synthetic_only": true,
+        "human_approval_required": true,
+        "real_action_executed": false,
+        "operational_state_claimed": false,
+        "physical_safety_determination": "not_determined"
+      }
+    }
+  },
+  {
+    "ordinal": 4,
+    "scenario_id": "rw-attack-d9a9c8020dce",
+    "industry": "petrochemical",
+    "site_id": "synthetic-petrochemical-001",
+    "site_type": "petrochemical_complex",
+    "use_case_id": "PC-RW-01",
+    "variant": "attack",
+    "truth_attack": true,
+    "scored": true,
+    "predicted_attack": false,
+    "decision": "normal",
+    "calibrated_probability": 0.40671939568833554,
+    "bundle_version": "rw0906_v2",
+    "runtime_contract": {
+      "synthetic_only": true,
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "operational_state_claimed": false,
+      "physical_safety_determination": "not_determined"
+    },
+    "endpoint_latency_ms": 98.27619999941817,
+    "response": {
+      "schema_version": "1.0",
+      "task": "RW-100-6",
+      "mode": "synthetic_scenario",
+      "request_id": "a5c50fde-66f0-4c9f-a88a-f8b7989d6044",
+      "trace_id": "23aef74a-2fab-4fcf-bbff-a8cfb200bf4f",
+      "scenario_id": "rw-attack-d9a9c8020dce",
+      "bundle_version": "rw0906_v2",
+      "result": {
+        "bundle_version": "rw0906_v2",
+        "task": "RW-100-3",
+        "sector": "petrochemical",
+        "decision": "normal",
+        "probabilities": {
+          "catboost": 0.4946797903394975,
+          "stacked": 0.23420003244266543,
+          "calibrated": 0.40671939568833554
+        },
+        "components": {
+          "rule_score": 0.333333,
+          "anomaly_score": 0.375286,
+          "catboost_score": 0.4946797903394975,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger",
+          "window_minutes": 15
+        },
+        "calibration": {
+          "source": "global_decision_calibration",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.410065,
+          "high_risk": 0.439306
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "runtime_contract": {
+        "synthetic_only": true,
+        "human_approval_required": true,
+        "real_action_executed": false,
+        "operational_state_claimed": false,
+        "physical_safety_determination": "not_determined"
+      }
+    }
+  },
+  {
+    "ordinal": 5,
+    "scenario_id": "rw-benign-3621ede6712b",
+    "industry": "energy",
+    "site_id": "synthetic-energy-001",
+    "site_type": "control_centre",
+    "use_case_id": "EN-RW-05",
+    "variant": "benign",
+    "truth_attack": false,
+    "scored": true,
+    "predicted_attack": false,
+    "decision": "normal",
+    "calibrated_probability": 0.3968029264661066,
+    "bundle_version": "rw0906_v2",
+    "runtime_contract": {
+      "synthetic_only": true,
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "operational_state_claimed": false,
+      "physical_safety_determination": "not_determined"
+    },
+    "endpoint_latency_ms": 103.20380000030127,
+    "response": {
+      "schema_version": "1.0",
+      "task": "RW-100-6",
+      "mode": "synthetic_scenario",
+      "request_id": "7148971c-e570-4ce7-bd43-3806cec80b79",
+      "trace_id": "0de867f8-a665-40f3-b640-25e973eccba7",
+      "scenario_id": "rw-benign-3621ede6712b",
+      "bundle_version": "rw0906_v2",
+      "result": {
+        "bundle_version": "rw0906_v2",
+        "task": "RW-100-3",
+        "sector": "energy",
+        "decision": "normal",
+        "probabilities": {
+          "catboost": 0.48397615768172203,
+          "stacked": 0.21923542822610956,
+          "calibrated": 0.3968029264661066
+        },
+        "components": {
+          "rule_score": 0.166667,
+          "anomaly_score": 0.157887,
+          "catboost_score": 0.48397615768172203,
+          "temporal_score": null,
+          "graph_score": 0.72,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 6,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger",
+          "window_minutes": 5
+        },
+        "calibration": {
+          "source": "global_decision_calibration",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.410065,
+          "high_risk": 0.439306
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "runtime_contract": {
+        "synthetic_only": true,
+        "human_approval_required": true,
+        "real_action_executed": false,
+        "operational_state_claimed": false,
+        "physical_safety_determination": "not_determined"
+      }
+    }
+  },
+  {
+    "ordinal": 6,
+    "scenario_id": "rw-benign-46ec6219189c",
+    "industry": "petrochemical",
+    "site_id": "synthetic-petrochemical-001",
+    "site_type": "petrochemical_complex",
+    "use_case_id": "PC-RW-01",
+    "variant": "benign",
+    "truth_attack": false,
+    "scored": true,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.42594474409659483,
+    "bundle_version": "rw0906_v2",
+    "runtime_contract": {
+      "synthetic_only": true,
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "operational_state_claimed": false,
+      "physical_safety_determination": "not_determined"
+    },
+    "endpoint_latency_ms": 94.93500000007771,
+    "response": {
+      "schema_version": "1.0",
+      "task": "RW-100-6",
+      "mode": "synthetic_scenario",
+      "request_id": "e543cf3f-1d7a-4302-86c7-00e5564640e6",
+      "trace_id": "f13a2bb9-4201-4ef8-be0e-bdd3a330acfc",
+      "scenario_id": "rw-benign-46ec6219189c",
+      "bundle_version": "rw0906_v2",
+      "result": {
+        "bundle_version": "rw0906_v2",
+        "task": "RW-100-3",
+        "sector": "petrochemical",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.47838825654117006,
+          "stacked": 0.2648323544765004,
+          "calibrated": 0.42594474409659483
+        },
+        "components": {
+          "rule_score": 0.5,
+          "anomaly_score": 0.349678,
+          "catboost_score": 0.47838825654117006,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger",
+          "window_minutes": 15
+        },
+        "calibration": {
+          "source": "global_decision_calibration",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.410065,
+          "high_risk": 0.439306
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "runtime_contract": {
+        "synthetic_only": true,
+        "human_approval_required": true,
+        "real_action_executed": false,
+        "operational_state_claimed": false,
+        "physical_safety_determination": "not_determined"
+      }
+    }
+  },
+  {
+    "ordinal": 7,
+    "scenario_id": "rw-benign-9c4af983d47c",
+    "industry": "petrochemical",
+    "site_id": "synthetic-petrochemical-001",
+    "site_type": "petrochemical_complex",
+    "use_case_id": "PC-RW-03",
+    "variant": "benign",
+    "truth_attack": false,
+    "scored": true,
+    "predicted_attack": false,
+    "decision": "normal",
+    "calibrated_probability": 0.4036749505244007,
+    "bundle_version": "rw0906_v2",
+    "runtime_contract": {
+      "synthetic_only": true,
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "operational_state_claimed": false,
+      "physical_safety_determination": "not_determined"
+    },
+    "endpoint_latency_ms": 96.68760000022303,
+    "response": {
+      "schema_version": "1.0",
+      "task": "RW-100-6",
+      "mode": "synthetic_scenario",
+      "request_id": "b1936008-15e6-4e33-ba4a-8db0f97a69f8",
+      "trace_id": "9fed618f-dcf1-4bb9-bf70-7bb34ceeb7c9",
+      "scenario_id": "rw-benign-9c4af983d47c",
+      "bundle_version": "rw0906_v2",
+      "result": {
+        "bundle_version": "rw0906_v2",
+        "task": "RW-100-3",
+        "sector": "petrochemical",
+        "decision": "normal",
+        "probabilities": {
+          "catboost": 0.4126858680566379,
+          "stacked": 0.22954442799644917,
+          "calibrated": 0.4036749505244007
+        },
+        "components": {
+          "rule_score": 0.166667,
+          "anomaly_score": 0.091873,
+          "catboost_score": 0.4126858680566379,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger",
+          "window_minutes": 5
+        },
+        "calibration": {
+          "source": "global_decision_calibration",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.410065,
+          "high_risk": 0.439306
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "runtime_contract": {
+        "synthetic_only": true,
+        "human_approval_required": true,
+        "real_action_executed": false,
+        "operational_state_claimed": false,
+        "physical_safety_determination": "not_determined"
+      }
+    }
+  },
+  {
+    "ordinal": 8,
+    "scenario_id": "rw-benign-ddc48dcc2d83",
+    "industry": "energy",
+    "site_id": "synthetic-energy-001",
+    "site_type": "control_centre",
+    "use_case_id": "EN-RW-04",
+    "variant": "benign",
+    "truth_attack": false,
+    "scored": true,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.4177490499557093,
+    "bundle_version": "rw0906_v2",
+    "runtime_contract": {
+      "synthetic_only": true,
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "operational_state_claimed": false,
+      "physical_safety_determination": "not_determined"
+    },
+    "endpoint_latency_ms": 97.79559999969933,
+    "response": {
+      "schema_version": "1.0",
+      "task": "RW-100-6",
+      "mode": "synthetic_scenario",
+      "request_id": "f37cb135-f5c5-4d72-a37e-5494aebda693",
+      "trace_id": "279adfde-f0be-4d75-8acb-834d8c917d4c",
+      "scenario_id": "rw-benign-ddc48dcc2d83",
+      "bundle_version": "rw0906_v2",
+      "result": {
+        "bundle_version": "rw0906_v2",
+        "task": "RW-100-3",
+        "sector": "energy",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.45534734191409737,
+          "stacked": 0.25151633183283306,
+          "calibrated": 0.4177490499557093
+        },
+        "components": {
+          "rule_score": 0.333333,
+          "anomaly_score": 0.097911,
+          "catboost_score": 0.45534734191409737,
+          "temporal_score": null,
+          "graph_score": 0.72,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 6,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger",
+          "window_minutes": 5
+        },
+        "calibration": {
+          "source": "global_decision_calibration",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.410065,
+          "high_risk": 0.439306
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "runtime_contract": {
+        "synthetic_only": true,
+        "human_approval_required": true,
+        "real_action_executed": false,
+        "operational_state_claimed": false,
+        "physical_safety_determination": "not_determined"
+      }
+    }
+  },
+  {
+    "ordinal": 9,
+    "scenario_id": "rw-fault-8a9f266b7b54",
+    "industry": "energy",
+    "site_id": "synthetic-energy-001",
+    "site_type": "control_centre",
+    "use_case_id": "EN-RW-03",
+    "variant": "fault",
+    "truth_attack": false,
+    "scored": true,
+    "predicted_attack": false,
+    "decision": "normal",
+    "calibrated_probability": 0.40554773581376347,
+    "bundle_version": "rw0906_v2",
+    "runtime_contract": {
+      "synthetic_only": true,
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "operational_state_claimed": false,
+      "physical_safety_determination": "not_determined"
+    },
+    "endpoint_latency_ms": 100.1419000003807,
+    "response": {
+      "schema_version": "1.0",
+      "task": "RW-100-6",
+      "mode": "synthetic_scenario",
+      "request_id": "a75b3156-3542-4a5e-bd9a-b7195f59ba12",
+      "trace_id": "b86b7836-7c04-4bdc-8e75-668794db8be2",
+      "scenario_id": "rw-fault-8a9f266b7b54",
+      "bundle_version": "rw0906_v2",
+      "result": {
+        "bundle_version": "rw0906_v2",
+        "task": "RW-100-3",
+        "sector": "energy",
+        "decision": "normal",
+        "probabilities": {
+          "catboost": 0.41420888198354505,
+          "stacked": 0.2324019112671432,
+          "calibrated": 0.40554773581376347
+        },
+        "components": {
+          "rule_score": 0.166667,
+          "anomaly_score": 0.040304,
+          "catboost_score": 0.41420888198354505,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger",
+          "window_minutes": 5
+        },
+        "calibration": {
+          "source": "global_decision_calibration",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.410065,
+          "high_risk": 0.439306
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "runtime_contract": {
+        "synthetic_only": true,
+        "human_approval_required": true,
+        "real_action_executed": false,
+        "operational_state_claimed": false,
+        "physical_safety_determination": "not_determined"
+      }
+    }
+  },
+  {
+    "ordinal": 10,
+    "scenario_id": "rw-fault-8c88fa035ecb",
+    "industry": "energy",
+    "site_id": "synthetic-energy-001",
+    "site_type": "control_centre",
+    "use_case_id": "EN-RW-02",
+    "variant": "fault",
+    "truth_attack": false,
+    "scored": true,
+    "predicted_attack": false,
+    "decision": "normal",
+    "calibrated_probability": 0.39108993864799574,
+    "bundle_version": "rw0906_v2",
+    "runtime_contract": {
+      "synthetic_only": true,
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "operational_state_claimed": false,
+      "physical_safety_determination": "not_determined"
+    },
+    "endpoint_latency_ms": 96.80960000059713,
+    "response": {
+      "schema_version": "1.0",
+      "task": "RW-100-6",
+      "mode": "synthetic_scenario",
+      "request_id": "ded1fc8b-19ea-4ec6-820d-7d2f9bcbe1f0",
+      "trace_id": "0ea83eb8-8a74-4e1d-9ba5-f87c1b07b7b0",
+      "scenario_id": "rw-fault-8c88fa035ecb",
+      "bundle_version": "rw0906_v2",
+      "result": {
+        "bundle_version": "rw0906_v2",
+        "task": "RW-100-3",
+        "sector": "energy",
+        "decision": "normal",
+        "probabilities": {
+          "catboost": 0.4341535795100061,
+          "stacked": 0.21087741391195197,
+          "calibrated": 0.39108993864799574
+        },
+        "components": {
+          "rule_score": 0.166667,
+          "anomaly_score": 0.37017,
+          "catboost_score": 0.4341535795100061,
+          "temporal_score": null,
+          "graph_score": 0.72,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 6,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger",
+          "window_minutes": 15
+        },
+        "calibration": {
+          "source": "global_decision_calibration",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.410065,
+          "high_risk": 0.439306
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "runtime_contract": {
+        "synthetic_only": true,
+        "human_approval_required": true,
+        "real_action_executed": false,
+        "operational_state_claimed": false,
+        "physical_safety_determination": "not_determined"
+      }
+    }
+  },
+  {
+    "ordinal": 11,
+    "scenario_id": "rw-fault-b098ba8c790e",
+    "industry": "petrochemical",
+    "site_id": "synthetic-petrochemical-001",
+    "site_type": "petrochemical_complex",
+    "use_case_id": "PC-RW-03",
+    "variant": "fault",
+    "truth_attack": false,
+    "scored": true,
+    "predicted_attack": false,
+    "decision": "normal",
+    "calibrated_probability": 0.4036927763256247,
+    "bundle_version": "rw0906_v2",
+    "runtime_contract": {
+      "synthetic_only": true,
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "operational_state_claimed": false,
+      "physical_safety_determination": "not_determined"
+    },
+    "endpoint_latency_ms": 98.06469999966794,
+    "response": {
+      "schema_version": "1.0",
+      "task": "RW-100-6",
+      "mode": "synthetic_scenario",
+      "request_id": "0da8f0a3-8e3f-4edc-8ca1-4a7fa9cc37a6",
+      "trace_id": "15cc1659-b575-446e-9a04-23ffb300a117",
+      "scenario_id": "rw-fault-b098ba8c790e",
+      "bundle_version": "rw0906_v2",
+      "result": {
+        "bundle_version": "rw0906_v2",
+        "task": "RW-100-3",
+        "sector": "petrochemical",
+        "decision": "normal",
+        "probabilities": {
+          "catboost": 0.4126858680566379,
+          "stacked": 0.22957152982053355,
+          "calibrated": 0.4036927763256247
+        },
+        "components": {
+          "rule_score": 0.166667,
+          "anomaly_score": 0.091399,
+          "catboost_score": 0.4126858680566379,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger",
+          "window_minutes": 5
+        },
+        "calibration": {
+          "source": "global_decision_calibration",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.410065,
+          "high_risk": 0.439306
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "runtime_contract": {
+        "synthetic_only": true,
+        "human_approval_required": true,
+        "real_action_executed": false,
+        "operational_state_claimed": false,
+        "physical_safety_determination": "not_determined"
+      }
+    }
+  },
+  {
+    "ordinal": 12,
+    "scenario_id": "rw-fault-b5059620d84e",
+    "industry": "petrochemical",
+    "site_id": "synthetic-petrochemical-001",
+    "site_type": "petrochemical_complex",
+    "use_case_id": "PC-RW-01",
+    "variant": "fault",
+    "truth_attack": false,
+    "scored": true,
+    "predicted_attack": false,
+    "decision": "normal",
+    "calibrated_probability": 0.40665631346181014,
+    "bundle_version": "rw0906_v2",
+    "runtime_contract": {
+      "synthetic_only": true,
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "operational_state_claimed": false,
+      "physical_safety_determination": "not_determined"
+    },
+    "endpoint_latency_ms": 99.71610000047804,
+    "response": {
+      "schema_version": "1.0",
+      "task": "RW-100-6",
+      "mode": "synthetic_scenario",
+      "request_id": "9db5324a-6ff3-43ac-a7f0-f2c43f1e68da",
+      "trace_id": "03a3b90b-4939-4ef7-8f08-dcdfe01e168a",
+      "scenario_id": "rw-fault-b5059620d84e",
+      "bundle_version": "rw0906_v2",
+      "result": {
+        "bundle_version": "rw0906_v2",
+        "task": "RW-100-3",
+        "sector": "petrochemical",
+        "decision": "normal",
+        "probabilities": {
+          "catboost": 0.4839461490950088,
+          "stacked": 0.23410301775929418,
+          "calibrated": 0.40665631346181014
+        },
+        "components": {
+          "rule_score": 0.333333,
+          "anomaly_score": 0.389695,
+          "catboost_score": 0.4839461490950088,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger",
+          "window_minutes": 15
+        },
+        "calibration": {
+          "source": "global_decision_calibration",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.410065,
+          "high_risk": 0.439306
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "runtime_contract": {
+        "synthetic_only": true,
+        "human_approval_required": true,
+        "real_action_executed": false,
+        "operational_state_claimed": false,
+        "physical_safety_determination": "not_determined"
+      }
+    }
+  },
+  {
+    "ordinal": 13,
+    "scenario_id": "rw-normal-096e14e368c2",
+    "industry": "energy",
+    "site_id": "synthetic-energy-001",
+    "site_type": "control_centre",
+    "use_case_id": "EN-RW-04",
+    "variant": "normal",
+    "truth_attack": false,
+    "scored": true,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.41914253226708487,
+    "bundle_version": "rw0906_v2",
+    "runtime_contract": {
+      "synthetic_only": true,
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "operational_state_claimed": false,
+      "physical_safety_determination": "not_determined"
+    },
+    "endpoint_latency_ms": 109.37879999983124,
+    "response": {
+      "schema_version": "1.0",
+      "task": "RW-100-6",
+      "mode": "synthetic_scenario",
+      "request_id": "4d004117-3cf9-47d9-9cc6-0e06a47b91b8",
+      "trace_id": "7562ea0c-ab03-45e7-b713-717f41a2da48",
+      "scenario_id": "rw-normal-096e14e368c2",
+      "bundle_version": "rw0906_v2",
+      "result": {
+        "bundle_version": "rw0906_v2",
+        "task": "RW-100-3",
+        "sector": "energy",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.45534734191409737,
+          "stacked": 0.253753669341948,
+          "calibrated": 0.41914253226708487
+        },
+        "components": {
+          "rule_score": 0.333333,
+          "anomaly_score": 0.093906,
+          "catboost_score": 0.45534734191409737,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger",
+          "window_minutes": 5
+        },
+        "calibration": {
+          "source": "global_decision_calibration",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.410065,
+          "high_risk": 0.439306
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "runtime_contract": {
+        "synthetic_only": true,
+        "human_approval_required": true,
+        "real_action_executed": false,
+        "operational_state_claimed": false,
+        "physical_safety_determination": "not_determined"
+      }
+    }
+  },
+  {
+    "ordinal": 14,
+    "scenario_id": "rw-normal-4f3df0b12cac",
+    "industry": "petrochemical",
+    "site_id": "synthetic-petrochemical-001",
+    "site_type": "petrochemical_complex",
+    "use_case_id": "PC-RW-04",
+    "variant": "normal",
+    "truth_attack": false,
+    "scored": true,
+    "predicted_attack": true,
+    "decision": "investigate",
+    "calibrated_probability": 0.42123108000534265,
+    "bundle_version": "rw0906_v2",
+    "runtime_contract": {
+      "synthetic_only": true,
+      "human_approval_required": true,
+      "real_action_executed": false,
+      "operational_state_claimed": false,
+      "physical_safety_determination": "not_determined"
+    },
+    "endpoint_latency_ms": 112.43720000038593,
+    "response": {
+      "schema_version": "1.0",
+      "task": "RW-100-6",
+      "mode": "synthetic_scenario",
+      "request_id": "d70c3a7e-dde5-4253-98cc-953823b53966",
+      "trace_id": "afdc38a3-88b2-4067-a595-adbe8e018238",
+      "scenario_id": "rw-normal-4f3df0b12cac",
+      "bundle_version": "rw0906_v2",
+      "result": {
+        "bundle_version": "rw0906_v2",
+        "task": "RW-100-3",
+        "sector": "petrochemical",
+        "decision": "investigate",
+        "probabilities": {
+          "catboost": 0.4055917981741014,
+          "stacked": 0.2571275839952179,
+          "calibrated": 0.42123108000534265
+        },
+        "components": {
+          "rule_score": 0.333333,
+          "anomaly_score": 0.098068,
+          "catboost_score": 0.4055917981741014,
+          "temporal_score": null,
+          "graph_score": 0.0,
+          "temporal_missing": 1,
+          "graph_exposed_asset_count": 0,
+          "graph_status": "deterministic_weighted_propagation",
+          "temporal_status": "unavailable_rejected_challenger",
+          "window_minutes": 5
+        },
+        "calibration": {
+          "source": "global_decision_calibration",
+          "method": "sigmoid_probability_calibration"
+        },
+        "thresholds": {
+          "investigate": 0.410065,
+          "high_risk": 0.439306
+        },
+        "runtime_contract": {
+          "synthetic_only": true,
+          "human_approval_required": true,
+          "real_action_executed": false,
+          "operational_state_claimed": false,
+          "physical_safety_determination": "not_determined"
+        }
+      },
+      "runtime_contract": {
+        "synthetic_only": true,
+        "human_approval_required": true,
+        "real_action_executed": false,
+        "operational_state_claimed": false,
+        "physical_safety_determination": "not_determined"
+      }
+    }
+  }
+]
