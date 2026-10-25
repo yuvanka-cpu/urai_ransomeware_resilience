@@ -38,6 +38,11 @@ def route_canonical_event(
             for error in errors
         ):
             reason = DLQReason.REQUIRED_FIELD_MISSING
+        elif any(
+            error == "metrics: keys must be strings and values numeric"
+            for error in errors
+        ):
+            reason = DLQReason.NORMALIZATION_FAILURE
         else:
             reason = DLQReason.INCOMPATIBLE_STRUCTURE
 

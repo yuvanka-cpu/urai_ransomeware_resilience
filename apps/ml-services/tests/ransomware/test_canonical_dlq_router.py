@@ -78,6 +78,19 @@ def test_rejected_evidence_is_preserved_without_mutating_input():
     assert "preserve-me" in rejected.raw_payload
 
 
+def test_invalid_metric_routes_to_normalization_failure():
+    event = valid_event()
+    event["metrics"] = {"risk_score": "not-a-number"}
+    event["payload_hash"] = canonical_payload_hash(event)
+
+    accepted, rejected = route_canonical_event(event)
+
+    assert accepted is None
+    assert rejected is not None
+    assert rejected.reason_code is DLQReason.NORMALIZATION_FAILURE
+    assert "metrics: keys must be strings and values numeric" in rejected.message
+
+
 def test_other_validation_errors_are_not_silently_repaired():
     event = valid_event()
     event["severity"] = "unknown"
