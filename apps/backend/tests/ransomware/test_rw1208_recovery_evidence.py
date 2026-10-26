@@ -1,10 +1,17 @@
 """Tests for RW-120-8 recovery evidence availability."""
 
+from fastapi.testclient import TestClient
+
+from app.main import app
 from app.schemas.responses import BackupReadiness
 from app.services.ransomware_recovery_evidence import (
     REQUIRED_EVIDENCE,
     assess_recovery_evidence,
 )
+
+
+client = TestClient(app)
+ENDPOINT = "/api/v1/ransomware/recovery/evidence"
 
 
 def test_recovery_evidence_is_explicitly_unavailable():
@@ -51,3 +58,18 @@ def test_human_approval_and_no_action_safety():
     assert result["human_approval_required"] is True
     assert result["real_action_executed"] is False
     assert result["physical_safety_determination"] == "not_determined"
+
+
+def test_recovery_evidence_endpoint_is_read_only_and_unavailable():
+    response = client.get(ENDPOINT)
+
+    assert response.status_code == 200
+
+    data = response.json()
+
+    assert data["task_id"] == "RW-120-8"
+    assert data["status"] == "unavailable"
+    assert data["is_operational_recovery_verified"] is False
+    assert data["real_action_executed"] is False
+    assert data["human_approval_required"] is True
+    assert data["physical_safety_determination"] == "not_determined"
