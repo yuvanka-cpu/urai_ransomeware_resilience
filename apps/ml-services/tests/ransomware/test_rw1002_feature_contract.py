@@ -44,3 +44,20 @@ def test_duplicate_feature_fails():
 
     with pytest.raises(FeatureContractError, match="duplicates"):
         validate_feature_names(features)
+
+
+def test_feature_row_rejects_unexpected_key():
+    from config.ransomware.rw1002_feature_contract import validate_feature_row
+
+    row = {name: 0.0 for name in EXPECTED_FEATURES}
+    row["invented_runtime_feature"] = 1.0
+
+    with pytest.raises(FeatureContractError, match="unexpected"):
+        validate_feature_row(row)
+
+
+def test_non_string_feature_name_is_rejected():
+    features = sorted(EXPECTED_FEATURES) + [123]
+
+    with pytest.raises(FeatureContractError):
+        validate_feature_names(features)
