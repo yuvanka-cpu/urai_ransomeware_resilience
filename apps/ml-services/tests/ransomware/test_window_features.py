@@ -1183,3 +1183,24 @@ def test_rw0607_missing_petrochemical_evidence_is_explicit():
     assert features["alarm_support_health_ratio"] == 0.0
     assert features["sis_esd_adjacency_count"] == 0
     assert features["batch_quality_dependency_exposure_count"] == 0
+
+def test_extractor_rejects_missing_registered_feature(monkeypatch):
+    from config.ransomware.shared.validation import canonical_feature_units
+
+    invalid_registry = dict(
+        canonical_feature_units.CANONICAL_FEATURE_UNITS
+    )
+    invalid_registry["unproduced_test_feature"] = "count"
+
+    monkeypatch.setattr(
+        canonical_feature_units,
+        "CANONICAL_FEATURE_UNITS",
+        invalid_registry,
+    )
+
+    with pytest.raises(ValueError, match="unproduced_test_feature"):
+        extract_window_features(
+            [_event(0, "backup", "backup_health")],
+            datetime(2026, 1, 1, 6, 1, tzinfo=timezone.utc),
+            1,
+        )

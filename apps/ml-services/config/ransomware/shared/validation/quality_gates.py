@@ -5,6 +5,11 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+from config.ransomware.shared.validation.canonical_feature_units import (
+    CANONICAL_FEATURE_UNITS,
+    validate_canonical_feature_units,
+)
+
 
 QUALITY_THRESHOLDS = {
     "schema_validity": 1.0,
@@ -134,6 +139,10 @@ def calculate_quality_gates(
     timestamp_parse_success = timestamp_success_count / total
     known_asset_resolution = known_asset_count / total
 
+    canonical_units_valid, canonical_units_errors = (
+        validate_canonical_feature_units()
+    )
+
     gates = {
         "schema_validity": {
             "value": schema_validity,
@@ -175,13 +184,11 @@ def calculate_quality_gates(
             "passed": canonical_utc_values,
         },
         "canonical_units": {
-            "status": "CONTRACT_ONLY",
-            "passed": True,
-            "note": (
-                "Canonical units are required by the event contract, "
-                "but no machine-readable unit registry exists in the "
-                "current repository."
-            ),
+            "status": "PASS" if canonical_units_valid else "FAIL",
+            "passed": canonical_units_valid,
+            "registered_features": len(CANONICAL_FEATURE_UNITS),
+            "units": dict(CANONICAL_FEATURE_UNITS),
+            "errors": canonical_units_errors,
         },
     }
 

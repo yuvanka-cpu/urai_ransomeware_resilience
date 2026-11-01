@@ -9,6 +9,9 @@ from config.ransomware.scenarios.scenario_event_assembler import (
 from config.ransomware.shared.validation.feature_leakage_guard import (
     validate_deployed_features,
 )
+from config.ransomware.shared.validation.canonical_feature_units import (
+    validate_canonical_feature_coverage,
+)
 
 WINDOW_MINUTES = (1, 5, 15)
 
@@ -844,6 +847,15 @@ def extract_window_features(
         "observable_value_mean": _mean(values),
         "observable_value_max": _maximum(values),
     }
+
+    canonical_units_valid, canonical_units_errors = (
+        validate_canonical_feature_coverage(list(features))
+    )
+    if not canonical_units_valid:
+        raise ValueError(
+            "RW-0309 canonical feature unit validation failed: "
+            + "; ".join(canonical_units_errors)
+        )
 
     validate_deployed_features(
         list(features)
