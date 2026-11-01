@@ -8,8 +8,8 @@
 
 | Tracker ID | Requirement | Status | Repository evidence |
 |---|---|---|---|
-| RW-0301 | Define the canonical observable-event schema and contract. | RV | `shared/schemas/canonical_event.avsc`; `shared/schemas/canonical_event_contract.md`; schema and validator tests |
-| RW-0302 | Validate canonical events and reject invalid or incompatible values. | RV | `shared/validation/canonical_event_validator.py`; `tests/ransomware/test_canonical_event_validator.py`; negative fixtures |
+| RW-0301 | Define the canonical observable-event schema and contract. | RV | `shared/schemas/canonical_event.avsc`; `shared/schemas/canonical_event_contract.md`; schema and validator tests; 33 focused validation, quality-gate, asset-compatibility and graph-integrity tests passed. |
+| RW-0302 | Validate canonical events and reject invalid or incompatible values. | RV | `shared/validation/canonical_event_validator.py`; `tests/ransomware/test_canonical_event_validator.py`; quality-gate and asset-validation tests. |
 | RW-0303 | Convert explicitly mapped source records into validated canonical events. | DN | `shared/canonical_event_converter.py`; `tests/ransomware/test_canonical_event_converter.py` |
 | RW-0304 | Route invalid canonicalization and normalization data through the dead-letter contract. | RV | `shared/validation/canonical_dlq_router.py`; `shared/dlq_contract.py`; DLQ contract and routing tests |
 | RW-0305 | Apply normalization, timestamp, identifier, numeric-value and asset-resolution checks. | RV | `shared/normalization.py`; `shared/validation/asset_registry.py`; `shared/validation/quality_gates.py`; focused tests |
