@@ -61,7 +61,7 @@ def test_backend_returns_unavailable_for_dependency_failure(monkeypatch):
     def fail(*args, **kwargs):
         raise httpx.ConnectError("Synthetic dependency offline")
 
-    monkeypatch.setattr(httpx.Client, "post", fail)
+    monkeypatch.setattr(timeline_route, "request_timeline_dependency", fail)
 
     response = client.post(ENDPOINT, json=VALID_REQUEST)
 
@@ -86,7 +86,7 @@ def test_backend_rejects_mismatched_scenario_response(monkeypatch):
             },
         )
 
-    monkeypatch.setattr(httpx.Client, "post", fake_post)
+    monkeypatch.setattr(timeline_route, "request_timeline_dependency", fake_post)
 
     response = client.post(ENDPOINT, json=VALID_REQUEST)
 
@@ -110,7 +110,7 @@ def test_backend_rejects_malformed_event_count(monkeypatch):
             },
         )
 
-    monkeypatch.setattr(httpx.Client, "post", fake_post)
+    monkeypatch.setattr(timeline_route, "request_timeline_dependency", fake_post)
 
     response = client.post(ENDPOINT, json=VALID_REQUEST)
 

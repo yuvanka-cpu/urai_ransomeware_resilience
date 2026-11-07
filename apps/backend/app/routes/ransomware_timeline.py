@@ -19,6 +19,12 @@ TIMELINE_ENDPOINT = (
 )
 
 
+def request_timeline_dependency(payload: dict[str, Any]) -> httpx.Response:
+    """Fetch synthetic timeline evidence from the ML service."""
+    with httpx.Client(timeout=3.0) as client:
+        return client.post(TIMELINE_ENDPOINT, json=payload)
+
+
 def unavailable(reason: str) -> dict[str, Any]:
     return {
         "task_id": "RW-120-6",
@@ -95,8 +101,7 @@ def get_observable_timeline(request: RansomwareRequest) -> dict[str, Any]:
     }
 
     try:
-        with httpx.Client(timeout=3.0) as client:
-            response = client.post(TIMELINE_ENDPOINT, json=payload)
+        response = request_timeline_dependency(payload)
     except (httpx.RequestError, httpx.TimeoutException):
         return unavailable("Synthetic timeline dependency is unavailable.")
 
