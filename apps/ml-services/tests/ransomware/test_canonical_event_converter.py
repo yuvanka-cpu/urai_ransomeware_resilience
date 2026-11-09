@@ -115,3 +115,35 @@ def test_rejects_incomplete_mapping(source_record):
             source_record,
             field_mapping={"event_id": "id"},
         )
+
+
+def test_converter_parquet_round_trip_preserves_canonical_event(
+    source_record,
+    field_mapping,
+    tmp_path,
+):
+    import json
+
+    import pandas as pd
+
+    from config.ransomware.shared.validation.parquet_events import (
+        read_canonical_events,
+    )
+
+    event = convert_to_canonical_event(
+        source_record,
+        field_mapping=field_mapping,
+    )
+
+    parquet_path = tmp_path / "canonical_event_round_trip.parquet"
+    row = dict(event)
+
+    for field in ("attributes", "metrics", "quality_flags"):
+        row[field] = json.dumps(row[field])
+
+    pd.DataFrame([row]).to_parquet(parquet_path, index=False)
+
+    restored_events = read_canonical_events(parquet_path)
+
+    assert restored_events == [event]
+    assert validate_event(restored_events[0]) == []
