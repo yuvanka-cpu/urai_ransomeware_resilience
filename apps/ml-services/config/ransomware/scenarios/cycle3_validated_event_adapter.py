@@ -34,6 +34,7 @@ def build_cycle3_validated_event(
     asset_id: str,
     event_type: str,
     measured_value: object,
+    unit: str | None,
 ) -> ObservableScenarioEvent:
     """Construct one validated, model-facing observable event."""
 
@@ -58,14 +59,25 @@ def build_cycle3_validated_event(
     if not isinstance(asset_id, str) or not asset_id.strip():
         raise ValueError("Invalid asset_id")
 
+    try:
+        definition = get_cycle3_evidence_definition(event_type)
+    except KeyError as exc:
+        raise ValueError(
+            f"unknown_evidence_type: {event_type}"
+        ) from exc
+
+    if unit != definition.unit:
+        raise ValueError(
+            f"Invalid measurement unit for {event_type}: "
+            f"expected {definition.unit!r}, received {unit!r}"
+        )
+
     mapping = require_cycle3_evidence_mapping(event_type)
 
     value = require_cycle3_measurement_value(
         event_type,
         measured_value,
     )
-
-    definition = get_cycle3_evidence_definition(event_type)
 
     if mapping.attribute_name is None:
         raise ValueError("Missing validated attribute mapping")

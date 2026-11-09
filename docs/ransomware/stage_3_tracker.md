@@ -16,12 +16,12 @@
 | RW-0306 | Enforce event-time ordering, partition isolation and replay consistency. | RV | `shared/validation/event_time_ordering.py`; `shared/topics/partition_order_contract.md`; ordering tests |
 | RW-0307 | Prevent truth-label and future-information leakage into deployed features. | RV | `shared/validation/feature_leakage_guard.py`; leakage-guard and split-isolation tests |
 | RW-0308 | Define schema-evolution and registry compatibility policies. | RV | `shared/schemas/schema_evolution_contract.md`; `schema_evolution_policy.md`; `schema_registry_policy.md`; policy tests |
-| RW-0309 | Enforce canonical metric units with a machine-readable registry. | RV | `shared/validation/canonical_feature_units.py`; `shared/validation/quality_gates.py`; `features/window_features.py`; canonical-unit, window-feature, feature-parity and quality-gate tests: 39 passed. Registry validates seven derived-feature unit declarations and the shared extractor rejects missing registered features. |
-| RW-0310 | Verify the focused Stage 3 contract and integration test suites. | DN | After final RW-0309 changes, full `tests/ransomware` suite: 1,202 passed. |
+| RW-0309 | Enforce canonical metric units with a machine-readable registry and validate Cycle 3 measurement units. | RV | `shared/validation/canonical_feature_units.py`; `shared/validation/quality_gates.py`; `features/window_features.py`; Cycle 3 evidence vocabulary, background measurements and validated-event adapter. Seven derived-feature units are registered; Cycle 3 measurements carry vocabulary-defined units and the adapter rejects missing or mismatched units. Latest focused Cycle 3 tests: 159 passed. |
+| RW-0310 | Verify the focused Stage 3 contract and integration test suites. | RV | Historical full-suite result: 1,202 passed before later changes. Latest broad run: 1,145 passed, 9 failed; eight failures blocked by missing PyTorch and one RW-0906 bundle checksum mismatch. Latest focused Cycle 3 tests: 159 passed. |
 
 ## Verification record
 
-After the RW-0309 implementation changes, the complete `apps/ml-services/tests/ransomware` suite passed: 1,202 tests. This is the latest regression result; rerun relevant tests after subsequent implementation changes.
+Historical verification: the complete `apps/ml-services/tests/ransomware` suite passed 1,202 tests before the latest changes. After the Cycle 3 unit-validation changes, the three focused Cycle 3 test modules passed 159 tests. A later broad run reported 1,145 passed and 9 failed. Eight failures require the missing PyTorch dependency; one is an RW-0906 promoted-bundle checksum mismatch. The broad suite is therefore not currently green.
 
 ## Outstanding completion gate
 
@@ -29,7 +29,7 @@ A machine-readable registry now defines and validates the seven approved derived
 
 The quality gate validates registry definitions, while the shared window-feature extractor enforces that all seven registered features are present in its output. Online and offline processing both use this extractor; the focused feature-parity tests passed.
 
-This does not validate unit metadata attached to each individual incoming event metric, nor independently prove every source-evidence mapping uses the declared physical unit. Keep this limitation explicit; do not claim broader event-level unit validation.
+The Cycle 3 validated-event adapter now checks each generated background measurement's unit against its event-type vocabulary definition. This is scoped to that Cycle 3 adapter path. It does not add unit metadata validation to the broader canonical event converter/validator, nor independently prove every source-evidence mapping uses the declared physical unit. Keep these remaining limitations explicit.
 
 ## Safety and evaluation boundaries
 

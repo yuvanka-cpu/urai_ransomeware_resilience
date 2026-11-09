@@ -11,6 +11,9 @@ from config.ransomware.scenarios.scenario_event_assembler import (
 from config.ransomware.scenarios.cycle3_validated_event_adapter import (
     build_cycle3_validated_event,
 )
+from config.ransomware.scenarios.cycle3_shared_evidence_vocabulary import (
+    get_cycle3_evidence_definition,
+)
 
 
 BASE_TIME = datetime(2026, 1, 1, 6, 0, tzinfo=timezone.utc)
@@ -29,6 +32,17 @@ BASE_ARGS = {
 
 def build_event(**overrides):
     arguments = {**BASE_ARGS, **overrides}
+    try:
+        definition = get_cycle3_evidence_definition(
+            arguments["event_type"]
+        )
+    except KeyError:
+        definition = None
+
+    arguments.setdefault(
+        "unit",
+        definition.unit if definition is not None else None,
+    )
     return build_cycle3_validated_event(**arguments)
 
 
@@ -309,3 +323,31 @@ def test_different_sequence_indices_remain_distinct():
 
 def test_no_operational_action_field_is_added():
     assert "operational_action_executed" not in build_event().attributes
+
+
+@pytest.mark.parametrize(
+    "event_type,wrong_unit",
+    [
+        ("file_write_activity", "seconds"),
+        ("file_rename_activity", "events"),
+        ("telemetry_freshness_observation", "operations"),
+        ("service_state_observation", "operations"),
+    ],
+)
+def test_incorrect_measurement_unit_rejected(event_type, wrong_unit):
+    with pytest.raises(ValueError, match="Invalid measurement unit"):
+        build_event(event_type=event_type, unit=wrong_unit)
+
+
+def test_boolean_measurement_rejects_declared_unit():
+    with pytest.raises(ValueError, match="Invalid measurement unit"):
+        build_event(
+            event_type="service_state_observation",
+            measured_value=True,
+            unit="operations",
+        )
+
+
+def test_numeric_measurement_rejects_missing_unit():
+    with pytest.raises(ValueError, match="Invalid measurement unit"):
+        build_event(unit=None)

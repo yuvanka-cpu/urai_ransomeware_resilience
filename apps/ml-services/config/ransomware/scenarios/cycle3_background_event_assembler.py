@@ -76,6 +76,7 @@ def assemble_cycle3_background_events(
             asset_id=asset_id,
             event_type=measurement.event_type,
             measured_value=measurement.measured_value,
+            unit=measurement.unit,
         )
 
         events.append(event)

@@ -24,6 +24,9 @@ from config.ransomware.scenarios.cycle3_measurement_seed import (
 from config.ransomware.scenarios.cycle3_measurement_value_gate import (
     require_cycle3_measurement_value,
 )
+from config.ransomware.scenarios.cycle3_shared_evidence_vocabulary import (
+    get_cycle3_evidence_definition,
+)
 
 
 BACKGROUND_STREAM_NAMESPACE = "urai-cycle3-background-v1"
@@ -36,6 +39,7 @@ class Cycle3BackgroundMeasurement:
     observation_minute: int
     event_type: str
     measured_value: int | float | bool
+    unit: str | None
 
 
 def _background_stream_seed(
@@ -87,6 +91,8 @@ def build_cycle3_background_measurements(
 
     for minute in profile.observation_minutes:
         for event_type in profile.event_types:
+            definition = get_cycle3_evidence_definition(event_type)
+
             stream_seed = _background_stream_seed(
                 measurement_seed=measurement_seed,
                 observation_minute=minute,
@@ -125,6 +131,7 @@ def build_cycle3_background_measurements(
                     observation_minute=minute,
                     event_type=event_type,
                     measured_value=validated_value,
+                    unit=definition.unit,
                 )
             )
 
