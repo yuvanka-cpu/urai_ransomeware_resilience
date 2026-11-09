@@ -8,6 +8,10 @@ from config.ransomware.scenarios.cycle3_shared_evidence_vocabulary import (
     SHARED_EVIDENCE_VOCABULARY,
 )
 
+from config.ransomware.scenarios import (
+    cycle3_evidence_feature_contract as mapping_contract,
+)
+
 from config.ransomware.scenarios.cycle3_evidence_feature_contract import (
     Cycle3EvidenceFeatureMapping,
     EVIDENCE_FEATURE_MAPPINGS,
@@ -294,3 +298,87 @@ def test_unresolved_mapping_lookup(event_type):
     assert mapping.status == "requires_semantic_refinement"
     assert mapping.attribute_name is None
     assert mapping.feature_name is None
+
+def test_compatible_mappings_declare_units_and_transformations():
+    for mapping in EVIDENCE_FEATURE_MAPPINGS:
+        if mapping.status != "compatible_with_constraints":
+            continue
+
+        definition = next(
+            item
+            for item in SHARED_EVIDENCE_VOCABULARY
+            if item.event_type == mapping.event_type
+        )
+        assert mapping.source_unit == definition.unit
+        assert (
+            mapping.feature_name,
+            mapping.feature_unit,
+            mapping.transformation,
+        ) == mapping_contract.EXPECTED_COMPATIBLE_MAPPING_CONTRACTS[
+            mapping.event_type
+        ]
+
+
+@pytest.mark.parametrize(
+    "event_type,field,value,error",
+    [
+        ("file_write_activity", "source_unit", "seconds", "Source unit mismatch"),
+        ("service_state_observation", "feature_unit", "count", "Feature unit or transformation contract mismatch"),
+        ("file_write_activity", "transformation", None, "Missing unit or transformation"),
+    ],
+)
+def test_invalid_compatible_unit_contract_rejected(
+    monkeypatch, event_type, field, value, error
+):
+    original = get_cycle3_evidence_feature_mapping(event_type)
+    modified = replace(original, **{field: value})
+    monkeypatch.setattr(
+        mapping_contract,
+        "EVIDENCE_FEATURE_MAPPINGS",
+        tuple(
+            modified if item.event_type == event_type else item
+            for item in EVIDENCE_FEATURE_MAPPINGS
+        ),
+    )
+
+    with pytest.raises(ValueError, match=error):
+        mapping_contract.validate_cycle3_evidence_feature_mappings()
+
+
+
+def test_unresolved_mapping_rejects_unit_metadata(monkeypatch):
+    original = get_cycle3_evidence_feature_mapping("authentication_activity")
+    modified = replace(original, source_unit="events")
+    monkeypatch.setattr(
+        mapping_contract,
+        "EVIDENCE_FEATURE_MAPPINGS",
+        tuple(
+            modified if item.event_type == original.event_type else item
+            for item in EVIDENCE_FEATURE_MAPPINGS
+        ),
+    )
+
+    with pytest.raises(ValueError, match="Unresolved mapping"):
+        mapping_contract.validate_cycle3_evidence_feature_mappings()
+
+
+def test_unregistered_feature_rejects_incorrect_declared_unit(monkeypatch):
+    original = get_cycle3_evidence_feature_mapping(
+        "privilege_change_activity"
+    )
+    modified = replace(original, feature_unit="ratio")
+
+    monkeypatch.setattr(
+        mapping_contract,
+        "EVIDENCE_FEATURE_MAPPINGS",
+        tuple(
+            modified if item.event_type == original.event_type else item
+            for item in EVIDENCE_FEATURE_MAPPINGS
+        ),
+    )
+
+    with pytest.raises(
+        ValueError,
+        match="Feature unit or transformation contract mismatch",
+    ):
+        mapping_contract.validate_cycle3_evidence_feature_mappings()
