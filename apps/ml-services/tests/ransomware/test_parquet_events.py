@@ -26,7 +26,7 @@ def test_read_canonical_events_decodes_structured_fields():
     assert isinstance(event["quality_flags"], list)
 
     assert event["attributes"] == {"test": "offline"}
-    assert event["metrics"] == {"risk_score": 0.5}
+    assert event["metrics"] == {}
     assert event["quality_flags"] == []
 
 

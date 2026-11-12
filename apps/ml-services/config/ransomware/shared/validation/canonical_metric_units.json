@@ -1,0 +1,6 @@
+{
+  "registry_version": "1.0",
+  "schema_compatibility": ["1.0"],
+  "description": "Authoritative units for approved canonical event metrics. Empty until production metric semantics and units are formally defined.",
+  "metrics": {}
+}

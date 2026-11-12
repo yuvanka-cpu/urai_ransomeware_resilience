@@ -25,7 +25,7 @@ def source_record():
         "actor": "N/A",
         "severity": "MEDIUM",
         "attributes": {"description": "test event"},
-        "metrics": {"risk_score": "0.5"},
+        "metrics": {},
         "quality_flags": ["normalized"],
         "provenance": "SYNTHETIC_TEST",
     }
@@ -64,7 +64,7 @@ def test_converts_and_validates_canonical_event(source_record, field_mapping):
     assert event["source_system"] == "synthetic"
     assert event["site_id"] == "energy-blr01"
     assert event["actor_id"] is None
-    assert event["metrics"] == {"risk_score": 0.5}
+    assert event["metrics"] == {}
     assert len(event["payload_hash"]) == 64
     assert validate_event(event) == []
 

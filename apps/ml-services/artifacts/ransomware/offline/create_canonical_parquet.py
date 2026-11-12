@@ -3,6 +3,8 @@ import json
 
 import pandas as pd
 
+from config.ransomware.shared.validation.canonical_event_validator import canonical_payload_hash
+
 
 ROOT = Path(__file__).resolve().parents[3]
 SCHEMA_PATH = ROOT / "config/ransomware/shared/schemas/canonical_event.avsc"
@@ -28,11 +30,16 @@ def main():
         "actor_id": None,
         "severity": "medium",
         "attributes": json.dumps({"test": "offline"}),
-        "metrics": json.dumps({"risk_score": 0.5}),
+        "metrics": json.dumps({}),
         "quality_flags": json.dumps([]),
         "data_provenance": "SYNTHETIC_GROUND_TRUTH",
         "payload_hash": "a" * 64,
     }
+
+    hash_payload = dict(row)
+    for field in ("attributes", "metrics", "quality_flags"):
+        hash_payload[field] = json.loads(hash_payload[field])
+    row["payload_hash"] = canonical_payload_hash(hash_payload)
 
     frame = pd.DataFrame([{name: row[name] for name in field_names}])
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)

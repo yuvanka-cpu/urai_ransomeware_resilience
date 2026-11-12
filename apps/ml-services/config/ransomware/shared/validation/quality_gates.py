@@ -9,6 +9,10 @@ from config.ransomware.shared.validation.canonical_feature_units import (
     CANONICAL_FEATURE_UNITS,
     validate_canonical_feature_units,
 )
+from config.ransomware.shared.validation.canonical_metric_units import (
+    load_canonical_metric_unit_registry,
+    validate_canonical_metric_units,
+)
 
 
 QUALITY_THRESHOLDS = {
@@ -86,6 +90,8 @@ def calculate_quality_gates(
 
     canonical_numeric_values = True
     canonical_utc_values = True
+    canonical_metric_units_valid = True
+    canonical_metric_unit_errors: list[str] = []
 
     for event in events:
         if not event.get("_validation_errors"):
@@ -127,8 +133,22 @@ def calculate_quality_gates(
                     value, (int, float)
                 ):
                     canonical_numeric_values = False
+
+            metric_units_valid, metric_unit_errors = (
+                validate_canonical_metric_units(
+                    metrics,
+                    event.get("schema_version", ""),
+                )
+            )
+            if not metric_units_valid:
+                canonical_metric_units_valid = False
+                canonical_metric_unit_errors.extend(metric_unit_errors)
         else:
             canonical_numeric_values = False
+            canonical_metric_units_valid = False
+            canonical_metric_unit_errors.append(
+                "metrics must be an object"
+            )
 
     for event_id in event_ids:
         if event_ids.count(event_id) > 1:
@@ -139,8 +159,29 @@ def calculate_quality_gates(
     timestamp_parse_success = timestamp_success_count / total
     known_asset_resolution = known_asset_count / total
 
-    canonical_units_valid, canonical_units_errors = (
+    canonical_feature_units_valid, canonical_feature_unit_errors = (
         validate_canonical_feature_units()
+    )
+
+    try:
+        metric_registry = load_canonical_metric_unit_registry()
+        metric_registry_valid = True
+        registered_event_metrics = metric_registry["metrics"]
+        metric_registry_errors: list[str] = []
+    except ValueError as exc:
+        metric_registry_valid = False
+        registered_event_metrics = {}
+        metric_registry_errors = [str(exc)]
+
+    canonical_units_valid = (
+        canonical_feature_units_valid
+        and metric_registry_valid
+        and canonical_metric_units_valid
+    )
+    canonical_units_errors = (
+        canonical_feature_unit_errors
+        + metric_registry_errors
+        + canonical_metric_unit_errors
     )
 
     gates = {
@@ -186,6 +227,17 @@ def calculate_quality_gates(
         "canonical_units": {
             "status": "PASS" if canonical_units_valid else "FAIL",
             "passed": canonical_units_valid,
+            "scope": "derived_features_and_canonical_event_metrics",
+            "metric_units_status": (
+                "ENFORCED" if registered_event_metrics
+                else "EMPTY_NO_APPROVED_METRICS"
+            ),
+            "metric_registry_valid": metric_registry_valid,
+            "registered_event_metrics": len(registered_event_metrics),
+            "event_metric_schema_compatibility": (
+                metric_registry.get("schema_compatibility", [])
+                if metric_registry_valid else []
+            ),
             "registered_features": len(CANONICAL_FEATURE_UNITS),
             "units": dict(CANONICAL_FEATURE_UNITS),
             "errors": canonical_units_errors,

@@ -15,6 +15,9 @@ from config.ransomware.shared.source_event_contract import (
     is_valid_source_system,
 )
 from config.ransomware.shared.zone_contract import is_valid_zone
+from config.ransomware.shared.validation.canonical_metric_units import (
+    validate_canonical_metric_units,
+)
 
 
 REQUIRED_FIELDS = {
@@ -278,6 +281,12 @@ def validate_event(event: dict[str, Any]) -> list[str]:
                 errors.append(
                     "metrics: keys must be strings and values numeric"
                 )
+
+        _, metric_unit_errors = validate_canonical_metric_units(
+            event["metrics"],
+            event.get("schema_version", ""),
+        )
+        errors.extend(metric_unit_errors)
 
     if (
         "quality_flags" in event

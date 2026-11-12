@@ -25,7 +25,7 @@ def valid_event():
         "actor_id": None,
         "severity": "medium",
         "attributes": {"test": "negative_fixture"},
-        "metrics": {"risk_score": 0.5},
+        "metrics": {},
         "quality_flags": [],
         "data_provenance": "SYNTHETIC_GROUND_TRUTH",
         "payload_hash": "",
@@ -57,3 +57,18 @@ def test_stale_hash_fixture_fails():
     errors = validate_event(event)
 
     assert "payload_hash: does not match canonical payload" in errors
+
+
+def test_empty_metric_map_passes_unit_registry():
+    event = valid_event()
+    assert validate_event(event) == []
+
+
+def test_unregistered_metric_fails_unit_registry():
+    event = valid_event()
+    event["metrics"] = {"risk_score": 0.5}
+    event["payload_hash"] = canonical_payload_hash(event)
+
+    errors = validate_event(event)
+
+    assert "metrics: unregistered canonical metric 'risk_score'" in errors
