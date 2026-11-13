@@ -241,3 +241,34 @@ def test_canonical_inference_executes_real_synthetic_row() -> None:
         "operational_state_claimed": False,
         "physical_safety_determination": "not_determined",
     }
+
+def test_tampered_split_assignment_is_rejected(tmp_path, monkeypatch):
+    import json
+
+    from config.ransomware import catboost_trainer
+
+    manifest = json.loads(
+        catboost_trainer.MANIFEST_PATH.read_text(encoding="utf-8")
+    )
+
+    original_split = manifest["assignments"][0]["split"]
+    replacement_split = next(
+        split for split in manifest["splits"]
+        if split != original_split
+    )
+    manifest["assignments"][0]["split"] = replacement_split
+
+    temporary_manifest = tmp_path / "split_assignment_manifest.json"
+    temporary_manifest.write_text(
+        json.dumps(manifest),
+        encoding="utf-8",
+    )
+
+    monkeypatch.setattr(
+        catboost_trainer,
+        "MANIFEST_PATH",
+        temporary_manifest,
+    )
+
+    with pytest.raises(ValueError, match="Frozen scenario mismatch"):
+        catboost_trainer.load_and_verify_scenarios()
