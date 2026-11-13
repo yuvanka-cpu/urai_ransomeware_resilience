@@ -1,4 +1,5 @@
-import pytest
+import json
+from pathlib import Path
 
 from config.ransomware.shared.identifier_contract import (
     IdentifierType,
@@ -72,3 +73,31 @@ def test_identifier_values_are_unique():
     ]
 
     assert len(asset_ids) == len(set(asset_ids))
+
+def test_protected_dependency_identifier():
+    assert is_valid_identifier(
+        "energy-blr01-dep-protected-001",
+        IdentifierType.DEPENDENCY,
+    )
+    assert is_valid_identifier(
+        "petrochemical-mng01-dep-protected-008",
+        IdentifierType.DEPENDENCY,
+    )
+
+
+def test_actual_protected_node_dependency_ids_are_valid():
+    config_root = Path(__file__).parents[2] / "config" / "ransomware"
+
+    for sector in ("energy", "petrochemical"):
+        path = config_root / sector / "protected_nodes.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        records = data["nodes"]
+
+        assert records, f"{sector}: protected-node inventory is empty"
+        assert data["sector"] == sector
+
+        for record in records:
+            assert is_valid_identifier(
+                record["dependency_id"],
+                IdentifierType.DEPENDENCY,
+            ), f"{sector}: invalid dependency ID {record['dependency_id']}"
